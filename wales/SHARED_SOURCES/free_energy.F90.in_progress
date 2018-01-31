@@ -1,0 +1,321 @@
+MODULE FREE_ENERGY_MOD
+! Module for calculation of free energies and related tasks, like calculating
+! the eigenvalues and such things.
+IMPLICIT NONE
+
+! Named parameters for methods to calculate the log product of eigenvalues
+INTEGER, PARAMETER   :: USE_DSYEVR = 1
+INTEGER, PARAMETER   :: USE_SPARSE = 2
+
+! Named parameters for methods to calculate the lowest eigenvalue
+INTEGER, PARAMETER   :: DONT_CALC = 0 
+INTEGER, PARAMETER   :: USE_RAY_RITZ = 1
+INTEGER, PARAMETER   :: USE_DSYEVR = 2
+
+CONTAINS
+
+SUBROUTINE FREE_ENERGY(STRUCTURE, FE_TEMP, METHOD, NUMERICAL, TS_CHECK)
+! Calculates the free energy for a structure using the harmonic superposition
+! approximation. Either using DSYEVR (METHOD = USE_DSYEVR or 1) or Cholesky 
+! decomposition with SuiteSparse (METHOD = USE_SPARSE or 2).
+! NUMERICAL specifies whether to use numerical second derivatives.
+! TS_CHECK specifies whether to check whether STRUCTURE is a transition state
+! prior to calculating the free energy.
+   USE MODHESS  
+   USE CONFIGS
+   IMPLICIT NONE
+! Arguments
+   TYPE(CONFIG), INTENT(INOUT)   :: STRUCTURE
+   REAL(8), INTENT(IN)           :: FE_TEMP
+   INTEGER, INTENT(IN)           :: METHOD
+   LOGICAL, INTENT(IN)           :: NUMERICAL
+   LOGICAL, INTENT(IN)           :: TS_CHECK
+! Local variables   
+   INTEGER                       :: NUM_COORDS
+   INTEGER                       :: NUM_ATOMS
+   INTEGER                       :: NUM_ZEROS
+
+! First store the number of coordinates in NUM_COORDS 
+   NUM_COORDS = LEN(STRUCTURE % COORDS)
+! Also store the number of zeros
+   NUM_ZEROS = STRUCTURE % NUM_ZEROS
+
+! Calculate the number of atoms
+   IF (STRUCTURE % NUM_DIMS /= 0) THEN
+      NUM_ATOMS = NUM_COORDS / STRUCTURE % NUM_DIMS
+   ELSE
+      ! If it isn't specified, assume 3D Cartesian coordinates.
+      NUM_ATOMS = NUM_COORDS / 3
+   END IF
+
+! Allocate the hessian, if it's not allocated. It's safe to assume that the
+! Hessian is NUM_COORDS * NUM_COORDS in size. Also allocate MODHESS's HESS.
+   IF(.NOT. ALLOCATED(STRUCTURE % HESSIAN)) THEN
+      ALLOCATE(STRUCTURE % HESSIAN(NUM_COORDS, NUM_COORDS))
+      ALLOCATE(HESS(NUM_COORDS, NUM_COORDS))
+   END IF
+   
+! Call potential to populate the hessian stored in MODHESS (for the moment).
+   CALL POTENTIAL(STRUCTURE % COORDS, &
+                  STRUCTURE % GRADIENT, &
+                  STRUCTURE % POT_ENERGY, &
+                  GRADT = .TRUE., &
+                  SECT  = .TRUE.)
+
+! Mass weight the hessian and then assign it to STRUCTURE % HESSIAN.
+   CALL MASSWT(HESS)
+   STRUCTURE % HESSIAN = HESS
+
+! Optionally, use Rayleigh-Ritz to work out whether this is a transition state
+! or a minimum. You really should use this if METHOD == SPARSE, since the 
+! Cholesky decomposition will fail ungracefully with negative eigenvalues.
+   IF(TS_CHECK) THEN
+      CALL CHECK_TRANS_STATE(STRUCTURE)
+      IF (STRUCTURE % CONFIG_TYPE == TRANS_STATE) THEN
+         PRINT *, 'Transition state detected: cannot use harmonic superposition'
+         RETURN
+      END IF
+   END IF
+
+! Now use our chosen method to evaluate the log product of the eigenvalues. 
+   CALL LOG_PROD_EVALUES(STRUCTURE, METHOD)
+  
+! Calculate the free energy. Note that in this implementation, we do not use
+! the symmetry factor (2 * Na! * Nb! * Nc! ... Nmax!), since this should be the
+! same for differing structures, unless the connectivity of a bonded molecule
+! changes, or an atom switches type.
+!
+! Free energy has four terms:
+!  - Potential energy
+!  - Contribution from number of equivalent minima (configurational entropy)
+!  - T ln T dependence
+!  - Contribution from normal modes (vibrational entropy)
+   STRUCTURE % FREE_ENERGY = STRUCTURE % POT_ENERGY &
+                           + FE_TEMP * DLOG(STRUCTURE % ORDER) &
+                           - FE_TEMP * (NUM_COORDS - NUM_ZEROS) * DLOG(FE_TEMP) &
+                           + FE_TEMP * STRUCTURE_LOG_PROD_EVALUES
+! Deallocate HESS
+   DEALLOCATE(HESS)
+
+END SUBROUTINE FREE_ENERGY
+
+SUBROUTINE CHECK_TRANS_STATE(STRUCTURE, METHOD, ZERO_EIG, THRESHOLD)
+! Checks whether this structure corresponds to a transition state.
+   USE CONFIGS
+   IMPLICIT NONE
+! Arguments
+   TYPE(CONFIG), INTENT(INOUT)         :: STRUCTURE
+   INTEGER, INTENT(IN)                 :: METHOD
+   REAL(8), INTENT(IN), OPTIONAL       :: ZERO_EIG
+   REAL(8), INTENT(IN), OPTIONAL       :: THRESHOLD
+! Local variables
+   REAL(8), DIMENSION(:), ALLOCATABLE  :: MAGNITUDES
+
+! Calculate the lowest eigenvalue, or all the eigenvalues, depending on method
+! chosen. USE_DSYEVR is safer, but *much* more expensive. Use infrequently.
+   IF (METHOD == DONT_CALC) THEN
+   ELSE IF (METHOD == USE_RAY_RITZ) THEN
+      CALL FIND_LOWEST_EIG(STRUCTURE)
+   ELSE IF (METHOD == USE_DSYEVR) THEN
+      CALL CALC_EIGENVECTORS(STRUCTURE)
+   END IF 
+
+! Convert to magnitudes of frequencies
+   ALLOCATE(MAGNITUDES(LEN(STRUCTURE % EIGENVALUES)))
+   MAGNITUDES = ABS(STRUCTURE % EIGENVALUES) 
+
+! There are two possibilities here:
+!
+! 1) Use lowest eigenvalue from Rayleigh-Ritz minimisation. This eigenvalue
+!    should *not* be well-separated from the zero eigenvalues.
+!
+! 2) Use all the eigenvalues from DSYEVR and compare the magnitude of the
+!    lowest eigenvalue with the first putative non-zero (if we were at a
+!    minimum). So for 3D Cartesians, we would compare the magnitudes of
+!    eigenvalues 1 and 7.
+!
+!    The two behaviours we are comparing are:
+!
+!    eigenvalue    1  2  3  4  5  6  7
+!    minimum       0  0  0  0  0  0  x     
+!    trans_state  -y  0  0  0  0  0  0
+! 
+   IF (METHOD == USE_RAY_RITZ) THEN
+      IF (PRESENT(ZERO_EIG) .AND. PRESENT(THRESHOLD)) THEN
+         IF MAGNITUDES(1) / ABS(ZERO_EIG)
+      ELSE
+         PRINT *, 'Without ZERO_EIG and THRESHOLD arguments to &
+                   CHECK_TRANS_STATE, we have nothing to compare the lowest &
+                   eigenvalue to.'      
+      END IF
+            
+   ELSE IF
+   
+   
+   IF (STRUCTURE % EIGENVALUES(1) < LOWEST_NONZERO) THEN
+!   IF (NMFRQN(1) .LT. NMFRQN(1+NZRHEV)) THEN
+!      TS_FOUND = .FALSE.
+!   END IF
+
+   
+END SUBROUTINE CHECK_TRANS_STATE
+
+SUBROUTINE CALC_EIGENVECTORS(STRUCTURE)
+   IMPLICIT NONE
+END SUBROUTINE CALC_EIGENVECTORS
+
+   ! Calculate the free energy
+   NZRHEV = 6
+         IF(.NOT. ALLOCATED(HESS)) ALLOCATE(HESS(3*NATOMS,3*NATOMS))
+         CALL POTENTIAL(P,GRAD,EREAL,.TRUE.,.TRUE.)
+         CALL MASSWT(HESS)
+         CALL DSYEV('N','L',3*NATOMS,HESS,3*NATOMS,NMFRQN,WORK,LWORK,INFO)
+         NMFRQN(:) = SQRT(ABS(NMFRQN(:)))
+         LPRODEV = 0.D0
+!         DO J1 = 1, 3 
+         ! Check that we don't have any proper negative eigenvalues (the magnitude should drop).
+         ! We do it this way, since some of the zeros come out negative as well, so you can't i
+         ! just check the sign.
+         !
+         ! Check up to third-order transition states. What we do is see if the first, second or
+         ! third normal mode is larger than all of the succeeding six. If so, it's probably a
+         ! transition state and we should discard it for now.
+            TS_FOUND = .TRUE.
+            IF (NMFRQN(1) .LT. NMFRQN(1+NZRHEV)) THEN
+                TS_FOUND = .FALSE.
+            END IF
+            IF (TS_FOUND) THEN
+                WRITE(MYUNIT, '(A, I10, A)') 'Quench ', NQ(NP), ' converged to a transition state.'
+                
+                WRITE(MYUNIT, '(A)') 'Normal mode frequencies'
+                WRITE(MYUNIT, '(A)') '======================='
+                WRITE(MYUNIT, '(F20.12)') NMFRQN(1:(3+NZRHEV))
+                WRITE(MYUNIT, '(A)') '======================='
+                RETURN
+            END IF
+!            IF (NMFRQN(J1) .GT. NMFRQN((SUM(NMFRQN((J1+1):(J1+1+NZRHEV)))/NZRHEV)) THEN
+!                WRITE(MYUNIT, '(A, I10, A)') 'Quench ', NQ(NP), ' converged to a transition state.'
+!                
+!                WRITE(MYUNIT, '(A)') 'Normal mode frequencies'
+!                WRITE(MYUNIT, '(A)') '======================='
+!                WRITE(MYUNIT, '(F20.12)') NMFRQN(1:(3+NZRHEV))
+!                WRITE(MYUNIT, '(A)') '======================='
+!                RETURN
+!            END IF 
+!         END DO
+         DO J1 = NZRHEV + 1, 3*NATOMS
+            IF (NMFRQN(J1) > 0.D0) THEN
+               LPRODEV = LPRODEV + DLOG(NMFRQN(J1))
+            ENDIF
+         ENDDO
+         IF ((MIN_ZERO_SEP .GT. 0.0D0) .AND. (MAX_ATTEMPTS .GT. 0)) THEN
+            DO ATTEMPTS = 1, MAX_ATTEMPTS            
+               LARGEST_ZERO = 0.D0
+               DO J1 = 1, NZRHEV
+                  LARGEST_ZERO = MAX(LARGEST_ZERO, NMFRQN(J1))
+               END DO
+               SMALLEST_NONZERO = 1.0D100
+               DO J1 = NZRHEV + 1, 3 * NATOMS
+                  SMALLEST_NONZERO = MIN(SMALLEST_NONZERO, NMFRQN(J1))
+               END DO
+               IF ((SMALLEST_NONZERO / LARGEST_ZERO) .LT. MIN_ZERO_SEP) THEN
+               ! If the separation of zeros and non-zeros is too small, reduce the convergence
+               ! threshold by an order of magnitude, along with the corresponding sloppy or tight
+               ! convergence threshold (for future quenches).
+                  WRITE(MYUNIT, '(A,I8)') 'Attempt: ', ATTEMPTS
+                  WRITE(MYUNIT, '(A,F20.12)') 'Current separation is ', (SMALLEST_NONZERO / LARGEST_ZERO)
+                  WRITE(MYUNIT, '(A,F20.12)') 'Target separation is ', MIN_ZERO_SEP
+                  GMAX = GMAX * 1.0D-1
+                  IF (QTEST) THEN
+                      CQMAX = GMAX
+                      WRITE(MYUNIT, '(A,F12.8)') 'Lowering tight convergence to ', CQMAX
+                  ELSE
+                      BQMAX = GMAX
+                      WRITE(MYUNIT, '(A,F12.8)') 'Lowering sloppy convergence to ', BQMAX
+                  END IF
+                  CALL MYLBFGS(NOPT,MUPDATE,P,.FALSE.,GMAX,CFLAG,EREAL,MAXIT,ITER,.TRUE.,NP)
+                  CALL POTENTIAL(P,GRAD,EREAL,.TRUE.,.TRUE.)
+                  CALL MASSWT(HESS)
+                  CALL DSYEV('N','L',3*NATOMS,HESS,3*NATOMS,NMFRQN,WORK,LWORK,INFO)
+                  NMFRQN(:) = SQRT(ABS(NMFRQN(:)))
+                  LARGEST_ZERO = 0.D0
+                  DO J1 = 1, NZRHEV
+                     LARGEST_ZERO = MAX(LARGEST_ZERO, NMFRQN(J1))
+                  END DO
+                  SMALLEST_NONZERO = 1.0D100
+                  DO J1 = NZRHEV + 1, 3 * NATOMS
+                     SMALLEST_NONZERO = MIN(SMALLEST_NONZERO, NMFRQN(J1))
+                  END DO
+               END IF
+               IF ((SMALLEST_NONZERO / LARGEST_ZERO) .GE. MIN_ZERO_SEP) THEN
+                  ! If we have converged properly, then we're ok.
+                  WRITE(MYUNIT, '(A,F20.12)') 'Converged. Separation of zeros: ', (SMALLEST_NONZERO / LARGEST_ZERO)
+                  EXIT
+               END IF
+               IF (ATTEMPTS .EQ. MAX_ATTEMPTS) THEN
+                  WRITE(MYUNIT, '(A)') 'Failed to achieve desired separation of zeros and non-zeros.'
+                  WRITE(MYUNIT, '(A)') 'Lowest normal mode frequencies.'
+                  DO J1 = 1, NZRHEV + 6
+                     WRITE(MYUNIT, '(F20.12)') NMFRQN(J1)
+                  END DO
+                  STOP 'Cannot achieve desired separation of zeros and non-zeros. Please check your input.'
+                  DO J1 = 1, 3
+                     WRITE(MYUNIT, '(A,2F20.12)') 'TS test: ', NMFRQN(J1), SUM(NMFRQN((J1+1):(J1+1+NZRHEV)))/NZRHEV
+                  END DO
+               END IF
+            END DO
+         END IF
+            
+         IF (DEBUG) THEN
+            LARGEST_ZERO = 0.D0
+            DO J1 = 1, NZRHEV
+               LARGEST_ZERO = MAX(LARGEST_ZERO, NMFRQN(J1))
+            END DO
+            SMALLEST_NONZERO = 1.0D100
+            DO J1 = NZRHEV + 1, 3 * NATOMS
+               SMALLEST_NONZERO = MIN(SMALLEST_NONZERO, NMFRQN(J1))
+            END DO
+            WRITE(MYUNIT, '(A,F20.12)') 'Separation of zero and non-zero frequencies = ', SMALLEST_NONZERO / LARGEST_ZERO
+            WRITE(MYUNIT, '(A,F20.12)') 'Log of product of positive normal mode frequencies = ', LPRODEV
+            WRITE(MYUNIT, '(A)') 'Zeros:'
+            DO J1 = 1, NZRHEV
+                WRITE(MYUNIT, '(F20.12)') NMFRQN(J1)
+            END DO
+         ENDIF
+!         DEALLOCATE(HESS)
+         IF (NTIPT) THEN
+            ALLOCATE(QS(9*NATOMS/2))
+            J1 = NRBSITES
+            NRBSITES = 3
+            CALL SITEPOS(P,QS)
+            NRBSITES = J1
+            NMOL  = NATOMS/2
+            NATOMS = (NATOMS/2)*3
+            CALL DETSYMMETRY(QS,HORDER,IT,.FALSE.)
+            NATOMS = 2*NMOL
+            DEALLOCATE(QS)
+         ELSE 
+            CALL DETSYMMETRY(P,HORDER,IT,.FALSE.)
+         ENDIF
+         IF (QTEST) WRITE(MYUNIT,'(A,I4)') 'Order of the point group of minimum = ', HORDER
+         FEBH_POT_ENE = EREAL
+! khs26> At zero temperature, free energy is potential energy. However, DLOG(0) = NaN
+         IF (FETEMP .GT. 0.D0) THEN
+            WRITE(MYUNIT, '(A,F20.12)') 'Potential energy = ', FEBH_POT_ENE
+            EREAL =-FETEMP*(DLOG(SYMFCTR/HORDER) - EREAL/FETEMP + (3*NATOMS-NZRHEV)*DLOG(FETEMP) - LPRODEV)
+            WRITE(MYUNIT, '(A,F20.12)') 'Harmonic superposition contribution = ', EREAL - FEBH_POT_ENE
+         END IF
+      ELSE IF (FEBHT .AND. (.NOT. CFLAG)) THEN
+         WRITE(MYUNIT, '(A)') 'Quench did not converge, not calculating free energy and adding 1E10 to energy.'
+         EREAL = EREAL + 1.0D10
+      ENDIF
+
+
+SUBROUTINE LOG_PROD_EVALUES(STRUCTURE, METHOD)
+! Calculates the log product of eigenvalues for a structure, using either
+! DSYEVR (METHOD = USE_DSYEVR or 1) or Cholesky decomposition with
+! SuiteSparse (METHOD = USE_SPARSE or 2).
+   IMPLICIT NONE
+END SUBROUTINE LOG_PROD_EVALUES
+
+END MODULE FREE_ENERGY_MOD

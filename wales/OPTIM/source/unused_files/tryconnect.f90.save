@@ -1,0 +1,347 @@
+!   CONNECT module is an implementation of a connection algorithm for finding rearrangement pathways.
+!   Copyright (C) 2003-2006 Semen A. Trygubenko and David J. Wales
+!   This file is part of CONNECT module. CONNECT module is part of OPTIM.
+!
+!   OPTIM is free software; you can redistribute it and/or modify
+!   it under the terms of the GNU General Public License as published by
+!   the Free Software Foundation; either version 2 of the License, or
+!   (at your option) any later version.
+!
+!   OPTIM is distributed in the hope that it will be useful,
+!   but WITHOUT ANY WARRANTY; without even the implied warranty of
+!   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!   GNU General Public License for more details.
+!
+!   You should have received a copy of the GNU General Public License
+!   along with this program; if not, write to the Free Software
+!   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+!
+MODULE TryConnectModule
+     implicit none
+     contains
+
+     subroutine tryconnect(js,jf,TSREDO,REDOPATH)
+          use NewNEBModule
+          use ConnectData
+          use KeyConnect
+          use ConnectUtils
+          use nebtoconnect
+          use KeyNEB, only: Nimage, NIterMax
+          use key, only: UNRST, DEBUG, FILTH, FILTHSTR, DUMPALLPATHS, TWOD
+          USE MODGUESS
+          USE MODUNRES
+          USE MODMEC
+          use KeyUtils
+          use commons, only: nints
+          use porfuncs
+          implicit none
+
+          integer,intent(in) :: js,jf
+          
+          integer         :: i,unique=0,MinPlusPos,MinMinusPos,J1
+          DOUBLE PRECISION         :: EDUMMY,EDUMMY2,TMPTS(3*NATOMS)
+          DOUBLE PRECISION,POINTER :: QPLUS(:),QMINUS(:),EPLUS,EMINUS
+          logical         :: PlusNew,MinusNew,pathfailt
+          character       :: itstring*80, EofSString*80
+          character       :: itstringP*80, EofSStringP*80
+          character       :: itstringM*80, EofSStringM*80
+          DOUBLE PRECISION :: STARTINT(NINTS), FINISHINT(NINTS),DUM
+          LOGICAL REDOPATH, PERMUTEP, PERMUTEM, REDOPERM, REDO
+          DOUBLE PRECISION TSREDO(3*NATOMS), QTEMP(3*NATOMS)
+          DOUBLE PRECISION TSPERM(3*NATOMS,2)
+          CHARACTER(LEN=5) ZTEMP(NATOMS)
+          CHARACTER(LEN=80) DSTRING, TMPSTRING
+          INTEGER INVERTP, INVERTM, INDEXP(NATOMS), INDEXM(NATOMS), J2, NEWPERM, PERMDONE
+
+          REDOPERM=.FALSE.
+          PERMDONE=0
+
+111       REDO=REDOPATH.OR.REDOPERM
+          IF (REDOPERM) THEN
+             PERMDONE=PERMDONE+1
+             TSREDO(1:3*NATOMS)=TSPERM(1:3*NATOMS,PERMDONE)
+          ENDIF
+          
+          IF (.NOT.REDO) call checkpair(js,jf)
+          IF (GUESSPATHT) THEN
+            IF (UNRST) THEN
+               DO J1=1,nres
+                  c(1,J1)=mi(js)%data%X(6*(J1-1)+1)
+                  c(2,J1)=mi(js)%data%X(6*(J1-1)+2)
+                  c(3,J1)=mi(js)%data%X(6*(J1-1)+3)
+                  c(1,J1+nres)=mi(js)%data%X(6*(J1-1)+4)
+                  c(2,J1+nres)=mi(js)%data%X(6*(J1-1)+5)
+                  c(3,J1+nres)=mi(js)%data%X(6*(J1-1)+6)
+               ENDDO
+               CALL UPDATEDC
+               CALL int_from_cart(.true.,.false.)
+               CALL geom_to_var(NINTS,STARTINT(1:NINTS)) 
+               DO J1=1,nres
+                  c(1,J1)=mi(jf)%data%X(6*(J1-1)+1)
+                  c(2,J1)=mi(jf)%data%X(6*(J1-1)+2)
+                  c(3,J1)=mi(jf)%data%X(6*(J1-1)+3)
+                  c(1,J1+nres)=mi(jf)%data%X(6*(J1-1)+4)
+                  c(2,J1+nres)=mi(jf)%data%X(6*(J1-1)+5)
+                  c(3,J1+nres)=mi(jf)%data%X(6*(J1-1)+6)
+               ENDDO
+               CALL UPDATEDC
+               CALL int_from_cart(.true.,.false.)
+               CALL geom_to_var(NINTS,FINISHINT(1:NINTS))
+               CALL GUESSPATH(STARTINT,FINISHINT,NINTS,EDiffTol,NATOMS)
+            ELSE
+               CALL GUESSPATH(mi(js)%data%X,mi(jf)%data%X,3*NATOMS,EDiffTol,NATOMS)
+            ENDIF
+          ! how many images to use?
+            if (Nimage > ImageMax) PRINT*,'WARNING - Nimage is greater than ImageMax'
+            if (Nimage < 2       ) PRINT*,'WARNING - Nimage is < 2'
+            Nimage=NINTERP
+!           NIterMax = Nimage*IterDensity ! try zero neb iterations if we have a GUESSPATH path
+            NIterMax = 0
+            IF (NINTERP.LT.2) THEN ! no images from GUESSPATH - revert to usual scheme
+               if (.not.(NConDone==1 .and. FCD)) then
+                    Nimage=ImageDensity*mi(jf)%data%D(js) &
+                        +ImageIncr*ImageDensity*mi(jf)%data%D(js)*(mi(jf)%data%ntries(js)-1)
+                    if (Nimage >= ImageMax) THEN
+                       Nimage = ImageMax
+!                      mi(jf)%data%ntries(js)=NTriesMax ! no point trying again with the same number of images
+                    ENDIF
+                    if (Nimage < 2       ) Nimage = 2
+                    NIterMax = Nimage*IterDensity
+               endif
+
+            ENDIF
+          ELSEIF (MECCANOT) THEN
+          ! how many images to use?
+            Nimage=NINT(MIN(MECIMDENS*mi(jf)%data%D(js),MECMAXIMAGES*1.0D0)) ! image density times distance
+!           if (Nimage > ImageMax) PRINT*,'WARNING - Nimage is greater than ImageMax'
+            if (Nimage < 1       ) Nimage=1
+            NIterMax=NINT(MIN(Nimage*MECITDENS,MECMAXIT*1.0D0)) ! number of images times iteration density
+            IF (UNRST) THEN
+               DO J1=1,nres
+                  c(1,J1)=mi(js)%data%X(6*(J1-1)+1)
+                  c(2,J1)=mi(js)%data%X(6*(J1-1)+2)
+                  c(3,J1)=mi(js)%data%X(6*(J1-1)+3)
+                  c(1,J1+nres)=mi(js)%data%X(6*(J1-1)+4)
+                  c(2,J1+nres)=mi(js)%data%X(6*(J1-1)+5)
+                  c(3,J1+nres)=mi(js)%data%X(6*(J1-1)+6)
+               ENDDO
+               CALL UPDATEDC
+               CALL int_from_cart(.true.,.false.)
+               CALL geom_to_var(NINTS,STARTINT(1:NINTS))
+               DO J1=1,nres
+                  c(1,J1)=mi(jf)%data%X(6*(J1-1)+1)
+                  c(2,J1)=mi(jf)%data%X(6*(J1-1)+2)
+                  c(3,J1)=mi(jf)%data%X(6*(J1-1)+3)
+                  c(1,J1+nres)=mi(jf)%data%X(6*(J1-1)+4)
+                  c(2,J1+nres)=mi(jf)%data%X(6*(J1-1)+5)
+                  c(3,J1+nres)=mi(jf)%data%X(6*(J1-1)+6)
+               ENDDO
+               CALL UPDATEDC
+               CALL int_from_cart(.true.,.false.)
+               CALL geom_to_var(NINTS,FINISHINT(1:NINTS))
+               CALL UNMECCANO(.TRUE.,DEBUG,DUM,.FALSE.,STARTINT,FINISHINT,DUM,DUM,DUM,DUM)
+            ELSE
+               CALL MECCANO(.TRUE.,DEBUG,DUM,.FALSE.,mi(js)%data%X,mi(jf)%data%X,DUM,DUM,DUM,DUM)
+            ENDIF
+            NIterMax = 0 ! try zero neb iterations if we have a MECCANO path
+
+          ELSEIF (NConDone==1 .and. FCD) then ! first cycle different - parameters supplied using newneb
+                                          ! keyword or newneb defaults will be used instead
+               print *, "First cycle will be done using externally supplied parameters!"
+          ELSEIF (REDO) THEN
+            Nimage=1
+            NIterMax = 0 ! try zero neb iterations if we have points in TSREDO
+          ELSE
+            Nimage=ImageDensity*mi(jf)%data%D(js) &
+             +ImageIncr*ImageDensity*mi(jf)%data%D(js)*(mi(jf)%data%ntries(js)-1)
+               if (Nimage >= ImageMax) THEN
+                  Nimage = ImageMax
+!                 mi(jf)%data%ntries(js)=NTriesMax ! no point trying again with the same number of images
+               ENDIF
+               if (Nimage < 2       ) Nimage = 2
+               NIterMax = Nimage*IterDensity
+          endif
+          
+          ! book-keeping :-)
+          IF (.NOT.(MECCANOT.OR.REDO)) THEN
+             write(chr,'(i7)') NIterMax
+             write(*,'(/1x,a)',advance='no') '>>>>>  '//trim(adjustl(chr))//'-iteration NEB run for minima '
+             write(chr,'(i5)') js
+             write(*,'(a)',advance='no') trim(adjustl(chr))
+          
+             if (mi(js)%data%S) then
+                  write(*,'(a)',advance='no') '_S'
+             elseif (mi(js)%data%F) then
+                  write(*,'(a)',advance='no') '_F'
+             else
+                  write(*,'(a)',advance='no') '_U'
+             endif
+             write(chr,'(i5)') jf
+             write(*,'(a)',advance='no') ' and '//trim(adjustl(chr))
+             if (mi(jf)%data%S) then
+                  write(*,'(a)',advance='no') '_S'
+             elseif (mi(jf)%data%F) then
+                  write(*,'(a)',advance='no') '_F'
+             else
+                  write(*,'(a)',advance='no') '_U'
+             endif
+          
+             ! getting ts candidates from NEB
+             write(chr,'(i5)') Nimage
+             write(*,'(a)',advance='no') ' using '//trim(adjustl(chr))//' images '
+             if (mi(jf)%data%ntries(js) > 1) then
+                  write(chr,'(i5)') mi(jf)%data%ntries(js)
+                  write(*,'(a)',advance='no') '(attempt #'//trim(adjustl(chr))//') '
+             endif
+             write(*,'(a)') ' ...'
+          ENDIF
+
+          if (Nimage >= ImageMax) mi(jf)%data%ntries(js)=NTriesMax ! no point trying again with the same number of images
+          if (unrst) then 
+              call NewNEB(REDO,TSREDO,mi(js)%data%E,mi(js)%data%X,mi(jf)%data%E,mi(jf)%data%X,NINTSin=nints)
+          else
+              call NewNEB(REDO,TSREDO,mi(js)%data%E,mi(js)%data%X,mi(jf)%data%E,mi(jf)%data%X)
+          endif
+
+          ! saving new ts into ts rack; otherwise - free memory immediately
+          NEWPERM=0
+          NtsOld=Nts
+          unique=0
+          do i=1,NTSfound
+               if ( isnewts(TSfound(i)) ) then
+                    if (Nts==tsracksize) call ReallocateTSRack
+                    Nts=Nts+1; unique=unique+1
+                    ts(Nts)%data%E => TSfound(i)%E
+                    ts(Nts)%data%X => TSfound(i)%coord
+                    ts(Nts)%data%evalmin => TSfound(i)%evalmin
+                    ts(Nts)%data%vecs => TSfound(i)%vecs
+                    ts(Nts)%data%bad=.False.
+                    nullify(TSfound(i)%E,TSfound(i)%coord,TSfound(i)%evalmin,TSfound(i)%vecs)
+               else
+                    if (NConDone==1) print *, 'Discarded TS #',i
+                    deallocate(TSfound(i)%E,TSfound(i)%coord,TSfound(i)%evalmin,TSfound(i)%vecs)
+               endif
+          enddo
+
+          call dumpts
+
+          ! print info as to how many TS are actually useful
+          if (unique==NTSfound.and..not.unique==0) then
+               if (NTSfound==1) then
+                    write(*,'(1x,a)') 'TS appears to be new'
+               else
+                    write(*,'(1x,a)') 'All of TS found appear to be new'
+               endif
+          elseif (unique < NTSfound) then
+               write(chr,'(i7)') unique 
+               write(*,'(1x,a)') trim(adjustl(chr))//' of TS found appear to be new.'
+          elseif (unique ==0 .and..not.NTSfound==0) then
+               write(*,'(1x,a)') 'All of TS found are already known.'
+          endif
+          
+          ! path run for all unique ts
+          do i=Nts-unique+1,Nts
+               write(chr,'(i5)') i
+               print '(/1x,a)', '>>>>>  Path run for ts '//trim(adjustl(chr))//' ...'
+               allocate( Qplus(nopt),Qminus(nopt),Eplus,Eminus )
+               call mkfnames(i,FILTH,FILTHSTR,itstring,EofSString)
+               Edummy=ts(i)%data%E
+               tmpts=ts(i)%data%X
+               ! structure in ts(i)%data%X is a stationary point which is why we don't need to store G and rms for it
+               Gdummy(1:3*Natoms)=0.0d0; rms=0.0d0 ! we must initialize them here, however 
+               call path(tmpts,Edummy,Gdummy,rms,ts(i)%data%evalmin,ts(i)%data%vecs,.False., &
+                    & Qplus,Qminus,DEBUG,Edummy2,Eplus,Eminus, &
+                    & ts(i)%data%SLength,ts(i)%data%Disp,ts(i)%data%Gamma,ts(i)%data%NTilde,FRQSTS,FRQSPLUS, &
+                    & FRQSMINUS,itstring,EofSString,pathfailt)
+               deallocate(ts(i)%data%vecs)
+               if (pathfailt) then
+                    deallocate(ts(i)%data%evalmin)
+                    deallocate(Qplus,Qminus,Eplus,Eminus)
+                    ts(i)%data%bad=.True.
+                    cycle
+               else
+                    if (unrst) call testsamemin(Eplus,Qplus,Eminus,Qminus,pathfailt)
+                    if (pathfailt) then
+                        deallocate(ts(i)%data%evalmin)
+                        deallocate(Qplus,Qminus,Eplus,Eminus)
+                        ts(i)%data%bad=.True.
+                        cycle 
+                    endif
+               endif
+
+               call isnewmin(Eplus,Qplus,MinPlusPos,PlusNew,PERMUTEP,INVERTP,INDEXP)
+               call isnewmin(Eminus,Qminus,MinMinusPos,MinusNew,PERMUTEM,INVERTM,INDEXM)
+
+               Edummy=ts(i)%data%E
+               tmpts=ts(i)%data%X
+               IF (DUMPALLPATHS) CALL MAKEALLPATHINFO(tmpts,Qplus,Qminus,Edummy,Eplus,Eminus,FRQSTS,FRQSPLUS,FRQSMINUS)
+               
+               write(chr,'(i7)') MinPlusPos
+               write(chr2,'(i7)') MinMinusPos
+               100 format (8x,a,T65,a)
+               if ( .not.PlusNew .and. .not.MinusNew ) then
+                    write(*,100) 'Known (#'//trim(adjustl(chr))//')','Known (#'//trim(adjustl(chr2))//')'
+                    call NewConnection(MinPlusPos,MinMinusPos,i)
+                    deallocate(Qplus,Qminus,Eplus,Eminus)
+                    call SetDistance(MinPlusPos,MinMinusPos,0.0d0)
+               else if ( PlusNew .and. MinusNew ) then
+                    write(chr2,'(i7)') MinPlusPos+1
+                    write(*,100) '*NEW* (Placed in '//trim(adjustl(chr))//')','*NEW* (Placed in '//trim(adjustl(chr2))//')'
+                    call addnewmin(Eplus,Qplus)
+                    call addnewmin(Eminus,Qminus)
+                    call NewConnection(MinPlusPos,MinPlusPos+1,i)
+                    mi(MinPlusPos+1)%data%D(MinPlusPos)=0.0D0
+               else if ( PlusNew .or. MinusNew ) then
+                    if ( PlusNew ) then
+                         write(*,100) '*NEW* (Placed in '//trim(adjustl(chr))//')','Known (#'//trim(adjustl(chr2))//')'
+                         call addnewmin(Eplus,Qplus)
+                         deallocate(Eminus,Qminus)
+                    else
+                         write(*,100) 'Known (#'//trim(adjustl(chr))//')','*NEW* (Placed in '//trim(adjustl(chr2))//')'
+                         deallocate(Eplus,Qplus)
+                         call addnewmin(Eminus,Qminus)
+                    endif
+                    call NewConnection(MinPlusPos,MinMinusPos,i)
+                    call SetDistance(MinPlusPos,MinMinusPos,0.0d0)
+               endif
+
+               IF ((.NOT.REDOPERM).AND.(NEWPERM.LT.2) ) THEN ! don;t allow more than two permutational isomers
+                  IF (PERMUTEP) THEN ! create permutation-inversion isomer of the ts
+                     NEWPERM=NEWPERM+1
+                     DO J2=1,NATOMS
+                        QTEMP(3*(J2-1)+1)=INVERTP*ts(NEWPERM)%data%X(3*(INDEXP(J2)-1)+1)
+                        IF (TWOD) THEN
+                           QTEMP(3*(J2-1)+2)=ts(NEWPERM)%data%X(3*(INDEXP(J2)-1)+2)
+                           QTEMP(3*(J2-1)+3)=ts(NEWPERM)%data%X(3*(INDEXP(J2)-1)+3)
+                        ELSE
+                           QTEMP(3*(J2-1)+2)=INVERTP*ts(NEWPERM)%data%X(3*(INDEXP(J2)-1)+2)
+                           QTEMP(3*(J2-1)+3)=INVERTP*ts(NEWPERM)%data%X(3*(INDEXP(J2)-1)+3)
+                        ENDIF
+                     ENDDO
+                     TSPERM(1:NOPT,NEWPERM)=QTEMP(1:NOPT)
+                  ENDIF
+                  IF (PERMUTEM) THEN ! create permutation-inversion isomer of the ts
+                     NEWPERM=NEWPERM+1
+                     DO J2=1,NATOMS
+                        QTEMP(3*(J2-1)+1)=INVERTM*ts(NEWPERM)%data%X(3*(INDEXM(J2)-1)+1)
+                        IF (TWOD) THEN
+                           QTEMP(3*(J2-1)+2)=ts(NEWPERM)%data%X(3*(INDEXM(J2)-1)+2)
+                           QTEMP(3*(J2-1)+3)=ts(NEWPERM)%data%X(3*(INDEXM(J2)-1)+3)
+                        ELSE
+                           QTEMP(3*(J2-1)+2)=INVERTM*ts(NEWPERM)%data%X(3*(INDEXM(J2)-1)+2)
+                           QTEMP(3*(J2-1)+3)=INVERTM*ts(NEWPERM)%data%X(3*(INDEXM(J2)-1)+3)
+                        ENDIF
+                     ENDDO
+                     TSPERM(1:NOPT,NEWPERM)=QTEMP(1:NOPT)
+                  ENDIF
+               ENDIF
+          enddo
+
+          IF (PERMDONE.LT.NEWPERM) THEN
+             REDOPERM=.TRUE.
+             GOTO 111
+          ENDIF
+
+     end subroutine tryconnect
+
+END MODULE TryConnectModule

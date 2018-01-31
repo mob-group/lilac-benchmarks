@@ -1,0 +1,104 @@
+###########################################################
+#
+# MAIN CMAKE FILE FOR PATHSAMPLE 
+# ========================
+#
+# Usage: 
+#   
+#   $ mkdir ~/svn/PATHSAMPLE/builds/pgf90 
+#   $ cd ~/svn/PATHSAMPLE/builds/pgf90 
+#   $ FC=pgf90 cmake ../../source 
+#   $ make -j8
+
+cmake_minimum_required(VERSION 2.8)
+
+if (CMAKE_CURRENT_SOURCE_DIR MATCHES "^${CMAKE_BINARY_DIRECTORY}$")
+  message( FATAL_ERROR "CMake should not be built in the source directory" )
+endif (CMAKE_CURRENT_SOURCE_DIR MATCHES "^${CMAKE_BINARY_DIRECTORY}$")
+
+project(PATHSAMPLE)
+
+set(PROJECT_VERSION "0.0")
+set(PROJECT_CONTACT "dw34@cam.ac.uk")
+get_filename_component(SVN_ROOT ${CMAKE_CURRENT_SOURCE_DIR}/../.. ABSOLUTE)
+
+EXECUTE_PROCESS(COMMAND "date" "+%d%m" OUTPUT_VARIABLE CURRENT_DATE)
+if ($ENV{USER} MATCHES "wales" AND CURRENT_DATE MATCHES "0104")
+  message( FATAL_ERROR "PATHSAMPLE 9000: I'm sorry, David. I'm afraid I can't do that." )
+endif ($ENV{USER} MATCHES "wales" AND CURRENT_DATE MATCHES "0104")
+
+# Cmake modules/macros are in a subdirectory to keep this file cleaner
+# CMake modules implement some additional functionality to check
+# for external dependencies
+set(CMAKE_MODULE_PATH ${SVN_ROOT}/CMakeModules)
+
+# if not specified by user, the standard build type is release
+if(NOT CMAKE_BUILD_TYPE)
+  #Release comes with -O3 by default
+  set(CMAKE_BUILD_TYPE Release CACHE STRING "Choose the type of build, options are: None Release Debug Debug_slow RelWithDebInfo MinSizeRel." FORCE)
+endif(NOT CMAKE_BUILD_TYPE)
+
+enable_language(CXX)
+
+# the FORTRANCOMPILER check is in svn/CMakeModules
+# it adds a compiler switch and sets flags
+find_package(FORTRANCOMPILER)
+
+# get the svn version and add it to the -D definitions
+execute_process(
+  COMMAND bash version.sh SVNREV
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  OUTPUT_VARIABLE SVNVERSION OUTPUT_STRIP_TRAILING_WHITESPACE
+  )
+set(SVNVERSION "'${SVNVERSION}'")
+message("SVNVERSION ${SVNVERSION}")
+add_definitions(-DSVNVERSION=${SVNVERSION})
+
+
+message("CMAKE_Fortran_COMPILER = ${CMAKE_Fortran_COMPILER}")
+set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/modules)
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/modules)
+
+set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -g -pg -no-pie")
+
+include_directories(${CMAKE_SOURCE_DIR})
+
+file(GLOB PATHSAMPLE_MAIN main.F)
+file(GLOB PATHSAMPLE_SOURCES *.f *.f90 *.F *.F90)
+file(GLOB NOT_PATHSAMPLE_SOURCES
+    main.f
+    main.F
+    porfuncs.f90
+)
+if (NOT (NOT_PATHSAMPLE_SOURCES STREQUAL ""))
+  list(REMOVE_ITEM PATHSAMPLE_SOURCES ${NOT_PATHSAMPLE_SOURCES})
+endif (NOT (NOT_PATHSAMPLE_SOURCES STREQUAL ""))
+
+
+# ---- add generated source files 
+set(PATHSAMPLE_SOURCES ${PATHSAMPLE_SOURCES} porfuncs.f90)
+
+# ---- porfuncs.f90 TODO: shuold it build every time?
+#message("compiler switch ${COMPILER_SWITCH}")
+add_custom_command (
+   OUTPUT porfuncs.f90 
+   COMMAND ${CMAKE_CURRENT_SOURCE_DIR}/porfuncs.sh ${COMPILER_SWITCH} > porfuncs.f90)
+
+set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES porfuncs.f90)
+
+# ----- Libraries 
+# ----- generate a pathsample library to avoid recompiling the whole code for every executable
+add_library(pathsamplelib ${PATHSAMPLE_SOURCES})
+
+find_package(MYBLAS)
+find_package(MYLAPACK)
+
+add_definitions(-D_SVN_ROOT_='${SVN_ROOT}')
+
+# --- Finally, the execs
+
+# standard PATHSAMPLE
+add_executable(PATHSAMPLE ${PATHSAMPLE_MAIN})
+target_link_libraries(PATHSAMPLE pathsamplelib ${MYLAPACK_LIBS})
+set_target_properties(PATHSAMPLE PROPERTIES LINKER_LANGUAGE "Fortran") 
+

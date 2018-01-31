@@ -1,0 +1,12 @@
+# Hashes of file build rules.
+863b4912c71cf4c269e0ee54562310ec /home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-build
+8d94b07d159c37dc73f131ec2eb6b11d /home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-configure
+e439e43a6cde3ffd3bb5d613f484034d /home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-download
+42938e7f0691460d3b6003ee2d91a272 /home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-install
+fb95bb77b98f7f41bdffad6b79938a71 /home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-mkdir
+7d6ada12333f01bfab833fe0c1a2cc68 /home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-patch
+152fd49b70dcc0d476846ff226bb78ce /home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-update
+9ccfd0dc14fe4a339dd128a02d6a0da2 CMakeFiles/fftw
+1613cb381dc61f63f68c0ba553fcadc2 CMakeFiles/fftw-complete
+4ecbe3ab7ffeb8d64f0b5ec56204ff13 header.f90
+21b19fd5ddc7592003b6bcc99b5ec028 porfuncs.f90

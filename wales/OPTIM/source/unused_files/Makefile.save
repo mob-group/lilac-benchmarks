@@ -1,0 +1,73 @@
+#   CONNECT module is an implementation of a connection algorithm for finding rearrangement pathways.
+#   Copyright (C) 2003-2006 Semen A. Trygubenko and David J. Wales
+#   This file is part of CONNECT module. CONNECT module is part of OPTIM.
+#
+#   OPTIM is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   OPTIM is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+# Multiple directories make build for OPTIM program
+#
+#    - source tree is organised into `root' directory and `module' subdirectories;
+#    - Makefiles in module directories produce library files which are put into root directory;
+#    - naming convention for library files: lib[module directory name].a
+#
+#    - resolving dependencies: 
+#
+#         1. top down
+#            To specify that file `keywords.o' from root directory depends on file(s) in `newconnect' module directory
+#            insert `in.o: libnc.a' into root Makefile;
+#
+#         2. bottom up
+#            a. if `ncutils.o' file in `newconnect' directory depends on `mindist.o' file from root directory,
+#               insert "libnc.a: mindist.o" into root Makefile
+#            b. include the dependence in the corresponding module Makefile,
+#               e.g., for the above case, "ncutils.o: mindist.o"
+#                   
+#              (root Makefile will recompile mind.o before descending into module directory,
+#               module Makefile will do necessary recompilations in module directory)
+#
+#         3. module on module - similar to #2
+#              a. insert "libnc.a: libnn.a" into root Makefile if newconnect module depends on NEB module
+#              b. same as 2.b.
+#              c. adjust VPATH variable so the modules can `see' each other
+#
+#    Semen Trygubenko  Tue Nov  9 23:24:36 GMT 2004
+#
+OBJS = ncdata.o ncutils.o decide.o newconnect.o tryconnect.o ido.o key_connect.o dodumpsp.o key_utils.o key_decide.o
+VPATH = ../NEB:..:../CHARMM
+LIBNAME = ../libnc.a
+
+.SUFFIXES:
+.SUFFIXES: .o .f90 
+
+.f90.o :
+	${FC} -c ${FFLAGS} $<
+
+new_connect: ${LIBNAME}
+
+${LIBNAME}: ${OBJS} 
+	ar sr ${LIBNAME} ${OBJS}
+
+clean:
+	rm -f ${LIBNAME} ${OBJS} *.mod ifc?????? *.il *.stb *.o
+
+key_connect.o: key_decide.o key_utils.o
+newconnect.o: ncdata.o key_connect.o ncutils.o decide.o tryconnect.o ido.o modmec.o modneb.o porfuncs.o amhglobals.o modcharmm.o key.o
+ncutils.o: ncdata.o ntc.o key_connect.o syminf.o modhess.o modcharmm.o modunres.o key_utils.o porfuncs.o syminf.o key.o amhglobals.o
+decide.o: porfuncs.o ncdata.o ncutils.o key_decide.o
+tryconnect.o: ncdata.o key_connect.o key_neb.o ncutils.o ntc.o newneb.o modguess.o modunres.o key_utils.o porfuncs.o modmec.o gsdata.o key.o modcharmm.o modamber9.o commons.o
+ido.o: ncdata.o key_connect.o ncutils.o porfuncs.o
+dodumpsp.o: ncdata.o
+ncutils.o tryconnect.o: commons.o porfuncs.o
+ncutils.o tryconnect.o ido.o: key.o key_decide.o

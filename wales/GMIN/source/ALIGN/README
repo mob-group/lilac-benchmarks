@@ -1,0 +1,52 @@
+This directory contains modules implementing the FASTOVERLAP and GOPERMDIST structural alignment algorithms presented in:
+M. Griffiths, S. P. Niblett and D. J. Wales, Optimal Alignment of Structures for Finite and Periodic Systems, JCTC XX, XXXX (2017), DOI: 10.1021/acs.jctc.7b00543
+
+This fortran implementation was written by M. Griffiths (mg542) and inserted into GMIN by S. Niblett (sn402).
+
+Use of the subroutines
+----------------------
+
+GOPERMDIST 
+----------
+keyword: BRANCHNBOUND
+
+Globally optimal PERMDIST (GoPERMDIST) is a modification of the PERMDIST algorithm that is guaranteed to find the optimal RMSD, if it is run for long enough.
+
+GoPERMDIST is a branch and bound (BNB) algorithm that attempts to find the best rotation/displacement by searching either a [-pi,pi] sphere of angle axis rotations or searching within the lattice cell. The algorithm starts by placing one initial search cube that fits the entire search region but cubes that reside outide the search region are automatically rejected.
+
+The GoPERMDIST algorithm will stop once the lowest RMSD found is within a certain tolerance of the largest lower bound left. It is possible, though unlikely for there to be a solution between these two values, in which case the GoPERMDIST algorithm may not find the best solution. This situation can be avoided by setting the rtol parameter in the GOPERMDIST module to 0, which will increase the expected runtime of the algorithm.
+
+The time the algorithm needs to find the lowest RMSD will increase as the minimum RMSD between the structures increases.
+
+This method is commonly referred to as BNB.
+
+FASTOVERLAP
+-----------
+keyword: FASTOVERLAP
+
+This method places Gaussian distributions on top of all the atomic coordinates to produce a 'kernalised' representation of the two structures and then finds the rotation or displacement with the maximum overlap between the two structures. 
+
+FASTOVERLAP is very effective for periodic structures. For finite structures the algorithm takes a similar amount of time to the BNB algorithm, so we would generally recommend using the BNB algorithm for clusters.
+
+The FASTOVERLAP algorithm is not guaranteed to work for all pairs of structures, though if the distance between the structures is small then it should work pretty well as the overlap can be used to estimate the RMSD (see the paper for more details).
+
+The FASTOVERLAP algorithm uses FFTs to efficiently calculate the value of the overlap over all rotations or displacements. It then finds the maximum value(s) of the overlap and then uses a variant of the minpermdist algorithm to refine these rotations/displacements. When using FASTOVERLAP the maximum number of maximum values to be tested can be chosen. Testing more peaks can improve the alignment of some of the pairs. The default number of peaks to test is 1. 
+
+The performance of the FASTOVERLAP algorithm is fairly dependent on the choice of the kernel width of the Gaussians. In general it has been found that choosing a kernel width of approximately 1/3 of the interatomic spacing is fairly effective. But if there are problems with alignment this is probably the second parameter to fiddle with, after increasing the number of peaks to test
+
+ALIGNUTILS
+----------
+This is a reimplementation of the MINPERMDIST subroutine to simplify the logic associated with calling FASTOVERLAP and GOPERMDIST. The ALIGNUTILS module can also save the best NSAVE alignments it finds during the course of its use, set by the logical variable SAVECOORDS in ALIGNUTILS.
+
+2D
+--
+BRANCHNBOUND and FASTOVERLAP can work with 2D periodic structures, by setting the allowed displacements in the z-direction to 0. 
+
+This means that the input structures must be already aligned in the z-direction.
+
+GMIN interface
+--------------
+FASTOVERLAP and GOPERMDIST constitute replacements for the older MINPERMDIST alignment subroutine. FASTOVERLAP is recommended for periodic systems, GOPERMDIST (specified by the keyword BRANCHNBOUND) is recommended for clusters. To preserve backwards-compatibility, MINPERMDIST remains the default alignment method. 
+The subroutine ALIGN_DECIDE wraps all three methods, and uses the keywords specified in COMMONS to select one. ALIGN_DECIDE also provides several sanity checks on the keywords and system parameters, to ensure that the method being used is valid.
+
+FASTOVERLAP makes use of the FFTW library, which can be found at ${SVN_ROOT}/MYFFTW. This library should be compiled automatically using cmake, more details are given in ${SVN_ROOT}/MYFFTW/CELS_README and as comments in GMIN/source/CMakeLists.txt.

@@ -1,0 +1,44 @@
+PROGRAM ROC
+IMPLICIT NONE
+INTEGER J1, NVALS, NCOUNT
+DOUBLE PRECISION TPR, FPR, AREA, TPRPREV, FPRPREV, NPOS, NNEG
+DOUBLE PRECISION PTHRESH, P0, P1, P2, P3, ACTUAL
+
+NVALS=100
+AREA=0.0D0
+DO J1=0,NVALS
+   PTHRESH=J1/(1.0D0*NVALS)
+   TPRPREV=TPR
+   FPRPREV=FPR
+   TPR=0.0D0
+   FPR=0.0D0
+   NPOS=0.0D0
+   NNEG=0.0D0
+   NCOUNT=0
+   OPEN(UNIT=1,FILE='probabilities',STATUS='OLD')
+   DO 
+      READ(1,*,END=666) P0, P1, P2, P3, ACTUAL
+!     PRINT *,'sum P=',P0+P1+P2+P3
+      NCOUNT=NCOUNT+1
+      IF (ACTUAL.LT.1.5D0) THEN    ! positive outcome: triangle
+         NPOS=NPOS+1.0D0
+         IF (P0.GT.PTHRESH) THEN   ! positive classifier, correct
+            TPR=TPR+1.0D0
+         ENDIF
+      ELSE
+         NNEG=NNEG+1.0D0
+         IF (P0.GT.PTHRESH) THEN ! positive classifier, but wrong
+            FPR=FPR+1.0D0
+         ENDIF
+      ENDIF
+   ENDDO
+666 CONTINUE
+   CLOSE(1)
+   TPR=TPR/MAX(NPOS,1.0D0)
+   FPR=FPR/MAX(NNEG,1.0D0)
+   PRINT '(4G20.10)',FPR,TPR,PTHRESH,AREA
+   IF (J1.GT.0) AREA=AREA+(TPR+TPRPREV)*ABS(FPR-FPRPREV)/2.0D0
+ENDDO
+PRINT '(A,I6,A,G20.10)','# finished ROC analysis for ',NCOUNT,' data values, AUC=',AREA
+
+END PROGRAM ROC

@@ -1,0 +1,6 @@
+# The fortran modules provided by this target.
+provides
+ amber12_interface_mod
+ modcudabfgsts
+ modcudalbfgs
+ opep_interface_mod

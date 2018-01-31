@@ -1,0 +1,15 @@
+People, who contributed by donating code, bug fixes, documentation and advice:
+
+L-BFGS minimizer is based on Jorge Nocedal's code from lbfgs.f,
+distributed as part of lbfgs_um.tar.gz, available at
+http://www.ece.northwestern.edu/~nocedal/lbfgs.html
+
+Dr. Joanne M. Carr <jmc49@cam.ac.uk>
+Dr. David A. Evans <dae22@cam.ac.uk>
+Dr. Tetyana V. Bogdan <tvb20@cam.ac.uk>
+Dr. Dominic R. Alfonso <alfonso@netl.doe.gov>
+Dr. Birgit Strodel <bs360@cam.ac.uk>
+
+We have probably omitted some important names here because of incomplete
+record keeping. If we have overlooked you, please let us know and we'll
+update the list.

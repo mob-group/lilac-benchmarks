@@ -1,0 +1,13 @@
+These CONNECT subroutines need a rewrite.
+
+(1) All pointers could be removed so that the static data can be assigned
+    easily without dirty hacks.
+(2) All the recursive subroutines could be removed and the final pathway
+    extracted via a call to DIJKSTRA.
+
+Replacing the extractpath routine with Dijkstra is the first thing to do,
+since a number of routines could probably then be eliminated.
+
+Keeping the structure of the subdata elements in the structure types for
+MIN and TS could still be useful. Keeping track of S/F status also tells
+us when we have a connected path, so this could be kept as well.

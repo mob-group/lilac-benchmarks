@@ -1,0 +1,211 @@
+
+ OPTIM version 31634, Copyright (C) David J. Wales
+ OPTIM comes with ABSOLUTELY NO WARRANTY; for details supply WARRANTY as an input keyword.
+ This is free software, and you are welcome to redistribute it
+ under certain conditions; provide keyword COPYRIGHT to see the details.
+
+ getparams> input coordinates for AMBER9 system will be read from 
+start
+start               
+
+          -------------------------------------------------------
+          Amber 9  SANDER                              2006
+          -------------------------------------------------------
+
+| Run on 12/13/2016 at 14:18:21
+  [-O]verwriting output
+
+File Assignments:
+|  MDIN: min.in                                                                
+| MDOUT: min.out                                                               
+|INPCRD: coords.inpcrd                                                         
+|  PARM: coords.prmtop                                                         
+|RESTRT: coords.rst                                                            
+|  REFC: refc                                                                  
+| MDVEL: mdvel                                                                 
+|  MDEN: mden                                                                  
+| MDCRD: coords.mdcrd                                                          
+|MDINFO: mdinfo                                                                
+|INPDIP: inpdip                                                                
+|RSTDIP: rstdip                                                                
+
+ 
+ Here is the input file:
+ 
+                                                                               
+ &cntrl                                                                        
+  imin   = 1,                                                                  
+  ncyc = 1,                                                                    
+  maxcyc = 1,                                                                  
+  igb = 2, saltcon=0.1,                                                        
+  ntb    = 0,                                                                  
+  cut    = 999.99,                                                             
+  rgbmax = 25.0,                                                               
+  ifswitch = 1                                                                 
+ /                                                                             
+
+--------------------------------------------------------------------------------
+   1.  RESOURCE   USE: 
+--------------------------------------------------------------------------------
+
+| Flags:                                                                        
+| New format PARM file being parsed.
+| Version =    1.000 Date = 03/20/15 Time = 23:17:49
+ NATOM  =     220 NTYPES =      12 NBONH =     104 MBONA  =     123
+ NTHETH =     233 MTHETA =     169 NPHIH =     481 MPHIA  =     372
+ NHPARM =       0 NPARM  =       0 NNB   =    1211 NRES   =      13
+ NBONA  =     123 NTHETA =     169 NPHIA =     372 NUMBND =      26
+ NUMANG =      54 NPTRA  =      35 NATYP =      20 NPHB   =       0
+ IFBOX  =       0 NMXRS  =      24 IFCAP =       0 NEXTRA =       0
+ NCOPY  =       0
+
+ Implicit solvent radii are H(N)-modified Bondi radii (mbondi2)                                             
+
+|     Memory Use     Allocated
+|     Real               14388
+|     Hollerith           1335
+|     Integer            31584
+|     Max Pairs              1
+|     nblistReal             0
+|     nblist Int             0
+|       Total              241 kbytes
+| Duplicated    0 dihedrals
+| Duplicated    0 dihedrals
+
+--------------------------------------------------------------------------------
+   2.  CONTROL  DATA  FOR  THE  RUN
+--------------------------------------------------------------------------------
+
+default_name                                                                    
+
+General flags:
+     imin    =       1, nmropt  =       0
+     ifswitch=       1, fswitchbeta=  10.000
+ mdread> force-shifting cutoff will be used for electrostatics, fswitchbeta=  10.000
+ mdread> Stoddard-Ford cutoff will be used for van der Waals interactions
+
+Nature and format of input:
+     ntx     =       1, irest   =       0, ntrx    =       1
+
+Nature and format of output:
+     ntxo    =       1, ntpr    =      50, ntrx    =       1, ntwr    =     500
+     iwrap   =       0, ntwx    =       0, ntwv    =       0, ntwe    =       0
+     ioutfm  =       0, ntwprt  =       0, idecomp =       0, rbornstat=      0
+
+Potential function:
+     ntf     =       1, ntb     =       0, igb     =       2, nsnb    =      25
+     ipol    =       0, gbsa    =       0, iesp    =       0
+     dielc   =   1.00000, cut     = 999.99000, intdiel =   1.00000
+     saltcon =   0.10000, offset  =   0.09000, gbalpha=    0.80000
+     gbbeta  =   0.00000, gbgamma =   2.90912, surften =   0.00500
+     rdt     =   0.00000, rgbmax  =  25.00000
+     alpb  =        0
+     scnb    =   2.00000, scee    =   1.20000
+
+Frozen or restrained atoms:
+     ibelly  =       0, ntr     =       0
+
+Energy minimization:
+     maxcyc  =       1, ncyc    =       1, ntmin   =       1
+     dx0     =   0.01000, drms    =   0.00010
+|  INFO: Old style inpcrd file read
+
+
+--------------------------------------------------------------------------------
+   3.  ATOMIC COORDINATES AND VELOCITIES
+--------------------------------------------------------------------------------
+
+default_name                                                                    
+ begin time read from input coords =     0.000 ps
+
+ Number of triangulated 3-point waters found:        0
+ getparams> Number of atoms (or variables)  determined as    220
+ getparams> Number of optimisation degrees of freedom    660
+ keyword> Distance tolerance for distinguishing atoms in the same orbit=        0.00100
+ keyword> Maximum number of secondary sets in perm.allow file=  3
+ keyword> Number of groups of permutable atoms=    25
+ keywords> Set frequency conversion factor to the AMBER default value: 
+   20454830000000.0     
+ keywords> This corresponds to frequencies being given in radians/s
+ fetchz> Hybrid EF/BFGS transition state search, maximum steps= 10000
+         maximum tangent space steps=  20 or  200 when overlap is better than     0.999900
+ fetchz> Uphill mode is    0 for initial step and    0 after that
+ fetchz> No Hessian: Rayleigh-Ritz max steps=1000 RMS <       0.0100 and |% change|<     1.0    
+ fetchz> Hessian eigenvector in Rayleigh-Ritz scheme calculated using method    2
+ 
+ fetchz>  660 Cartesian coordinates will be optimised for  220 AMBER atoms
+ 
+ fetchz> stationary point info will be dumped
+ fetchz> Point group checked when RMS force <     0.00100000, highest symmetry axis tested for=  6
+ fetchz> Initial distance and eigenvalue tolerances in symmetry determination=     0.00010000     0.00010000
+ fetchz> Minimum number of optimization steps=     0
+ fetchz> Stationary point information will be printed to min.data
+ fetchz> Convergence criterion for LBFGS optimization: RMS force< 0.10000000E-05 maximum steps=   60000
+ fetchz> Maximum energy rise in LBFGS minimization=    0.1000000000E-03
+ fetchz> Number of updates in LBFGS=       50
+ fetchz> Number of updates in XLBFGS=  50
+ fetchz> Number of updates in mind=   4
+ fetchz> Initial guess for diagonal elements in LBFGS=     0.1000
+ fetchz> Initial guess for diagonal elements in XLBFGS=    0.1000
+ fetchz> Maximum step size in LBFGS energy minimization=     0.1000
+ fetchz> Maximum step size in XLBFGS=    0.2000
+ fetchz> Maximum step size in LBFGS neb image minimization=                 0.2000
+ fetchz> Step sizes will be scaled if the eigenvalue is positive in BFGSTS
+ fetchz> Warnings will be issued if atoms become closer than 0.5 units
+ fetchz> Coordinates for intermediate steps will not be dumped to file points
+ 
+ 
+ OPTIM> Using translational/rotational ev shift=     1000000.000    
+ OPTIM> Initial energy=    -454.4730096     RMS force=    0.9275468173E-06
+ OPTIM> Final energy  =    -453.1781331     RMS force=    0.9196763951E-06
+ KeyConnect> Maximum cycles = 15, maximum images = 30
+ KeyConnect> Maximum attempts per pair of minima = 3, with increment image density of 0.50
+ KeyConnect> Image density = 2.00, iteration density = 20.00
+ KeyNEB> Initial and final NEB force constants     10.00000000        10.00000000     factor=    1.010000000    
+ KeyNEB> Number of images will vary depending on the separation of the endpoints
+ KeyGrad> Overall rotation and translation will NOT be removed
+ KeyGrad> Using doubly nudged elastic band gradient
+ KeyOutput> Transition state candidates will be optimized
+ KeyOutput> Concise printing during transition states optimization
+ KeyOutput> Transition state candidates are maxima along NEB
+ KeyMin> Maximal number of iterations will vary, depending on the number of images in the band
+ KeyMin> RMS convergence criterion is set to 0.01
+ KeyMin> L-BFGS minimization
+ KeyLBFGS> Maximum step size per image =     0.2000000000    
+ KeyLBFGS> 4 Hessian updates per iteration
+ KeyLBFGS> Guess for inverse Hessian diagonal elements =     0.1000000000E-02
+ KeyTau> Using Henkelman and Jonsson's improved tangent
+ KeyDecide> Cost function in Dijkstra algorithm is Exp[D]
+ 
+ >>>>>>>>>>>>>>>>>>>>> CONNECT CYCLE 1 >>>>>>>>>>>>>>>>>>>>> 2 minima and 0 ts are known >>>>>>>>>>>>>>>>>>>>
+ decide> Shortest path in Dijkstra has      1 steps with      1 missing connections, weight=     584.35    
+ decide> The unconnected minima in the chain and their distances are:
+     2        6.37     1 
+ 
+
+ tryconnect> 240-iteration DNEB run for minima 1_S and 2_F using 12 images  (DNEB attempt #1)  ...
+ lbfgs> Final DNEB force constant     0.9614210899    
+ Time to go through NEB:    17.8282900000000     
+ Double-ended search iterations= 240 RMS= 0.0137 Dev= 2.02% S= 7.12 time= 17.83
+ Following    1 images are candidates for TS:    6  
+ Converged to TS (number of iterations):          9
+ DNEB run yielded 1 true transition state(s) time=      8.93
+
+ >>>>>  Path run for ts 1 ...
+ Plus  side of path:                    1457 steps. Energy=    -453.1781331       time=       8.34
+ Minus side of path:                    1385 steps. Energy=    -454.4730096       time=       7.95
+ 
+         E+        Ets - E+           Ets       Ets - E-           E-          S       D      gamma   ~N
+     -453.1781331 0.72987         -452.4482681  2.0247         -454.4730096   6.757   6.371  12.639  17.407
+        Known (#2)                                              Known (#1)
+ Connected path found
+  ts        E+         Ets - E+          Ets       Ets - E-          E-          S       D      gamma   ~N
+   1     -454.4730096  2.0247        -452.4482681 0.72987        -453.1781331   6.757   6.371  12.639  17.407
+
+ Number of TS in the path       =      1
+ Number of cycles               =      1
+ 
+ Elapsed time=                                43.25
+ OPTIM> # of energy calls=                          0 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient calls=              7550 time=          42.28 %= 97.7
+ OPTIM> # of energy+gradient+Hessian calls=         0 time=           0.00 %=  0.0

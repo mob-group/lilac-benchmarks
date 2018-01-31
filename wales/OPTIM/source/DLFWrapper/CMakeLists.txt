@@ -1,0 +1,6 @@
+#include_directories(${CMAKE_BINARY_DIR})
+file(GLOB DLF_SOURCES *.f *.f90)
+add_library(DLF_LIB ${DLF_SOURCES})
+ADD_DEPENDENCIES(DLF_LIB optimlib)
+set_module_dir(DLF_LIB)
+set_module_depends(DLF_LIB optimlib)

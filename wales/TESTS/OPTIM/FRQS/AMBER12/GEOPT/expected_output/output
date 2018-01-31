@@ -1,0 +1,60 @@
+
+ OPTIM version 31508, Copyright (C) David J. Wales
+ OPTIM comes with ABSOLUTELY NO WARRANTY; for details supply WARRANTY as an input keyword.
+ This is free software, and you are welcome to redistribute it
+ under certain conditions; provide keyword COPYRIGHT to see the details.
+
+ getparams> Number of atoms (or variables)  determined as    134
+ getparams> Number of optimisation degrees of freedom    402
+ keywords> input coordinates for AMBER12 system will be read from 
+start               
+ keywords> reading in xyz format
+ keywords> Set frequency conversion factor to the AMBER default value: 
+   20454830000000.0     
+ keywords> This corresponds to frequencies being given in radians/s
+Warning: AMBER12 keyword must come last in odata
+ fetchz> LBFGS minimization, maximum steps=    5000
+ 
+ fetchz>  402 Cartesian coordinates will be optimised for  134 AMBER atoms
+ 
+ fetchz> Point group checked when RMS force <     0.00100000, highest symmetry axis tested for=  6
+ fetchz> Initial distance and eigenvalue tolerances in symmetry determination=     0.00010000     0.00010000
+ fetchz> Minimum number of optimization steps=     0
+ fetchz> Stationary point information will be printed to min.data
+ fetchz> Convergence criterion for LBFGS optimization: RMS force< 0.10000000E-05 maximum steps=    5000
+ fetchz> Maximum energy rise in LBFGS minimization=    0.1000000000E-03
+ fetchz> Number of updates in LBFGS=      100
+ fetchz> Number of updates in mind=   4
+ fetchz> Initial guess for diagonal elements in LBFGS=     0.1000
+ fetchz> Maximum step size in LBFGS energy minimization=     0.7000
+ fetchz> Maximum step size in LBFGS neb image minimization=                 0.2000
+ fetchz> Warnings will be issued if atoms become closer than 0.5 units
+ fetchz> Coordinates for intermediate steps will not be dumped to file points
+ 
+ 
+ OPTIM> Using translational/rotational ev shift=     1000000.000    
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -347.4458621        0.9905514481E-06 after      0 steps
+ mylbfgs> Final energy is   -347.44586208501778    
+ geopt> Value below calculated from numerical hessian
+ geopt> Number of zero/imaginary eigenvalues assumed to be      6
+ geopt> calling MASSWT
+ geopt> ln product scaled to desired frequency units by      24274.19820    
+ geopt> Log product of      396 positive Hessian eigenvalues=    25825.6366357234
+ geopt> X component of inertia tensor=         1894.8827890862
+ geopt> Y component of inertia tensor=         4118.2972227125
+ geopt> Z component of inertia tensor=         4559.5483710198
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.00177         0.00197         0.00497     12111.45445     30631.84732     34091.29840
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ 
+ geopt>                          **** CONVERGED ****
+ 
+ 
+ Elapsed time=                                 1.78
+ OPTIM> # of energy calls=                          0 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient calls=               805 time=           1.66 %= 93.0
+ OPTIM> # of energy+gradient+Hessian calls=         0 time=           0.00 %=  0.0

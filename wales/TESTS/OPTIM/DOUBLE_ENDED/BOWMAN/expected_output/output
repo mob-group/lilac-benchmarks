@@ -1,0 +1,128 @@
+
+ OPTIM version 31513, Copyright (C) David J. Wales
+ OPTIM comes with ABSOLUTELY NO WARRANTY; for details supply WARRANTY as an input keyword.
+ This is free software, and you are welcome to redistribute it
+ under certain conditions; provide keyword COPYRIGHT to see the details.
+
+ getparams> Number of atoms (or variables)  determined as     18
+ getparams> Number of optimisation degrees of freedom     54
+ keywords> Set frequency conversion factor to the SD default value: 
+   512393400000000.     
+ keywords> This corresponds to frequencies being given in radians/s
+ fetchz> Hybrid EF/BFGS transition state search, maximum steps=  1000
+         maximum tangent space steps=   2 or   30 when overlap is better than     0.999900
+ fetchz> Uphill mode is    0 for initial step and    0 after that
+ fetchz> No Hessian: Rayleigh-Ritz max steps=2000 RMS <       0.0010 and |% change|<     1.0    
+ fetchz> Hessian eigenvector in Rayleigh-Ritz scheme calculated using method    2
+ 
+ SYSTEM Bowman's PES#3 for a cluster of 6 water molecules
+ Principal data directory: ~/svn/OPTIM/source/Bowman/coef-3b/
+ Expected data: 
+ x1 y1 x2 x1y1 y2 x3 x2y1 x1y2 y3 x4 x3y1 x2y2 x1y3 x5 x4y1 x3y2 x2y3 x6 x5y1 x4
+ y2 x3y3 x6y1 x5y2 x4y3 x5y2 x4y3 x6y2 x5y3 x6y3
+  reading pcf-x1.dat
+  reading pcf-y1.dat
+  reading pcf-x2.dat
+  reading pcf-x1y1.dat
+  reading pcf-y2.dat
+  reading pcf-x3.dat
+  reading pcf-x2y1.dat
+  reading pcf-x1y2.dat
+  reading pcf-y3.dat
+  reading pcf-x4.dat
+  reading pcf-x3y1.dat
+  reading pcf-x2y2.dat
+  reading pcf-x1y3.dat
+  reading pcf-x5.dat
+  reading pcf-x4y1.dat
+  reading pcf-x3y2.dat
+  reading pcf-x2y3.dat
+  reading pcf-x6.dat
+  reading pcf-x5y1.dat
+  reading pcf-x4y2.dat
+  reading pcf-x3y3.dat
+  reading pcf-x6y1.dat
+  reading pcf-x5y2.dat
+  reading pcf-x4y3.dat
+  reading pcf-x6y2.dat
+  reading pcf-x5y3.dat
+  reading pcf-x6y3.dat
+ fetchz> Coordinates of second point read from file finish
+ 
+ fetchz> Point group checked when RMS force <     0.00100000, highest symmetry axis tested for=  6
+ fetchz> Initial distance and eigenvalue tolerances in symmetry determination=     0.00010000     0.00010000
+ fetchz> Minimum number of optimization steps=     0
+ fetchz> Pathways will be calculated saving    100 frames on each side
+ fetchz> Convergence criterion for LBFGS optimization: RMS force< 0.10000000E-04 maximum steps=   30000
+ fetchz> Maximum energy rise in LBFGS minimization=    0.1000000000E-09
+ fetchz> Number of updates in LBFGS=     6000
+ fetchz> Number of updates in XLBFGS=  10
+ fetchz> Number of updates in mind=  10
+ fetchz> Initial guess for diagonal elements in LBFGS=     0.1000
+ fetchz> Initial guess for diagonal elements in XLBFGS=    0.1000
+ fetchz> Maximum step size in LBFGS energy minimization=     0.2000
+ fetchz> Maximum step size in XLBFGS=    0.2000
+ fetchz> Maximum step size in LBFGS neb image minimization=                 0.2000
+ fetchz> Warnings will be issued if atoms become closer than 0.5 units
+ 
+ 
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.13449         0.13503         0.26507       227.10730       445.83249       447.62196
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ OPTIM> Using translational/rotational ev shift=     1000000.000    
+ OPTIM> Initial energy=    -458.1250485     RMS force=    0.7228422909E-05
+ OPTIM> Final energy  =    -458.1269969     RMS force=    0.7333688587E-05
+ KeyConnect> Maximum cycles = 10, maximum images = 31
+ KeyConnect> Maximum attempts per pair of minima = 1, with increment image density of 3.00
+ KeyConnect> Image density = 5.00, iteration density = 150.00
+ KeyNEB> Initial and final NEB force constants     10.00000000        10.00000000     factor=    1.010000000    
+ KeyNEB> Number of images will vary depending on the separation of the endpoints
+ KeyGrad> Overall rotation and translation will NOT be removed
+ KeyGrad> Using doubly nudged elastic band gradient
+ KeyOutput> Transition state candidates will be optimized
+ KeyOutput> Concise printing during transition states optimization
+ KeyOutput> Transition state candidates are maxima along NEB
+ KeyMin> Maximal number of iterations will vary, depending on the number of images in the band
+ KeyMin> RMS convergence criterion is set to 0.03
+ KeyMin> L-BFGS minimization
+ KeyLBFGS> Maximum step size per image =     0.2000000000    
+ KeyLBFGS> 100 Hessian updates per iteration
+ KeyLBFGS> Guess for inverse Hessian diagonal elements =     0.1000000000E-02
+ KeyTau> Using Henkelman and Jonsson's improved tangent
+ KeyDecide> Cost function in Dijkstra algorithm is D^5
+ 
+ >>>>>>>>>>>>>>>>>>>>> CONNECT CYCLE 1 >>>>>>>>>>>>>>>>>>>>> 2 minima and 0 ts are known >>>>>>>>>>>>>>>>>>>>
+ decide> Shortest path in Dijkstra has      1 steps with      1 missing connections, weight=     753.76    
+ decide> The unconnected minima in the chain and their distances are:
+     2        3.76     1 
+ 
+
+ tryconnect> 2700-iteration DNEB run for minima 1_S and 2_F using 18 images  (DNEB attempt #1)  ...
+ lbfgs> Final DNEB force constant      10.00000000    
+ Time to go through NEB:    8.40272200000000     
+ Double-ended search iterations= 3 RMS= 0.0148 Dev= 0.62% S= 3.78 time= 8.40
+ Following    1 images are candidates for TS:    9  
+ Converged to TS (number of iterations):         23
+ DNEB run yielded 1 true transition state(s) time=    101.15
+
+ >>>>>  Path run for ts 1 ...
+ Plus  side of path:                     105 steps. Energy=    -458.1269969       time=      12.30
+ Minus side of path:                     139 steps. Energy=    -458.1250484       time=      16.70
+ 
+         E+        Ets - E+           Ets       Ets - E-           E-          S       D      gamma   ~N
+     -458.1269969 0.33030E-02     -458.1236940 0.13544E-02     -458.1250484   6.740   3.773   1.711  10.521
+        Known (#2)                                              Known (#1)
+ Connected path found
+  ts        E+         Ets - E+          Ets       Ets - E-          E-          S       D      gamma   ~N
+   1     -458.1250485 0.13545E-02    -458.1236940 0.33030E-02    -458.1269969   6.740   3.773   1.711  10.521
+
+ Number of TS in the path       =      1
+ Number of cycles               =      1
+ 
+ Elapsed time=                               138.80
+ OPTIM> # of energy calls=                          0 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient calls=              1204 time=         138.74 %=100.0
+ OPTIM> # of energy+gradient+Hessian calls=         0 time=           0.00 %=  0.0

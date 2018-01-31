@@ -1,0 +1,181 @@
+
+ OPTIM version 31508, Copyright (C) David J. Wales
+ OPTIM comes with ABSOLUTELY NO WARRANTY; for details supply WARRANTY as an input keyword.
+ This is free software, and you are welcome to redistribute it
+ under certain conditions; provide keyword COPYRIGHT to see the details.
+
+ getparams> Number of atoms (or variables)  determined as     60
+ getparams> Number of optimisation degrees of freedom    180
+ keyword> Distance tolerance for distinguishing atoms in the same orbit=        0.00100
+ keyword> Maximum number of secondary sets in perm.allow file=  3
+ keyword> Number of groups of permutable atoms=     2
+ keyword> group      1 contains     48 atoms with      0 additional atom sets:
+     1     2     3     4     5     6     7     8     9    10    11    12    13    14    15    16    17    18    19    20    21    22
+    23    24    25    26    27    28    29    30    31    32    33    34    35    36    37    38    39    40    41    42    43    44
+    45    46    47    48  
+ keyword> group      2 contains     12 atoms with      0 additional atom sets:
+    49    50    51    52    53    54    55    56    57    58    59    60  
+ fetchz> LBFGS minimization, maximum steps=   30000
+ 
+ fetchz>  180 Cartesian coordinates will be optimised for   60 shifted, truncated Lennard-Jones atoms
+ fetchz> Box lengths: x      3.58703790, y      3.58703790, z      3.58703790, cutoff (fractional)      1.79000000
+ fetchz> Binary mixture:   48 A atoms,  12 B atoms, eps(AB)=    1.50000 eps(BB)=    0.50000 sigma(AB)=    0.80000 sigma(AB)=    0.88000
+ 
+ fetchz> Minimum number of optimization steps=     0
+ fetchz> Stationary point information will be printed to min.data
+ fetchz> Convergence criterion for LBFGS optimization: RMS force< 0.10000000E-05 maximum steps=   30000
+ fetchz> Maximum energy rise in LBFGS minimization=    0.1000000000E-09
+ fetchz> Number of updates in LBFGS=     6000
+ fetchz> Number of updates in mind=  10
+ fetchz> Initial guess for diagonal elements in LBFGS=     0.1000
+ fetchz> Maximum step size in LBFGS energy minimization=     0.2000
+ fetchz> Maximum step size in LBFGS neb image minimization=                 0.2000
+ fetchz> Warnings will be issued if atoms become closer than 0.5 units
+ 
+ 
+ OPTIM> Using translational ev shift=     1000000.000    
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -219.0683693         11.44503870     after      0 steps
+ mylbfgs> Energy and RMS force=    -227.5828831         3.787558671     after      1 steps, step:  0.10000    
+ mylbfgs> Energy and RMS force=    -229.1004189         1.920274862     after      2 steps, step:  0.46526E-01
+ mylbfgs> Energy and RMS force=    -229.7495625         1.062397850     after      3 steps, step:  0.46410E-01
+ mylbfgs> Energy and RMS force=    -229.9138050         1.027184967     after      4 steps, step:  0.31538E-01
+ mylbfgs> Energy and RMS force=    -230.0022268        0.4171569536     after      5 steps, step:  0.13308E-01
+ mylbfgs> Energy and RMS force=    -230.0305136        0.3044626097     after      6 steps, step:  0.84321E-02
+ mylbfgs> Energy and RMS force=    -230.0557490        0.2423462982     after      7 steps, step:  0.12327E-01
+ mylbfgs> Energy and RMS force=    -230.0617289        0.4217019843     after      8 steps, step:  0.14973E-01
+ mylbfgs> Energy and RMS force=    -230.0729776        0.9461869370E-01 after      9 steps, step:  0.36899E-02
+ mylbfgs> Energy and RMS force=    -230.0743107        0.6683123445E-01 after     10 steps, step:  0.15257E-02
+ mylbfgs> Energy and RMS force=    -230.0759937        0.5993036116E-01 after     11 steps, step:  0.32040E-02
+ mylbfgs> Energy and RMS force=    -230.0770981        0.9383620936E-01 after     12 steps, step:  0.42607E-02
+ mylbfgs> Energy and RMS force=    -230.0779487        0.4105970355E-01 after     13 steps, step:  0.29639E-02
+ mylbfgs> Energy and RMS force=    -230.0782590        0.2912630308E-01 after     14 steps, step:  0.88625E-03
+ mylbfgs> Energy and RMS force=    -230.0786292        0.2810712396E-01 after     15 steps, step:  0.20436E-02
+ mylbfgs> Energy and RMS force=    -230.0786794        0.5843090956E-01 after     16 steps, step:  0.23884E-02
+ mylbfgs> Energy and RMS force=    -230.0788808        0.1618682136E-01 after     17 steps, step:  0.46836E-03
+ mylbfgs> Energy and RMS force=    -230.0789178        0.9678313827E-02 after     18 steps, step:  0.28042E-03
+ mylbfgs> Energy and RMS force=    -230.0789506        0.1035525988E-01 after     19 steps, step:  0.48433E-03
+ mylbfgs> Energy and RMS force=    -230.0789901        0.9468560162E-02 after     20 steps, step:  0.66571E-03
+ mylbfgs> Energy and RMS force=    -230.0790020        0.2109383945E-01 after     21 steps, step:  0.11037E-02
+ mylbfgs> Energy and RMS force=    -230.0790327        0.4188787338E-02 after     22 steps, step:  0.28429E-03
+ mylbfgs> Energy and RMS force=    -230.0790369        0.3270345925E-02 after     23 steps, step:  0.14095E-03
+ mylbfgs> Energy and RMS force=    -230.0790438        0.5031758301E-02 after     24 steps, step:  0.34732E-03
+ mylbfgs> Energy and RMS force=    -230.0790457        0.7365700811E-02 after     25 steps, step:  0.44914E-03
+ mylbfgs> Energy and RMS force=    -230.0790499        0.2221595027E-02 after     26 steps, step:  0.10347E-03
+ mylbfgs> Energy and RMS force=    -230.0790511        0.1660938723E-02 after     27 steps, step:  0.73956E-04
+ mylbfgs> Energy and RMS force=    -230.0790524        0.1731015961E-02 after     28 steps, step:  0.12844E-03
+ mylbfgs> Energy and RMS force=    -230.0790531        0.3611072447E-02 after     29 steps, step:  0.17506E-03
+ mylbfgs> Energy and RMS force=    -230.0790541        0.1058118474E-02 after     30 steps, step:  0.81072E-04
+ mylbfgs> Energy and RMS force=    -230.0790543        0.8213537794E-03 after     31 steps, step:  0.32461E-04
+ mylbfgs> Energy and RMS force=    -230.0790547        0.9225767229E-03 after     32 steps, step:  0.65990E-04
+ mylbfgs> Energy and RMS force=    -230.0790548        0.2112252994E-02 after     33 steps, step:  0.10920E-03
+ mylbfgs> Energy and RMS force=    -230.0790552        0.6728624831E-03 after     34 steps, step:  0.31336E-04
+ mylbfgs> Energy and RMS force=    -230.0790553        0.4197759603E-03 after     35 steps, step:  0.23177E-04
+ mylbfgs> Energy and RMS force=    -230.0790553        0.4383255925E-03 after     36 steps, step:  0.31060E-04
+ mylbfgs> Energy and RMS force=    -230.0790554        0.6846876791E-03 after     37 steps, step:  0.42454E-04
+ mylbfgs> Energy and RMS force=    -230.0790555        0.3391930838E-03 after     38 steps, step:  0.38040E-04
+ mylbfgs> Energy and RMS force=    -230.0790555        0.2359371243E-03 after     39 steps, step:  0.85404E-05
+ mylbfgs> Energy and RMS force=    -230.0790555        0.2568048808E-03 after     40 steps, step:  0.20327E-04
+ mylbfgs> Energy and RMS force=    -230.0790555        0.5412954466E-03 after     41 steps, step:  0.26502E-04
+ mylbfgs> Energy and RMS force=    -230.0790555        0.1756154432E-03 after     42 steps, step:  0.45416E-05
+ mylbfgs> Energy and RMS force=    -230.0790555        0.1153434855E-03 after     43 steps, step:  0.58325E-05
+ mylbfgs> Energy and RMS force=    -230.0790556        0.1385933447E-03 after     44 steps, step:  0.93179E-05
+ mylbfgs> Energy and RMS force=    -230.0790556        0.1363081252E-03 after     45 steps, step:  0.12721E-04
+ mylbfgs> Energy and RMS force=    -230.0790556        0.3742223578E-03 after     46 steps, step:  0.21905E-04
+ mylbfgs> Energy and RMS force=    -230.0790556        0.5777956632E-04 after     47 steps, step:  0.44361E-05
+ mylbfgs> Energy and RMS force=    -230.0790556        0.4006685567E-04 after     48 steps, step:  0.27382E-05
+ mylbfgs> Energy and RMS force=    -230.0790556        0.3747605847E-04 after     49 steps, step:  0.41471E-05
+ mylbfgs> Energy and RMS force=    -230.0790556        0.1037234338E-03 after     50 steps, step:  0.42493E-05
+ mylbfgs> Energy and RMS force=    -230.0790556        0.1907687059E-04 after     51 steps, step:  0.15526E-05
+ mylbfgs> Energy and RMS force=    -230.0790556        0.1266930079E-04 after     52 steps, step:  0.80440E-06
+ mylbfgs> Energy and RMS force=    -230.0790556        0.1187931419E-04 after     53 steps, step:  0.10699E-05
+ mylbfgs> Energy and RMS force=    -230.0790556        0.2095136650E-04 after     54 steps, step:  0.12437E-05
+ mylbfgs> Energy and RMS force=    -230.0790556        0.7865857991E-05 after     55 steps, step:  0.73949E-06
+ mylbfgs> Energy and RMS force=    -230.0790556        0.4893875721E-05 after     56 steps, step:  0.30799E-06
+ mylbfgs> Energy and RMS force=    -230.0790556        0.4599878682E-05 after     57 steps, step:  0.37951E-06
+ mylbfgs> Energy and RMS force=    -230.0790556        0.7308641530E-05 after     58 steps, step:  0.40991E-06
+ mylbfgs> Energy and RMS force=    -230.0790556        0.2595510794E-05 after     59 steps, step:  0.10587E-06
+ mylbfgs> Energy and RMS force=    -230.0790556        0.1592756795E-05 after     60 steps, step:  0.11546E-06
+ mylbfgs> Energy and RMS force=    -230.0790556        0.1446958873E-05 after     61 steps, step:  0.86125E-07
+ mylbfgs> Energy and RMS force=    -230.0790556        0.1350476531E-05 after     62 steps, step:  0.12621E-06
+ mylbfgs> Energy and RMS force=    -230.0790556        0.2530629383E-05 after     63 steps, step:  0.12055E-06
+ mylbfgs> Energy and RMS force=    -230.0790556        0.5779135657E-06 after     64 steps, step:  0.52117E-07
+ mylbfgs> Final energy is   -230.07905557266562    
+ potential> allocating hessian with dimension        180
+ geopt> Value below calculated from true hessian
+ geopt> Number of zero/imaginary eigenvalues assumed to be      3
+ geopt> calling MASSWT
+ geopt>    180 Hessian eigenvalues:
+     1722.369865         1616.679867         1580.822149         1533.703691         1523.182754         1508.319871    
+     1469.549201         1455.660725         1400.972702         1375.064845         1357.545031         1317.466593    
+     1300.371676         1278.695232         1272.714149         1249.329726         1231.696626         1218.964420    
+     1203.423268         1162.694383         1158.591865         1147.808062         1137.675650         1111.287782    
+     1088.319562         1085.206624         1071.424151         1064.397025         1048.696765         1030.379467    
+     1028.238370         1006.775912         989.8240397         977.0799323         956.5829599         951.8987614    
+     938.5446890         925.0489845         921.3911554         904.0392959         880.9163412         876.5586252    
+     872.0172673         861.1304566         844.5623709         839.3319393         816.4903325         815.0487891    
+     799.4933610         792.9578420         789.4685073         768.8431838         762.3107616         752.8958471    
+     740.0522729         730.7006819         722.4111020         714.3185704         709.0073878         702.9322115    
+     690.3493666         678.2352954         662.6508231         661.7220237         651.6347786         642.7915019    
+     639.2249196         631.8681368         626.1254070         621.4466915         609.9303057         601.2218741    
+     595.5457871         581.0519020         573.6187474         564.7804323         558.5637605         552.9321190    
+     550.9953131         540.8034949         527.9804051         521.2086597         515.8334486         510.3488942    
+     501.7183707         495.9344517         488.7803762         474.5046892         464.7375826         457.7379998    
+     453.6458602         444.9281811         440.3706497         431.5211553         429.3141287         422.6647890    
+     413.3707205         406.8619892         397.6688837         394.6395316         385.6978485         383.7739961    
+     380.6901643         373.1260386         360.5682846         358.4909219         356.4838303         340.8123005    
+     337.4913611         334.4844583         328.1338774         325.4743822         319.8376423         315.6399930    
+     314.0080484         298.2552172         297.3633606         293.0212975         285.2097975         282.5648621    
+     280.9722482         271.4206816         264.1378788         260.9761988         256.7747298         254.2525113    
+     247.3290620         241.9139726         235.7035263         228.3982447         223.3134589         220.2212930    
+     215.9758469         207.4714134         202.2766031         197.1697009         195.4528582         194.0281867    
+     192.1331095         186.8232889         182.6116013         180.3498854         169.1280333         165.4608793    
+     159.0490298         155.1355538         151.0607095         140.8554675         139.6981842         135.0850020    
+     131.5391395         125.5176575         118.7924184         114.1586725         110.3978945         105.9555017    
+     103.9626597         99.71895572         94.76390125         90.95929064         86.82901614         82.97330923    
+     79.72582297         78.72423872         69.32397535         65.67296891         62.90205431         56.90322128    
+     54.49249351         48.84620167         43.87020401         40.78059969         33.10069737         32.26218835    
+     27.07250491         22.98689541         14.84682503        0.2557953849E-12    0.1705302566E-12    0.2842170943E-13
+ geopt> Frequencies in specified units:
+     41.50144413         40.20795775         39.75955419         39.16252917         39.02797399         38.83709401    
+     38.33469970         38.15312209         37.42956988         37.08186679         36.84487794         36.29692264    
+     36.06066661         35.75884830         35.67511946         35.34585869         35.09553569         34.91367096    
+     34.69039158         34.09830470         34.03809432         33.87931613         33.72944781         33.33598329    
+     32.98968872         32.94247447         32.73261602         32.62509808         32.38358790         32.09952440    
+     32.06615614         31.72973230         31.46146913         31.25827782         30.92867537         30.85285662    
+     30.63567673         30.41461794         30.35442563         30.06724623         29.68023486         29.60673277    
+     29.52993849         29.34502439         29.06135528         28.97122606         28.57429496         28.54905934    
+     28.27531363         28.15950713         28.09748222         27.72802163         27.60997576         27.43894763    
+     27.20390180         27.03147576         26.87770641         26.72673887         26.62719264         26.51286879    
+     26.27450031         26.04295097         25.74200503         25.72395817         25.52713808         25.35333315    
+     25.28289777         25.13698742         25.02249802         24.92883253         24.69676711         24.51982614    
+     24.40380682         24.10501819         23.95033919         23.76510956         23.63395355         23.51450869    
+     23.47328935         23.25518211         22.97782420         22.82999474         22.71196708         22.59090291    
+     22.39907075         22.26958580         22.10837796         21.78312854         21.55777314         21.39481245    
+     21.29896383         21.09332077         20.98501012         20.77308728         20.71989693         20.55881293    
+     20.33152037         20.17082024         19.94163694         19.86553628         19.63919164         19.59015049    
+     19.51128300         19.31647065         18.98863567         18.93385650         18.88077939         18.46110236    
+     18.37093795         18.28891627         18.11446597         18.04090857         17.88400521         17.76625996    
+     17.72027224         17.27006709         17.24422688         17.11786486         16.88815554         16.80966573    
+     16.76222683         16.47484997         16.25231918         16.15475778         16.02419202         15.94529747    
+     15.72669902         15.55358392         15.35263907         15.11285032         14.94367622         14.83985488    
+     14.69611673         14.40386800         14.22239794         14.04171289         13.98044557         13.92940008    
+     13.86120880         13.66833161         13.51338600         13.42944099         13.00492342         12.86315977    
+     12.61146422         12.45534238         12.29067571         11.86825461         11.81939864         11.62260737    
+     11.46905138         11.20346631         10.89919348         10.68450619         10.50704023         10.29346888    
+     10.19620811         9.985937899         9.734675200         9.537258025         9.318208849         9.108968615    
+     8.928931794         8.872668072         8.326102050         8.103886038         7.931081535         7.543422385    
+     7.381903109         6.989005771         6.623458614         6.385968970         5.753320551         5.679981369    
+     5.203124534         4.794465081         3.853157800        0.5057621821E-06    0.4129530925E-06    0.1685873940E-06
+ geopt> Log product of      177 positive Hessian eigenvalues=     1055.2041643061
+ geopt> X component of inertia tensor=          115.3652640223
+ geopt> Y component of inertia tensor=          126.6114635235
+ geopt> Z component of inertia tensor=          140.1110337800
+ 
+ geopt>                          **** CONVERGED ****
+ 
+ 
+ Elapsed time=                                 0.16
+ OPTIM> # of energy calls=                          0 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient calls=                65 time=           0.01 %=  8.9
+ OPTIM> # of energy+gradient+Hessian calls=         1 time=           0.00 %=  0.6

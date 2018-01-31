@@ -1,0 +1,81 @@
+#   NEB module is an implementation of the nudged elastic band method for performing double-ended pathway searches.
+#   Copyright (C) 2003-2006 Semen A. Trygubenko and David J. Wales
+#   This file is part of NEB module. NEB module is part of OPTIM.
+#
+#   OPTIM is free software; you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation; either version 2 of the License, or
+#   (at your option) any later version.
+#
+#   OPTIM is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program; if not, write to the Free Software
+#   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#
+# Multiple directories make build for OPTIM
+#
+#    - source tree is organised into `root' directory and `module' subdirectories;
+#    - Makefiles in module directories produce library files which are put into root directory;
+#    - naming convention for library files: lib[module directory name].a
+#
+#    - resolving dependencies: 
+#
+#         1. top down
+#            To specify that file `keywords.o' from root directory depends on file(s) in `newconnect' module directory
+#            insert `in.o: libnc.a' into root Makefile;
+#
+#         2. bottom up
+#            a. if `ncutils.o' file in `newconnect' directory depends on `mindist.o' file from root directory,
+#               insert "libnc.a: mindist.o" into root Makefile
+#            b. include the dependence in the corresponding module Makefile,
+#               e.g., for the above case, "ncutils.o: mindist.o"
+#                   
+#              (root Makefile will recompile mind.o before descending into module directory,
+#               module Makefile will do necessary recompilations in module directory)
+#
+#         3. module on module - similar to #2
+#              a. insert "libnc.a: libnn.a" into root Makefile if newconnect module depends on newneb module
+#              b. same as 2.b.
+#              c. adjust VPATH variable so the modules can `see' each other
+#
+#    Semen Trygubenko  Tue Nov  9 23:24:36 GMT 2004
+#
+
+KEYOBJS = key_output.o key_sqvv.o key_grad.o key_tau.o key_minimizer.o key_lbfgs.o
+OBJS = nndata.o grad.o oldnebgradient.o lbfgs.o newneb.o output.o sqvv.o nnutils.o ntc.o key_neb.o tau.o unresnebbfgs.o \
+charutils.o linkedlist.o ${KEYOBJS}
+VPATH = ../:../CHARMM/
+LIBNAME = ../libnn.a
+
+.SUFFIXES:
+.SUFFIXES: .o .f90
+
+.f90.o :
+	${FC} -c ${FFLAGS} $<
+
+new_neb: ${LIBNAME}
+
+${LIBNAME}: ${OBJS}
+	ar sr ${LIBNAME} ${OBJS}
+
+clean:
+	rm -f ${LIBNAME} ${OBJS} *.mod ifc?????? *.il *.stb *.o
+
+key_minimizer.o: key_sqvv.o key_lbfgs.o charutils.o
+${KEYOBJS}: charutils.o
+newneb.o: lbfgs.o sqvv.o nndata.o output.o key.o unresnebbfgs.o modguess.o modmec.o key_neb.o nnutils.o commons.o porfuncs.o output.o growstring.o gsdata.o amhglobals.o
+grad.o: nndata.o key_neb.o nnutils.o tau.o key.o key_grad.o commons.o specialfuncts.o key_tau.o
+oldnebgradient.o: key_grad.o nndata.o key_neb.o nnutils.o key.o commons.o grad.o tau.o modunres.o
+lbfgs.o: grad.o nndata.o key_neb.o nnutils.o output.o key.o porfuncs.o key_minimizer.o output.o modcharmm.o
+sqvv.o: nndata.o key_neb.o grad.o nnutils.o key_sqvv.o key_minimizer.o charutils.o
+nndata: commons.o
+nnutils.o: nndata.o key_neb.o key.o modcharmm.o charutils.o gsdata.o specialfuncts.o amhglobals.o 
+output.o: nndata.o key_neb.o ntc.o key.o modcharmm.o commons.o modneb.o modguess.o modmec.o key_output.o linkedlist.o charutils.o
+tau.o: nndata.o key_neb.o key.o modunres.o commons.o
+unresnebbfgs.o: nndata.o key_neb.o nnutils.o output.o modunres.o key.o grad.o porfuncs.o key_minimizer.o key_lbfgs.o
+key_neb.o: ${KEYOBJS} key.o 
+key_lbfgs.o: key.o charutils.o

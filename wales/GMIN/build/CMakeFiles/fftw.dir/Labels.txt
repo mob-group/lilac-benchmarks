@@ -1,0 +1,13 @@
+# Target labels
+ fftw
+# Source files and their labels
+/home/bruce/code/sparse/wales/GMIN/build/CMakeFiles/fftw
+/home/bruce/code/sparse/wales/GMIN/build/CMakeFiles/fftw.rule
+/home/bruce/code/sparse/wales/GMIN/build/CMakeFiles/fftw-complete.rule
+/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-install.rule
+/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-mkdir.rule
+/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-download.rule
+/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-update.rule
+/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-patch.rule
+/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-configure.rule
+/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-build.rule

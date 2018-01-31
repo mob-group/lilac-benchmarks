@@ -1,0 +1,58 @@
+      SUBROUTINE CVMINIMA
+      USE COMMONS
+      IMPLICIT NONE
+      INTEGER J1, MINORDER(NMIN), MINTOP, NDUMMY(NMIN)
+      DOUBLE PRECISION NEGEMIN(NMIN), DUMMY(NMIN)
+!
+! Sort the minima
+!
+      DO J1=1,NMIN
+         MINORDER(J1)=J1
+         NEGEMIN(J1)=-EMIN(J1) ! because sort is biggest to smallest
+      ENDDO
+      CALL SORT(NMIN,NMIN,NEGEMIN,MINORDER)
+
+      IF (CVENDMIN.GT.NMIN) CVENDMIN=NMIN
+
+      DO J1=1,NMIN
+         PRINT '(I8,2F20.10,I8)',J1,EMIN(J1),EMIN(MINORDER(J1)),MINORDER(J1)
+      ENDDO
+
+      DUMMY(1:NMIN)=EMIN(MINORDER(1:NMIN))
+      EMIN(1:NMIN)=DUMMY(1:NMIN)
+      DUMMY(1:NMIN)=FVIBMIN(MINORDER(1:NMIN))
+      FVIBMIN(1:NMIN)=DUMMY(1:NMIN)
+      DUMMY(1:NMIN)=IXMIN(MINORDER(1:NMIN))
+      IXMIN(1:NMIN)=DUMMY(MINORDER(1:NMIN))
+      DUMMY(1:NMIN)=IYMIN(MINORDER(1:NMIN))
+      IYMIN(1:NMIN)=DUMMY(MINORDER(1:NMIN))
+      DUMMY(1:NMIN)=IZMIN(MINORDER(1:NMIN))
+      IZMIN(1:NMIN)=DUMMY(MINORDER(1:NMIN))
+      NDUMMY(1:NMIN)=HORDERMIN(MINORDER(1:NMIN))
+      HORDERMIN(1:NMIN)=NDUMMY(MINORDER(1:NMIN))
+
+      PRINT '(3(A,I10))','Cvminima> Calculating Cv for minima sums from ',CVSTARTMIN,' to ',CVENDMIN,
+     &                            ' in steps of ',CVINCMIN
+
+      OPEN(UNIT=1,FILE='Cv.out',STATUS='UNKNOWN')
+      OPEN(UNIT=2,FILE='Cv.config.out',STATUS='UNKNOWN')
+
+      MINTOP=CVSTARTMIN
+20    CONTINUE
+      NMIN=MINTOP
+
+      PRINT '(2(A,I10))','Cvminima> Calling Cv for ',NMIN,' lowest minima'
+      CALL CV
+      WRITE(1,'(A)') '   '
+      WRITE(2,'(A)') '   '
+
+      MINTOP=MINTOP+CVINCMIN
+      IF (MINTOP.GT.CVENDMIN) THEN
+         CLOSE(1)
+         CLOSE(2)
+         STOP
+      ENDIF
+      GOTO 20
+    
+      RETURN
+      END

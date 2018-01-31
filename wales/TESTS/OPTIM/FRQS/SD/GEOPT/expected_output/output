@@ -1,0 +1,118 @@
+
+ OPTIM version 31508, Copyright (C) David J. Wales
+ OPTIM comes with ABSOLUTELY NO WARRANTY; for details supply WARRANTY as an input keyword.
+ This is free software, and you are welcome to redistribute it
+ under certain conditions; provide keyword COPYRIGHT to see the details.
+
+ getparams> Number of atoms (or variables)  determined as     18
+ getparams> Number of optimisation degrees of freedom     54
+ keywords> Set frequency conversion factor to the SD default value: 
+   20454830000000.0     
+ keywords> This corresponds to frequencies being given in radians/s
+ fetchz> LBFGS minimization, maximum steps=    1000
+ 
+ SYSTEM Stillinger-David potential for      6 Oxygen and     12 Hydrogen atoms; charge=     0
+ 
+ fetchz> Point group checked when RMS force <     0.00100000, highest symmetry axis tested for=  6
+ fetchz> Initial distance and eigenvalue tolerances in symmetry determination=     0.00010000     0.00010000
+ fetchz> Minimum number of optimization steps=     0
+ fetchz> Stationary point information will be printed to min.data
+ fetchz> Convergence criterion for LBFGS optimization: RMS force< 0.10000000E-05 maximum steps=    1000
+ fetchz> Maximum energy rise in LBFGS minimization=    0.1000000000E-05
+ fetchz> Number of updates in LBFGS=      100
+ fetchz> Number of updates in mind=   4
+ fetchz> Initial guess for diagonal elements in LBFGS=     0.1000
+ fetchz> Maximum step size in LBFGS energy minimization=     0.2000
+ fetchz> Maximum step size in LBFGS neb image minimization=                 0.2000
+ fetchz> Warnings will be issued if atoms become closer than 0.5 units
+ 
+ 
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.06897         0.09422         0.21127       284.93992       638.92317       872.87976
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ OPTIM> Using translational/rotational ev shift=     1000000.000    
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -6250.145943        0.4947487361E-06 after      0 steps
+ mylbfgs> Final energy is   -6250.1459427152922    
+ makenumhess> Making numerical hessian dimension=    54
+ makenumhess> Hessian made
+ geopt> Value below calculated from numerical hessian
+ geopt> Number of zero/imaginary eigenvalues assumed to be      6
+ geopt> calling MASSWT
+ geopt>     54 normal mode frequencies in Hz and wavenumbers
+     1   0.1335967678E+015    4456.196392     
+     2   0.1334635879E+015    4451.754100     
+     3   0.1321162166E+015    4406.811760     
+     4   0.1318164406E+015    4396.812561     
+     5   0.1310337253E+015    4370.704645     
+     6   0.1293012073E+015    4312.915521     
+     7   0.1210491645E+015    4037.663927     
+     8   0.1204055840E+015    4016.196931     
+     9   0.1190814679E+015    3972.030284     
+    10   0.1172601848E+015    3911.280348     
+    11   0.1154339532E+015    3850.365350     
+    12   0.1102836965E+015    3678.575600     
+    13   0.5686940352E+014    1896.911392     
+    14   0.5569707340E+014    1857.807652     
+    15   0.5444521400E+014    1816.051167     
+    16   0.5431291993E+014    1811.638423     
+    17   0.5363814949E+014    1789.131070     
+    18   0.5317621646E+014    1773.723031     
+    19   0.4308691145E+014    1437.188507     
+    20   0.3839737025E+014    1280.766186     
+    21   0.3766993755E+014    1256.502253     
+    22   0.3560993177E+014    1187.789585     
+    23   0.3423307811E+014    1141.863846     
+    24   0.3200994066E+014    1067.709828     
+    25   0.2292511504E+014    764.6802882     
+    26   0.2213600307E+014    738.3590082     
+    27   0.2174528670E+014    725.3264410     
+    28   0.2073786438E+014    691.7232950     
+    29   0.2042894492E+014    681.4191102     
+    30   0.1822174167E+014    607.7965868     
+    31   0.1482823371E+014    494.6041930     
+    32   0.1376903122E+014    459.2738900     
+    33   0.1299712250E+014    433.5264344     
+    34   0.1173924630E+014    391.5692561     
+    35   0.1109509825E+014    370.0833305     
+    36   0.1055422482E+014    352.0421888     
+    37   0.1022415777E+014    341.0326140     
+    38   0.9552935230E+013    318.6436034     
+    39   0.8267259986E+013    275.7591723     
+    40   0.7597990797E+013    253.4353168     
+    41   0.5678381550E+013    189.4056554     
+    42   0.4055116807E+013    135.2607341     
+    43   0.3510979516E+013    117.1107244     
+    44   0.3218778301E+013    107.3641862     
+    45   0.2493268131E+013    83.16438062     
+    46   0.1736110384E+013    57.90895211     
+    47   0.1249701617E+013    41.68451025     
+    48   0.9377349166E+012    31.27868301     
+    49   0.1405390372E+012    4.687759747     
+    50   0.1067859348E+012    3.561905765     
+    51   0.9530516889E+011    3.178958269     
+    52   0.2745665902E+011   0.9158325224     
+    53    0.8752891337E+11 i     2.919576830     i
+    54    0.1287557428E+12 i     4.294721241     i
+ geopt> ln product scaled to desired frequency units by      2942.327055    
+ geopt> Log product of       48 positive Hessian eigenvalues=     3134.5582734464
+ geopt> X component of inertia tensor=           52.4670073605
+ geopt> Y component of inertia tensor=          108.9451303506
+ geopt> Z component of inertia tensor=          150.2306867721
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.06897         0.09422         0.21127       284.93992       638.92317       872.87976
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ 
+ geopt>                          **** CONVERGED ****
+ 
+ 
+ Elapsed time=                                 0.11
+ OPTIM> # of energy calls=                          0 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient calls=               109 time=           0.09 %= 84.4
+ OPTIM> # of energy+gradient+Hessian calls=         0 time=           0.00 %=  0.0

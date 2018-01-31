@@ -1,0 +1,5 @@
+include_directories(${CMAKE_BINARY_DIR})
+file(GLOB PLUGINLOADER_SOURCES *.f90 *.c)
+add_library(pluginloader ${PLUGINLOADER_SOURCES})
+add_dependencies(pluginloader optimlib)
+target_link_libraries(pluginloader dl)

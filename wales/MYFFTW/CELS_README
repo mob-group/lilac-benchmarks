@@ -1,0 +1,20 @@
+Some brief usage notes for the installation and use of fftw3 within the Cambridge Energy Landscape Software packages (GMIN/OPTIM/PATHSAMPLE).
+At the time of writing, this interface is still quite experimental so write to sn402@cam.ac.uk or mg542@cam.ac.uk if you have any problems! If neither of those email addresses is still active, write to dw34@cam.ac.uk. If that email address is no longer active, you're on your own...
+
+This directory (${SVN_ROOT/MYFFTW}) contains version 3.3.6 of the fftw3 package (see documentation for details). At the time of writing, no modifications have been made to the software.
+
+Instructions to configure and install fftw3 using the autotools script in this directory have been given to CMakeLists.txt in GMIN, and soon will be added to OPTIM as well. 
+
+Building fftw3 can be quite slow, and will not need to be done very often (only once, for most users). To reduce the number of rebuilds, cmake installs the package to a subfolder of this directory. Any subsequent builds of GMIN or OPTIM can check the timestamp of the fftw3 installation and decide whether it needs rebuilding.
+
+It is unclear from the fftw3 manual whether the choice of fortran compiler used to build the package will affect the behaviour of the wrapped fortran functions. To be on the safe side, we create a separate install directory for each compiler, of the form MYFFTW/local_build_${compiler_name}. Therefore cmake will need to build fftw from scratch the first time a CELS programme is built with a particular compiler family (e.g. pgi). Subsequent compilations should be able to re-use the same local_build directory.
+
+Once built, the local_build directories should never need to be rebuilt unless you have modified the code in the fftw3 package (not recommended unless you have a really, really good reason for doing so). It might also be advisable to rebuild fftw3 if you switch to a new version of a particular compiler. In either case, you can do the rebuild manually (following the instructions in INSTALL) or you can simply delete the local_build directory and let cmake rebuild it next time you compile.
+
+Each local_build directory contains the following:
+
+- src, which contains the build files generated during cmake's configure and build steps
+
+- tmp, which contains some of cmake's auxiliary files
+
+- install, the folder to which fftw3 installs the output files from the build process. GMIN currently only uses install/lib/libfftw3.a, which contains the legacy fortran wrapper functions. The install/include directory contains declarations and header files for other versions of the fortran interface. These are not currently used, but might be useful to modernise our usage of this package in the future.

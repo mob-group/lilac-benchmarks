@@ -1,0 +1,8 @@
+
+generate the documentation by running 
+doxygen optimWales.doxyfile
+
+then view call graphs in OPTIM by calling your favourite browser, e.g.
+opera html/index.html
+
+files provided by Dr. Judith B. Rommel

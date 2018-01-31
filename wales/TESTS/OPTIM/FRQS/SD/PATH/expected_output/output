@@ -1,0 +1,644 @@
+
+ OPTIM version 31508, Copyright (C) David J. Wales
+ OPTIM comes with ABSOLUTELY NO WARRANTY; for details supply WARRANTY as an input keyword.
+ This is free software, and you are welcome to redistribute it
+ under certain conditions; provide keyword COPYRIGHT to see the details.
+
+ getparams> Number of atoms (or variables)  determined as     18
+ getparams> Number of optimisation degrees of freedom     54
+ keywords> Set frequency conversion factor to the SD default value: 
+   20454830000000.0     
+ keywords> This corresponds to frequencies being given in radians/s
+ fetchz> LBFGS minimization, maximum steps=    1000
+ 
+ SYSTEM Stillinger-David potential for      6 Oxygen and     12 Hydrogen atoms; charge=     0
+ 
+ fetchz> Point group checked when RMS force <     0.00100000, highest symmetry axis tested for=  6
+ fetchz> Initial distance and eigenvalue tolerances in symmetry determination=     0.00010000     0.00010000
+ fetchz> Minimum number of optimization steps=     0
+ fetchz> Pathways will be calculated saving   1000 frames on each side
+ fetchz> Convergence criterion for LBFGS optimization: RMS force< 0.10000000E-05 maximum steps=    1000
+ fetchz> Maximum energy rise in LBFGS minimization=    0.1000000000E-05
+ fetchz> Number of updates in LBFGS=      100
+ fetchz> Number of updates in mind=   4
+ fetchz> Initial guess for diagonal elements in LBFGS=     0.1000
+ fetchz> Maximum step size in LBFGS energy minimization=     0.2000
+ fetchz> Maximum step size in LBFGS neb image minimization=                 0.2000
+ fetchz> Warnings will be issued if atoms become closer than 0.5 units
+ 
+ 
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.06951         0.13606         0.13687       439.82514       442.43738       866.03520
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ OPTIM> Using translational/rotational ev shift=     1000000.000    
+ efol> resetting maximum step sizes to     0.2000000000    
+ Updating structure with eigenvector-following steps.
+ 
+ Beginning of optimization cycle    1.
+ -------------------------------------
+ potential> allocating hessian with dimension         54
+ potential> Energy for last cycle=                               -6256.5104774861 kcal/mol
+ potential> RMS force:                                            .8130586361E-06   |gradient|=.5974736368E-05
+ Eigenvalues of the Hessian matrix:
+  3464.0       3452.4       3439.4       3393.5       3382.0       3348.3    
+  3124.1       3029.3       3008.8       2682.0       2653.6       2383.3    
+  454.70       437.74       434.12       405.61       401.85       399.67    
+  247.06       243.38       231.88       225.22       185.29       174.04    
+  119.08       115.57       104.25       102.73       81.262       57.411    
+  43.735       41.807       39.061       38.102       35.832       33.902    
+  19.715       15.995       11.423       9.4385       5.7936       4.1702    
+  3.4674       2.7232       1.5311      0.94047      0.30455     -0.96606    
+ Gradients along Hessian eigenvectors: 
+     0.00000     -0.00000      0.00000      0.00000      0.00000      0.00000
+     0.00000      0.00000     -0.00000      0.00000     -0.00000     -0.00000
+     0.00000     -0.00000     -0.00000     -0.00000     -0.00000     -0.00000
+     0.00000     -0.00000     -0.00000     -0.00000      0.00000      0.00000
+    -0.00000      0.00000      0.00000     -0.00000      0.00000      0.00000
+    -0.00000      0.00000      0.00000     -0.00000     -0.00000      0.00000
+    -0.00000      0.00000     -0.00000     -0.00000     -0.00000     -0.00000
+    -0.00000      0.00000      0.00000     -0.00000     -0.00000     -0.00000
+ Number of negative eigenvalues=  1
+ Mean modulus of positive Hessian eigenvalues=          876.8842904985
+ Log product of positive Hessian eigenvalues =          229.1691903080
+ efol> Stepping away from saddle along mode     54 + direction
+ Unscaled step for mode    7=       -0.0000000005
+ Unscaled step for mode    8=        0.0000000001
+ Unscaled step for mode    9=       -0.0000000001
+ Unscaled step for mode   10=       -0.0000000002
+ Unscaled step for mode   11=       -0.0000000003
+ Unscaled step for mode   12=       -0.0000000002
+ Unscaled step for mode   13=       -0.0000000001
+ Unscaled step for mode   14=       -0.0000000001
+ Unscaled step for mode   15=        0.0000000002
+ Unscaled step for mode   16=       -0.0000000001
+ Unscaled step for mode   17=        0.0000000002
+ Unscaled step for mode   18=        0.0000000001
+ Unscaled step for mode   19=       -0.0000000001
+ Unscaled step for mode   20=        0.0000000000
+ Unscaled step for mode   21=        0.0000000003
+ Unscaled step for mode   22=        0.0000000008
+ Unscaled step for mode   23=        0.0000000002
+ Unscaled step for mode   24=        0.0000000008
+ Unscaled step for mode   25=       -0.0000000058
+ Unscaled step for mode   26=        0.0000000025
+ Unscaled step for mode   27=        0.0000000032
+ Unscaled step for mode   28=        0.0000000013
+ Unscaled step for mode   29=       -0.0000000058
+ Unscaled step for mode   30=       -0.0000000035
+ Unscaled step for mode   31=        0.0000000059
+ Unscaled step for mode   32=       -0.0000000003
+ Unscaled step for mode   33=       -0.0000000208
+ Unscaled step for mode   34=        0.0000000023
+ Unscaled step for mode   35=       -0.0000000003
+ Unscaled step for mode   36=       -0.0000000078
+ Unscaled step for mode   37=        0.0000000052
+ Unscaled step for mode   38=       -0.0000000190
+ Unscaled step for mode   39=       -0.0000000034
+ Unscaled step for mode   40=        0.0000000155
+ Unscaled step for mode   41=        0.0000000012
+ Unscaled step for mode   42=       -0.0000000090
+ Unscaled step for mode   43=        0.0000000059
+ Unscaled step for mode   44=       -0.0000000016
+ Unscaled step for mode   45=        0.0000000161
+ Unscaled step for mode   46=        0.0000000100
+ Unscaled step for mode   47=        0.0000000356
+ Unscaled step for mode   48=        0.0000009778
+ Unscaled step for mode   49=        0.0000000457
+ Unscaled step for mode   50=       -0.0000000356
+ Unscaled step for mode   51=       -0.0000007374
+ Unscaled step for mode   52=        0.0000000526
+ Unscaled step for mode   53=        0.0000000235
+ Unscaled step for mode   54=        0.0100000000
+ Largest modulus ratio of non-zero e/values=           11374.22936    
+-------------------------------------------------------------------------------
+Vector      Gradient        Secder       Step          Max step    Trust ratio
+-------------------------------------------------------------------------------
+   1   -0.716260E-13    0.101552E+07  0.000000E+00 0.200000E+00    0.000000E+00
+   2    0.664121E-13    0.100000E+07  0.000000E+00 0.200000E+00    0.000000E+00
+   3   -0.104700E-13    0.100000E+07  0.000000E+00 0.200000E+00    0.000000E+00
+   4   -0.139121E-13    0.100000E+07  0.000000E+00 0.200000E+00    0.000000E+00
+   5    0.745596E-13    0.994024E+06  0.000000E+00 0.200000E+00    0.000000E+00
+   6    0.321627E-13    0.990459E+06  0.000000E+00 0.200000E+00    0.000000E+00
+   7    0.179501E-05    0.346397E+04 -0.518195E-09 0.200000E+00    0.000000E+00
+   8   -0.398594E-06    0.345241E+04  0.115454E-09 0.200000E+00    0.000000E+00
+   9    0.489041E-06    0.343938E+04 -0.142189E-09 0.200000E+00    0.000000E+00
+  10    0.794558E-06    0.339355E+04 -0.234138E-09 0.200000E+00    0.000000E+00
+  11    0.921510E-06    0.338199E+04 -0.272476E-09 0.200000E+00    0.000000E+00
+  12    0.595782E-06    0.334825E+04 -0.177938E-09 0.200000E+00    0.000000E+00
+  13    0.170133E-06    0.312412E+04 -0.544578E-10 0.200000E+00    0.000000E+00
+  14    0.377678E-06    0.302927E+04 -0.124676E-09 0.200000E+00    0.000000E+00
+  15   -0.487926E-06    0.300876E+04  0.162169E-09 0.200000E+00    0.000000E+00
+  16    0.338501E-06    0.268204E+04 -0.126211E-09 0.200000E+00    0.000000E+00
+  17   -0.425197E-06    0.265360E+04  0.160234E-09 0.200000E+00    0.000000E+00
+  18   -0.261571E-06    0.238334E+04  0.109750E-09 0.200000E+00    0.000000E+00
+  19    0.528842E-07    0.454698E+03 -0.116306E-09 0.200000E+00    0.000000E+00
+  20   -0.115427E-09    0.437735E+03  0.263692E-12 0.200000E+00    0.000000E+00
+  21   -0.130071E-06    0.434118E+03  0.299622E-09 0.200000E+00    0.000000E+00
+  22   -0.309937E-06    0.405615E+03  0.764118E-09 0.200000E+00    0.000000E+00
+  23   -0.977787E-07    0.401853E+03  0.243320E-09 0.200000E+00    0.000000E+00
+  24   -0.308121E-06    0.399666E+03  0.770945E-09 0.200000E+00    0.000000E+00
+  25    0.143309E-05    0.247061E+03 -0.580057E-08 0.200000E+00    0.000000E+00
+  26   -0.600709E-06    0.243379E+03  0.246820E-08 0.200000E+00    0.000000E+00
+  27   -0.751436E-06    0.231881E+03  0.324062E-08 0.200000E+00    0.000000E+00
+  28   -0.297425E-06    0.225219E+03  0.132060E-08 0.200000E+00    0.000000E+00
+  29    0.107716E-05    0.185289E+03 -0.581338E-08 0.200000E+00    0.000000E+00
+  30    0.613696E-06    0.174036E+03 -0.352626E-08 0.200000E+00    0.000000E+00
+  31   -0.699321E-06    0.119078E+03  0.587282E-08 0.200000E+00    0.000000E+00
+  32    0.368533E-07    0.115573E+03 -0.318873E-09 0.200000E+00    0.000000E+00
+  33    0.217072E-05    0.104251E+03 -0.208221E-07 0.200000E+00    0.000000E+00
+  34   -0.231637E-06    0.102735E+03  0.225471E-08 0.200000E+00    0.000000E+00
+  35    0.267286E-07    0.812620E+02 -0.328919E-09 0.200000E+00    0.000000E+00
+  36    0.447266E-06    0.574105E+02 -0.779065E-08 0.200000E+00    0.000000E+00
+  37   -0.227634E-06    0.437354E+02  0.520481E-08 0.200000E+00    0.000000E+00
+  38    0.794951E-06    0.418071E+02 -0.190147E-07 0.200000E+00    0.000000E+00
+  39    0.131950E-06    0.390611E+02 -0.337804E-08 0.200000E+00    0.000000E+00
+  40   -0.591187E-06    0.381019E+02  0.155159E-07 0.200000E+00    0.000000E+00
+  41   -0.417137E-07    0.358318E+02  0.116415E-08 0.200000E+00    0.000000E+00
+  42    0.306703E-06    0.339017E+02 -0.904684E-08 0.200000E+00    0.000000E+00
+  43   -0.117204E-06    0.197153E+02  0.594479E-08 0.200000E+00    0.000000E+00
+  44    0.259270E-07    0.159947E+02 -0.162097E-08 0.200000E+00    0.000000E+00
+  45   -0.184128E-06    0.114229E+02  0.161192E-07 0.200000E+00    0.000000E+00
+  46   -0.945237E-07    0.943848E+01  0.100147E-07 0.200000E+00    0.000000E+00
+  47   -0.206534E-06    0.579362E+01  0.356486E-07 0.200000E+00    0.000000E+00
+  48   -0.407781E-05    0.417022E+01  0.977839E-06 0.200000E+00    0.000000E+00
+  49   -0.158475E-06    0.346736E+01  0.457047E-07 0.200000E+00    0.000000E+00
+  50    0.968664E-07    0.272322E+01 -0.355705E-07 0.200000E+00    0.000000E+00
+  51    0.112907E-05    0.153112E+01 -0.737417E-06 0.200000E+00    0.000000E+00
+  52   -0.494553E-07    0.940474E+00  0.525855E-07 0.200000E+00    0.000000E+00
+  53   -0.716459E-08    0.304546E+00  0.235255E-07 0.200000E+00    0.000000E+00
+  54   -0.258037E-08   -0.966063E+00  0.100000E-01 0.200000E+00    0.000000E+00
+-------------------------------------------------------------------------------
+ The maximum scaled/unscaled step is:                 0.1000000000E-01    0.1000000000E-01
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.06951         0.13606         0.13687       439.82514       442.43738       866.03520
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -6256.510524        0.2100464721E-01 after      0 steps
+ energy increase:    -6256.51052397851     to     -6256.50180891684     decreasing step to  0.23824541E-03
+ energy increase:    -6256.51052397851     to     -6256.51047222970     decreasing step to  0.23824541E-04
+ mylbfgs> Energy and RMS force=    -6256.510527        0.1069869597E-01 after      1 steps, step:  0.23825E-04
+ mylbfgs> Energy and RMS force=    -6256.510528        0.1723523396E-02 after      2 steps, step:  0.25869E-04
+ mylbfgs> Energy and RMS force=    -6256.510529        0.1656208180E-02 after      3 steps, step:  0.43972E-05
+ mylbfgs> Energy and RMS force=    -6256.510529        0.2816266507E-02 after      4 steps, step:  0.65923E-04
+ mylbfgs> Energy and RMS force=    -6256.510529        0.3577986470E-02 after      5 steps, step:  0.62382E-04
+ mylbfgs> Energy and RMS force=    -6256.510530        0.6064141603E-02 after      6 steps, step:  0.33051E-03
+ mylbfgs> Energy and RMS force=    -6256.510529        0.1653824886E-01 after      7 steps, step:  0.78860E-03
+ mylbfgs> Energy and RMS force=    -6256.510532        0.1588059334E-01 after      8 steps, step:  0.89286E-03
+ mylbfgs> Energy and RMS force=    -6256.510548        0.3018316848E-01 after      9 steps, step:  0.54792E-02
+ mylbfgs> Energy and RMS force=    -6256.510566        0.6321848060E-01 after     10 steps, step:  0.81246E-02
+ mylbfgs> Energy and RMS force=    -6256.510605        0.1073149435     after     11 steps, step:  0.10536E-01
+ mylbfgs> Energy and RMS force=    -6256.510734        0.1751608062     after     12 steps, step:  0.15308E-01
+ mylbfgs> Energy and RMS force=    -6256.511164        0.1601748157     after     13 steps, step:  0.12579E-01
+ energy increase:    -6256.51116390773     to     -6256.50943132536     decreasing step to  0.41840900E-02
+ mylbfgs> Energy and RMS force=    -6256.511289        0.1758361550     after     14 steps, step:  0.41841E-02
+ energy increase:    -6256.51128853567     to     -6256.32212047325     decreasing step to  0.14335599E-01
+ mylbfgs> Energy and RMS force=    -6256.511910        0.2278899587     after     15 steps, step:  0.14336E-01
+ energy increase:    -6256.51191013283     to     -6256.49907121039     decreasing step to  0.69780498E-02
+ mylbfgs> Energy and RMS force=    -6256.512311        0.2573024253     after     16 steps, step:  0.69780E-02
+ energy increase:    -6256.51231144242     to     -6256.51119138725     decreasing step to  0.53201147E-02
+ mylbfgs> Energy and RMS force=    -6256.512775        0.2676299684     after     17 steps, step:  0.53201E-02
+ energy increase:    -6256.51277520827     to     -6256.50613400272     decreasing step to  0.67492309E-02
+ mylbfgs> Energy and RMS force=    -6256.513420        0.2869108543     after     18 steps, step:  0.67492E-02
+ energy increase:    -6256.51342045622     to     -6256.50900576701     decreasing step to  0.71857320E-02
+ mylbfgs> Energy and RMS force=    -6256.514338        0.2930892537     after     19 steps, step:  0.71857E-02
+ energy increase:    -6256.51433808522     to     -6256.48805430816     decreasing step to  0.85810061E-02
+ mylbfgs> Energy and RMS force=    -6256.515275        0.3313034440     after     20 steps, step:  0.85810E-02
+ energy increase:    -6256.51527526871     to     -6256.51187848619     decreasing step to  0.73649632E-02
+ mylbfgs> Energy and RMS force=    -6256.516438        0.3321925638     after     21 steps, step:  0.73650E-02
+ energy increase:    -6256.51643773885     to     -6256.51343677392     decreasing step to  0.62683981E-02
+ mylbfgs> Energy and RMS force=    -6256.517316        0.3496452835     after     22 steps, step:  0.62684E-02
+ mylbfgs> Energy and RMS force=    -6256.519210        0.9780561329     after     23 steps, step:  0.61324E-01
+ energy increase:    -6256.51921016513     to     -6256.51716740208     decreasing step to  0.21781945E-02
+ mylbfgs> Energy and RMS force=    -6256.520757        0.8546078242     after     24 steps, step:  0.21782E-02
+ mylbfgs> Energy and RMS force=    -6256.524642        0.4186866017     after     25 steps, step:  0.47338E-02
+ mylbfgs> Energy and RMS force=    -6256.525912        0.2075586234     after     26 steps, step:  0.34078E-02
+ mylbfgs> Energy and RMS force=    -6256.527159        0.1426946351     after     27 steps, step:  0.57961E-02
+ mylbfgs> Energy and RMS force=    -6256.529324        0.6071097149     after     28 steps, step:  0.38513E-01
+ mylbfgs> Energy and RMS force=    -6256.531308        0.3168020119     after     29 steps, step:  0.13165E-01
+ mylbfgs> Energy and RMS force=    -6256.533170        0.2543521806     after     30 steps, step:  0.80833E-02
+ energy increase:    -6256.53317008882     to     -6256.52643489597     decreasing step to  0.72608948E-02
+ mylbfgs> Energy and RMS force=    -6256.534548        0.2374867065     after     31 steps, step:  0.72609E-02
+ energy increase:    -6256.53454789147     to     -6256.50494328313     decreasing step to  0.91723388E-02
+ mylbfgs> Energy and RMS force=    -6256.536258        0.2197657469     after     32 steps, step:  0.91723E-02
+ energy increase:    -6256.53625806442     to     -6256.52179184619     decreasing step to  0.78021244E-02
+ mylbfgs> Energy and RMS force=    -6256.537691        0.2185445361     after     33 steps, step:  0.78021E-02
+ energy increase:    -6256.53769139283     to     -6256.53383778196     decreasing step to  0.65592040E-02
+ mylbfgs> Energy and RMS force=    -6256.538975        0.2149830778     after     34 steps, step:  0.65592E-02
+ energy increase:    -6256.53897528905     to     -6256.53360637220     decreasing step to  0.66302761E-02
+ mylbfgs> Energy and RMS force=    -6256.540266        0.2120893442     after     35 steps, step:  0.66303E-02
+ energy increase:    -6256.54026562875     to     -6256.54016879689     decreasing step to  0.57270902E-02
+ mylbfgs> Energy and RMS force=    -6256.541376        0.2115935802     after     36 steps, step:  0.57271E-02
+ mylbfgs> Energy and RMS force=    -6256.543141        0.8316155082     after     37 steps, step:  0.52081E-01
+ mylbfgs> Energy and RMS force=    -6256.544599        0.4831952450     after     38 steps, step:  0.20412E-01
+ mylbfgs> Energy and RMS force=    -6256.547518        0.2218428686     after     39 steps, step:  0.58783E-02
+ mylbfgs> Energy and RMS force=    -6256.548671        0.2922504869     after     40 steps, step:  0.11642E-01
+ mylbfgs> Energy and RMS force=    -6256.550022        0.3327547967     after     41 steps, step:  0.12572E-01
+ energy increase:    -6256.55002202783     to     -6256.54595635531     decreasing step to  0.36345977E-02
+ mylbfgs> Energy and RMS force=    -6256.550873        0.3067458399     after     42 steps, step:  0.36346E-02
+ mylbfgs> Energy and RMS force=    -6256.554221        0.2367128018     after     43 steps, step:  0.26495E-01
+ mylbfgs> Energy and RMS force=    -6256.556745        0.1257043142     after     44 steps, step:  0.13181E-01
+ mylbfgs> Energy and RMS force=    -6256.557671        0.4113058195     after     45 steps, step:  0.34621E-01
+ mylbfgs> Energy and RMS force=    -6256.558969        0.3191268976     after     46 steps, step:  0.87938E-02
+ mylbfgs> Energy and RMS force=    -6256.559912        0.1070099840     after     47 steps, step:  0.29877E-02
+ mylbfgs> Energy and RMS force=    -6256.560177        0.8892965925E-01 after     48 steps, step:  0.42892E-02
+ mylbfgs> Energy and RMS force=    -6256.560620        0.1112204742     after     49 steps, step:  0.53963E-02
+ mylbfgs> Energy and RMS force=    -6256.561067        0.1066327926     after     50 steps, step:  0.22628E-02
+ mylbfgs> Energy and RMS force=    -6256.561159        0.1667437980     after     51 steps, step:  0.40499E-02
+ mylbfgs> Energy and RMS force=    -6256.561482        0.6758131341E-01 after     52 steps, step:  0.10245E-02
+ mylbfgs> Energy and RMS force=    -6256.561688        0.6906315829E-01 after     53 steps, step:  0.10937E-02
+ mylbfgs> Energy and RMS force=    -6256.562065        0.1001833698     after     54 steps, step:  0.42531E-02
+ mylbfgs> Energy and RMS force=    -6256.562433        0.8480186276E-01 after     55 steps, step:  0.53091E-02
+ energy increase:    -6256.56243297325     to     -6256.56231919188     decreasing step to  0.76906998E-03
+ mylbfgs> Energy and RMS force=    -6256.562499        0.8250640222E-01 after     56 steps, step:  0.76907E-03
+ mylbfgs> Energy and RMS force=    -6256.562888        0.6482299199E-01 after     57 steps, step:  0.60113E-02
+ mylbfgs> Energy and RMS force=    -6256.563143        0.6430962726E-01 after     58 steps, step:  0.20341E-02
+ mylbfgs> Energy and RMS force=    -6256.563525        0.1190472653     after     59 steps, step:  0.53617E-02
+ mylbfgs> Energy and RMS force=    -6256.563769        0.7961762878E-01 after     60 steps, step:  0.18768E-02
+ mylbfgs> Energy and RMS force=    -6256.563891        0.5251339235E-01 after     61 steps, step:  0.46272E-03
+ mylbfgs> Energy and RMS force=    -6256.564128        0.6533821325E-01 after     62 steps, step:  0.17422E-02
+ mylbfgs> Energy and RMS force=    -6256.564313        0.7866742142E-01 after     63 steps, step:  0.25489E-02
+ mylbfgs> Energy and RMS force=    -6256.564595        0.1036616581     after     64 steps, step:  0.61633E-02
+ mylbfgs> Energy and RMS force=    -6256.564814        0.6088069814E-01 after     65 steps, step:  0.40098E-02
+ mylbfgs> Energy and RMS force=    -6256.564902        0.3700831570E-01 after     66 steps, step:  0.97012E-03
+ mylbfgs> Energy and RMS force=    -6256.565001        0.4530524622E-01 after     67 steps, step:  0.15780E-02
+ mylbfgs> Energy and RMS force=    -6256.565098        0.4996024924E-01 after     68 steps, step:  0.13398E-02
+ mylbfgs> Energy and RMS force=    -6256.565331        0.4647610193E-01 after     69 steps, step:  0.36354E-02
+ mylbfgs> Energy and RMS force=    -6256.565529        0.3859965636E-01 after     70 steps, step:  0.43072E-02
+ mylbfgs> Energy and RMS force=    -6256.565662        0.5196465035E-01 after     71 steps, step:  0.58634E-02
+ mylbfgs> Energy and RMS force=    -6256.565761        0.3806284205E-01 after     72 steps, step:  0.22688E-02
+ mylbfgs> Energy and RMS force=    -6256.565866        0.4282789420E-01 after     73 steps, step:  0.29769E-02
+ mylbfgs> Energy and RMS force=    -6256.566073        0.5111590800E-01 after     74 steps, step:  0.43313E-02
+ mylbfgs> Energy and RMS force=    -6256.566330        0.5143750779E-01 after     75 steps, step:  0.89810E-02
+ mylbfgs> Energy and RMS force=    -6256.566541        0.4345582211E-01 after     76 steps, step:  0.53186E-02
+ mylbfgs> Energy and RMS force=    -6256.566689        0.3427661622E-01 after     77 steps, step:  0.38640E-02
+ mylbfgs> Energy and RMS force=    -6256.566834        0.3272364175E-01 after     78 steps, step:  0.25227E-02
+ mylbfgs> Energy and RMS force=    -6256.566982        0.4396849062E-01 after     79 steps, step:  0.43115E-02
+ mylbfgs> Energy and RMS force=    -6256.567073        0.2331813927E-01 after     80 steps, step:  0.24346E-02
+ mylbfgs> Energy and RMS force=    -6256.567112        0.2035277054E-01 after     81 steps, step:  0.19213E-02
+ mylbfgs> Energy and RMS force=    -6256.567176        0.2251105179E-01 after     82 steps, step:  0.20109E-02
+ mylbfgs> Energy and RMS force=    -6256.567349        0.2916713743E-01 after     83 steps, step:  0.58381E-02
+ mylbfgs> Energy and RMS force=    -6256.567521        0.2944145465E-01 after     84 steps, step:  0.53261E-02
+ mylbfgs> Energy and RMS force=    -6256.567749        0.5062220195E-01 after     85 steps, step:  0.81203E-02
+ mylbfgs> Energy and RMS force=    -6256.567898        0.2851990840E-01 after     86 steps, step:  0.36203E-02
+ mylbfgs> Energy and RMS force=    -6256.568060        0.4485135063E-01 after     87 steps, step:  0.35440E-02
+ mylbfgs> Energy and RMS force=    -6256.568307        0.5917756786E-01 after     88 steps, step:  0.66176E-02
+ mylbfgs> Energy and RMS force=    -6256.568634        0.5801131296E-01 after     89 steps, step:  0.12655E-01
+ mylbfgs> Energy and RMS force=    -6256.568884        0.9738387793E-01 after     90 steps, step:  0.16542E-01
+ mylbfgs> Energy and RMS force=    -6256.569051        0.3328646311E-01 after     91 steps, step:  0.78325E-02
+ mylbfgs> Energy and RMS force=    -6256.569141        0.3808666921E-01 after     92 steps, step:  0.34955E-02
+ mylbfgs> Energy and RMS force=    -6256.569267        0.4864047993E-01 after     93 steps, step:  0.64926E-02
+ mylbfgs> Energy and RMS force=    -6256.569546        0.5578491425E-01 after     94 steps, step:  0.11999E-01
+ mylbfgs> Energy and RMS force=    -6256.569827        0.3955204579E-01 after     95 steps, step:  0.16398E-01
+ mylbfgs> Energy and RMS force=    -6256.569958        0.3746414514E-01 after     96 steps, step:  0.51507E-02
+ mylbfgs> Energy and RMS force=    -6256.570002        0.1841822488E-01 after     97 steps, step:  0.14384E-02
+ mylbfgs> Energy and RMS force=    -6256.570026        0.1767178992E-01 after     98 steps, step:  0.18676E-02
+ mylbfgs> Energy and RMS force=    -6256.570065        0.1698780510E-01 after     99 steps, step:  0.17007E-02
+ mylbfgs> Energy and RMS force=    -6256.570146        0.2263116648E-01 after    100 steps, step:  0.24795E-02
+ mylbfgs> Energy and RMS force=    -6256.570216        0.1893293431E-01 after    101 steps, step:  0.49660E-02
+ mylbfgs> Energy and RMS force=    -6256.570262        0.1790565585E-01 after    102 steps, step:  0.76021E-02
+ mylbfgs> Energy and RMS force=    -6256.570307        0.1686064182E-01 after    103 steps, step:  0.63611E-02
+ mylbfgs> Energy and RMS force=    -6256.570377        0.2295882285E-01 after    104 steps, step:  0.87584E-02
+ mylbfgs> Energy and RMS force=    -6256.570486        0.2999528765E-01 after    105 steps, step:  0.93497E-02
+ mylbfgs> Energy and RMS force=    -6256.570619        0.2801711636E-01 after    106 steps, step:  0.66944E-02
+ mylbfgs> Energy and RMS force=    -6256.570720        0.1564597665E-01 after    107 steps, step:  0.48338E-02
+ mylbfgs> Energy and RMS force=    -6256.570768        0.2324062869E-01 after    108 steps, step:  0.67082E-02
+ mylbfgs> Energy and RMS force=    -6256.570798        0.1726904522E-01 after    109 steps, step:  0.12209E-02
+ mylbfgs> Energy and RMS force=    -6256.570835        0.2468898201E-01 after    110 steps, step:  0.26664E-02
+ mylbfgs> Energy and RMS force=    -6256.570883        0.3682891030E-01 after    111 steps, step:  0.17878E-02
+ mylbfgs> Energy and RMS force=    -6256.570946        0.4254599900E-01 after    112 steps, step:  0.40689E-02
+ mylbfgs> Energy and RMS force=    -6256.571020        0.4081933990E-01 after    113 steps, step:  0.73550E-02
+ energy increase:    -6256.57101958751     to     -6256.57086675131     decreasing step to  0.12347666E-02
+ mylbfgs> Energy and RMS force=    -6256.571034        0.3705899414E-01 after    114 steps, step:  0.12348E-02
+ mylbfgs> Energy and RMS force=    -6256.571091        0.2027681640E-01 after    115 steps, step:  0.98404E-02
+ mylbfgs> Energy and RMS force=    -6256.571116        0.1134525513E-01 after    116 steps, step:  0.57889E-02
+ mylbfgs> Energy and RMS force=    -6256.571135        0.9768798653E-02 after    117 steps, step:  0.67383E-02
+ mylbfgs> Energy and RMS force=    -6256.571158        0.1848002323E-01 after    118 steps, step:  0.46418E-02
+ mylbfgs> Energy and RMS force=    -6256.571192        0.1334397893E-01 after    119 steps, step:  0.11901E-01
+ mylbfgs> Energy and RMS force=    -6256.571223        0.3798075049E-01 after    120 steps, step:  0.30380E-02
+ mylbfgs> Energy and RMS force=    -6256.571245        0.2562777304E-01 after    121 steps, step:  0.40835E-02
+ mylbfgs> Energy and RMS force=    -6256.571272        0.2293323011E-01 after    122 steps, step:  0.31935E-02
+ mylbfgs> Energy and RMS force=    -6256.571301        0.1696623998E-01 after    123 steps, step:  0.44327E-02
+ mylbfgs> Energy and RMS force=    -6256.571331        0.1472984685E-01 after    124 steps, step:  0.61855E-02
+ mylbfgs> Energy and RMS force=    -6256.571347        0.1074126296E-01 after    125 steps, step:  0.17186E-02
+ mylbfgs> Energy and RMS force=    -6256.571355        0.9178802408E-02 after    126 steps, step:  0.73086E-03
+ mylbfgs> Energy and RMS force=    -6256.571357        0.2781322857E-01 after    127 steps, step:  0.11461E-02
+ mylbfgs> Energy and RMS force=    -6256.571363        0.8360397327E-02 after    128 steps, step:  0.44101E-03
+ mylbfgs> Energy and RMS force=    -6256.571366        0.6899399106E-02 after    129 steps, step:  0.45712E-03
+ mylbfgs> Energy and RMS force=    -6256.571374        0.1190401314E-01 after    130 steps, step:  0.21840E-02
+ mylbfgs> Energy and RMS force=    -6256.571380        0.1036454925E-01 after    131 steps, step:  0.16553E-02
+ mylbfgs> Energy and RMS force=    -6256.571390        0.6833605026E-02 after    132 steps, step:  0.20559E-02
+ mylbfgs> Energy and RMS force=    -6256.571398        0.7047842064E-02 after    133 steps, step:  0.13831E-02
+ mylbfgs> Energy and RMS force=    -6256.571404        0.1104470834E-01 after    134 steps, step:  0.11092E-02
+ mylbfgs> Energy and RMS force=    -6256.571413        0.1433057074E-01 after    135 steps, step:  0.12234E-02
+ mylbfgs> Energy and RMS force=    -6256.571427        0.1593666721E-01 after    136 steps, step:  0.21250E-02
+ mylbfgs> Energy and RMS force=    -6256.571437        0.2182221511E-01 after    137 steps, step:  0.22840E-02
+ mylbfgs> Energy and RMS force=    -6256.571442        0.8694053245E-02 after    138 steps, step:  0.66520E-03
+ mylbfgs> Energy and RMS force=    -6256.571445        0.7613612405E-02 after    139 steps, step:  0.33117E-03
+ mylbfgs> Energy and RMS force=    -6256.571448        0.8596068788E-02 after    140 steps, step:  0.28469E-03
+ mylbfgs> Energy and RMS force=    -6256.571457        0.9501103505E-02 after    141 steps, step:  0.10566E-02
+ mylbfgs> Energy and RMS force=    -6256.571469        0.1029025649E-01 after    142 steps, step:  0.22083E-02
+ mylbfgs> Energy and RMS force=    -6256.571468        0.3252035295E-01 after    143 steps, step:  0.35112E-02
+ mylbfgs> Energy and RMS force=    -6256.571481        0.5531470416E-02 after    144 steps, step:  0.56058E-03
+ mylbfgs> Energy and RMS force=    -6256.571481        0.4768384680E-02 after    145 steps, step:  0.21189E-03
+ mylbfgs> Energy and RMS force=    -6256.571482        0.8265616534E-02 after    146 steps, step:  0.73436E-03
+ mylbfgs> Energy and RMS force=    -6256.571482        0.7142302883E-02 after    147 steps, step:  0.30586E-03
+ mylbfgs> Energy and RMS force=    -6256.571485        0.6539209396E-02 after    148 steps, step:  0.56363E-03
+ mylbfgs> Energy and RMS force=    -6256.571490        0.6559232453E-02 after    149 steps, step:  0.84078E-03
+ mylbfgs> Energy and RMS force=    -6256.571493        0.9503371506E-02 after    150 steps, step:  0.12531E-02
+ mylbfgs> Energy and RMS force=    -6256.571496        0.4030744476E-02 after    151 steps, step:  0.41747E-03
+ mylbfgs> Energy and RMS force=    -6256.571497        0.2038949791E-02 after    152 steps, step:  0.45833E-03
+ mylbfgs> Energy and RMS force=    -6256.571497        0.2012422921E-02 after    153 steps, step:  0.36138E-03
+ mylbfgs> Energy and RMS force=    -6256.571497        0.3203738726E-02 after    154 steps, step:  0.42678E-03
+ mylbfgs> Energy and RMS force=    -6256.571497        0.5224098965E-02 after    155 steps, step:  0.83584E-03
+ mylbfgs> Energy and RMS force=    -6256.571499        0.1175085122E-01 after    156 steps, step:  0.16197E-02
+ mylbfgs> Energy and RMS force=    -6256.571502        0.9350236847E-02 after    157 steps, step:  0.45443E-03
+ mylbfgs> Energy and RMS force=    -6256.571511        0.8115769307E-02 after    158 steps, step:  0.15925E-02
+ mylbfgs> Energy and RMS force=    -6256.571516        0.8657602090E-02 after    159 steps, step:  0.12087E-02
+ mylbfgs> Energy and RMS force=    -6256.571517        0.6946069031E-02 after    160 steps, step:  0.10904E-02
+ mylbfgs> Energy and RMS force=    -6256.571518        0.3118731715E-02 after    161 steps, step:  0.39846E-03
+ mylbfgs> Energy and RMS force=    -6256.571519        0.3171483142E-02 after    162 steps, step:  0.44690E-03
+ mylbfgs> Energy and RMS force=    -6256.571519        0.3599066459E-02 after    163 steps, step:  0.37970E-03
+ mylbfgs> Energy and RMS force=    -6256.571519        0.4315957442E-02 after    164 steps, step:  0.42573E-03
+ energy increase:    -6256.57151861936     to     -6256.57151265291     decreasing step to  0.13358554E-03
+ mylbfgs> Energy and RMS force=    -6256.571519        0.3530828206E-02 after    165 steps, step:  0.13359E-03
+ mylbfgs> Energy and RMS force=    -6256.571518        0.2154055990E-02 after    166 steps, step:  0.74604E-03
+ mylbfgs> Energy and RMS force=    -6256.571518        0.6862797794E-02 after    167 steps, step:  0.76847E-03
+ mylbfgs> Energy and RMS force=    -6256.571518        0.9892590403E-03 after    168 steps, step:  0.49942E-04
+ mylbfgs> Energy and RMS force=    -6256.571518        0.5354960407E-03 after    169 steps, step:  0.11355E-03
+ mylbfgs> Energy and RMS force=    -6256.571518        0.3678873469E-03 after    170 steps, step:  0.76245E-04
+ mylbfgs> Energy and RMS force=    -6256.571518        0.4284226222E-03 after    171 steps, step:  0.38071E-04
+ mylbfgs> Energy and RMS force=    -6256.571518        0.6853467588E-03 after    172 steps, step:  0.35480E-04
+ mylbfgs> Energy and RMS force=    -6256.571518        0.1156927337E-02 after    173 steps, step:  0.63507E-04
+ mylbfgs> Energy and RMS force=    -6256.571518        0.1247466855E-02 after    174 steps, step:  0.95989E-04
+ mylbfgs> Energy and RMS force=    -6256.571518        0.1093751283E-02 after    175 steps, step:  0.15095E-03
+ mylbfgs> Energy and RMS force=    -6256.571517        0.2916388727E-02 after    176 steps, step:  0.26044E-03
+ mylbfgs> Energy and RMS force=    -6256.571518        0.1147036359E-02 after    177 steps, step:  0.23840E-03
+ mylbfgs> Energy and RMS force=    -6256.571518        0.6881373267E-03 after    178 steps, step:  0.73155E-04
+ mylbfgs> Energy and RMS force=    -6256.571518        0.4518351758E-03 after    179 steps, step:  0.10349E-03
+ mylbfgs> Energy and RMS force=    -6256.571519        0.5304289846E-03 after    180 steps, step:  0.58939E-04
+ mylbfgs> Energy and RMS force=    -6256.571519        0.8065817667E-03 after    181 steps, step:  0.79443E-04
+ mylbfgs> Energy and RMS force=    -6256.571519        0.4838343461E-03 after    182 steps, step:  0.47612E-04
+ mylbfgs> Energy and RMS force=    -6256.571519        0.3652994952E-03 after    183 steps, step:  0.25739E-04
+ mylbfgs> Energy and RMS force=    -6256.571519        0.2347779304E-03 after    184 steps, step:  0.29064E-04
+ mylbfgs> Energy and RMS force=    -6256.571519        0.1537301980E-03 after    185 steps, step:  0.11477E-04
+ mylbfgs> Energy and RMS force=    -6256.571519        0.7374650459E-04 after    186 steps, step:  0.11803E-04
+ mylbfgs> Energy and RMS force=    -6256.571519        0.6426982361E-04 after    187 steps, step:  0.48784E-05
+ mylbfgs> Energy and RMS force=    -6256.571519        0.8898455444E-05 after    188 steps, step:  0.18593E-05
+ mylbfgs> Energy and RMS force=    -6256.571519        0.7352435841E-05 after    189 steps, step:  0.44840E-06
+ mylbfgs> Energy and RMS force=    -6256.571519        0.4619615686E-05 after    190 steps, step:  0.45822E-06
+ mylbfgs> Energy and RMS force=    -6256.571519        0.2534737860E-05 after    191 steps, step:  0.46383E-06
+ mylbfgs> Energy and RMS force=    -6256.571519        0.5302105245E-05 after    192 steps, step:  0.55777E-06
+ mylbfgs> Energy and RMS force=    -6256.571519        0.2158501011E-05 after    193 steps, step:  0.27201E-06
+ mylbfgs> Energy and RMS force=    -6256.571519        0.9981288736E-06 after    194 steps, step:  0.11867E-06
+ mylbfgs> Final energy is   -6256.5715188568511    
+ Plus  side of path:                     195 steps. Energy=    -6256.571519       time=       0.25
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -6256.510520        0.2100300035E-01 after      0 steps
+ energy increase:    -6256.51051998300     to     -6256.50180635241     decreasing step to  0.23820805E-03
+ energy increase:    -6256.51051998300     to     -6256.51046821742     decreasing step to  0.23820805E-04
+ mylbfgs> Energy and RMS force=    -6256.510523        0.1069518252E-01 after      1 steps, step:  0.23821E-04
+ mylbfgs> Energy and RMS force=    -6256.510524        0.1676627680E-02 after      2 steps, step:  0.25823E-04
+ mylbfgs> Energy and RMS force=    -6256.510525        0.1604092616E-02 after      3 steps, step:  0.42614E-05
+ mylbfgs> Energy and RMS force=    -6256.510525        0.2641553040E-02 after      4 steps, step:  0.62523E-04
+ mylbfgs> Energy and RMS force=    -6256.510525        0.3409188218E-02 after      5 steps, step:  0.58249E-04
+ mylbfgs> Energy and RMS force=    -6256.510525        0.5895953656E-02 after      6 steps, step:  0.28816E-03
+ mylbfgs> Energy and RMS force=    -6256.510525        0.1315483265E-01 after      7 steps, step:  0.70794E-03
+ mylbfgs> Energy and RMS force=    -6256.510527        0.1586611104E-01 after      8 steps, step:  0.13009E-02
+ mylbfgs> Energy and RMS force=    -6256.510535        0.2646183296E-01 after      9 steps, step:  0.40894E-02
+ mylbfgs> Energy and RMS force=    -6256.510540        0.5316963631E-01 after     10 steps, step:  0.85291E-02
+ mylbfgs> Energy and RMS force=    -6256.510575        0.6311389577E-01 after     11 steps, step:  0.68065E-02
+ energy increase:    -6256.51057514751     to     -6256.51050995102     decreasing step to  0.28058828E-02
+ mylbfgs> Energy and RMS force=    -6256.510603        0.6582993664E-01 after     12 steps, step:  0.28059E-02
+ energy increase:    -6256.51060265639     to     -6256.50711454978     decreasing step to  0.57831400E-02
+ mylbfgs> Energy and RMS force=    -6256.510672        0.7447401217E-01 after     13 steps, step:  0.57831E-02
+ energy increase:    -6256.51067224497     to     -6256.49230074157     decreasing step to  0.83984311E-02
+ mylbfgs> Energy and RMS force=    -6256.510786        0.9781914529E-01 after     14 steps, step:  0.83984E-02
+ energy increase:    -6256.51078572696     to     -6256.50836045794     decreasing step to  0.52282970E-02
+ mylbfgs> Energy and RMS force=    -6256.510892        0.1083355591     after     15 steps, step:  0.52283E-02
+ energy increase:    -6256.51089159170     to     -6256.51033587766     decreasing step to  0.37430360E-02
+ mylbfgs> Energy and RMS force=    -6256.510969        0.1186566983     after     16 steps, step:  0.37430E-02
+ energy increase:    -6256.51096901504     to     -6256.51082740798     decreasing step to  0.41985410E-02
+ mylbfgs> Energy and RMS force=    -6256.511099        0.1221334668     after     17 steps, step:  0.41985E-02
+ energy increase:    -6256.51109929815     to     -6256.49823987224     decreasing step to  0.70661022E-02
+ mylbfgs> Energy and RMS force=    -6256.511241        0.1525678029     after     18 steps, step:  0.70661E-02
+ energy increase:    -6256.51124113226     to     -6256.51058401751     decreasing step to  0.42220240E-02
+ mylbfgs> Energy and RMS force=    -6256.511379        0.1614025022     after     19 steps, step:  0.42220E-02
+ mylbfgs> Energy and RMS force=    -6256.511455        0.4139779312     after     20 steps, step:  0.35488E-01
+ mylbfgs> Energy and RMS force=    -6256.512159        0.2406113545     after     21 steps, step:  0.14088E-01
+ mylbfgs> Energy and RMS force=    -6256.512746        0.1860016760     after     22 steps, step:  0.48231E-02
+ mylbfgs> Energy and RMS force=    -6256.513433        0.3586921698     after     23 steps, step:  0.21832E-01
+ mylbfgs> Energy and RMS force=    -6256.514340        0.2396294998     after     24 steps, step:  0.27727E-02
+ mylbfgs> Energy and RMS force=    -6256.516350        0.1767868103     after     25 steps, step:  0.17014E-01
+ mylbfgs> Energy and RMS force=    -6256.517633        0.3290110563     after     26 steps, step:  0.25282E-01
+ mylbfgs> Energy and RMS force=    -6256.518783        0.2312812397     after     27 steps, step:  0.15478E-01
+ mylbfgs> Energy and RMS force=    -6256.518935        0.1423432590     after     28 steps, step:  0.12532E-02
+ mylbfgs> Energy and RMS force=    -6256.519576        0.1371979524     after     29 steps, step:  0.12386E-01
+ mylbfgs> Energy and RMS force=    -6256.520051        0.1512495152     after     30 steps, step:  0.43415E-02
+ mylbfgs> Energy and RMS force=    -6256.521086        0.1739775791     after     31 steps, step:  0.11867E-01
+ mylbfgs> Energy and RMS force=    -6256.521640        0.2400215563     after     32 steps, step:  0.11628E-01
+ mylbfgs> Energy and RMS force=    -6256.522443        0.1054685453     after     33 steps, step:  0.77134E-02
+ mylbfgs> Energy and RMS force=    -6256.522631        0.2877443692     after     34 steps, step:  0.23490E-01
+ mylbfgs> Energy and RMS force=    -6256.523413        0.1271997298     after     35 steps, step:  0.35695E-02
+ mylbfgs> Energy and RMS force=    -6256.523664        0.6754764377E-01 after     36 steps, step:  0.47334E-02
+ mylbfgs> Energy and RMS force=    -6256.523923        0.9743932813E-01 after     37 steps, step:  0.10138E-01
+ mylbfgs> Energy and RMS force=    -6256.524203        0.9981751457E-01 after     38 steps, step:  0.48277E-02
+ mylbfgs> Energy and RMS force=    -6256.524751        0.1576626781     after     39 steps, step:  0.13479E-01
+ mylbfgs> Energy and RMS force=    -6256.525323        0.1145707156     after     40 steps, step:  0.11349E-01
+ mylbfgs> Energy and RMS force=    -6256.525788        0.1084074294     after     41 steps, step:  0.97787E-02
+ mylbfgs> Energy and RMS force=    -6256.527240        0.1862602521     after     42 steps, step:  0.29522E-01
+ energy increase:    -6256.52724012596     to     -6256.51925963521     decreasing step to  0.58436366E-02
+ mylbfgs> Energy and RMS force=    -6256.527472        0.1428409321     after     43 steps, step:  0.58436E-02
+ mylbfgs> Energy and RMS force=    -6256.528425        0.1256782061     after     44 steps, step:  0.20509E-01
+ mylbfgs> Energy and RMS force=    -6256.529181        0.9232429411E-01 after     45 steps, step:  0.29071E-02
+ mylbfgs> Energy and RMS force=    -6256.529795        0.1405192294     after     46 steps, step:  0.68372E-02
+ mylbfgs> Energy and RMS force=    -6256.530803        0.1440863194     after     47 steps, step:  0.18066E-01
+ mylbfgs> Energy and RMS force=    -6256.532455        0.1345310672     after     48 steps, step:  0.13822E-01
+ mylbfgs> Energy and RMS force=    -6256.532989        0.5578308244     after     49 steps, step:  0.61912E-01
+ mylbfgs> Energy and RMS force=    -6256.535638        0.3333249021     after     50 steps, step:  0.23969E-01
+ mylbfgs> Energy and RMS force=    -6256.536944        0.1774802689     after     51 steps, step:  0.91651E-02
+ mylbfgs> Energy and RMS force=    -6256.538146        0.1793217414     after     52 steps, step:  0.21950E-01
+ mylbfgs> Energy and RMS force=    -6256.539862        0.3237258852     after     53 steps, step:  0.33446E-01
+ mylbfgs> Energy and RMS force=    -6256.543130        0.3825217281     after     54 steps, step:  0.28067E-01
+ mylbfgs> Energy and RMS force=    -6256.548932        0.5067690572     after     55 steps, step:  0.63709E-01
+ mylbfgs> Energy and RMS force=    -6256.553453        0.6341753917     after     56 steps, step:  0.49469E-01
+ energy increase:    -6256.55345279227     to     -6256.55339365581     decreasing step to  0.62732854E-02
+ mylbfgs> Energy and RMS force=    -6256.554461        0.5784090993     after     57 steps, step:  0.62733E-02
+ mylbfgs> Energy and RMS force=    -6256.558913        0.4957420447     after     58 steps, step:  0.44405E-01
+ mylbfgs> Energy and RMS force=    -6256.560881        0.2160363228     after     59 steps, step:  0.17263E-01
+ mylbfgs> Energy and RMS force=    -6256.562437        0.2950672751     after     60 steps, step:  0.16455E-01
+ mylbfgs> Energy and RMS force=    -6256.566406        0.3340378058     after     61 steps, step:  0.15914E-01
+ mylbfgs> Energy and RMS force=    -6256.572644        0.4745305432     after     62 steps, step:  0.67721E-01
+ mylbfgs> Energy and RMS force=    -6256.575668        0.3763231473     after     63 steps, step:  0.77515E-02
+ mylbfgs> Energy and RMS force=    -6256.577726        0.1718845817     after     64 steps, step:  0.85042E-02
+ mylbfgs> Energy and RMS force=    -6256.579387        0.1952857215     after     65 steps, step:  0.16491E-01
+ mylbfgs> Energy and RMS force=    -6256.580738        0.2473025081     after     66 steps, step:  0.59585E-02
+ mylbfgs> Energy and RMS force=    -6256.582318        0.2692224319     after     67 steps, step:  0.25531E-01
+ mylbfgs> Energy and RMS force=    -6256.583906        0.1671050458     after     68 steps, step:  0.31969E-02
+ mylbfgs> Energy and RMS force=    -6256.585843        0.1591989843     after     69 steps, step:  0.12851E-01
+ mylbfgs> Energy and RMS force=    -6256.587692        0.1749905566     after     70 steps, step:  0.12454E-01
+ mylbfgs> Energy and RMS force=    -6256.588060        0.4493746274     after     71 steps, step:  0.32212E-01
+ mylbfgs> Energy and RMS force=    -6256.590486        0.1433027018     after     72 steps, step:  0.74487E-02
+ mylbfgs> Energy and RMS force=    -6256.591250        0.1357661698     after     73 steps, step:  0.17704E-02
+ mylbfgs> Energy and RMS force=    -6256.592810        0.1476381005     after     74 steps, step:  0.98349E-02
+ mylbfgs> Energy and RMS force=    -6256.594760        0.1900269687     after     75 steps, step:  0.18512E-01
+ mylbfgs> Energy and RMS force=    -6256.597095        0.1758344485     after     76 steps, step:  0.30652E-01
+ mylbfgs> Energy and RMS force=    -6256.598344        0.2344227268     after     77 steps, step:  0.10123E-01
+ mylbfgs> Energy and RMS force=    -6256.598610        0.3356096041     after     78 steps, step:  0.28893E-01
+ mylbfgs> Energy and RMS force=    -6256.599788        0.1019855850     after     79 steps, step:  0.17558E-01
+ mylbfgs> Energy and RMS force=    -6256.600162        0.9965215545E-01 after     80 steps, step:  0.18858E-02
+ mylbfgs> Energy and RMS force=    -6256.601518        0.1275970393     after     81 steps, step:  0.55259E-02
+ mylbfgs> Energy and RMS force=    -6256.602991        0.1485582963     after     82 steps, step:  0.91033E-02
+ mylbfgs> Energy and RMS force=    -6256.605684        0.1529802211     after     83 steps, step:  0.24555E-01
+ mylbfgs> Energy and RMS force=    -6256.606409        0.2819935328     after     84 steps, step:  0.22909E-01
+ mylbfgs> Energy and RMS force=    -6256.607368        0.1071532636     after     85 steps, step:  0.39721E-02
+ mylbfgs> Energy and RMS force=    -6256.607736        0.8207283976E-01 after     86 steps, step:  0.26739E-02
+ mylbfgs> Energy and RMS force=    -6256.608424        0.9482115296E-01 after     87 steps, step:  0.81592E-02
+ mylbfgs> Energy and RMS force=    -6256.609713        0.1105008119     after     88 steps, step:  0.14928E-01
+ mylbfgs> Energy and RMS force=    -6256.611598        0.1219711286     after     89 steps, step:  0.26162E-01
+ mylbfgs> Energy and RMS force=    -6256.611939        0.2210034815     after     90 steps, step:  0.26970E-01
+ mylbfgs> Energy and RMS force=    -6256.614113        0.7709611148E-01 after     91 steps, step:  0.43542E-02
+ mylbfgs> Energy and RMS force=    -6256.614871        0.7191704652E-01 after     92 steps, step:  0.62633E-02
+ mylbfgs> Energy and RMS force=    -6256.615797        0.1231876453     after     93 steps, step:  0.78967E-02
+ mylbfgs> Energy and RMS force=    -6256.616557        0.1280854057     after     94 steps, step:  0.22432E-01
+ mylbfgs> Energy and RMS force=    -6256.617138        0.6423084767E-01 after     95 steps, step:  0.48873E-02
+ mylbfgs> Energy and RMS force=    -6256.617484        0.5234005729E-01 after     96 steps, step:  0.68117E-02
+ mylbfgs> Energy and RMS force=    -6256.617774        0.5797812636E-01 after     97 steps, step:  0.44905E-02
+ mylbfgs> Energy and RMS force=    -6256.618710        0.7217933778E-01 after     98 steps, step:  0.18213E-01
+ mylbfgs> Energy and RMS force=    -6256.619947        0.1024213131     after     99 steps, step:  0.20282E-01
+ mylbfgs> Energy and RMS force=    -6256.621427        0.8111954839E-01 after    100 steps, step:  0.34977E-01
+ mylbfgs> Energy and RMS force=    -6256.622326        0.1314087527     after    101 steps, step:  0.91047E-02
+ mylbfgs> Energy and RMS force=    -6256.622871        0.6858204504E-01 after    102 steps, step:  0.99948E-02
+ mylbfgs> Energy and RMS force=    -6256.623306        0.6546250229E-01 after    103 steps, step:  0.61479E-02
+ mylbfgs> Energy and RMS force=    -6256.623758        0.6061504676E-01 after    104 steps, step:  0.34641E-02
+ mylbfgs> Energy and RMS force=    -6256.624450        0.8246551653E-01 after    105 steps, step:  0.77395E-02
+ mylbfgs> Energy and RMS force=    -6256.625604        0.1049662069     after    106 steps, step:  0.15210E-01
+ mylbfgs> Energy and RMS force=    -6256.627918        0.1602958265     after    107 steps, step:  0.38378E-01
+ mylbfgs> Energy and RMS force=    -6256.630081        0.2709104397     after    108 steps, step:  0.45926E-01
+ mylbfgs> Energy and RMS force=    -6256.632189        0.1303476102     after    109 steps, step:  0.21247E-01
+ mylbfgs> Energy and RMS force=    -6256.633233        0.1878258023     after    110 steps, step:  0.30543E-01
+ mylbfgs> Energy and RMS force=    -6256.633523        0.1740110808     after    111 steps, step:  0.13525E-01
+ mylbfgs> Energy and RMS force=    -6256.633980        0.8208049706E-01 after    112 steps, step:  0.70552E-02
+ mylbfgs> Energy and RMS force=    -6256.634305        0.8759307345E-01 after    113 steps, step:  0.86664E-02
+ mylbfgs> Energy and RMS force=    -6256.635092        0.1620223727     after    114 steps, step:  0.21774E-01
+ mylbfgs> Energy and RMS force=    -6256.636068        0.1718542788     after    115 steps, step:  0.19261E-01
+ mylbfgs> Energy and RMS force=    -6256.637550        0.1180756205     after    116 steps, step:  0.25979E-01
+ mylbfgs> Energy and RMS force=    -6256.637675        0.2267774113     after    117 steps, step:  0.95132E-02
+ mylbfgs> Energy and RMS force=    -6256.638150        0.7467786992E-01 after    118 steps, step:  0.60294E-02
+ mylbfgs> Energy and RMS force=    -6256.638202        0.8444102092E-01 after    119 steps, step:  0.25873E-02
+ mylbfgs> Energy and RMS force=    -6256.638309        0.6446202914E-01 after    120 steps, step:  0.37639E-02
+ mylbfgs> Energy and RMS force=    -6256.638406        0.6870877353E-01 after    121 steps, step:  0.47657E-02
+ mylbfgs> Energy and RMS force=    -6256.638578        0.5836329448E-01 after    122 steps, step:  0.64748E-02
+ mylbfgs> Energy and RMS force=    -6256.638789        0.4868303439E-01 after    123 steps, step:  0.71054E-02
+ mylbfgs> Energy and RMS force=    -6256.639042        0.6491330527E-01 after    124 steps, step:  0.72465E-02
+ mylbfgs> Energy and RMS force=    -6256.639446        0.7524831546E-01 after    125 steps, step:  0.11316E-01
+ mylbfgs> Energy and RMS force=    -6256.639795        0.1132640038     after    126 steps, step:  0.63665E-02
+ mylbfgs> Energy and RMS force=    -6256.640092        0.7201540803E-01 after    127 steps, step:  0.63971E-02
+ mylbfgs> Energy and RMS force=    -6256.640272        0.8659235199E-01 after    128 steps, step:  0.72859E-02
+ mylbfgs> Energy and RMS force=    -6256.640461        0.6261100456E-01 after    129 steps, step:  0.56710E-02
+ mylbfgs> Energy and RMS force=    -6256.640688        0.5406867757E-01 after    130 steps, step:  0.12154E-01
+ mylbfgs> Energy and RMS force=    -6256.640833        0.5390822053E-01 after    131 steps, step:  0.74008E-02
+ mylbfgs> Energy and RMS force=    -6256.640944        0.2837763896E-01 after    132 steps, step:  0.70685E-02
+ mylbfgs> Energy and RMS force=    -6256.640979        0.3096531377E-01 after    133 steps, step:  0.18413E-02
+ mylbfgs> Energy and RMS force=    -6256.640998        0.1801742310E-01 after    134 steps, step:  0.12940E-02
+ mylbfgs> Energy and RMS force=    -6256.641019        0.1601746510E-01 after    135 steps, step:  0.13649E-02
+ mylbfgs> Energy and RMS force=    -6256.641050        0.2176927968E-01 after    136 steps, step:  0.10581E-02
+ mylbfgs> Energy and RMS force=    -6256.641086        0.3180010140E-01 after    137 steps, step:  0.15576E-02
+ mylbfgs> Energy and RMS force=    -6256.641112        0.5478295284E-01 after    138 steps, step:  0.27457E-02
+ mylbfgs> Energy and RMS force=    -6256.641150        0.2910718780E-01 after    139 steps, step:  0.12913E-02
+ mylbfgs> Energy and RMS force=    -6256.641183        0.2178242572E-01 after    140 steps, step:  0.14295E-02
+ mylbfgs> Energy and RMS force=    -6256.641202        0.1916372088E-01 after    141 steps, step:  0.13569E-02
+ mylbfgs> Energy and RMS force=    -6256.641215        0.1604955242E-01 after    142 steps, step:  0.15953E-02
+ mylbfgs> Energy and RMS force=    -6256.641217        0.2360638740E-01 after    143 steps, step:  0.13924E-02
+ mylbfgs> Energy and RMS force=    -6256.641224        0.1079071611E-01 after    144 steps, step:  0.31946E-03
+ mylbfgs> Energy and RMS force=    -6256.641228        0.1037281784E-01 after    145 steps, step:  0.71433E-03
+ mylbfgs> Energy and RMS force=    -6256.641237        0.1707818215E-01 after    146 steps, step:  0.13073E-02
+ mylbfgs> Energy and RMS force=    -6256.641254        0.2279125082E-01 after    147 steps, step:  0.20792E-02
+ mylbfgs> Energy and RMS force=    -6256.641281        0.2706141914E-01 after    148 steps, step:  0.28407E-02
+ energy increase:    -6256.64128079183     to     -6256.64125567153     decreasing step to  0.31068160E-03
+ mylbfgs> Energy and RMS force=    -6256.641287        0.2503552449E-01 after    149 steps, step:  0.31068E-03
+ mylbfgs> Energy and RMS force=    -6256.641313        0.1518142338E-01 after    150 steps, step:  0.29964E-02
+ mylbfgs> Energy and RMS force=    -6256.641326        0.1407424809E-01 after    151 steps, step:  0.15919E-02
+ mylbfgs> Energy and RMS force=    -6256.641343        0.1825602728E-01 after    152 steps, step:  0.22894E-02
+ mylbfgs> Energy and RMS force=    -6256.641358        0.1958521791E-01 after    153 steps, step:  0.19723E-02
+ mylbfgs> Energy and RMS force=    -6256.641379        0.1839686606E-01 after    154 steps, step:  0.26202E-02
+ mylbfgs> Energy and RMS force=    -6256.641390        0.3849216958E-01 after    155 steps, step:  0.23079E-02
+ mylbfgs> Energy and RMS force=    -6256.641401        0.7979827176E-02 after    156 steps, step:  0.79040E-03
+ mylbfgs> Energy and RMS force=    -6256.641402        0.4353782291E-02 after    157 steps, step:  0.12002E-02
+ mylbfgs> Energy and RMS force=    -6256.641402        0.3487270248E-02 after    158 steps, step:  0.65304E-03
+ mylbfgs> Energy and RMS force=    -6256.641404        0.3282357394E-02 after    159 steps, step:  0.57024E-03
+ mylbfgs> Energy and RMS force=    -6256.641407        0.4042074266E-02 after    160 steps, step:  0.63539E-03
+ mylbfgs> Energy and RMS force=    -6256.641410        0.1477373737E-01 after    161 steps, step:  0.97816E-03
+ mylbfgs> Energy and RMS force=    -6256.641414        0.5342853200E-02 after    162 steps, step:  0.51372E-03
+ mylbfgs> Energy and RMS force=    -6256.641415        0.4380196997E-02 after    163 steps, step:  0.84114E-03
+ mylbfgs> Energy and RMS force=    -6256.641415        0.3834329654E-02 after    164 steps, step:  0.70915E-03
+ mylbfgs> Energy and RMS force=    -6256.641416        0.4239915011E-02 after    165 steps, step:  0.67910E-03
+ mylbfgs> Energy and RMS force=    -6256.641418        0.5922783878E-02 after    166 steps, step:  0.13208E-02
+ mylbfgs> Energy and RMS force=    -6256.641421        0.9423339108E-02 after    167 steps, step:  0.16521E-02
+ mylbfgs> Energy and RMS force=    -6256.641427        0.7712068199E-02 after    168 steps, step:  0.20900E-02
+ mylbfgs> Energy and RMS force=    -6256.641428        0.4049983035E-02 after    169 steps, step:  0.92572E-03
+ mylbfgs> Energy and RMS force=    -6256.641430        0.2968947658E-02 after    170 steps, step:  0.57565E-03
+ mylbfgs> Energy and RMS force=    -6256.641431        0.3586458751E-02 after    171 steps, step:  0.28362E-03
+ mylbfgs> Energy and RMS force=    -6256.641433        0.4320998278E-02 after    172 steps, step:  0.37497E-03
+ mylbfgs> Energy and RMS force=    -6256.641435        0.7318058507E-02 after    173 steps, step:  0.58637E-03
+ mylbfgs> Energy and RMS force=    -6256.641437        0.1160869911E-01 after    174 steps, step:  0.17399E-02
+ mylbfgs> Energy and RMS force=    -6256.641443        0.7053747192E-02 after    175 steps, step:  0.12569E-02
+ mylbfgs> Energy and RMS force=    -6256.641446        0.6193347607E-02 after    176 steps, step:  0.14390E-02
+ mylbfgs> Energy and RMS force=    -6256.641447        0.4757941610E-02 after    177 steps, step:  0.98754E-03
+ mylbfgs> Energy and RMS force=    -6256.641449        0.7746515839E-02 after    178 steps, step:  0.87457E-03
+ mylbfgs> Energy and RMS force=    -6256.641450        0.3352093292E-02 after    179 steps, step:  0.41151E-03
+ mylbfgs> Energy and RMS force=    -6256.641451        0.3625841807E-02 after    180 steps, step:  0.22449E-03
+ mylbfgs> Energy and RMS force=    -6256.641454        0.3597050274E-02 after    181 steps, step:  0.36751E-03
+ mylbfgs> Energy and RMS force=    -6256.641458        0.2077420101E-02 after    182 steps, step:  0.39573E-03
+ mylbfgs> Energy and RMS force=    -6256.641459        0.1603533311E-02 after    183 steps, step:  0.43886E-03
+ mylbfgs> Energy and RMS force=    -6256.641459        0.3148706030E-03 after    184 steps, step:  0.13582E-03
+ mylbfgs> Energy and RMS force=    -6256.641459        0.2157231484E-03 after    185 steps, step:  0.24159E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.3502591879E-03 after    186 steps, step:  0.41095E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.9286296401E-03 after    187 steps, step:  0.63411E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.7621376080E-03 after    188 steps, step:  0.25615E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.6272040792E-03 after    189 steps, step:  0.73841E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.6593821504E-03 after    190 steps, step:  0.82956E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.5496932369E-03 after    191 steps, step:  0.94931E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.3285523918E-03 after    192 steps, step:  0.66048E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.2564589844E-03 after    193 steps, step:  0.34204E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.2157804278E-03 after    194 steps, step:  0.25344E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.1663687866E-03 after    195 steps, step:  0.22096E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.1131061007E-03 after    196 steps, step:  0.15497E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.4890608454E-04 after    197 steps, step:  0.99142E-05
+ mylbfgs> Energy and RMS force=    -6256.641459        0.4530515338E-04 after    198 steps, step:  0.25799E-05
+ mylbfgs> Energy and RMS force=    -6256.641459        0.6611821244E-04 after    199 steps, step:  0.55241E-05
+ mylbfgs> Energy and RMS force=    -6256.641459        0.1016517889E-03 after    200 steps, step:  0.86676E-05
+ mylbfgs> Energy and RMS force=    -6256.641459        0.1402841692E-03 after    201 steps, step:  0.19453E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.2674483597E-03 after    202 steps, step:  0.32212E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.8539411265E-04 after    203 steps, step:  0.11622E-04
+ mylbfgs> Energy and RMS force=    -6256.641459        0.3928684924E-04 after    204 steps, step:  0.57906E-05
+ mylbfgs> Energy and RMS force=    -6256.641459        0.1133345048E-04 after    205 steps, step:  0.40352E-05
+ mylbfgs> Energy and RMS force=    -6256.641459        0.4001743267E-05 after    206 steps, step:  0.78887E-06
+ mylbfgs> Energy and RMS force=    -6256.641459        0.2493976658E-05 after    207 steps, step:  0.38117E-06
+ mylbfgs> Energy and RMS force=    -6256.641459        0.1781503221E-05 after    208 steps, step:  0.33153E-06
+ mylbfgs> Energy and RMS force=    -6256.641459        0.1238229617E-05 after    209 steps, step:  0.37843E-06
+ mylbfgs> Energy and RMS force=    -6256.641459        0.2425911262E-06 after    210 steps, step:  0.78054E-07
+ mylbfgs> Final energy is   -6256.6414593362451    
+ Minus side of path:                     211 steps. Energy=    -6256.641459       time=       0.21
+ path> number of entries in EofS file=   407
+ Frames will be dumped to points.path.xyz with probability     1.0000/    1.0000 steps on the plus/minus sides
+ Transition state will be frame number    196
+ 
+         E+        Ets - E+           Ets       Ets - E-           E-          S       D      gamma   ~N
+    -6256.5715189 0.61041E-01    -6256.5104775 0.13098        -6256.6414593   2.803   1.631   5.932   3.034
+ makenumhess> Making numerical hessian dimension=    54
+ makenumhess> Hessian made
+ makenumhess> Making numerical hessian dimension=    54
+ makenumhess> Hessian made
+ makenumhess> Making numerical hessian dimension=    54
+ makenumhess> Hessian made
+ 
+ Elapsed time=                                 0.79
+ OPTIM> # of energy calls=                          0 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient calls=               765 time=           0.64 %= 81.4
+ OPTIM> # of energy+gradient+Hessian calls=         1 time=           0.04 %=  5.6

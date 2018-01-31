@@ -1,0 +1,11 @@
+/home/bruce/code/sparse/wales/GMIN/build/CMakeFiles/rebuild_cache.dir
+/home/bruce/code/sparse/wales/GMIN/build/CMakeFiles/GMIN.dir
+/home/bruce/code/sparse/wales/GMIN/build/CMakeFiles/fftw.dir
+/home/bruce/code/sparse/wales/GMIN/build/CMakeFiles/gminlib.dir
+/home/bruce/code/sparse/wales/GMIN/build/CMakeFiles/myblas.dir
+/home/bruce/code/sparse/wales/GMIN/build/CMakeFiles/mylapack.dir
+/home/bruce/code/sparse/wales/GMIN/build/CMakeFiles/edit_cache.dir
+/home/bruce/code/sparse/wales/GMIN/build/CMakeFiles/extralib.dir
+/home/bruce/code/sparse/wales/GMIN/build/libmbpol/CMakeFiles/edit_cache.dir
+/home/bruce/code/sparse/wales/GMIN/build/libmbpol/CMakeFiles/rebuild_cache.dir
+/home/bruce/code/sparse/wales/GMIN/build/libmbpol/CMakeFiles/libmbpol.dir

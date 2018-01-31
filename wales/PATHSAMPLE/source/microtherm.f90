@@ -1,0 +1,64 @@
+      SUBROUTINE MICROTHERM
+      USE COMMONS
+      USE UTILS,ONLY : GETUNIT
+      IMPLICIT NONE
+      INTEGER J1, LUNIT
+      DOUBLE PRECISION POFE, SOFE, TOFE, NUMIN, EMINMIN, DUMMY
+
+
+      PRINT '(A,2F15.5,A,F20.10)','microtherm> Calculating microcacnonical thermodynamic properties for energy range ', &
+  &                                MICROEMIN,MICROEMAX,' increment ',MICROEINC
+      PRINT '(A,F15.5)','microtherm> Canonical temperature=',MICROT
+
+      NUMIN=1.0D100
+      EMINMIN=HUGE(1.0D0)
+      DO J1=1,NMIN
+         IF (FVIBMIN(J1).LT.NUMIN) NUMIN=FVIBMIN(J1)
+         IF (EMIN(J1).LT.EMINMIN) EMINMIN=EMIN(J1)
+      ENDDO
+
+      DUMMY=0.0D0
+!
+! Normalisation
+!
+      TOTALE=MICROEMIN
+15    POFE=0.0D0
+      DO J1=1,NMIN
+         IF (TOTALE.GT.EMIN(J1)) THEN
+            POFE=POFE+EXP( (KAPPA-1)*LOG(TOTALE-EMIN(J1)) - FVIBMIN(J1)/2.0D0 - LOG(1.0D0*HORDERMIN(J1)) - TOTALE/MICROT )
+         ENDIF
+      ENDDO
+      DUMMY=DUMMY+POFE
+      TOTALE=TOTALE+MICROEINC
+      IF (TOTALE.LT.MICROEMAX) GOTO 15
+      DUMMY=1.0D0/MAX(MICROEINC*DUMMY,1.0D-100)
+
+      TOTALE=MICROEMIN
+      LUNIT=GETUNIT()
+      OPEN(UNIT=LUNIT,FILE='microtherm',STATUS='UNKNOWN')
+20    CONTINUE     
+      POFE=0.0D0
+      SOFE=0.0D0
+      TOFE=0.0D0
+      DO J1=1,NMIN
+         IF (TOTALE.GT.EMIN(J1)) THEN
+            POFE=POFE+EXP( (KAPPA-1)*LOG(TOTALE-EMIN(J1)) - FVIBMIN(J1)/2.0D0 - LOG(1.0D0*HORDERMIN(J1)) - TOTALE/MICROT )
+            SOFE=SOFE+EXP( (KAPPA-1)*LOG(TOTALE-EMIN(J1)) - FVIBMIN(J1)/2.0D0 - LOG(1.0D0*HORDERMIN(J1)) )
+            TOFE=TOFE+(KAPPA-1)*EXP( (KAPPA-2)*LOG(TOTALE-EMIN(J1)) - FVIBMIN(J1)/2.0D0 - LOG(1.0D0*HORDERMIN(J1)) )
+         ENDIF
+      ENDDO
+      POFE=POFE*DUMMY ! approximate normalisation
+      SOFE=LOG(SOFE)
+
+      WRITE(LUNIT,'(5G20.10)') TOTALE, POFE, SOFE, -MICROT*LOG(POFE), EXP(SOFE)/TOFE
+ 
+      TOTALE=TOTALE+MICROEINC
+      IF (TOTALE.GT.MICROEMAX) THEN
+         CLOSE(LUNIT)
+         STOP
+      ENDIF
+      GOTO 20
+    
+      RETURN
+      END
+

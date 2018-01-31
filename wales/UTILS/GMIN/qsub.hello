@@ -1,0 +1,14 @@
+#!/bin/bash
+#PBS -q s4
+#PBS -j oe
+#PBS -N hello.4
+# Needed for clust, not mek-quake
+#PBS -W x=NACCESSPOLICY:SINGLEJOB
+cd $PBS_O_WORKDIR
+
+mpirun --mca btl_tcp_if_include eth0 ./a.out > output.hello.2
+
+echo
+qstat -f ${PBS_JOBID}@clust
+echo
+

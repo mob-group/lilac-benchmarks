@@ -1,0 +1,137 @@
+
+ OPTIM version 31508, Copyright (C) David J. Wales
+ OPTIM comes with ABSOLUTELY NO WARRANTY; for details supply WARRANTY as an input keyword.
+ This is free software, and you are welcome to redistribute it
+ under certain conditions; provide keyword COPYRIGHT to see the details.
+
+ getparams> Number of atoms (or variables)  determined as     24
+ getparams> Number of optimisation degrees of freedom     72
+ genrigid> Reading masses from file 'mass'
+ keyword> Distance tolerance for distinguishing atoms in the same orbit=        0.00100
+ keyword> Maximum number of secondary sets in perm.allow file=  3
+ keyword> Number of groups of permutable atoms=     7
+ keyword> group      1 contains      6 atoms with      3 additional atom sets:
+     1     5     9    13    17    21 with      2 /      6 /     10 /     14 /     18 /     22 ;      3 /      7 /     11 /     15 /     19 /     23 ;      4 /      8 /     12 /     16 /     20 /     24
+  
+ keyword> group      2 contains      2 atoms with      0 additional atom sets:
+     2     3  
+ keyword> group      3 contains      2 atoms with      0 additional atom sets:
+     6     7  
+ keyword> group      4 contains      2 atoms with      0 additional atom sets:
+    10    11  
+ keyword> group      5 contains      2 atoms with      0 additional atom sets:
+    14    15  
+ keyword> group      6 contains      2 atoms with      0 additional atom sets:
+    18    19  
+ keyword> group      7 contains      2 atoms with      0 additional atom sets:
+    22    23  
+ fetchz> LBFGS minimization, maximum steps=   30000
+ 
+ 
+ fetchz> Number of random initial orientations in permutational alignment=   100
+ fetchz> Point group checked when RMS force <     0.00100000, highest symmetry axis tested for=  6
+ fetchz> Initial distance and eigenvalue tolerances in symmetry determination=     0.00010000     0.00010000
+ fetchz> Minimum number of optimization steps=     0
+ fetchz> Stationary point information will be printed to min.data
+ fetchz> Convergence criterion for LBFGS optimization: RMS force< 0.10000000E-05 maximum steps=   30000
+ fetchz> Maximum energy rise in LBFGS minimization=    0.1000000000E-09
+ fetchz> Number of updates in LBFGS=     6000
+ fetchz> Number of updates in mind=  10
+ fetchz> Initial guess for diagonal elements in LBFGS=     0.1000
+ fetchz> Maximum step size in LBFGS energy minimization=     0.2000
+ fetchz> Maximum step size in LBFGS neb image minimization=                 0.2000
+ fetchz> Warnings will be issued if atoms become closer than 0.5 units
+ 
+ 
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.16986         0.17443         0.21018       286.41305       345.13016       354.41757
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ OPTIM> Using translational/rotational ev shift=     1000000.000    
+ mylbfgs> Resetting LBFGS minimiser
+ Warning: called POTENTIAL with ATOMRIGIDCOORDT = FALSE but coords appear to be 
+ atomistic
+  6.013470396786073E-154  5.599398399935591E-067  3.059988346183144E-057
+  6.013470016999068E-154  1.314519131481195E-047  6.013470462947525E-154
+  6.013470018753206E-154  7.494016989302294E-067  6.047094179525087E-154
+  3.242456618856087E-086  5.394614601753971E-062  6.013470017007231E-154
+  4.666326665829313E-062  6.047094201752685E-154  6.013584976171409E-154
+  5.599435188631848E-067  1.085518592352568E-042  6.013470016999068E-154
+  8.980608720001246E-067  6.013470441154758E-154  1.576100889312977E-052
+  3.854667473167502E-057  1.516152350103518E-153  8.242221632162499E-072
+  6.124849638797789E-062  6.013470017006897E-154  5.157214178724330E-062
+  6.038342711377408E-154  3.252667533263906E-086  9.057979616195598E-043
+  6.975463545742182E+096  6.013470016999095E-154  4.183948187471697E-062
+  6.013470485433559E-154  8.544060041247327E-072  9.743698345796014E-072
+ mylbfgs> Energy and RMS force=    -196.2907564        0.6813882742E-02 after      0 steps
+ mylbfgs> Energy and RMS force=    -196.2907615        0.5394515263E-02 after      1 steps, step:  0.16714E-03
+ mylbfgs> Energy and RMS force=    -196.2907691        0.3895064317E-02 after      2 steps, step:  0.42124E-03
+ mylbfgs> Energy and RMS force=    -196.2907714        0.5672941494E-02 after      3 steps, step:  0.41390E-03
+ mylbfgs> Energy and RMS force=    -196.2907737        0.2659262192E-02 after      4 steps, step:  0.14355E-03
+ mylbfgs> Energy and RMS force=    -196.2907746        0.2253206301E-02 after      5 steps, step:  0.10472E-03
+ mylbfgs> Energy and RMS force=    -196.2907758        0.2480176884E-02 after      6 steps, step:  0.23578E-03
+ mylbfgs> Energy and RMS force=    -196.2907772        0.3536449534E-02 after      7 steps, step:  0.36335E-03
+ mylbfgs> Energy and RMS force=    -196.2907781        0.1567187649E-02 after      8 steps, step:  0.21635E-03
+ mylbfgs> Energy and RMS force=    -196.2907784        0.1037105758E-02 after      9 steps, step:  0.10808E-03
+ mylbfgs> Energy and RMS force=    -196.2907785        0.6993087726E-03 after     10 steps, step:  0.33835E-04
+ mylbfgs> Energy and RMS force=    -196.2907786        0.5684092099E-03 after     11 steps, step:  0.28011E-04
+ mylbfgs> Energy and RMS force=    -196.2907787        0.7145563981E-03 after     12 steps, step:  0.80103E-04
+ mylbfgs> Energy and RMS force=    -196.2907787        0.9395375460E-03 after     13 steps, step:  0.75364E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.3810108922E-03 after     14 steps, step:  0.14441E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.2141279962E-03 after     15 steps, step:  0.20748E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1716028265E-03 after     16 steps, step:  0.23983E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.9608732222E-04 after     17 steps, step:  0.21997E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.8546969372E-04 after     18 steps, step:  0.18579E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1110130830E-03 after     19 steps, step:  0.18225E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.8587199668E-04 after     20 steps, step:  0.14351E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.2958500462E-04 after     21 steps, step:  0.37942E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.2086284593E-04 after     22 steps, step:  0.18602E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.2022809214E-04 after     23 steps, step:  0.18236E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.2812893248E-04 after     24 steps, step:  0.35661E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1187610329E-04 after     25 steps, step:  0.12825E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.7567432507E-05 after     26 steps, step:  0.49014E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.4876308721E-05 after     27 steps, step:  0.78712E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.5133955658E-05 after     28 steps, step:  0.70366E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.3674726587E-05 after     29 steps, step:  0.62806E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.3385612908E-05 after     30 steps, step:  0.51934E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.3903574367E-05 after     31 steps, step:  0.87897E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.3286693392E-05 after     32 steps, step:  0.32478E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1304070513E-05 after     33 steps, step:  0.16644E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.9661712374E-06 after     34 steps, step:  0.79847E-07
+ mylbfgs> Final energy is   -196.29077884563003    
+ geopt> Number of zero/imaginary eigenvalues assumed to be      6
+ potential> allocating hessian with dimension         72
+ geopt>     36 Hessian eigenvalues:
+     274.9253566         254.3040499         217.5918987         163.1642154         150.3795383         146.7111694    
+     128.3741840         110.3165938         92.40451817         87.03394091         73.21708989         68.58217604    
+     61.85706853         49.42637091         46.30780289         25.93174934         23.43246286         20.54885225    
+     19.71608066         18.84045720         17.16009383         15.23495314         11.02653737         8.712241573    
+     6.886310336         3.464456934         2.784425669         1.732577752         1.122760369        0.8394276657    
+    0.1014619238E-07    0.1890817858E-13   -0.2542813931E-13   -0.9260312340E-13   -0.1108926018E-07   -0.3717515921E-07
+ geopt> Frequencies in specified units:
+     16.58087322         15.94691349         14.75099653         12.77357489         12.26293351         12.11243862    
+     11.33023318         10.50317066         9.612726885         9.329198299         8.556698539         8.281435626    
+     7.864926480         7.030389101         6.804983680         5.092322588         4.840708921         4.533084188    
+     4.440279345         4.340559549         4.142474361         3.903197810         3.320623040         2.951650652    
+     2.624178031         1.861305169         1.668659842         1.316274193         1.059603874        0.9162028518    
+    0.1007283097E-03    0.1375070128E-06    0.1594620309E-06    0.3043076131E-06    0.1053055563E-03    0.1928086077E-03
+ geopt> Log product of       30 positive Hessian eigenvalues=      100.7344451239
+ geopt> X component of inertia tensor=           62.7029195949
+ geopt> Y component of inertia tensor=           81.4458220070
+ geopt> Z component of inertia tensor=           84.1025779807
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.16986         0.17442         0.21019       286.40692       345.13904       354.41040
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ 
+ geopt>                          **** CONVERGED ****
+ 
+ 
+ Elapsed time=                                 0.01
+ OPTIM> # of energy calls=                          0 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient calls=                35 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient+Hessian calls=         1 time=           0.00 %= 11.1

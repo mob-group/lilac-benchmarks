@@ -1,0 +1,21 @@
+four scripts to create min.data and ts.data files with frqs from frqs.min and frqs.ts:
+
+1. python sort_frqs.py [frqs file] [number of database entries]
+
+# the frequencies will unsorted and some will be missing if no convergence was reached in CHECKMIN or CHECKTS
+# the script will sort the entries creating frqs.sorted and sp.remove
+# mv them to frqs.sorted.min or frqs.sorted.ts and min.remove or ts.remove according to your input
+
+2. run PATHSAMPLE with REMOVESP once 1 for min and ts
+
+# in the removal process, some additional ts might be removed due to the missing minima
+# the frequncy entries for these need to be removed while maintaining an ordered list
+
+3. get the ts that need to be removed into a file "remove_add.ts"
+   one way of doing this is: grep "setup> possible ERROR - transition state" output.remove | awk '{print $7}' > remove_add.ts
+
+4. mv the new sorted file for ts to frqs.sorted.ts
+
+5. run the make_min_data_frqs.sh and make_ts_data_frqs.sh scripts (careful: removes all files *tmp !!!)
+
+6. check the files and enjoy your new lovely data base with frequencies

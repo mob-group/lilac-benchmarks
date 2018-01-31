@@ -1,0 +1,2 @@
+/usr/bin/ar qc ../libBOWMAN_LIB.a  CMakeFiles/BOWMAN_LIB.dir/fake/bowmanwater.f90.o
+/usr/bin/ranlib ../libBOWMAN_LIB.a

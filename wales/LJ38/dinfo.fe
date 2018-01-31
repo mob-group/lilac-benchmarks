@@ -1,0 +1,11 @@
+DELTA 0.5
+FIRST 10.0
+comment MAXTSENERGY -168.0
+LEVELS 21
+MINIMA min.data.regrouped
+TS ts.data.regrouped
+comment IDMIN 1
+comment IDMIN 7
+comment IDENTIFY
+comment LOWEST 2000
+NCONNMIN 0

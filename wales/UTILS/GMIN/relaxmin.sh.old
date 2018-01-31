@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# file=`awk '{print $3}' mysplit.data`
+# sed -e 's/LA/AX/' $file > temp
+# mv temp $file
+
+mysplit < mysplit.data
+
+cores=`awk '{print $1}' mysplit.data`
+natoms=`awk '{print $2}' mysplit.data`
+
+echo number of cores $cores
+echo number of atoms $natoms
+
+count=0
+
+while [ $count -lt $cores ] ; do
+
+   count=$((count+1))
+   cd $count
+   cp ../qsub.relaxmin .
+   cp ../odata.addminxyz .
+   cp ../mysplit.data .
+   qsub qsub.relaxmin
+   cd ..
+
+done
+

@@ -1,0 +1,401 @@
+!   CONNECT module is an implementation of a connection algorithm for finding rearrangement pathways.
+!   Copyright (C) 2003-2006 Semen A. Trygubenko and David J. Wales
+!   This file is part of CONNECT module. CONNECT module is part of OPTIM.
+!
+!   OPTIM is free software; you can redistribute it and/or modify
+!   it under the terms of the GNU General Public License as published by
+!   the Free Software Foundation; either version 2 of the License, or
+!   (at your option) any later version.
+!
+!   OPTIM is distributed in the hope that it will be useful,
+!   but WITHOUT ANY WARRANTY; without even the implied warranty of
+!   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!   GNU General Public License for more details.
+!
+!   You should have received a copy of the GNU General Public License
+!   along with this program; if not, write to the Free Software
+!   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+!
+MODULE NEWCONNECTMODULE
+     IMPLICIT NONE
+     CONTAINS
+
+     SUBROUTINE NEWCONNECT(NA,EII,QQ,EFF,FINFIN,ENDPOINTSEP,PTEST,REDOPATH,REDOPATHXYZ)
+          USE CONNECTDATA
+          USE KEYCONNECT
+          USE CONNECTUTILS
+          USE DECIDEWHATTOCONNECT
+          USE TRYCONNECTMODULE
+          USE IDOMODULE
+          USE KEY,ONLY : BHDISTTHRESH, BHINTERPT, BHDEBUG, DIJKSTRALOCAL, DUMPDATAT, REOPTIMISEENDPOINTS
+          USE MODNEB,ONLY :  NEWCONNECTT
+          IMPLICIT NONE
+
+          INTEGER,INTENT(IN)              :: NA
+          DOUBLE PRECISION,INTENT(IN)           :: ENDPOINTSEP,EII,EFF,QQ(3*NA),FINFIN(3*NA)
+          LOGICAL,INTENT(IN)              :: PTEST
+          DOUBLE PRECISION,POINTER              :: EI,EF
+          DOUBLE PRECISION,POINTER,DIMENSION(:) :: Q,FIN
+
+          INTEGER :: JS,JF,JS2,J1,J2,NSTART,POSITION,J3
+          CHARACTER(LEN=132) :: STR
+          LOGICAL REDOPATH, REDOPATHXYZ, YESNO, SUCCESS, MINNEW, PERMUTE, CHANGED, BIGGERGAP, NOPRINT
+          DOUBLE PRECISION TSREDO(3*NA), DSTART, DFINISH
+          DOUBLE PRECISION, POINTER :: PINTERPCOORDS(:), PENERGY
+          DOUBLE PRECISION INTERPCOORDS(3*NA), ENERGY, OLDDISTS, OLDDISTF
+          DOUBLE PRECISION CSTART(3*NA), CFINISH(3*NA), ESTART, EFINISH
+          INTEGER, ALLOCATABLE :: TEMPDIJPAIR(:,:)
+          DOUBLE PRECISION, ALLOCATABLE :: TEMPDIJPAIRDIST(:)
+          INTEGER INVERT, INDEX(NA), IMATCH, NMINSAVE, ISTAT
+          CHARACTER(LEN=80) FNAMEF
+          CHARACTER(LEN=20) EFNAME
+          DOUBLE PRECISION BHENERGY
+          COMMON /BHINTE/ BHENERGY
+
+          FINISHED=.FALSE.
+          ALLOCATE(EI,EF,Q(3*NA),FIN(3*NA))
+          EI=EII;EF=EFF;Q=QQ;FIN=FINFIN;
+
+          MOREPRINTING=PTEST
+          IF (MOREPRINTING) THEN
+               CALL ALLKEYCONNECTPRINT
+               PRINT*
+          ENDIF
+          CALL INITIALISE(NA,EI,Q,EF,FIN,ENDPOINTSEP)
+          INQUIRE(FILE='redopoints',EXIST=YESNO)
+          IF (YESNO) THEN
+             IF (REDOPATH.AND.(.NOT.REDOPATHXYZ)) THEN
+                PRINT '(A)',' newconnect> Transition state coordinates will be read from file redopoints'
+!            ELSE
+!               PRINT '(A)',' newconnect> WARNING - redopoints file present, but no REDOPATH keyword'
+             ENDIF
+          ELSE
+             IF (REDOPATH.AND.(.NOT.REDOPATHXYZ)) THEN
+                PRINT '(A)',' newconnect> WARNING - REDOPATH keyword was specified, but no redopoints file'
+                REDOPATH=.FALSE.
+             ENDIF
+          ENDIF
+
+          IF (REDOPATHXYZ) PRINT '(A)',' newconnect> Redo run will use available path.<n>.xyz files'
+          IF (REDOPATH.AND.(.NOT.REDOPATHXYZ)) OPEN(99,FILE='redopoints',STATUS='OLD')
+
+          DO NCONDONE=1,NCONMAX
+               WRITE(CHR,'(i5)') NConDone
+               WRITE(STR,'(3a)') '>>>>>>>>>>>>>>>>>>>>> CONNECT CYCLE ',trim(adjustl(chr)),' >>>>>>>>>>>>>>>>>>>>>'
+               WRITE(CHR,'(i5)') Nmin
+               WRITE(STR,'(a)')  trim(str)//' '//trim(adjustl(chr))//' minima and'
+               WRITE(CHR,'(i5)') Nts
+               WRITE(STR,'(a)')  trim(str)//' '//trim(adjustl(chr))//' ts are known'
+               WRITE(*,'(1x,a)') trim(str)//' '//repeat('>',107-len_trim(str))
+!
+!  Read in transition state coordinates from redopoints if available.
+!
+               IF (REDOPATH.AND.(.NOT.REDOPATHXYZ)) THEN
+                  READ(99,*,END=32) (TSREDO(J1),J1=1,3*NA)
+                  WRITE(*,'(A)') ' newconnect> transition state coordinates read from file redopoints'
+                  GOTO 33
+32                WRITE(*,'(A)') ' newconnect> no more transition state coordinates in redopoints'
+                  REDOPATH=.FALSE.
+                  CLOSE(99)
+33                CONTINUE
+               ENDIF
+
+               IF (REDOPATH) THEN
+                  CALL TRYCONNECT(1,2,TSREDO,REDOPATH,REDOPATHXYZ)
+               ELSE
+                  CALL DECIDE
+
+!    call tryconnect for each pair of minima specified in the shortest path returned by DIJKSTRA
+!    Call BHINTERP to fill in addtional minima if required.
+
+                  IF (BHINTERPT) THEN
+                     NSTART=1
+                     CHANGED=.FALSE.
+34                   CONTINUE
+                     NOPRINT=.FALSE.
+                     DO J1=NSTART,NDIJPAIRS
+                        IF(.NOT.NOPRINT) PRINT '(A)',' newconnect> DIJPAIR distances and minima:'
+                        IF(.NOT.NOPRINT) PRINT '(I8,G20.10,I8,G20.10,I8,G20.10)',(J2,DIJPAIRDIST(J2),DIJPAIR(J2,1), &
+                                         MI(DIJPAIR(J2,1))%DATA%E,DIJPAIR(J2,2),MI(DIJPAIR(J2,2))%DATA%E,J2=1,NDIJPAIRS)
+                        DO J2=1,NDIJPAIRS
+                           IF (DIJPAIRDIST(J2).LT.GEOMDIFFTOL) THEN
+!                             PRINT '(A,I8,2G20.10)','J2,DIJPAIRDIST(J2),GEOMDIFFTOL=',J2,DIJPAIRDIST(J2),GEOMDIFFTOL
+                              PRINT '(A,G20.10,A,G20.10)',' newconnect> WARNING - distance ',DIJPAIRDIST(J2), &
+  &                                       ' is less than GEOMDIFFTOL=',GEOMDIFFTOL 
+!                             STOP
+                           ENDIF
+                        ENDDO
+!
+!  Only try interpolation at the first connection attempt for each pair.
+!
+                        IF ((BHDEBUG).AND.(.NOT.NOPRINT)) PRINT '(A,I8,A,I8,A,I8)', &
+  &                      ' bhinterp> tries for DIJPAIR min ',DIJPAIR(J1,1),' and min ',DIJPAIR(J1,2),' = ', &
+  &                        MI(MAX(DIJPAIR(J1,1),DIJPAIR(J1,2)))%DATA%NTRIES(MIN(DIJPAIR(J1,1),DIJPAIR(J1,2)))
+                        IF ((MI(MAX(DIJPAIR(J1,1),DIJPAIR(J1,2)))%DATA%NTRIES(MIN(DIJPAIR(J1,1),DIJPAIR(J1,2))).EQ.0).AND. &
+                            (DIJPAIRDIST(J1).GT.BHDISTTHRESH)) THEN
+                           PRINT '(A,I8,A,I8,A,I8,A,G20.10)',' newconnect> gap ',J1,' trying BH interpolation for minima   ', &
+  &                                DIJPAIR(J1,1),' and ',DIJPAIR(J1,2),' dist=',DIJPAIRDIST(J1)
+!
+!  Count this as a connection attempt. Otherwise we may try to interpolate twice.
+!
+                           MI(MAX(DIJPAIR(J1,1),DIJPAIR(J1,2)))%DATA%NTRIES(MIN(DIJPAIR(J1,1),DIJPAIR(J1,2)))= &
+  &                          MI(MAX(DIJPAIR(J1,1),DIJPAIR(J1,2)))%DATA%NTRIES(MIN(DIJPAIR(J1,1),DIJPAIR(J1,2)))+1
+                           CSTART(1:3*NA)=MI(DIJPAIR(J1,1))%DATA%X(1:3*NA)
+                           CFINISH(1:3*NA)=MI(DIJPAIR(J1,2))%DATA%X(1:3*NA)
+                           ESTART=MI(DIJPAIR(J1,1))%DATA%E
+                           EFINISH=MI(DIJPAIR(J1,2))%DATA%E
+                           CALL BHINTERP(CSTART,CFINISH,3*NA,NA,INTERPCOORDS,SUCCESS,DSTART,DFINISH,ENERGY,ESTART,EFINISH)
+                           BIGGERGAP=.FALSE.
+! bs360                    IF ((DSTART.LT.(1.5D0*DIJPAIRDIST(J1))).AND.(DFINISH.LT.(1.5D0*DIJPAIRDIST(J1)))) THEN
+                           IF ((DSTART.LT.DIJPAIRDIST(J1)).OR.(DFINISH.LT.DIJPAIRDIST(J1))) THEN
+                              IF (SUCCESS.AND.BHDEBUG) PRINT '(A,2G20.10,A)', &
+  &                              ' newconnect> at least BH one interpolated distance is shorter: ',DSTART,DFINISH,' accept'
+!
+! If we are going to allow this, then we skip bisection of either new gap.
+!
+                               IF ((DSTART.GT.DIJPAIRDIST(J1)).OR.(DFINISH.GT.DIJPAIRDIST(J1))) BIGGERGAP=.TRUE.
+                           ELSE IF ((DSTART.GT.DIJPAIRDIST(J1)).AND.(DFINISH.GT.DIJPAIRDIST(J1))) THEN
+                              IF (SUCCESS.AND.BHDEBUG) PRINT '(A,2G20.10,A)', &
+  &                              ' newconnect> BH both interpolated distances are larger: ',DSTART,DFINISH,' reject'
+                              SUCCESS=.FALSE.
+                           ENDIF
+                           IF (SUCCESS) THEN
+!
+! If the extra minimum is new add it to the stack along with all its distances.
+! Must also add it to the DIJPAIR list.
+!
+                              NULLIFY(PINTERPCOORDS,PENERGY)
+                              ALLOCATE(PINTERPCOORDS(3*NA),PENERGY)
+!
+! Here we are reading data into the pointers PENERGY and PINTERPCOORDS so that when
+! they are subsequently nullified the data in MI%DATA is preserved. 
+! This is a truly horrible hack caused by the inappropriate pointer attribute for static data.
+!
+                              OPEN(UNIT=781,FILE='BHscratch',STATUS='UNKNOWN')
+                              WRITE(781,*) ENERGY,INTERPCOORDS
+                              REWIND(781)
+                              READ(781,*) PENERGY,PINTERPCOORDS
+                              CLOSE(781)
+
+                              CALL ISNEWMIN(PENERGY,PINTERPCOORDS,POSITION,MINNEW,REDOPATH,PERMUTE,INVERT,INDEX,IMATCH)
+                              IF (MINNEW) THEN
+                                 WRITE(*,'(A,I7)') ' newconnect> Interpolated minimum is new minimum ',POSITION
+                                 CALL ADDNEWMIN(PENERGY,PINTERPCOORDS)
+!                                DO J2=1,NMIN-1
+!                                   PRINT '(A,2I8,G20.10)','min1 min2 d=',NMIN,J2,MI(NMIN)%DATA%D(J2)
+!                                ENDDO
+                              ELSE
+                                 WRITE(*,'(A,I7)') ' newconnect> Interpolated minimum is old minimum ',POSITION
+                                  
+                                 IF (DIJPAIR(J1,1).GE.POSITION) THEN
+                                    IF (MI(DIJPAIR(J1,1))%DATA%NTRIES(POSITION).GE.NTRIESMAX) THEN
+                                       PRINT '(A,I8,A,I8,A,I8,A,G20.10)', &
+  &                                      ' bhinterp> maximum connection attempts for ', &
+  &                                      DIJPAIR(J1,1),' and ',POSITION,' is ', &
+  &                                      MI(DIJPAIR(J1,1))%DATA%NTRIES(POSITION), &
+  &                                      ' skip; distance=',MI(DIJPAIR(J1,1))%DATA%D(POSITION)
+                                       GOTO 2
+                                    ENDIF
+                                 ELSE
+                                    IF (MI(POSITION)%DATA%NTRIES(DIJPAIR(J1,1)).GE.NTRIESMAX) THEN
+                                       PRINT '(A,I8,A,I8,A,I8,A,G20.10)', &
+  &                                      ' bhinterp> maximum connection attempts for ', &
+  &                                      DIJPAIR(J1,1),' and ',POSITION,' is ', &
+  &                                      MI(POSITION)%DATA%NTRIES(DIJPAIR(J1,1)), &
+  &                                      ' skip; distance=',MI(POSITION)%DATA%D(DIJPAIR(J1,1))
+                                       GOTO 2
+                                    ENDIF
+                                 ENDIF
+                                 IF (DIJPAIR(J1,2).GE.POSITION) THEN
+                                    IF (MI(DIJPAIR(J1,2))%DATA%NTRIES(POSITION).GE.NTRIESMAX) THEN
+                                       PRINT '(A,I8,A,I8,A,I8,A,G20.10)', &
+  &                                      ' bhinterp> maximum connection attempts for ', &
+  &                                      DIJPAIR(J1,2),' and ',POSITION,' is ', &
+  &                                      MI(DIJPAIR(J1,2))%DATA%NTRIES(POSITION), &
+  &                                      ' skip; distance=',MI(DIJPAIR(J1,2))%DATA%D(POSITION)
+                                       GOTO 2
+                                    ENDIF
+                                 ELSE
+                                    IF (MI(POSITION)%DATA%NTRIES(DIJPAIR(J1,2)).GE.NTRIESMAX) THEN
+                                       PRINT '(A,I8,A,I8,A,I8,A,G20.10)', &
+  &                                      ' bhinterp> maximum connection attempts for ', &
+  &                                      DIJPAIR(J1,2),' and ',POSITION,' is ', &
+  &                                      MI(POSITION)%DATA%NTRIES(DIJPAIR(J1,2)), &
+  &                                      ' skip; distance=',MI(POSITION)%DATA%D(DIJPAIR(J1,2))
+                                       GOTO 2
+                                    ENDIF
+                                 ENDIF
+!
+!  Reject interpolated minimum if it is already in the list, to avoid an
+!  infinite loop.
+!
+                                 DO J3=1,NDIJPAIRS
+                                    IF ((POSITION.EQ.DIJPAIR(J3,1)).OR.(POSITION.EQ.DIJPAIR(J3,2))) THEN
+                                       PRINT '(A)',' newconnect> interpolated minimum is already in the list - reject'
+                                       GOTO 2
+                                    ENDIF
+                                 ENDDO
+                              ENDIF
+
+                              CHANGED=.TRUE.
+
+                              NULLIFY(PINTERPCOORDS,PENERGY) 
+!
+!  If the interpolated minmum is old there are four posibilities. It could already
+!  be connected to both endpoints, to one of them, or to neither. The endpoints should
+!  not have been chosen in the first place if a connection exists via the interpolated old
+!  minimum, so that leaves three possibilities.
+!
+                              IF (.NOT.MINNEW) THEN
+                                 IF (POSITION.GT.DIJPAIR(J1,1)) THEN
+                                    OLDDISTS=MI(POSITION)%DATA%D(DIJPAIR(J1,1))
+                                 ELSE
+                                    OLDDISTS=MI(DIJPAIR(J1,1))%DATA%D(POSITION)
+                                 ENDIF
+                                 IF (POSITION.GT.DIJPAIR(J1,2)) THEN
+                                    OLDDISTF=MI(POSITION)%DATA%D(DIJPAIR(J1,2))
+                                 ELSE
+                                    OLDDISTF=MI(DIJPAIR(J1,2))%DATA%D(POSITION)
+                                 ENDIF
+                                 PRINT '(2(A,I8),2(A,G20.10))','newconnect> old distance between ',POSITION,' and ',DIJPAIR(J1,1), &
+  &                                                       ' is ',OLDDISTS,' new dist=',DSTART
+                                 PRINT '(2(A,I8),2(A,G20.10))','newconnect> old distance between ',POSITION,' and ',DIJPAIR(J1,2), &
+  &                                                       ' is ',OLDDISTF,' new dist=',DFINISH
+                                 DSTART=OLDDISTS
+                                 DFINISH=OLDDISTF
+                              ENDIF
+
+                              IF (DSTART.LT.GEOMDIFFTOL) THEN ! replace entry by old minimum/second minimum pair
+                                 DIJPAIR(J1,1)=POSITION
+                                 DIJPAIRDIST(J1)=DFINISH
+                                 NSTART=J1
+                                 IF (BIGGERGAP) NSTART=J1+1
+                                 GOTO 34 ! go back
+                              ELSE IF (DFINISH.LT.GEOMDIFFTOL) THEN ! replace entry by first minimum/old minimum pair
+                                 DIJPAIR(J1,2)=POSITION
+                                 DIJPAIRDIST(J1)=DSTART
+                                 NSTART=J1
+                                 IF (BIGGERGAP) NSTART=J1+1
+                                 GOTO 34 ! go back
+                              ELSE ! add an entry to the list - neither minimum connected to the minimum in question
+                                 ALLOCATE(TEMPDIJPAIR(NDIJPAIRS,2),TEMPDIJPAIRDIST(NDIJPAIRS))
+                                 TEMPDIJPAIR(1:NDIJPAIRS,1:2)=DIJPAIR(1:NDIJPAIRS,1:2)
+                                 TEMPDIJPAIRDIST(1:NDIJPAIRS)=DIJPAIRDIST(1:NDIJPAIRS)
+                                 DEALLOCATE(DIJPAIR,DIJPAIRDIST)
+                                 NDIJPAIRS=NDIJPAIRS+1
+                                 ALLOCATE(DIJPAIR(NDIJPAIRS,2),DIJPAIRDIST(NDIJPAIRS))
+                                 DO J2=1,J1-1
+                                    DIJPAIR(J2,1:2)=TEMPDIJPAIR(J2,1:2)
+                                    DIJPAIRDIST(J2)=TEMPDIJPAIRDIST(J2)
+                                 ENDDO
+                                 DIJPAIR(J1,1)=TEMPDIJPAIR(J1,1)
+                                 DIJPAIR(J1,2)=POSITION
+                                 DIJPAIR(J1+1,1)=POSITION
+                                 DIJPAIR(J1+1,2)=TEMPDIJPAIR(J1,2)
+                                 DIJPAIRDIST(J1)=DSTART
+                                 DIJPAIRDIST(J1+1)=DFINISH
+                                 DO J2=J1+1,NDIJPAIRS-1
+                                    DIJPAIR(J2+1,1:2)=TEMPDIJPAIR(J2,1:2)
+                                    DIJPAIRDIST(J2+1)=TEMPDIJPAIRDIST(J2)
+                                 ENDDO
+                                 NSTART=J1
+                                 IF (BIGGERGAP) NSTART=J1+2
+                                 DEALLOCATE(TEMPDIJPAIR,TEMPDIJPAIRDIST)
+                                 GOTO 34 ! go back, since NDIJPAIRS has increased by one
+                              ENDIF
+                           ELSE
+                              NSTART=J1+1 ! to avoid an infinite loop
+                           ENDIF
+                        ELSE
+                           NOPRINT=.TRUE.
+                        ENDIF
+2                       CONTINUE
+                     ENDDO
+                     IF (CHANGED) THEN
+                        WRITE(*,'(A)') ' newconnect> The unconnected minima in the chain and their distances are now:'
+                        DO J1=1,NDIJPAIRS
+                           WRITE(*,'(I6,F12.2,I6)',ADVANCE="NO") DIJPAIR(J1,1),DIJPAIRDIST(J1),DIJPAIR(J1,2)
+                        ENDDO
+                     ENDIF
+                  ENDIF
+                  WRITE(*,'(A)') ' ' ! to advance to the next line
+
+                  IF (.NOT.NEWCONNECTT) THEN ! this must be a BHINTERP only run
+                     PRINT '(A,I8)',' newconnect> nmin=',nmin
+                     IF (DUMPDATAT) THEN ! call geopt to generate min.data.info entries
+                        FNAMEF='points.final.bh'
+                        EFNAME='  '
+                        DO J1=3,NMIN ! don't include the end point minima
+                           write(*,*) 'in newconnect.f90, bhenergy=',bhenergy
+                           CALL FLUSH(6)
+                           REOPTIMISEENDPOINTS=.FALSE.
+                           BHENERGY=MI(J1)%DATA%E
+                           CALL GEOPT(FNAMEF,EFNAME,MI(J1)%DATA%X(1:3*NA)) ! file names are dummies here
+                           CALL FLUSH(882)    ! flush min.data.info unit again
+                        ENDDO
+                     ENDIF
+                     STOP
+                  ENDIF
+
+                  DO J1=1,NDIJPAIRS
+                     NMINSAVE=NMIN
+                     JS=MAX(DIJPAIR(J1,1),DIJPAIR(J1,2))
+                     JF=MIN(DIJPAIR(J1,1),DIJPAIR(J1,2))
+!
+! Check that we haven't already connected this pair in a previous search in this cycle.
+!
+                     IF (DIJPAIRDIST(J1).EQ.0.0D0) THEN
+                        PRINT '(A,I8,A,2I8,A,G20.10)',' newconnect> skipping DIJKSTRA pair number ',J1,' minima ', &
+  &                            JS,JF,' distance in now',DIJPAIRDIST(J1)
+                        CYCLE
+                     ENDIF
+                     IF (MI(JS)%DATA%D(JF).EQ.0.0D0) THEN
+                        PRINT '(A,I8,A,2I8,A,G20.10)',' newconnect> skipping DIJKSTRA pair number ',J1,' minima ', &
+  &                            JS,JF,' distance is now ',MI(JS)%DATA%D(JF)
+                        CYCLE
+                     ENDIF
+!                    WRITE(*,'(A,I5,A,2I5)') ' newconnect> trying DIJKSTRA pair number ',J1,' minima ',js,jf
+                     MI(JS)%DATA%NTRIES(JF) = MI(JS)%DATA%NTRIES(JF) + 1
+!    Set edge weight to infinity if we have reached the maximum number of tries for this pair.
+                     CALL TRYCONNECT(JF,JS,TSREDO,REDOPATH,REDOPATHXYZ)
+                     IF ((MI(JS)%DATA%NTRIES(JF).GE.NTRIESMAX).AND.  &
+                         (MI(JS)%DATA%D(JF).GT.1.0D-5)) MI(JS)%DATA%D(JF) = HUGE(MI(JS)%DATA%D(JF))
+!
+! Reweight distance metric between minima JS, JF and all the new minima found in the
+! most recent connection attempt. This is to encourage trying new connection attempts
+! within this set of minima, even if the distances would otherwise cause some other pairs
+! to be tried.
+!
+                     ! PRINT '(A,2I8)',' newconnect> NMINSAVE,NMIN=',NMINSAVE,NMIN
+                     IF (DIJKSTRALOCAL.NE.1.0D0) THEN
+                        DO J2=NMINSAVE+1,NMIN
+                           MI(J2)%DATA%D(JS)=MI(J2)%DATA%D(JS)*DIJKSTRALOCAL
+                           MI(J2)%DATA%D(JF)=MI(J2)%DATA%D(JF)*DIJKSTRALOCAL
+                           PRINT '(A,3I8,2G20.10)','newconnect> J2,JS,JF=',J2,JS,JF
+                           PRINT '(A,3I8,2G20.10)','newconnect> J2,JS,JF,d(JS),d(JF)=',J2,JS,JF,MI(J2)%DATA%D(JS),MI(J2)%DATA%D(JF)
+                           DO J3=J2+1,NMIN
+                              MI(J3)%DATA%D(J2)=MI(J3)%DATA%D(J2)*DIJKSTRALOCAL
+                              PRINT '(A,2I8,G20.10)','newconnect> J3,J2=',J2,J3,MI(J3)%DATA%D(J2)
+                           ENDDO
+                        ENDDO
+                     ENDIF
+!                    PRINT '(A)','newconnect distances summary:'
+!                    DO J2=1,NMIN
+!                       DO J3=J2+1,NMIN
+!                          PRINT '(A,2I8,G20.10)','newconnect> J3,J2=',J2,J3,MI(J3)%DATA%D(J2)
+!                       ENDDO
+!                    ENDDO
+                  ENDDO
+
+                  DEALLOCATE(DIJPAIR,DIJPAIRDIST)
+               ENDIF
+
+               IF (FINISHED) EXIT
+          ENDDO
+
+          CALL OUTPUT
+          CALL DEINITIALISE
+          DEALLOCATE(Q,FIN,EI,EF)
+     END SUBROUTINE NEWCONNECT
+
+END MODULE NEWCONNECTMODULE

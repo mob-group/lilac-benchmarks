@@ -1,0 +1,1 @@
+/usr/bin/gfortran    -ffixed-line-length-200 -ffree-line-length-0 -O3 CMakeFiles/OPTIM.dir/getparams.f.o  -o OPTIM  liboptimlib.a libextralib.a libmylapack.a libmyblas.a libBOWMAN_LIB.a libmbpollib.a /home/bruce/code/sparse/wales/MYFFTW/local_build/install/lib/libfftw3.a -lstdc++ 

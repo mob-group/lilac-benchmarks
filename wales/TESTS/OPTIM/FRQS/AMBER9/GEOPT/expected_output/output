@@ -1,0 +1,192 @@
+
+ OPTIM version 31170, Copyright (C) David J. Wales
+ OPTIM comes with ABSOLUTELY NO WARRANTY; for details supply WARRANTY as an input keyword.
+ This is free software, and you are welcome to redistribute it
+ under certain conditions; provide keyword COPYRIGHT to see the details.
+
+ getparams> input coordinates for AMBER9 system will be read from 
+start
+start               
+
+          -------------------------------------------------------
+          Amber 9  SANDER                              2006
+          -------------------------------------------------------
+
+| Run on 12/13/2016 at 18:13:22
+  [-O]verwriting output
+
+File Assignments:
+|  MDIN: min.in                                                                
+| MDOUT: min.out                                                               
+|INPCRD: coords.inpcrd                                                         
+|  PARM: coords.prmtop                                                         
+|RESTRT: coords.rst                                                            
+|  REFC: refc                                                                  
+| MDVEL: mdvel                                                                 
+|  MDEN: mden                                                                  
+| MDCRD: coords.mdcrd                                                          
+|MDINFO: mdinfo                                                                
+|INPDIP: inpdip                                                                
+|RSTDIP: rstdip                                                                
+
+ 
+ Here is the input file:
+ 
+                                                                               
+ &cntrl                                                                        
+  imin   = 1,                                                                  
+  ncyc = 1,                                                                    
+  maxcyc = 1,                                                                  
+  igb = 2, saltcon=0.1,                                                        
+  ntb    = 0,                                                                  
+  cut    = 999.99,                                                             
+  rgbmax = 25.0,                                                               
+  ifswitch = 1                                                                 
+ /                                                                             
+
+--------------------------------------------------------------------------------
+   1.  RESOURCE   USE: 
+--------------------------------------------------------------------------------
+
+| Flags:                                                                        
+| New format PARM file being parsed.
+| Version =    1.000 Date = 03/20/15 Time = 23:17:49
+ NATOM  =     220 NTYPES =      12 NBONH =     104 MBONA  =     123
+ NTHETH =     233 MTHETA =     169 NPHIH =     481 MPHIA  =     372
+ NHPARM =       0 NPARM  =       0 NNB   =    1211 NRES   =      13
+ NBONA  =     123 NTHETA =     169 NPHIA =     372 NUMBND =      26
+ NUMANG =      54 NPTRA  =      35 NATYP =      20 NPHB   =       0
+ IFBOX  =       0 NMXRS  =      24 IFCAP =       0 NEXTRA =       0
+ NCOPY  =       0
+
+ Implicit solvent radii are H(N)-modified Bondi radii (mbondi2)                                             
+
+|     Memory Use     Allocated
+|     Real               14388
+|     Hollerith           1335
+|     Integer            31584
+|     Max Pairs              1
+|     nblistReal             0
+|     nblist Int             0
+|       Total              241 kbytes
+| Duplicated    0 dihedrals
+| Duplicated    0 dihedrals
+
+--------------------------------------------------------------------------------
+   2.  CONTROL  DATA  FOR  THE  RUN
+--------------------------------------------------------------------------------
+
+default_name                                                                    
+
+General flags:
+     imin    =       1, nmropt  =       0
+     ifswitch=       1, fswitchbeta=  10.000
+ mdread> force-shifting cutoff will be used for electrostatics, fswitchbeta=  10.000
+ mdread> Stoddard-Ford cutoff will be used for van der Waals interactions
+
+Nature and format of input:
+     ntx     =       1, irest   =       0, ntrx    =       1
+
+Nature and format of output:
+     ntxo    =       1, ntpr    =      50, ntrx    =       1, ntwr    =     500
+     iwrap   =       0, ntwx    =       0, ntwv    =       0, ntwe    =       0
+     ioutfm  =       0, ntwprt  =       0, idecomp =       0, rbornstat=      0
+
+Potential function:
+     ntf     =       1, ntb     =       0, igb     =       2, nsnb    =      25
+     ipol    =       0, gbsa    =       0, iesp    =       0
+     dielc   =   1.00000, cut     = 999.99000, intdiel =   1.00000
+     saltcon =   0.10000, offset  =   0.09000, gbalpha=    0.80000
+     gbbeta  =   0.00000, gbgamma =   2.90912, surften =   0.00500
+     rdt     =   0.00000, rgbmax  =  25.00000
+     alpb  =        0
+     scnb    =   2.00000, scee    =   1.20000
+
+Frozen or restrained atoms:
+     ibelly  =       0, ntr     =       0
+
+Energy minimization:
+     maxcyc  =       1, ncyc    =       1, ntmin   =       1
+     dx0     =   0.01000, drms    =   0.00010
+|  INFO: Old style inpcrd file read
+
+
+--------------------------------------------------------------------------------
+   3.  ATOMIC COORDINATES AND VELOCITIES
+--------------------------------------------------------------------------------
+
+default_name                                                                    
+ begin time read from input coords =     0.000 ps
+
+ Number of triangulated 3-point waters found:        0
+ getparams> Number of atoms (or variables)  determined as    220
+ getparams> Number of optimisation degrees of freedom    660
+ fetchz> LBFGS minimization, maximum steps=   60000
+ 
+ fetchz>  660 Cartesian coordinates will be optimised for  220 AMBER atoms
+ 
+ fetchz> Point group checked when RMS force <     0.00100000, highest symmetry axis tested for=  6
+ fetchz> Initial distance and eigenvalue tolerances in symmetry determination=     0.00010000     0.00010000
+ fetchz> Minimum number of optimization steps=     0
+ fetchz> Stationary point information will be printed to min.data
+ fetchz> Convergence criterion for LBFGS optimization: RMS force< 0.10000000E-05 maximum steps=   60000
+ fetchz> Maximum energy rise in LBFGS minimization=    0.1000000000E-03
+ fetchz> Number of updates in LBFGS=       50
+ fetchz> Number of updates in mind=   4
+ fetchz> Initial guess for diagonal elements in LBFGS=     0.1000
+ fetchz> Maximum step size in LBFGS energy minimization=     0.1000
+ fetchz> Maximum step size in LBFGS neb image minimization=                 0.2000
+ fetchz> Warnings will be issued if atoms become closer than 0.5 units
+ fetchz> Coordinates for intermediate steps will not be dumped to file points
+ 
+ 
+ OPTIM> Using translational/rotational ev shift=     1000000.000    
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -454.4730096        0.2604841839E-04 after      0 steps
+ mylbfgs> Energy and RMS force=    -454.4730096        0.2159281155E-04 after      1 steps, step:  0.44782E-07
+ mylbfgs> Energy and RMS force=    -454.4730096        0.4322930830E-05 after      2 steps, step:  0.24623E-06
+ mylbfgs> Energy and RMS force=    -454.4730096        0.3154336269E-05 after      3 steps, step:  0.52309E-07
+ mylbfgs> Energy and RMS force=    -454.4730096        0.2139471597E-05 after      4 steps, step:  0.13683E-06
+ mylbfgs> Energy and RMS force=    -454.4730096        0.3729148786E-05 after      5 steps, step:  0.11918E-06
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1826253545E-05 after      6 steps, step:  0.50759E-07
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1392171741E-05 after      7 steps, step:  0.72021E-07
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1434976177E-05 after      8 steps, step:  0.76829E-07
+ mylbfgs> Energy and RMS force=    -454.4730096        0.3133820391E-05 after      9 steps, step:  0.16424E-06
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1262224978E-05 after     10 steps, step:  0.79013E-07
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1171543926E-05 after     11 steps, step:  0.45742E-07
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1472229473E-05 after     12 steps, step:  0.12063E-06
+ mylbfgs> Energy and RMS force=    -454.4730096        0.2488876511E-05 after     13 steps, step:  0.19722E-06
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1376249520E-05 after     14 steps, step:  0.20424E-06
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1080727163E-05 after     15 steps, step:  0.67311E-07
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1641557873E-05 after     16 steps, step:  0.13174E-06
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1805749152E-05 after     17 steps, step:  0.12505E-06
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1486430107E-05 after     18 steps, step:  0.15286E-06
+ mylbfgs> Energy and RMS force=    -454.4730096        0.2754717340E-05 after     19 steps, step:  0.30220E-06
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1168809228E-05 after     20 steps, step:  0.88141E-07
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1019307135E-05 after     21 steps, step:  0.23845E-07
+ mylbfgs> Energy and RMS force=    -454.4730096        0.1003255457E-05 after     22 steps, step:  0.15923E-06
+ mylbfgs> Energy and RMS force=    -454.4730096        0.2494413660E-05 after     23 steps, step:  0.19926E-06
+ mylbfgs> Energy and RMS force=    -454.4730096        0.9912769290E-06 after     24 steps, step:  0.57628E-07
+ mylbfgs> Final energy is   -454.47300958487790    
+ geopt> Value below calculated from numerical hessian
+ geopt> Number of zero/imaginary eigenvalues assumed to be      6
+ geopt> calling MASSWT
+ geopt> ln product scaled to SI units (radian/s)^2 by      40089.20601    
+ geopt> Log product of      654 positive Hessian eigenvalues=    42699.4276750835
+ geopt> X component of inertia tensor=         3444.4593396220
+ geopt> Y component of inertia tensor=         8259.9574407813
+ geopt> Z component of inertia tensor=         8789.8876439856
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.00096         0.00102         0.00276     21806.28043     59179.72258     62406.91160
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ 
+ geopt>                          **** CONVERGED ****
+ 
+ 
+ Elapsed time=                                 7.86
+ OPTIM> # of energy calls=                          0 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient calls=              1345 time=           7.52 %= 95.6
+ OPTIM> # of energy+gradient+Hessian calls=         0 time=           0.00 %=  0.0

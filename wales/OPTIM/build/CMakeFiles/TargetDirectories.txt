@@ -1,0 +1,14 @@
+/home/bruce/code/sparse/wales/OPTIM/build/CMakeFiles/rebuild_cache.dir
+/home/bruce/code/sparse/wales/OPTIM/build/CMakeFiles/OPTIM.dir
+/home/bruce/code/sparse/wales/OPTIM/build/CMakeFiles/fftw.dir
+/home/bruce/code/sparse/wales/OPTIM/build/CMakeFiles/myblas.dir
+/home/bruce/code/sparse/wales/OPTIM/build/CMakeFiles/mylapack.dir
+/home/bruce/code/sparse/wales/OPTIM/build/CMakeFiles/optimlib.dir
+/home/bruce/code/sparse/wales/OPTIM/build/CMakeFiles/edit_cache.dir
+/home/bruce/code/sparse/wales/OPTIM/build/CMakeFiles/extralib.dir
+/home/bruce/code/sparse/wales/OPTIM/build/Bowman/CMakeFiles/rebuild_cache.dir
+/home/bruce/code/sparse/wales/OPTIM/build/Bowman/CMakeFiles/edit_cache.dir
+/home/bruce/code/sparse/wales/OPTIM/build/Bowman/CMakeFiles/BOWMAN_LIB.dir
+/home/bruce/code/sparse/wales/OPTIM/build/libmbpol/CMakeFiles/edit_cache.dir
+/home/bruce/code/sparse/wales/OPTIM/build/libmbpol/CMakeFiles/rebuild_cache.dir
+/home/bruce/code/sparse/wales/OPTIM/build/libmbpol/CMakeFiles/mbpollib.dir

@@ -1,0 +1,1 @@
+/usr/bin/gfortran    -ffixed-line-length-200 -ffree-line-length-0 -O3 CMakeFiles/GMIN.dir/main.F.o  -o GMIN  libgminlib.a libextralib.a libmylapack.a libmyblas.a liblibmbpol.a /home/bruce/code/sparse/wales/MYFFTW/local_build/install/lib/libfftw3.a -lstdc++ 

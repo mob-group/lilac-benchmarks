@@ -1,0 +1,43 @@
+{
+	"sources" : 
+	[
+		{
+			"file" : "/home/bruce/code/sparse/wales/OPTIM/build/CMakeFiles/fftw"
+		},
+		{
+			"file" : "/home/bruce/code/sparse/wales/OPTIM/build/CMakeFiles/fftw.rule"
+		},
+		{
+			"file" : "/home/bruce/code/sparse/wales/OPTIM/build/CMakeFiles/fftw-complete.rule"
+		},
+		{
+			"file" : "/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-install.rule"
+		},
+		{
+			"file" : "/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-mkdir.rule"
+		},
+		{
+			"file" : "/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-download.rule"
+		},
+		{
+			"file" : "/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-update.rule"
+		},
+		{
+			"file" : "/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-patch.rule"
+		},
+		{
+			"file" : "/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-configure.rule"
+		},
+		{
+			"file" : "/home/bruce/code/sparse/wales/MYFFTW/local_build/src/fftw-stamp/fftw-build.rule"
+		}
+	],
+	"target" : 
+	{
+		"labels" : 
+		[
+			"fftw"
+		],
+		"name" : "fftw"
+	}
+}

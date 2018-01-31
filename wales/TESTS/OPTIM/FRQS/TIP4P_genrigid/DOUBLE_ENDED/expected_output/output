@@ -1,0 +1,2108 @@
+
+ OPTIM version 31508, Copyright (C) David J. Wales
+ OPTIM comes with ABSOLUTELY NO WARRANTY; for details supply WARRANTY as an input keyword.
+ This is free software, and you are welcome to redistribute it
+ under certain conditions; provide keyword COPYRIGHT to see the details.
+
+ getparams> Number of atoms (or variables)  determined as     24
+ getparams> Number of optimisation degrees of freedom     72
+ genrigid> Reading masses from file 'mass'
+ keyword> Distance tolerance for distinguishing atoms in the same orbit=        0.00100
+ keyword> Maximum number of secondary sets in perm.allow file=  3
+ keyword> Number of groups of permutable atoms=     7
+ keyword> group      1 contains      6 atoms with      3 additional atom sets:
+     1     5     9    13    17    21 with      2 /      6 /     10 /     14 /     18 /     22 ;      3 /      7 /     11 /     15 /     19 /     23 ;      4 /      8 /     12 /     16 /     20 /     24
+  
+ keyword> group      2 contains      2 atoms with      0 additional atom sets:
+     2     3  
+ keyword> group      3 contains      2 atoms with      0 additional atom sets:
+     6     7  
+ keyword> group      4 contains      2 atoms with      0 additional atom sets:
+    10    11  
+ keyword> group      5 contains      2 atoms with      0 additional atom sets:
+    14    15  
+ keyword> group      6 contains      2 atoms with      0 additional atom sets:
+    18    19  
+ keyword> group      7 contains      2 atoms with      0 additional atom sets:
+    22    23  
+ fetchz> Hybrid EF/BFGS transition state search, maximum steps=  1000
+         maximum tangent space steps=   2 or   30 when overlap is better than     0.999900
+ fetchz> Uphill mode is    0 for initial step and    0 after that
+ fetchz> No Hessian: Rayleigh-Ritz max steps=2000 RMS <       0.0010 and |% change|<     1.0    
+ fetchz> Hessian eigenvector in Rayleigh-Ritz scheme calculated using method    2
+ 
+ fetchz> Coordinates of second point read from file finish
+ 
+ fetchz> Number of random initial orientations in permutational alignment=   100
+ fetchz> Point group checked when RMS force <     0.00100000, highest symmetry axis tested for=  6
+ fetchz> Initial distance and eigenvalue tolerances in symmetry determination=     0.00010000     0.00010000
+ fetchz> Minimum number of optimization steps=     0
+ fetchz> Pathways will be calculated saving    100 frames on each side
+ fetchz> Convergence criterion for LBFGS optimization: RMS force< 0.10000000E-05 maximum steps=   30000
+ fetchz> Maximum energy rise in LBFGS minimization=    0.1000000000E-09
+ fetchz> Number of updates in LBFGS=     6000
+ fetchz> Number of updates in XLBFGS=  10
+ fetchz> Number of updates in mind=  10
+ fetchz> Initial guess for diagonal elements in LBFGS=     0.1000
+ fetchz> Initial guess for diagonal elements in XLBFGS=    0.1000
+ fetchz> Maximum step size in LBFGS energy minimization=     0.2000
+ fetchz> Maximum step size in XLBFGS=    0.2000
+ fetchz> Maximum step size in LBFGS neb image minimization=                 0.2000
+ fetchz> Warnings will be issued if atoms become closer than 0.5 units
+ 
+ 
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.16986         0.17442         0.21019       286.40692       345.13905       354.41041
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ OPTIM> Using translational/rotational ev shift=     1000000.000    
+ Warning: called POTENTIAL with ATOMRIGIDCOORDT = FALSE but coords appear to be 
+ atomistic
+  3.535112654557745E+030  1.626756968666967E+098  6.013470021443550E-154
+  2.311399542335377E+035  1.984247750982349E-062  1.396591101811622E+045
+  2.485904695287969E-091  6.746442449110356E-067  1.032773089093522E-047
+  5.888395252209413E-062  5.351920671123831E-038  1.643184547010410E-259
+  2.088263371845151E-076  1.357421413916961E-153  6.387084848482574E-067
+  3.654820770554476E-086  1.244758944987576E-047  3.453744243734796E-086
+  3.221166872745958E-057  1.797794962649453E-052  1.580291939032997E-153
+  3.538526123363089E-057  2.485904694247798E-091  1.400743432341453E-076
+  3.242521255629010E-086  2.424646367594143E-052  3.453744242056706E-086
+  1.370780341381251E-071  2.485904694176082E-091  1.900989122011048E-052
+  3.453744254228697E-086  7.860647631434120E-067  1.175532217873963E-047
+  6.125795544663477E-062  2.404939101499220E-057  9.734906895013347E-072
+ OPTIM> Initial energy=    -196.2907788     RMS force=    0.7355867271E-06
+ OPTIM> Final energy  =    -193.6712708     RMS force=    0.1404850008E-06
+ initial energy for structure A=                  -193.671270772555317 RMS=        0.000000140485001
+ initial energy for structure B=                  -196.290778845630371 RMS=        0.000000735586727
+ minpermdist> Initial distance before standard orientation=     2.305083303    
+ minpermdist> distance after moving      0 atoms=     3.629156056    
+ minpermdist> distance after moving      0 atoms=     2.305083303    
+ minpermdist> distance after moving     16 atoms=     8.194387259    
+ minpermdist> distance after moving      6 atoms=     7.633331863    
+ minpermdist> distance after moving      0 atoms=     7.613303813    
+ minpermdist> distance after moving     20 atoms=     8.012791951    
+ minpermdist> distance after moving     10 atoms=     6.979740987    
+ minpermdist> distance after moving      2 atoms=     5.588683935    
+ minpermdist> distance after moving      0 atoms=     5.586926161    
+ minpermdist> distance after moving     24 atoms=     7.372622916    
+ minpermdist> distance after moving     12 atoms=     7.533232093    
+ minpermdist> distance after moving      2 atoms=     6.088609829    
+ minpermdist> distance after moving      0 atoms=     6.085356509    
+ minpermdist> distance after moving     20 atoms=     9.249967532    
+ minpermdist> distance after moving      8 atoms=     6.124775606    
+ minpermdist> distance after moving      2 atoms=     4.921170798    
+ minpermdist> distance after moving      0 atoms=     4.913839196    
+ minpermdist> distance after moving     24 atoms=     9.548260144    
+ minpermdist> distance after moving     12 atoms=     7.701646479    
+ minpermdist> distance after moving      2 atoms=     6.198845606    
+ minpermdist> distance after moving      0 atoms=     6.195157200    
+ minpermdist> distance after moving     24 atoms=     9.328305996    
+ minpermdist> distance after moving      6 atoms=     8.024642584    
+ minpermdist> distance after moving      0 atoms=     8.019549220    
+ minpermdist> distance after moving     18 atoms=     5.430076862    
+ minpermdist> distance after moving      4 atoms=     3.791078110    
+ minpermdist> distance after moving      0 atoms=     3.756113731    
+ minpermdist> distance after moving     24 atoms=     7.453966156    
+ minpermdist> distance after moving      6 atoms=     4.284442923    
+ minpermdist> distance after moving      0 atoms=     4.245536684    
+ minpermdist> distance after moving     24 atoms=     8.979964514    
+ minpermdist> distance after moving      6 atoms=     7.844581914    
+ minpermdist> distance after moving      0 atoms=     7.842781541    
+ minpermdist> distance after moving     24 atoms=     5.607298888    
+ minpermdist> distance after moving      8 atoms=     3.055812817    
+ minpermdist> distance after moving      0 atoms=     3.050585329    
+ minpermdist> distance after moving     10 atoms=     7.693658813    
+ minpermdist> distance after moving      0 atoms=     4.950369724    
+ minpermdist> distance after moving     24 atoms=     8.510252689    
+ minpermdist> distance after moving      6 atoms=     7.696279828    
+ minpermdist> distance after moving      0 atoms=     7.695273227    
+ minpermdist> distance after moving     16 atoms=     7.787120404    
+ minpermdist> distance after moving      2 atoms=     6.101599362    
+ minpermdist> distance after moving      0 atoms=     6.096686817    
+ minpermdist> distance after moving     24 atoms=     7.931756328    
+ minpermdist> distance after moving      6 atoms=     6.691884806    
+ minpermdist> distance after moving      0 atoms=     6.670714719    
+ minpermdist> distance after moving     24 atoms=     7.528405132    
+ minpermdist> distance after moving      6 atoms=     6.397310173    
+ minpermdist> distance after moving      0 atoms=     6.383911039    
+ minpermdist> distance after moving     20 atoms=     8.524307741    
+ minpermdist> distance after moving      6 atoms=     6.351170872    
+ minpermdist> distance after moving      0 atoms=     6.338882774    
+ minpermdist> distance after moving     24 atoms=     8.594730863    
+ minpermdist> distance after moving      8 atoms=     4.984961308    
+ minpermdist> distance after moving      0 atoms=     4.979235172    
+ minpermdist> distance after moving     24 atoms=     8.761503672    
+ minpermdist> distance after moving     10 atoms=     7.251079215    
+ minpermdist> distance after moving      0 atoms=     7.250098730    
+ minpermdist> distance after moving     24 atoms=     9.592184742    
+ minpermdist> distance after moving      8 atoms=     3.381327053    
+ minpermdist> distance after moving      0 atoms=     3.367409034    
+ minpermdist> distance after moving     20 atoms=     8.183191865    
+ minpermdist> distance after moving      6 atoms=     6.075861817    
+ minpermdist> distance after moving      0 atoms=     6.059910058    
+ minpermdist> distance after moving     20 atoms=     9.732071845    
+ minpermdist> distance after moving      6 atoms=     8.695672500    
+ minpermdist> distance after moving      0 atoms=     8.685204700    
+ minpermdist> distance after moving     22 atoms=     8.644266271    
+ minpermdist> distance after moving      8 atoms=     6.002677938    
+ minpermdist> distance after moving      2 atoms=     5.995543207    
+ minpermdist> distance after moving      0 atoms=     5.989024483    
+ minpermdist> distance after moving     24 atoms=     7.821925778    
+ minpermdist> distance after moving      8 atoms=     5.032325926    
+ minpermdist> distance after moving      0 atoms=     5.024825819    
+ minpermdist> distance after moving     16 atoms=     8.607861727    
+ minpermdist> distance after moving      8 atoms=     7.119266836    
+ minpermdist> distance after moving      2 atoms=     5.594837998    
+ minpermdist> distance after moving      0 atoms=     5.592834796    
+ minpermdist> distance after moving     10 atoms=     6.802396339    
+ minpermdist> distance after moving      4 atoms=     6.243803207    
+ minpermdist> distance after moving      0 atoms=     6.227827534    
+ minpermdist> distance after moving     24 atoms=     8.334689162    
+ minpermdist> distance after moving     10 atoms=     6.511830317    
+ minpermdist> distance after moving      8 atoms=     6.410877618    
+ minpermdist> distance after moving      2 atoms=     4.916356016    
+ minpermdist> distance after moving      0 atoms=     4.913839196    
+ minpermdist> distance after moving     24 atoms=     8.596401320    
+ minpermdist> distance after moving      8 atoms=     6.913045551    
+ minpermdist> distance after moving      0 atoms=     6.904963414    
+ minpermdist> distance after moving     22 atoms=     7.545817371    
+ minpermdist> distance after moving      6 atoms=     5.256291487    
+ minpermdist> distance after moving      0 atoms=     5.247040778    
+ minpermdist> distance after moving     20 atoms=     10.42652920    
+ minpermdist> distance after moving      4 atoms=     7.701222977    
+ minpermdist> distance after moving      0 atoms=     7.692365690    
+ minpermdist> distance after moving     16 atoms=     9.381245839    
+ minpermdist> distance after moving      6 atoms=     8.179489369    
+ minpermdist> distance after moving      0 atoms=     8.165429407    
+ minpermdist> distance after moving     24 atoms=     8.838161399    
+ minpermdist> distance after moving     16 atoms=     6.727381956    
+ minpermdist> distance after moving      2 atoms=     5.529429089    
+ minpermdist> distance after moving      0 atoms=     5.527306792    
+ minpermdist> distance after moving     18 atoms=     8.660653049    
+ minpermdist> distance after moving      6 atoms=     7.398741833    
+ minpermdist> distance after moving      2 atoms=     7.386431981    
+ minpermdist> distance after moving      0 atoms=     7.381077551    
+ minpermdist> distance after moving     24 atoms=     9.001924348    
+ minpermdist> distance after moving      8 atoms=     6.954548209    
+ minpermdist> distance after moving      0 atoms=     6.941208428    
+ minpermdist> distance after moving     16 atoms=     7.555567961    
+ minpermdist> distance after moving      6 atoms=     6.447880538    
+ minpermdist> distance after moving      0 atoms=     6.437191378    
+ minpermdist> distance after moving     24 atoms=     8.287142180    
+ minpermdist> distance after moving      8 atoms=     5.032325926    
+ minpermdist> distance after moving      0 atoms=     5.024825819    
+ minpermdist> distance after moving     16 atoms=     7.838301445    
+ minpermdist> distance after moving      4 atoms=     6.493346335    
+ minpermdist> distance after moving      0 atoms=     6.492144358    
+ minpermdist> distance after moving     16 atoms=     7.047007449    
+ minpermdist> distance after moving      2 atoms=     6.101599362    
+ minpermdist> distance after moving      0 atoms=     6.096686817    
+ minpermdist> distance after moving     20 atoms=     8.009051837    
+ minpermdist> distance after moving      6 atoms=     6.560694616    
+ minpermdist> distance after moving      0 atoms=     6.553538505    
+ minpermdist> distance after moving     18 atoms=     5.390180163    
+ minpermdist> distance after moving      2 atoms=     3.765944733    
+ minpermdist> distance after moving      0 atoms=     3.756113731    
+ minpermdist> distance after moving     22 atoms=     9.232734862    
+ minpermdist> distance after moving      6 atoms=     6.575708539    
+ minpermdist> distance after moving      0 atoms=     6.571167030    
+ minpermdist> distance after moving     16 atoms=     9.343037226    
+ minpermdist> distance after moving      4 atoms=     6.171590644    
+ minpermdist> distance after moving      0 atoms=     6.167258029    
+ minpermdist> distance after moving     24 atoms=     9.114289254    
+ minpermdist> distance after moving      6 atoms=     8.302618864    
+ minpermdist> distance after moving      0 atoms=     8.299940948    
+ minpermdist> distance after moving     24 atoms=     7.783368422    
+ minpermdist> distance after moving      2 atoms=     6.417150497    
+ minpermdist> distance after moving      0 atoms=     6.415858467    
+ minpermdist> distance after moving     24 atoms=     9.379015683    
+ minpermdist> distance after moving     10 atoms=     8.040553946    
+ minpermdist> distance after moving      0 atoms=     8.019549220    
+ minpermdist> distance after moving     18 atoms=     7.555459193    
+ minpermdist> distance after moving      2 atoms=     3.478302050    
+ minpermdist> distance after moving      0 atoms=     3.473573193    
+ minpermdist> distance after moving     20 atoms=     7.810777825    
+ minpermdist> distance after moving      4 atoms=     6.537691079    
+ minpermdist> distance after moving      0 atoms=     6.524599562    
+ minpermdist> distance after moving      8 atoms=     8.152591367    
+ minpermdist> distance after moving      2 atoms=     4.956747016    
+ minpermdist> distance after moving      0 atoms=     4.950369724    
+ minpermdist> distance after moving     24 atoms=     6.452965580    
+ minpermdist> distance after moving      8 atoms=     3.055812817    
+ minpermdist> distance after moving      0 atoms=     3.050585329    
+ minpermdist> distance after moving     24 atoms=     7.886133077    
+ minpermdist> distance after moving     12 atoms=     7.701646479    
+ minpermdist> distance after moving      2 atoms=     6.198845606    
+ minpermdist> distance after moving      0 atoms=     6.195157200    
+ minpermdist> distance after moving     24 atoms=     6.508995742    
+ minpermdist> distance after moving      4 atoms=     4.271173372    
+ minpermdist> distance after moving      0 atoms=     4.245536684    
+ minpermdist> distance after moving     16 atoms=     8.609599920    
+ minpermdist> distance after moving      4 atoms=     7.565874432    
+ minpermdist> distance after moving      2 atoms=     7.557304806    
+ minpermdist> distance after moving      0 atoms=     7.551733084    
+ minpermdist> distance after moving      0 atoms=     6.613980709    
+ minpermdist> distance after moving      0 atoms=     2.305083303    
+ minpermdist> distance after moving     24 atoms=     9.071167759    
+ minpermdist> distance after moving      6 atoms=     5.540107322    
+ minpermdist> distance after moving      0 atoms=     5.527306792    
+ minpermdist> distance after moving     24 atoms=     9.479134781    
+ minpermdist> distance after moving      6 atoms=     4.569872507    
+ minpermdist> distance after moving      0 atoms=     4.533808432    
+ minpermdist> distance after moving     24 atoms=     9.863227225    
+ minpermdist> distance after moving      6 atoms=     6.216252763    
+ minpermdist> distance after moving      0 atoms=     6.195157200    
+ minpermdist> distance after moving     24 atoms=     9.318256360    
+ minpermdist> distance after moving      8 atoms=     8.311051917    
+ minpermdist> distance after moving      0 atoms=     8.299940948    
+ minpermdist> distance after moving      8 atoms=     7.938851545    
+ minpermdist> distance after moving      2 atoms=     4.956747016    
+ minpermdist> distance after moving      0 atoms=     4.950369724    
+ minpermdist> distance after moving     22 atoms=     9.309337449    
+ minpermdist> distance after moving     14 atoms=     7.113555303    
+ minpermdist> distance after moving      4 atoms=     5.997609119    
+ minpermdist> distance after moving      0 atoms=     5.989024483    
+ minpermdist> distance after moving     22 atoms=     8.187449003    
+ minpermdist> distance after moving      6 atoms=     7.156084897    
+ minpermdist> distance after moving      0 atoms=     7.147742961    
+ minpermdist> distance after moving     24 atoms=     7.142120714    
+ minpermdist> distance after moving      6 atoms=     6.604736530    
+ minpermdist> distance after moving      0 atoms=     6.597151263    
+ minpermdist> distance after moving     24 atoms=     8.350032441    
+ minpermdist> distance after moving      4 atoms=     6.439233520    
+ minpermdist> distance after moving      0 atoms=     6.426032238    
+ minpermdist> distance after moving     22 atoms=     9.178756010    
+ minpermdist> distance after moving      6 atoms=     6.198247005    
+ minpermdist> distance after moving      0 atoms=     6.192750198    
+ minpermdist> distance after moving     24 atoms=     9.460481280    
+ minpermdist> distance after moving      6 atoms=     5.035342195    
+ minpermdist> distance after moving      0 atoms=     5.024825819    
+ minpermdist> distance after moving     24 atoms=     5.211890014    
+ minpermdist> distance after moving      8 atoms=     3.055812817    
+ minpermdist> distance after moving      0 atoms=     3.050585329    
+ minpermdist> distance after moving     18 atoms=     8.433824781    
+ minpermdist> distance after moving      8 atoms=     7.092862831    
+ minpermdist> distance after moving      0 atoms=     7.087098933    
+ minpermdist> distance after moving     12 atoms=     8.529172752    
+ minpermdist> distance after moving      4 atoms=     7.159823542    
+ minpermdist> distance after moving      0 atoms=     7.145891642    
+ minpermdist> distance after moving     24 atoms=     7.456874601    
+ minpermdist> distance after moving      6 atoms=     5.559061193    
+ minpermdist> distance after moving      0 atoms=     5.527306792    
+ minpermdist> distance after moving     20 atoms=     9.228968347    
+ minpermdist> distance after moving     14 atoms=     7.696000464    
+ minpermdist> distance after moving      2 atoms=     6.060010283    
+ minpermdist> distance after moving      0 atoms=     6.059910058    
+ minpermdist> distance after moving     24 atoms=     8.494033146    
+ minpermdist> distance after moving      2 atoms=     6.417150497    
+ minpermdist> distance after moving      0 atoms=     6.415858467    
+ minpermdist> distance after moving     16 atoms=     7.982765343    
+ minpermdist> distance after moving      6 atoms=     6.447880538    
+ minpermdist> distance after moving      0 atoms=     6.437191378    
+ minpermdist> distance after moving     18 atoms=     6.710750657    
+ minpermdist> distance after moving      4 atoms=     5.750345663    
+ minpermdist> distance after moving      0 atoms=     5.743743330    
+ minpermdist> distance after moving     24 atoms=     7.416949171    
+ minpermdist> distance after moving      4 atoms=     4.271173372    
+ minpermdist> distance after moving      0 atoms=     4.245536684    
+ minpermdist> distance after moving     24 atoms=     7.707155196    
+ minpermdist> distance after moving      4 atoms=     6.418881869    
+ minpermdist> distance after moving      0 atoms=     6.415858467    
+ minpermdist> distance after moving     20 atoms=     7.326147849    
+ minpermdist> distance after moving      6 atoms=     6.384642558    
+ minpermdist> distance after moving      0 atoms=     6.355692027    
+ minpermdist> distance after moving     18 atoms=     8.996579731    
+ minpermdist> distance after moving      8 atoms=     7.092862831    
+ minpermdist> distance after moving      0 atoms=     7.087098933    
+ minpermdist> distance after moving     24 atoms=     7.124512151    
+ minpermdist> distance after moving      8 atoms=     3.055812817    
+ minpermdist> distance after moving      0 atoms=     3.050585329    
+ minpermdist> distance after moving     24 atoms=     8.764099144    
+ minpermdist> distance after moving      2 atoms=     6.511659665    
+ minpermdist> distance after moving      0 atoms=     6.510021292    
+ minpermdist> distance after moving      0 atoms=     5.245334489    
+ minpermdist> distance after moving      0 atoms=     2.305083303    
+ minpermdist> distance after moving     24 atoms=     9.258377293    
+ minpermdist> distance after moving      8 atoms=     5.032325926    
+ minpermdist> distance after moving      0 atoms=     5.024825819    
+ minpermdist> distance after moving     22 atoms=     8.498949583    
+ minpermdist> distance after moving      4 atoms=     5.247943998    
+ minpermdist> distance after moving      0 atoms=     5.247040778    
+ minpermdist> distance after moving     24 atoms=     8.965376081    
+ minpermdist> distance after moving      8 atoms=     8.177036741    
+ minpermdist> distance after moving      0 atoms=     8.156222221    
+ minpermdist> distance after moving     24 atoms=     8.263655107    
+ minpermdist> distance after moving      0 atoms=     5.592834796    
+ minpermdist> distance after moving     20 atoms=     8.766920483    
+ minpermdist> distance after moving      4 atoms=     7.975976638    
+ minpermdist> distance after moving      0 atoms=     7.968861491    
+ minpermdist> distance after moving     20 atoms=     7.887579515    
+ minpermdist> distance after moving      4 atoms=     6.367338389    
+ minpermdist> distance after moving      0 atoms=     6.355692027    
+ minpermdist> distance after moving     16 atoms=     8.305228590    
+ minpermdist> distance after moving     12 atoms=     7.727424632    
+ minpermdist> distance after moving      4 atoms=     6.233170339    
+ minpermdist> distance after moving      0 atoms=     6.227827534    
+ minpermdist> distance after moving     20 atoms=     9.485387792    
+ minpermdist> distance after moving      4 atoms=     6.339451439    
+ minpermdist> distance after moving      0 atoms=     6.338882774    
+ minpermdist> distance after moving     24 atoms=     7.411938507    
+ minpermdist> distance after moving      6 atoms=     6.430297031    
+ minpermdist> distance after moving      0 atoms=     6.426032238    
+ minpermdist> distance after moving     20 atoms=     7.675162221    
+ minpermdist> distance after moving      8 atoms=     6.541166939    
+ minpermdist> distance after moving      0 atoms=     6.524599562    
+ minpermdist> distance after moving     24 atoms=     8.186269028    
+ minpermdist> distance after moving      6 atoms=     6.400843155    
+ minpermdist> distance after moving      0 atoms=     6.385714887    
+ minpermdist> distance after moving     22 atoms=     9.310446680    
+ minpermdist> distance after moving     12 atoms=     6.996514171    
+ minpermdist> distance after moving      4 atoms=     5.997609119    
+ minpermdist> distance after moving      0 atoms=     5.989024483    
+ minpermdist> distance after moving     20 atoms=     8.720160978    
+ minpermdist> distance after moving      8 atoms=     7.425481769    
+ minpermdist> distance after moving      0 atoms=     7.402429444    
+ minpermdist> distance after moving     24 atoms=     8.916453485    
+ minpermdist> distance after moving      8 atoms=     7.255398689    
+ minpermdist> distance after moving      0 atoms=     7.250098730    
+ minpermdist> distance after moving     24 atoms=     8.029949576    
+ minpermdist> distance after moving     10 atoms=     7.582972865    
+ minpermdist> distance after moving      0 atoms=     6.426032238    
+ minpermdist> distance after moving     20 atoms=     7.040241509    
+ minpermdist> distance after moving      4 atoms=     6.343999396    
+ minpermdist> distance after moving      0 atoms=     6.338882774    
+ minpermdist> distance after moving     24 atoms=     5.891333945    
+ minpermdist> distance after moving      8 atoms=     3.372433133    
+ minpermdist> distance after moving      0 atoms=     3.367409034    
+ minpermdist> distance after moving     18 atoms=     7.401791935    
+ minpermdist> distance after moving      8 atoms=     6.455916166    
+ minpermdist> distance after moving      0 atoms=     6.437191378    
+ minpermdist> distance after moving     24 atoms=     9.068843968    
+ minpermdist> distance after moving     10 atoms=     6.273461940    
+ minpermdist> distance after moving      2 atoms=     4.985046350    
+ minpermdist> distance after moving      0 atoms=     4.979235172    
+ minpermdist> distance after moving     22 atoms=     9.585009527    
+ minpermdist> distance after moving      4 atoms=     5.813822829    
+ minpermdist> distance after moving      0 atoms=     5.805189450    
+ minpermdist> distance after moving     24 atoms=     8.283863035    
+ minpermdist> distance after moving      6 atoms=     7.238436374    
+ minpermdist> distance after moving      8 atoms=     6.642892030    
+ minpermdist> distance after moving      4 atoms=     5.192742902    
+ minpermdist> distance after moving      0 atoms=     5.182556002    
+ minpermdist> distance after moving     22 atoms=     6.278390276    
+ minpermdist> distance after moving      6 atoms=     5.254646356    
+ minpermdist> distance after moving      0 atoms=     5.247040778    
+ minpermdist> distance after moving     18 atoms=     8.487362415    
+ minpermdist> distance after moving      6 atoms=     6.251506895    
+ minpermdist> distance after moving      0 atoms=     6.244224108    
+ minpermdist> distance after moving     24 atoms=     8.957326555    
+ minpermdist> distance after moving      8 atoms=     7.564860496    
+ minpermdist> distance after moving      2 atoms=     7.556721486    
+ minpermdist> distance after moving      0 atoms=     7.550056843    
+ minpermdist> distance after moving     18 atoms=     9.008785895    
+ minpermdist> distance after moving      2 atoms=     8.479497970    
+ minpermdist> distance after moving      0 atoms=     8.475704320    
+ minpermdist> distance after moving     20 atoms=     9.366577660    
+ minpermdist> distance after moving      8 atoms=     7.785776896    
+ minpermdist> distance after moving      0 atoms=     7.776818781    
+ minpermdist> distance after moving     24 atoms=     7.463102552    
+ minpermdist> distance after moving     10 atoms=     3.743190854    
+ minpermdist> distance after moving      0 atoms=     3.726175732    
+ minpermdist> distance after moving     20 atoms=     6.925491217    
+ minpermdist> distance after moving      4 atoms=     6.367338389    
+ minpermdist> distance after moving      0 atoms=     6.355692027    
+ minpermdist> distance after moving     16 atoms=     5.565287497    
+ minpermdist> distance after moving      0 atoms=     4.733066427    
+ minpermdist> distance after moving     24 atoms=     8.756953732    
+ minpermdist> distance after moving     12 atoms=     9.461246627    
+ minpermdist> distance after moving      8 atoms=     7.165706349    
+ minpermdist> distance after moving      2 atoms=     5.588683935    
+ minpermdist> distance after moving      0 atoms=     5.586926161    
+ minpermdist> distance after moving     24 atoms=     8.514441051    
+ minpermdist> distance after moving      4 atoms=     7.666226749    
+ minpermdist> distance after moving      0 atoms=     7.649156416    
+ minpermdist> distance after moving     24 atoms=     6.943609847    
+ minpermdist> distance after moving      6 atoms=     4.284442923    
+ minpermdist> distance after moving      0 atoms=     4.245536684    
+ minpermdist> distance after moving     24 atoms=     8.665653338    
+ minpermdist> distance after moving     10 atoms=     3.738622684    
+ minpermdist> distance after moving      0 atoms=     3.726175732    
+ minpermdist> distance after moving     22 atoms=     9.466160840    
+ minpermdist> distance after moving      4 atoms=     6.558870721    
+ minpermdist> distance after moving      0 atoms=     6.553538505    
+ minpermdist> distance after moving     20 atoms=     7.730522290    
+ minpermdist> distance after moving      2 atoms=     6.910881788    
+ minpermdist> distance after moving      0 atoms=     6.907516684    
+ minpermdist> distance after moving     24 atoms=     9.236025126    
+ minpermdist> distance after moving      8 atoms=     8.352141595    
+ minpermdist> distance after moving      0 atoms=     8.299194301    
+ minpermdist> distance after moving     24 atoms=     7.153115045    
+ minpermdist> distance after moving      8 atoms=     5.189049707    
+ minpermdist> distance after moving      0 atoms=     5.182556002    
+ minpermdist> distance after moving     20 atoms=     7.485819468    
+ minpermdist> distance after moving      4 atoms=     6.367338389    
+ minpermdist> distance after moving      0 atoms=     6.355692027    
+ minpermdist> distance after moving     24 atoms=     8.051672153    
+ minpermdist> distance after moving      6 atoms=     5.186009980    
+ minpermdist> distance after moving      0 atoms=     5.182556002    
+ minpermdist> distance after moving     24 atoms=     6.868842166    
+ minpermdist> distance after moving      8 atoms=     4.338120403    
+ minpermdist> distance after moving      0 atoms=     4.300398328    
+ minpermdist> distance after moving     18 atoms=     9.642305287    
+ minpermdist> distance after moving      4 atoms=     6.253742122    
+ minpermdist> distance after moving      0 atoms=     6.244224108    
+ minpermdist> distance after moving     24 atoms=     9.565284811    
+ minpermdist> distance after moving      8 atoms=     8.311051917    
+ minpermdist> distance after moving      0 atoms=     8.299940948    
+ minpermdist> distance after moving     24 atoms=     7.511642855    
+ minpermdist> distance after moving      8 atoms=     3.730912081    
+ minpermdist> distance after moving      0 atoms=     3.726175732    
+ minpermdist> distance after moving     20 atoms=     7.759634439    
+ minpermdist> distance after moving     12 atoms=     7.424909441    
+ minpermdist> distance after moving      4 atoms=     6.504552885    
+ minpermdist> distance after moving      0 atoms=     6.492144358    
+ minpermdist> distance after moving     24 atoms=     7.564931865    
+ minpermdist> distance after moving     10 atoms=     3.389609195    
+ minpermdist> distance after moving      0 atoms=     3.367409034    
+ minpermdist> distance after moving     16 atoms=     7.830279161    
+ minpermdist> distance after moving      4 atoms=     7.137725132    
+ minpermdist> distance after moving      0 atoms=     7.127635860    
+ minpermdist> distance after moving     24 atoms=     9.353805751    
+ minpermdist> distance after moving      6 atoms=     7.444574076    
+ minpermdist> distance after moving      0 atoms=     7.424631665    
+ minpermdist> distance after moving      0 atoms=     8.669094602    
+ minpermdist> distance after moving      0 atoms=     2.305083303    
+ minpermdist> distance after moving     24 atoms=     8.845446891    
+ minpermdist> distance after moving     14 atoms=     7.091085403    
+ minpermdist> distance after moving      4 atoms=     5.536939655    
+ minpermdist> distance after moving      0 atoms=     5.527306792    
+ minpermdist> distance after moving     20 atoms=     8.914783928    
+ minpermdist> distance after moving      0 atoms=     5.868391149    
+ minpermdist> distance after moving     24 atoms=     9.433853409    
+ minpermdist> distance after moving      8 atoms=     8.217249589    
+ minpermdist> distance after moving      2 atoms=     8.197010987    
+ minpermdist> distance after moving      0 atoms=     8.191073679    
+ minpermdist> distance after moving     24 atoms=     7.088236038    
+ minpermdist> distance after moving      8 atoms=     3.055812817    
+ minpermdist> distance after moving      0 atoms=     3.050585329    
+ minpermdist> distance after moving     24 atoms=     8.606221623    
+ minpermdist> distance after moving      6 atoms=     7.444574076    
+ minpermdist> distance after moving      0 atoms=     7.424631665    
+ minpermdist> distance after moving     24 atoms=     6.959667029    
+ minpermdist> distance after moving      4 atoms=     4.257954613    
+ minpermdist> distance after moving      0 atoms=     4.245536684    
+ minpermdist> distance after moving     16 atoms=     8.753556883    
+ minpermdist> distance after moving     10 atoms=     6.261747854    
+ minpermdist> distance after moving      4 atoms=     4.971756590    
+ minpermdist> distance after moving      0 atoms=     4.950369724    
+ minpermdist> distance after moving     24 atoms=     8.118855671    
+ minpermdist> distance after moving      2 atoms=     7.112222398    
+ minpermdist> distance after moving      0 atoms=     7.106956766    
+ minpermdist> distance after moving     18 atoms=     8.102834201    
+ minpermdist> distance after moving      6 atoms=     7.097045501    
+ minpermdist> distance after moving      0 atoms=     7.087098933    
+ minpermdist> distance after moving     16 atoms=     9.743207136    
+ minpermdist> distance after moving      8 atoms=     7.386614078    
+ minpermdist> distance after moving      0 atoms=     7.381077551    
+ minpermdist> distance after moving     24 atoms=     7.265245484    
+ minpermdist> distance after moving      4 atoms=     6.088443781    
+ minpermdist> distance after moving      0 atoms=     6.085356509    
+ minpermdist> distance after moving     12 atoms=     7.754118951    
+ minpermdist> distance after moving      4 atoms=     6.962221220    
+ minpermdist> distance after moving      0 atoms=     6.954043984    
+ minpermdist> distance after moving     24 atoms=     9.635923673    
+ minpermdist> distance after moving      8 atoms=     7.502574007    
+ minpermdist> distance after moving      0 atoms=     7.476317522    
+ minpermdist> distance after moving     22 atoms=     7.500809583    
+ minpermdist> distance after moving      4 atoms=     6.560315383    
+ minpermdist> distance after moving      0 atoms=     6.553538505    
+ minpermdist> distance after moving     24 atoms=     8.488779112    
+ minpermdist> distance after moving      8 atoms=     5.591505812    
+ minpermdist> distance after moving      0 atoms=     5.575735330    
+ minpermdist> distance after moving     24 atoms=     7.832383813    
+ minpermdist> distance after moving      2 atoms=     7.112222398    
+ minpermdist> distance after moving      0 atoms=     7.106956766    
+ minpermdist> distance after moving     24 atoms=     8.037676725    
+ minpermdist> distance after moving      6 atoms=     6.088700659    
+ minpermdist> distance after moving      0 atoms=     6.085356509    
+ minpermdist> distance after moving     24 atoms=     6.792438407    
+ minpermdist> distance after moving      8 atoms=     4.338120403    
+ minpermdist> distance after moving      0 atoms=     4.300398328    
+ minpermdist> distance after moving     16 atoms=     8.419797784    
+ minpermdist> distance after moving      0 atoms=     4.732743737    
+ minpermdist> distance after moving     24 atoms=     7.085685784    
+ minpermdist> distance after moving     10 atoms=     4.366277660    
+ minpermdist> distance after moving      0 atoms=     4.300398328    
+ minpermdist> distance after moving     24 atoms=     5.201097664    
+ minpermdist> distance after moving      8 atoms=     3.372433133    
+ minpermdist> distance after moving      0 atoms=     3.367409034    
+ minpermdist> distance after moving     24 atoms=     7.570208764    
+ minpermdist> distance after moving      8 atoms=     6.406623340    
+ minpermdist> distance after moving      0 atoms=     6.386534728    
+ minpermdist> distance after moving     24 atoms=     7.362809065    
+ minpermdist> distance after moving      8 atoms=     5.541020040    
+ minpermdist> distance after moving      0 atoms=     5.527306792    
+ minpermdist> distance after moving     22 atoms=     9.125589967    
+ minpermdist> distance after moving      6 atoms=     6.028694519    
+ minpermdist> distance after moving      2 atoms=     5.995543207    
+ minpermdist> distance after moving      0 atoms=     5.989024483    
+ minpermdist> distance after moving     24 atoms=     9.003832168    
+ minpermdist> distance after moving      4 atoms=     6.095623824    
+ minpermdist> distance after moving      0 atoms=     6.085356509    
+ minpermdist> distance after moving     24 atoms=     9.510843037    
+ minpermdist> distance after moving      6 atoms=     4.547106172    
+ minpermdist> distance after moving      0 atoms=     4.533808432    
+ minpermdist> distance after moving     20 atoms=     8.444048869    
+ minpermdist> distance after moving      0 atoms=     7.694011664    
+ minpermdist> distance after moving     16 atoms=     7.784640979    
+ minpermdist> distance after moving      2 atoms=     6.636882108    
+ minpermdist> distance after moving      0 atoms=     6.632118500    
+ minpermdist> distance after moving     24 atoms=     7.852701157    
+ minpermdist> distance after moving      2 atoms=     7.626944811    
+ minpermdist> distance after moving      0 atoms=     7.623648556    
+ minpermdist> distance after moving     20 atoms=     9.844281338    
+ minpermdist> distance after moving     10 atoms=     7.121770865    
+ minpermdist> distance after moving      4 atoms=     5.377503394    
+ minpermdist> distance after moving      0 atoms=     5.369353393    
+ minpermdist> distance after moving     10 atoms=     8.710907799    
+ minpermdist> distance after moving      4 atoms=     6.243803207    
+ minpermdist> distance after moving      0 atoms=     6.227827534    
+ minpermdist> distance after moving     22 atoms=     8.145650191    
+ minpermdist> distance after moving     10 atoms=     7.607768984    
+ minpermdist> distance after moving      6 atoms=     6.203636008    
+ minpermdist> distance after moving      0 atoms=     6.192750198    
+ minpermdist> distance after moving     24 atoms=     9.015050130    
+ minpermdist> distance after moving      2 atoms=     5.031513798    
+ minpermdist> distance after moving      0 atoms=     5.024825819    
+ minpermdist> distance after moving     24 atoms=     8.815433884    
+ minpermdist> distance after moving      8 atoms=     4.338120403    
+ minpermdist> distance after moving      0 atoms=     4.300398328    
+ minpermdist> distance after moving     22 atoms=     8.901137836    
+ minpermdist> distance after moving      6 atoms=     7.901496956    
+ minpermdist> distance after moving      8 atoms=     8.585567188    
+ minpermdist> distance after moving      2 atoms=     7.088246682    
+ minpermdist> distance after moving      0 atoms=     7.087098933    
+ minpermdist> distance after moving     16 atoms=     7.021347150    
+ minpermdist> distance after moving      4 atoms=     6.493346335    
+ minpermdist> distance after moving      0 atoms=     6.492144358    
+ minpermdist> distance after moving     16 atoms=     8.099616145    
+ minpermdist> distance after moving      2 atoms=     7.333792113    
+ minpermdist> distance after moving      0 atoms=     7.328330227    
+ minpermdist> distance after moving     24 atoms=     8.235778068    
+ minpermdist> distance after moving      8 atoms=     6.406623340    
+ minpermdist> distance after moving      0 atoms=     6.386534728    
+ minpermdist> distance after moving     16 atoms=     9.225738267    
+ minpermdist> distance after moving     12 atoms=     7.727424632    
+ minpermdist> distance after moving      4 atoms=     6.233170339    
+ minpermdist> distance after moving      0 atoms=     6.227827534    
+ minpermdist> distance after moving     16 atoms=     8.950717040    
+ minpermdist> distance after moving      2 atoms=     8.690513792    
+ minpermdist> distance after moving      0 atoms=     8.687663762    
+ minpermdist> distance after moving     24 atoms=     8.945595903    
+ minpermdist> distance after moving     12 atoms=     7.630526936    
+ minpermdist> distance after moving      0 atoms=     6.426032238    
+ minpermdist> distance after moving     16 atoms=     9.702402670    
+ minpermdist> distance after moving      6 atoms=     8.966573844    
+ minpermdist> distance after moving      0 atoms=     8.947944132    
+ minpermdist> distance after moving     16 atoms=     8.897229372    
+ minpermdist> distance after moving     10 atoms=     6.131610155    
+ minpermdist> distance after moving      2 atoms=     4.956747016    
+ minpermdist> distance after moving      0 atoms=     4.950369724    
+ minpermdist> distance after moving     16 atoms=     8.630683855    
+ minpermdist> distance after moving      6 atoms=     6.447880538    
+ minpermdist> distance after moving      0 atoms=     6.437191378    
+ minpermdist> distance after moving     22 atoms=     9.262204881    
+ minpermdist> distance after moving      6 atoms=     7.901496956    
+ minpermdist> distance after moving      8 atoms=     8.585567188    
+ minpermdist> distance after moving      2 atoms=     7.088246682    
+ minpermdist> distance after moving      0 atoms=     7.087098933    
+ minpermdist> distance after moving     16 atoms=     6.817500739    
+ minpermdist> distance after moving      4 atoms=     4.919004286    
+ minpermdist> distance after moving      0 atoms=     4.913839196    
+ minpermdist> distance after moving     10 atoms=     9.822402066    
+ minpermdist> distance after moving     12 atoms=     7.573881566    
+ minpermdist> distance after moving      8 atoms=     5.749162484    
+ minpermdist> distance after moving      0 atoms=     5.743743330    
+ minpermdist> distance after moving     20 atoms=     7.833775309    
+ minpermdist> distance after moving      0 atoms=     5.868391149    
+ minpermdist> distance after moving     24 atoms=     8.287867925    
+ minpermdist> distance after moving     10 atoms=     6.390174246    
+ minpermdist> distance after moving      0 atoms=     6.383911039    
+ minpermdist> distance after moving     24 atoms=     7.395404325    
+ minpermdist> distance after moving      2 atoms=     7.112222398    
+ minpermdist> distance after moving      0 atoms=     7.106956766    
+ minpermdist> distance after moving     24 atoms=     8.010930812    
+ minpermdist> distance after moving      8 atoms=     3.739082621    
+ minpermdist> distance after moving      0 atoms=     3.726175732    
+ minpermdist> distance after moving     24 atoms=     8.913987389    
+ minpermdist> distance after moving      8 atoms=     6.511837270    
+ minpermdist> distance after moving      8 atoms=     6.410877618    
+ minpermdist> distance after moving      2 atoms=     4.916356016    
+ minpermdist> distance after moving      0 atoms=     4.913839196    
+ minpermdist> distance after moving     10 atoms=     7.975260765    
+ minpermdist> distance after moving      0 atoms=     6.552620691    
+ minpermdist> distance after moving     16 atoms=     8.551192918    
+ minpermdist> distance after moving      4 atoms=     7.091050927    
+ minpermdist> distance after moving      0 atoms=     7.086555414    
+ minpermdist> distance after moving     20 atoms=     9.279901317    
+ minpermdist> distance after moving     10 atoms=     7.637375285    
+ minpermdist> distance after moving      0 atoms=     7.611503936    
+ minpermdist> distance after moving     22 atoms=     7.955812335    
+ minpermdist> distance after moving      6 atoms=     5.813917706    
+ minpermdist> distance after moving      0 atoms=     5.805189450    
+ minpermdist> distance after moving     16 atoms=     9.261549063    
+ minpermdist> distance after moving      4 atoms=     7.315014565    
+ minpermdist> distance after moving      0 atoms=     7.304362843    
+ minpermdist> distance after moving     24 atoms=     6.257786158    
+ minpermdist> distance after moving      8 atoms=     4.338120403    
+ minpermdist> distance after moving      0 atoms=     4.300398328    
+ minpermdist> distance after moving     24 atoms=     7.480343813    
+ minpermdist> distance after moving      8 atoms=     3.372433133    
+ minpermdist> distance after moving      0 atoms=     3.367409034    
+ minpermdist> distance after moving     24 atoms=     7.442313940    
+ minpermdist> distance after moving      6 atoms=     4.284442923    
+ minpermdist> distance after moving      0 atoms=     4.245536684    
+ minpermdist> distance after moving     24 atoms=     9.484661355    
+ minpermdist> distance after moving      8 atoms=     8.177036741    
+ minpermdist> distance after moving      0 atoms=     8.156222221    
+ minpermdist> distance after moving     24 atoms=     7.737581153    
+ minpermdist> distance after moving      6 atoms=     4.284442923    
+ minpermdist> distance after moving      0 atoms=     4.245536684    
+ minpermdist> distance after moving     24 atoms=     9.757382762    
+ minpermdist> distance after moving     10 atoms=     6.958989032    
+ minpermdist> distance after moving      0 atoms=     6.941208428    
+ minpermdist> distance after moving     16 atoms=     9.575356401    
+ minpermdist> distance after moving      2 atoms=     7.997280721    
+ minpermdist> distance after moving      0 atoms=     7.990067273    
+ minpermdist> distance after moving     24 atoms=     8.729134349    
+ minpermdist> distance after moving      6 atoms=     7.638727307    
+ minpermdist> distance after moving      0 atoms=     7.623648556    
+ minpermdist> distance after moving     24 atoms=     7.012070740    
+ minpermdist> distance after moving      4 atoms=     5.600995222    
+ minpermdist> distance after moving      0 atoms=     5.592834796    
+ minpermdist> distance after moving     24 atoms=     8.403715770    
+ minpermdist> distance after moving      6 atoms=     7.683079129    
+ minpermdist> distance after moving      0 atoms=     7.649156416    
+ minpermdist> distance after moving     24 atoms=     7.492700012    
+ minpermdist> distance after moving      8 atoms=     4.562003555    
+ minpermdist> distance after moving      0 atoms=     4.533808432    
+ minpermdist> distance after moving     20 atoms=     9.234854858    
+ minpermdist> distance after moving     10 atoms=     7.445027293    
+ minpermdist> distance after moving      0 atoms=     7.402429444    
+ minpermdist> distance after moving     16 atoms=     7.736101029    
+ minpermdist> distance after moving      4 atoms=     6.493346335    
+ minpermdist> distance after moving      0 atoms=     6.492144358    
+ minpermdist> distance after moving     16 atoms=     8.062787314    
+ minpermdist> distance after moving      4 atoms=     6.171590644    
+ minpermdist> distance after moving      0 atoms=     6.167258029    
+ minpermdist> distance after moving     20 atoms=     7.769164359    
+ minpermdist> distance after moving      6 atoms=     6.541979575    
+ minpermdist> distance after moving      0 atoms=     6.524599562    
+ minpermdist> distance after moving     10 atoms=     8.286842216    
+ minpermdist> distance after moving      0 atoms=     6.552620691    
+ minpermdist> distance after moving     20 atoms=     7.576866620    
+ minpermdist> distance after moving      4 atoms=     6.267749545    
+ minpermdist> distance after moving      0 atoms=     6.264586733    
+ minpermdist> distance after moving     16 atoms=     8.363348822    
+ minpermdist> distance after moving      0 atoms=     4.733066427    
+ final   energy for structure A=                  -193.671270772554749 RMS=        0.000000140363236
+ final   energy for structure B=                  -196.290778845630371 RMS=        0.000000735586727
+ KeyConnect> Maximum cycles = 100, maximum images = 7
+ KeyConnect> Maximum attempts per pair of minima = 1, with increment image density of 3.00
+ KeyConnect> Image density = 5.00, iteration density = 30.00
+ KeyNEB> Initial and final NEB force constants     100.0000000        100.0000000     factor=    1.010000000    
+ KeyNEB> Number of images will vary depending on the separation of the endpoints
+ KeyNEB> NEB coordinates will be saved to xyz file "neb.xyz" every 100 iterations
+ KeyNEB> NEB coordinates will be saved to binary file "neb.out" every 100 iterations
+ KeyNEB> Energy profile will be saved to file "neb.EofS" every 100 iterations
+ KeyNEB> Verbose printing is on
+ KeyNEB> Evolution of AvDev, E, Rms and S will be saved to files "AvDevofI", "EofI", "RmsofI" and "SofI"
+ KeyGrad> Overall rotation and translation will NOT be removed
+ KeyGrad> Using doubly nudged elastic band gradient
+ KeyOutput> Transition state candidates will be optimized
+ KeyOutput> Verbose printing during transition states optimization
+ KeyOutput> Transition state candidates are maxima along NEB
+ KeyMin> Maximal number of iterations will vary, depending on the number of images in the band
+ KeyMin> RMS convergence criterion is set to 0.03
+ KeyMin> L-BFGS minimization
+ KeyLBFGS> Maximum step size per image =     0.2000000000    
+ KeyLBFGS> 100 Hessian updates per iteration
+ KeyLBFGS> Guess for inverse Hessian diagonal elements =     0.1000000000E-02
+ KeyTau> Using Henkelman and Jonsson's improved tangent
+ KeyConnect> Verbose printing is on
+ KeyDecide> Cost function in Dijkstra algorithm is D^25
+ 
+ >>>>>>>>>>>>>>>>>>>>> CONNECT CYCLE 1 >>>>>>>>>>>>>>>>>>>>> 2 minima and 0 ts are known >>>>>>>>>>>>>>>>>>>>
+ decide> Shortest path in Dijkstra has      1 steps with      1 missing connections, weight=    0.11673E+10
+ decide> The unconnected minima in the chain and their distances are:
+     2        2.31     1 
+ 
+ initial energy for structure A=                  -193.671270772554749 RMS=        0.000000140363236
+ initial energy for structure B=                  -196.290778845630371 RMS=        0.000000735586727
+ minpermdist> Initial distance before standard orientation=     2.305083303    
+ minpermdist> distance after moving      0 atoms=     3.629156056    
+ minpermdist> distance after moving      0 atoms=     2.305083303    
+ minpermdist> distance after moving     16 atoms=     8.194387259    
+ minpermdist> distance after moving      6 atoms=     7.633331863    
+ minpermdist> distance after moving      0 atoms=     7.613303813    
+ minpermdist> distance after moving      0 atoms=     7.737632676    
+ minpermdist> distance after moving      0 atoms=     2.305083303    
+ minpermdist> distance after moving     24 atoms=     6.755381771    
+ minpermdist> distance after moving     10 atoms=     5.591376475    
+ minpermdist> distance after moving      0 atoms=     5.575735330    
+ minpermdist> distance after moving     24 atoms=     8.370389147    
+ minpermdist> distance after moving     10 atoms=     7.268163185    
+ minpermdist> distance after moving      0 atoms=     7.265836492    
+ minpermdist> distance after moving     24 atoms=     7.189892992    
+ minpermdist> distance after moving      4 atoms=     4.992357752    
+ minpermdist> distance after moving      0 atoms=     4.979235172    
+ minpermdist> distance after moving     16 atoms=     7.727718914    
+ minpermdist> distance after moving      6 atoms=     4.935043084    
+ minpermdist> distance after moving      0 atoms=     4.913839196    
+ minpermdist> distance after moving     24 atoms=     7.805734215    
+ minpermdist> distance after moving      8 atoms=     4.984961308    
+ minpermdist> distance after moving      0 atoms=     4.979235172    
+ minpermdist> distance after moving     16 atoms=     7.462282366    
+ minpermdist> distance after moving      6 atoms=     6.447880538    
+ minpermdist> distance after moving      0 atoms=     6.437191378    
+ minpermdist> distance after moving     20 atoms=     9.297438223    
+ minpermdist> distance after moving      6 atoms=     7.971711763    
+ minpermdist> distance after moving      0 atoms=     7.968861491    
+ minpermdist> distance after moving     16 atoms=     8.884947917    
+ minpermdist> distance after moving      2 atoms=     7.089567330    
+ minpermdist> distance after moving      0 atoms=     7.086555414    
+ minpermdist> distance after moving     18 atoms=     7.750465765    
+ minpermdist> distance after moving      2 atoms=     3.478302050    
+ minpermdist> distance after moving      0 atoms=     3.473573193    
+ minpermdist> distance after moving     16 atoms=     8.552957490    
+ minpermdist> distance after moving      2 atoms=     7.997280721    
+ minpermdist> distance after moving      0 atoms=     7.990067273    
+ minpermdist> distance after moving     24 atoms=     9.522318349    
+ minpermdist> distance after moving     14 atoms=     7.964812897    
+ minpermdist> distance after moving      4 atoms=     6.961739638    
+ minpermdist> distance after moving      2 atoms=     6.947079119    
+ minpermdist> distance after moving      0 atoms=     6.941208428    
+ minpermdist> distance after moving     16 atoms=     7.557266557    
+ minpermdist> distance after moving      6 atoms=     6.447880538    
+ minpermdist> distance after moving      0 atoms=     6.437191378    
+ minpermdist> distance after moving     16 atoms=     9.273343165    
+ minpermdist> distance after moving      6 atoms=     7.577270278    
+ minpermdist> distance after moving      2 atoms=     7.557304806    
+ minpermdist> distance after moving      0 atoms=     7.551733084    
+ minpermdist> distance after moving     20 atoms=     8.373564653    
+ minpermdist> distance after moving      8 atoms=     7.144366536    
+ minpermdist> distance after moving      2 atoms=     5.875253840    
+ minpermdist> distance after moving      0 atoms=     5.868391149    
+ minpermdist> distance after moving     24 atoms=     8.408635797    
+ minpermdist> distance after moving      6 atoms=     6.348030897    
+ minpermdist> distance after moving      0 atoms=     6.343836806    
+ minpermdist> distance after moving     24 atoms=     8.587895490    
+ minpermdist> distance after moving     10 atoms=     6.511830317    
+ minpermdist> distance after moving      8 atoms=     6.410877618    
+ minpermdist> distance after moving      2 atoms=     4.916356016    
+ minpermdist> distance after moving      0 atoms=     4.913839196    
+ minpermdist> distance after moving     16 atoms=     9.123525354    
+ minpermdist> distance after moving      4 atoms=     4.750295024    
+ minpermdist> distance after moving      0 atoms=     4.733066427    
+ minpermdist> distance after moving     24 atoms=     8.979860368    
+ minpermdist> distance after moving      8 atoms=     4.366239505    
+ minpermdist> distance after moving      0 atoms=     4.300398328    
+ minpermdist> distance after moving     24 atoms=     7.478220288    
+ minpermdist> distance after moving      8 atoms=     5.185994572    
+ minpermdist> distance after moving      0 atoms=     5.182556002    
+ minpermdist> distance after moving     18 atoms=     10.13034936    
+ minpermdist> distance after moving      6 atoms=     8.085253160    
+ minpermdist> distance after moving      0 atoms=     8.082211372    
+ minpermdist> distance after moving     24 atoms=     7.489170812    
+ minpermdist> distance after moving      8 atoms=     5.032325926    
+ minpermdist> distance after moving      0 atoms=     5.024825819    
+ minpermdist> distance after moving     20 atoms=     7.834071373    
+ minpermdist> distance after moving      4 atoms=     5.598929789    
+ minpermdist> distance after moving      0 atoms=     5.586926161    
+ minpermdist> distance after moving     24 atoms=     6.934461168    
+ minpermdist> distance after moving      4 atoms=     6.088443781    
+ minpermdist> distance after moving      0 atoms=     6.085356509    
+ minpermdist> distance after moving      0 atoms=     4.250251558    
+ minpermdist> distance after moving      0 atoms=     2.305083303    
+ minpermdist> distance after moving     24 atoms=     8.544183874    
+ minpermdist> distance after moving     10 atoms=     6.958989032    
+ minpermdist> distance after moving      0 atoms=     6.941208428    
+ minpermdist> distance after moving     16 atoms=     9.482053873    
+ minpermdist> distance after moving      6 atoms=     8.179489369    
+ minpermdist> distance after moving      0 atoms=     8.165429407    
+ minpermdist> distance after moving     16 atoms=     10.22505310    
+ minpermdist> distance after moving      4 atoms=     7.190312689    
+ minpermdist> distance after moving      0 atoms=     7.182273855    
+ minpermdist> distance after moving     24 atoms=     8.460974889    
+ minpermdist> distance after moving      4 atoms=     7.942215459    
+ minpermdist> distance after moving      0 atoms=     7.937468561    
+ minpermdist> distance after moving     18 atoms=     5.150617001    
+ minpermdist> distance after moving      4 atoms=     3.791078110    
+ minpermdist> distance after moving      0 atoms=     3.756113731    
+ minpermdist> distance after moving     24 atoms=     8.964976261    
+ minpermdist> distance after moving     10 atoms=     3.057479191    
+ minpermdist> distance after moving      0 atoms=     3.050585329    
+ minpermdist> distance after moving     24 atoms=     7.614390380    
+ minpermdist> distance after moving      6 atoms=     6.910056089    
+ minpermdist> distance after moving      0 atoms=     6.904963414    
+ minpermdist> distance after moving     24 atoms=     7.857639471    
+ minpermdist> distance after moving      8 atoms=     3.055812817    
+ minpermdist> distance after moving      0 atoms=     3.050585329    
+ minpermdist> distance after moving     24 atoms=     8.029720896    
+ minpermdist> distance after moving      4 atoms=     6.088443781    
+ minpermdist> distance after moving      0 atoms=     6.085356509    
+ minpermdist> distance after moving     18 atoms=     6.472696533    
+ minpermdist> distance after moving      8 atoms=     4.940641683    
+ minpermdist> distance after moving      0 atoms=     4.913839196    
+ minpermdist> distance after moving     20 atoms=     9.341524913    
+ minpermdist> distance after moving      6 atoms=     7.270031259    
+ minpermdist> distance after moving      0 atoms=     7.236186398    
+ minpermdist> distance after moving     24 atoms=     9.918437990    
+ minpermdist> distance after moving     12 atoms=     8.084406344    
+ minpermdist> distance after moving      8 atoms=     7.750048128    
+ minpermdist> distance after moving      2 atoms=     6.345290169    
+ minpermdist> distance after moving      0 atoms=     6.338882774    
+ minpermdist> distance after moving     16 atoms=     7.739835300    
+ minpermdist> distance after moving      8 atoms=     5.744029727    
+ minpermdist> distance after moving      0 atoms=     5.743743330    
+ minpermdist> distance after moving     22 atoms=     7.388036114    
+ minpermdist> distance after moving      6 atoms=     6.197885091    
+ minpermdist> distance after moving      0 atoms=     6.192750198    
+ minpermdist> distance after moving     18 atoms=     7.594703364    
+ minpermdist> distance after moving      4 atoms=     3.791078110    
+ minpermdist> distance after moving      0 atoms=     3.756113731    
+ minpermdist> distance after moving     24 atoms=     9.604776405    
+ minpermdist> distance after moving      4 atoms=     8.312838273    
+ minpermdist> distance after moving      0 atoms=     8.299194301    
+ minpermdist> distance after moving     10 atoms=     9.178933412    
+ minpermdist> distance after moving     12 atoms=     7.573881566    
+ minpermdist> distance after moving      8 atoms=     5.749162484    
+ minpermdist> distance after moving      0 atoms=     5.743743330    
+ minpermdist> distance after moving     18 atoms=     7.664210540    
+ minpermdist> distance after moving      2 atoms=     7.237732542    
+ minpermdist> distance after moving      0 atoms=     7.231802080    
+ minpermdist> distance after moving     16 atoms=     7.623443170    
+ minpermdist> distance after moving      2 atoms=     7.186155876    
+ minpermdist> distance after moving      0 atoms=     7.182273855    
+ minpermdist> distance after moving     22 atoms=     9.808392067    
+ minpermdist> distance after moving     14 atoms=     7.214939314    
+ minpermdist> distance after moving      2 atoms=     5.805493705    
+ minpermdist> distance after moving      0 atoms=     5.805189450    
+ minpermdist> distance after moving     24 atoms=     8.303640751    
+ minpermdist> distance after moving      2 atoms=     7.626944811    
+ minpermdist> distance after moving      0 atoms=     7.623648556    
+ minpermdist> distance after moving     22 atoms=     9.305822045    
+ minpermdist> distance after moving     14 atoms=     7.978309503    
+ minpermdist> distance after moving      2 atoms=     6.577629639    
+ minpermdist> distance after moving      0 atoms=     6.571167030    
+ minpermdist> distance after moving     16 atoms=     7.661106860    
+ minpermdist> distance after moving     10 atoms=     7.916247410    
+ minpermdist> distance after moving      4 atoms=     6.564183907    
+ minpermdist> distance after moving      0 atoms=     6.552620691    
+ minpermdist> distance after moving     20 atoms=     6.841584071    
+ minpermdist> distance after moving      0 atoms=     5.586926161    
+ minpermdist> distance after moving     18 atoms=     6.615252487    
+ minpermdist> distance after moving      2 atoms=     3.765944733    
+ minpermdist> distance after moving      0 atoms=     3.756113731    
+ minpermdist> distance after moving     20 atoms=     8.353527480    
+ minpermdist> distance after moving      4 atoms=     5.945957667    
+ minpermdist> distance after moving      0 atoms=     5.942101891    
+ minpermdist> distance after moving     16 atoms=     8.533178800    
+ minpermdist> distance after moving      4 atoms=     6.171590644    
+ minpermdist> distance after moving      0 atoms=     6.167258029    
+ minpermdist> distance after moving     24 atoms=     8.417204541    
+ minpermdist> distance after moving      6 atoms=     7.696279828    
+ minpermdist> distance after moving      0 atoms=     7.695273227    
+ minpermdist> distance after moving     24 atoms=     7.929895588    
+ minpermdist> distance after moving      8 atoms=     6.319008651    
+ minpermdist> distance after moving      2 atoms=     4.985046350    
+ minpermdist> distance after moving      0 atoms=     4.979235172    
+ minpermdist> distance after moving     20 atoms=     6.877732799    
+ minpermdist> distance after moving      2 atoms=     5.592767660    
+ minpermdist> distance after moving      0 atoms=     5.586926161    
+ minpermdist> distance after moving     24 atoms=     7.131519240    
+ minpermdist> distance after moving      8 atoms=     5.032325926    
+ minpermdist> distance after moving      0 atoms=     5.024825819    
+ minpermdist> distance after moving     16 atoms=     8.677970135    
+ minpermdist> distance after moving      2 atoms=     8.283948463    
+ minpermdist> distance after moving      0 atoms=     8.278155890    
+ minpermdist> distance after moving     24 atoms=     8.880038654    
+ minpermdist> distance after moving      8 atoms=     5.918821566    
+ minpermdist> distance after moving      0 atoms=     5.916408159    
+ minpermdist> distance after moving     24 atoms=     8.722823064    
+ minpermdist> distance after moving      8 atoms=     8.352141595    
+ minpermdist> distance after moving      0 atoms=     8.299194301    
+ minpermdist> distance after moving     24 atoms=     8.065739276    
+ minpermdist> distance after moving      8 atoms=     6.053517620    
+ minpermdist> distance after moving      0 atoms=     6.048781127    
+ minpermdist> distance after moving     22 atoms=     10.59827832    
+ minpermdist> distance after moving     12 atoms=     6.996514171    
+ minpermdist> distance after moving      4 atoms=     5.997609119    
+ minpermdist> distance after moving      0 atoms=     5.989024483    
+ minpermdist> distance after moving     18 atoms=     5.947961510    
+ minpermdist> distance after moving      4 atoms=     3.776611286    
+ minpermdist> distance after moving      0 atoms=     3.756113731    
+ minpermdist> distance after moving      0 atoms=     7.981858800    
+ minpermdist> distance after moving      0 atoms=     2.305083303    
+ minpermdist> distance after moving     24 atoms=     9.888806747    
+ minpermdist> distance after moving     14 atoms=     6.668565397    
+ minpermdist> distance after moving      2 atoms=     5.529429089    
+ minpermdist> distance after moving      0 atoms=     5.527306792    
+ minpermdist> distance after moving     16 atoms=     8.121953806    
+ minpermdist> distance after moving      8 atoms=     6.929077885    
+ minpermdist> distance after moving      0 atoms=     6.921010426    
+ minpermdist> distance after moving     24 atoms=     8.970188588    
+ minpermdist> distance after moving      6 atoms=     7.444574076    
+ minpermdist> distance after moving      0 atoms=     7.424631665    
+ minpermdist> distance after moving     24 atoms=     9.195800620    
+ minpermdist> distance after moving     12 atoms=     8.069920583    
+ minpermdist> distance after moving      8 atoms=     7.750048128    
+ minpermdist> distance after moving      2 atoms=     6.345290169    
+ minpermdist> distance after moving      0 atoms=     6.338882774    
+ minpermdist> distance after moving     10 atoms=     10.39053158    
+ minpermdist> distance after moving     12 atoms=     7.573881566    
+ minpermdist> distance after moving      8 atoms=     5.749162484    
+ minpermdist> distance after moving      0 atoms=     5.743743330    
+ minpermdist> distance after moving     24 atoms=     8.021437450    
+ minpermdist> distance after moving      8 atoms=     4.562003555    
+ minpermdist> distance after moving      0 atoms=     4.533808432    
+ minpermdist> distance after moving     24 atoms=     8.805768496    
+ minpermdist> distance after moving      8 atoms=     7.816369465    
+ minpermdist> distance after moving      0 atoms=     7.803415818    
+ minpermdist> distance after moving     16 atoms=     8.577384204    
+ minpermdist> distance after moving      2 atoms=     6.636882108    
+ minpermdist> distance after moving      0 atoms=     6.632118500    
+ minpermdist> distance after moving      8 atoms=     8.804281561    
+ minpermdist> distance after moving      2 atoms=     4.956747016    
+ minpermdist> distance after moving      0 atoms=     4.950369724    
+ minpermdist> distance after moving     24 atoms=     6.358818195    
+ minpermdist> distance after moving      6 atoms=     4.298769431    
+ minpermdist> distance after moving      0 atoms=     4.245536684    
+ minpermdist> distance after moving     18 atoms=     5.735028123    
+ minpermdist> distance after moving      2 atoms=     3.765944733    
+ minpermdist> distance after moving      0 atoms=     3.756113731    
+ minpermdist> distance after moving     22 atoms=     10.19294665    
+ minpermdist> distance after moving     14 atoms=     7.214939314    
+ minpermdist> distance after moving      2 atoms=     5.805493705    
+ minpermdist> distance after moving      0 atoms=     5.805189450    
+ minpermdist> distance after moving     24 atoms=     8.703686904    
+ minpermdist> distance after moving      4 atoms=     4.992357752    
+ minpermdist> distance after moving      0 atoms=     4.979235172    
+ minpermdist> distance after moving     20 atoms=     8.528462172    
+ minpermdist> distance after moving      6 atoms=     6.075861817    
+ minpermdist> distance after moving      0 atoms=     6.059910058    
+ minpermdist> distance after moving     24 atoms=     8.330872100    
+ minpermdist> distance after moving      8 atoms=     5.581718074    
+ minpermdist> distance after moving      0 atoms=     5.575735330    
+ minpermdist> distance after moving     24 atoms=     8.603578339    
+ minpermdist> distance after moving      4 atoms=     7.697796750    
+ minpermdist> distance after moving      0 atoms=     7.695273227    
+ minpermdist> distance after moving     18 atoms=     8.352080067    
+ minpermdist> distance after moving      4 atoms=     6.247436918    
+ minpermdist> distance after moving      0 atoms=     6.244224108    
+ minpermdist> distance after moving     20 atoms=     7.598700323    
+ minpermdist> distance after moving      4 atoms=     6.267749545    
+ minpermdist> distance after moving      0 atoms=     6.264586733    
+ minpermdist> distance after moving     16 atoms=     7.645649508    
+ minpermdist> distance after moving      8 atoms=     5.744029727    
+ minpermdist> distance after moving      0 atoms=     5.743743330    
+ minpermdist> distance after moving     24 atoms=     7.522653623    
+ minpermdist> distance after moving      6 atoms=     7.050098852    
+ minpermdist> distance after moving      0 atoms=     7.044329993    
+ minpermdist> distance after moving     24 atoms=     8.324732893    
+ minpermdist> distance after moving      8 atoms=     5.032325926    
+ minpermdist> distance after moving      0 atoms=     5.024825819    
+ minpermdist> distance after moving     20 atoms=     8.673741630    
+ minpermdist> distance after moving      8 atoms=     7.144366536    
+ minpermdist> distance after moving      2 atoms=     5.875253840    
+ minpermdist> distance after moving      0 atoms=     5.868391149    
+ minpermdist> distance after moving     20 atoms=     7.609235960    
+ minpermdist> distance after moving      2 atoms=     6.910881788    
+ minpermdist> distance after moving      0 atoms=     6.907516684    
+ minpermdist> distance after moving     22 atoms=     7.036634228    
+ minpermdist> distance after moving      4 atoms=     5.807736780    
+ minpermdist> distance after moving      0 atoms=     5.805189450    
+ minpermdist> distance after moving     16 atoms=     7.311308415    
+ minpermdist> distance after moving      4 atoms=     6.108413695    
+ minpermdist> distance after moving      0 atoms=     6.096686817    
+ minpermdist> distance after moving     24 atoms=     6.895128291    
+ minpermdist> distance after moving      6 atoms=     4.816623451    
+ minpermdist> distance after moving      0 atoms=     4.812220594    
+ minpermdist> distance after moving     24 atoms=     7.240879506    
+ minpermdist> distance after moving      8 atoms=     3.372433133    
+ minpermdist> distance after moving      0 atoms=     3.367409034    
+ minpermdist> distance after moving     24 atoms=     9.530434239    
+ minpermdist> distance after moving      4 atoms=     8.815845589    
+ minpermdist> distance after moving      2 atoms=     8.803392511    
+ minpermdist> distance after moving      0 atoms=     8.797227214    
+ minpermdist> distance after moving     16 atoms=     8.422908240    
+ minpermdist> distance after moving      2 atoms=     4.740833893    
+ minpermdist> distance after moving      0 atoms=     4.733066427    
+ minpermdist> distance after moving     22 atoms=     8.396675246    
+ minpermdist> distance after moving      6 atoms=     6.575708539    
+ minpermdist> distance after moving      0 atoms=     6.571167030    
+ minpermdist> distance after moving     24 atoms=     9.146723241    
+ minpermdist> distance after moving      4 atoms=     7.650638266    
+ minpermdist> distance after moving      0 atoms=     7.641283418    
+ minpermdist> distance after moving     22 atoms=     7.351282397    
+ minpermdist> distance after moving      6 atoms=     6.286307182    
+ minpermdist> distance after moving      0 atoms=     6.273275793    
+ minpermdist> distance after moving     24 atoms=     7.883359267    
+ minpermdist> distance after moving      8 atoms=     6.649813389    
+ minpermdist> distance after moving      0 atoms=     6.644118231    
+ minpermdist> distance after moving     24 atoms=     9.815832454    
+ minpermdist> distance after moving     10 atoms=     4.572186296    
+ minpermdist> distance after moving      0 atoms=     4.538725806    
+ minpermdist> distance after moving     24 atoms=     8.291536104    
+ minpermdist> distance after moving      4 atoms=     6.056045454    
+ minpermdist> distance after moving      0 atoms=     6.048781127    
+ minpermdist> distance after moving     22 atoms=     7.533307683    
+ minpermdist> distance after moving      8 atoms=     5.954408728    
+ minpermdist> distance after moving      0 atoms=     5.942101891    
+ minpermdist> distance after moving     18 atoms=     9.120235473    
+ minpermdist> distance after moving      4 atoms=     3.493298929    
+ minpermdist> distance after moving      0 atoms=     3.473573193    
+ minpermdist> distance after moving     24 atoms=     9.800766434    
+ minpermdist> distance after moving     12 atoms=     8.069920583    
+ minpermdist> distance after moving      8 atoms=     7.750048128    
+ minpermdist> distance after moving      2 atoms=     6.345290169    
+ minpermdist> distance after moving      0 atoms=     6.338882774    
+ minpermdist> distance after moving     10 atoms=     8.224753882    
+ minpermdist> distance after moving     12 atoms=     7.573881566    
+ minpermdist> distance after moving      8 atoms=     5.749162484    
+ minpermdist> distance after moving      0 atoms=     5.743743330    
+ minpermdist> distance after moving     24 atoms=     4.696301564    
+ minpermdist> distance after moving      8 atoms=     3.055812817    
+ minpermdist> distance after moving      0 atoms=     3.050585329    
+ minpermdist> distance after moving     24 atoms=     8.517238371    
+ minpermdist> distance after moving      6 atoms=     7.444574076    
+ minpermdist> distance after moving      0 atoms=     7.424631665    
+ minpermdist> distance after moving     16 atoms=     9.052462488    
+ minpermdist> distance after moving      4 atoms=     7.995987472    
+ minpermdist> distance after moving      0 atoms=     7.990067273    
+ minpermdist> distance after moving     20 atoms=     9.143659862    
+ minpermdist> distance after moving      4 atoms=     7.701222977    
+ minpermdist> distance after moving      0 atoms=     7.692365690    
+ minpermdist> distance after moving     22 atoms=     7.668542487    
+ minpermdist> distance after moving      4 atoms=     5.247943998    
+ minpermdist> distance after moving      0 atoms=     5.247040778    
+ minpermdist> distance after moving     24 atoms=     5.394162335    
+ minpermdist> distance after moving      8 atoms=     3.372433133    
+ minpermdist> distance after moving      0 atoms=     3.367409034    
+ minpermdist> distance after moving     24 atoms=     8.613395374    
+ minpermdist> distance after moving      4 atoms=     6.407223730    
+ minpermdist> distance after moving      0 atoms=     6.386534728    
+ minpermdist> distance after moving     10 atoms=     9.172419528    
+ minpermdist> distance after moving      0 atoms=     6.552620691    
+ minpermdist> distance after moving     24 atoms=     8.798069522    
+ minpermdist> distance after moving     12 atoms=     6.399326359    
+ minpermdist> distance after moving      2 atoms=     4.916356016    
+ minpermdist> distance after moving      0 atoms=     4.913839196    
+ minpermdist> distance after moving     16 atoms=     6.818960656    
+ minpermdist> distance after moving      0 atoms=     4.733066427    
+ minpermdist> distance after moving     24 atoms=     8.586217666    
+ minpermdist> distance after moving      2 atoms=     4.819800739    
+ minpermdist> distance after moving      0 atoms=     4.812220594    
+ minpermdist> distance after moving     10 atoms=     7.092633933    
+ minpermdist> distance after moving      0 atoms=     4.950369724    
+ minpermdist> distance after moving     22 atoms=     8.126089916    
+ minpermdist> distance after moving      4 atoms=     6.560315383    
+ minpermdist> distance after moving      0 atoms=     6.553538505    
+ minpermdist> distance after moving     24 atoms=     9.456862124    
+ minpermdist> distance after moving     14 atoms=     7.399844970    
+ minpermdist> distance after moving      6 atoms=     5.920455267    
+ minpermdist> distance after moving      0 atoms=     5.916408159    
+ minpermdist> distance after moving     24 atoms=     8.584437285    
+ minpermdist> distance after moving      6 atoms=     7.301717158    
+ minpermdist> distance after moving      0 atoms=     7.288531712    
+ minpermdist> distance after moving     16 atoms=     7.965382414    
+ minpermdist> distance after moving      4 atoms=     7.340051322    
+ minpermdist> distance after moving      0 atoms=     7.328330227    
+ minpermdist> distance after moving     24 atoms=     7.862993799    
+ minpermdist> distance after moving      8 atoms=     4.829227719    
+ minpermdist> distance after moving      0 atoms=     4.812220594    
+ minpermdist> distance after moving     24 atoms=     8.124000926    
+ minpermdist> distance after moving      6 atoms=     7.128436947    
+ minpermdist> distance after moving      0 atoms=     7.106799673    
+ minpermdist> distance after moving     24 atoms=     6.598355202    
+ minpermdist> distance after moving     10 atoms=     3.057479191    
+ minpermdist> distance after moving      0 atoms=     3.050585329    
+ minpermdist> distance after moving     16 atoms=     9.346578957    
+ minpermdist> distance after moving      2 atoms=     7.616856860    
+ minpermdist> distance after moving      0 atoms=     7.613303813    
+ minpermdist> distance after moving     22 atoms=     8.304321009    
+ minpermdist> distance after moving      6 atoms=     5.963340081    
+ minpermdist> distance after moving      0 atoms=     5.942101891    
+ minpermdist> distance after moving     16 atoms=     6.655129783    
+ minpermdist> distance after moving      2 atoms=     6.101599362    
+ minpermdist> distance after moving      0 atoms=     6.096686817    
+ minpermdist> distance after moving      0 atoms=     8.280773526    
+ minpermdist> distance after moving      0 atoms=     2.305083303    
+ minpermdist> distance after moving     24 atoms=     7.995147191    
+ minpermdist> distance after moving      8 atoms=     6.287266096    
+ minpermdist> distance after moving      2 atoms=     4.985046350    
+ minpermdist> distance after moving      0 atoms=     4.979235172    
+ minpermdist> distance after moving     24 atoms=     8.057848765    
+ minpermdist> distance after moving      6 atoms=     6.396567778    
+ minpermdist> distance after moving      0 atoms=     6.386534728    
+ minpermdist> distance after moving     16 atoms=     8.848310593    
+ minpermdist> distance after moving      4 atoms=     7.565874432    
+ minpermdist> distance after moving      2 atoms=     7.557304806    
+ minpermdist> distance after moving      0 atoms=     7.551733084    
+ minpermdist> distance after moving     20 atoms=     8.459707099    
+ minpermdist> distance after moving      8 atoms=     6.907756038    
+ minpermdist> distance after moving      0 atoms=     6.897056199    
+ minpermdist> distance after moving     24 atoms=     8.602942752    
+ minpermdist> distance after moving     14 atoms=     7.091085403    
+ minpermdist> distance after moving      4 atoms=     5.536939655    
+ minpermdist> distance after moving      0 atoms=     5.527306792    
+ minpermdist> distance after moving     24 atoms=     8.716645386    
+ minpermdist> distance after moving      8 atoms=     6.692053639    
+ minpermdist> distance after moving      0 atoms=     6.670714719    
+ minpermdist> distance after moving     20 atoms=     8.383258157    
+ minpermdist> distance after moving      6 atoms=     7.572332657    
+ minpermdist> distance after moving      8 atoms=     7.668712662    
+ minpermdist> distance after moving      2 atoms=     6.391804832    
+ minpermdist> distance after moving      0 atoms=     6.385714887    
+ minpermdist> distance after moving     24 atoms=     8.821318352    
+ minpermdist> distance after moving      8 atoms=     6.692053639    
+ minpermdist> distance after moving      0 atoms=     6.670714719    
+ minpermdist> distance after moving     16 atoms=     7.112651186    
+ minpermdist> distance after moving      2 atoms=     6.168528888    
+ minpermdist> distance after moving      0 atoms=     6.167258029    
+ minpermdist> distance after moving     18 atoms=     9.732649131    
+ minpermdist> distance after moving      6 atoms=     6.440542858    
+ minpermdist> distance after moving      0 atoms=     6.437191378    
+ minpermdist> distance after moving     22 atoms=     8.237190411    
+ minpermdist> distance after moving      6 atoms=     7.529049610    
+ minpermdist> distance after moving      0 atoms=     7.523195065    
+ minpermdist> distance after moving     24 atoms=     7.914763837    
+ minpermdist> distance after moving     10 atoms=     6.511830317    
+ minpermdist> distance after moving      8 atoms=     6.410877618    
+ minpermdist> distance after moving      2 atoms=     4.916356016    
+ minpermdist> distance after moving      0 atoms=     4.913839196    
+ minpermdist> distance after moving     24 atoms=     8.372595015    
+ minpermdist> distance after moving      2 atoms=     6.088609829    
+ minpermdist> distance after moving      0 atoms=     6.085356509    
+ minpermdist> distance after moving     24 atoms=     7.726347670    
+ minpermdist> distance after moving      4 atoms=     7.047561389    
+ minpermdist> distance after moving      0 atoms=     7.044329993    
+ minpermdist> distance after moving     18 atoms=     4.845685345    
+ minpermdist> distance after moving      2 atoms=     3.478302050    
+ minpermdist> distance after moving      0 atoms=     3.473573193    
+ minpermdist> distance after moving     20 atoms=     8.645932671    
+ minpermdist> distance after moving     10 atoms=     6.979740987    
+ minpermdist> distance after moving      2 atoms=     5.588683935    
+ minpermdist> distance after moving      0 atoms=     5.586926161    
+ minpermdist> distance after moving     24 atoms=     7.644614722    
+ minpermdist> distance after moving      8 atoms=     5.541020040    
+ minpermdist> distance after moving      0 atoms=     5.527306792    
+ minpermdist> distance after moving     24 atoms=     7.696882690    
+ minpermdist> distance after moving      8 atoms=     4.338120403    
+ minpermdist> distance after moving      0 atoms=     4.300398328    
+ minpermdist> distance after moving     16 atoms=     8.171969333    
+ minpermdist> distance after moving     12 atoms=     6.630447177    
+ minpermdist> distance after moving      0 atoms=     5.827672422    
+ minpermdist> distance after moving     16 atoms=     9.149527899    
+ minpermdist> distance after moving      6 atoms=     8.179489369    
+ minpermdist> distance after moving      0 atoms=     8.165429407    
+ minpermdist> distance after moving     20 atoms=     9.432163532    
+ minpermdist> distance after moving     14 atoms=     7.688240415    
+ minpermdist> distance after moving      2 atoms=     6.391804832    
+ minpermdist> distance after moving      0 atoms=     6.385714887    
+ minpermdist> distance after moving     24 atoms=     8.057647897    
+ minpermdist> distance after moving      4 atoms=     6.597151951    
+ minpermdist> distance after moving      0 atoms=     6.597151263    
+ minpermdist> distance after moving     24 atoms=     7.788745722    
+ minpermdist> distance after moving      8 atoms=     6.600503542    
+ minpermdist> distance after moving      0 atoms=     6.570759258    
+ minpermdist> distance after moving     24 atoms=     9.397884417    
+ minpermdist> distance after moving      6 atoms=     6.420129796    
+ minpermdist> distance after moving      0 atoms=     6.386534728    
+ minpermdist> distance after moving     18 atoms=     8.797542858    
+ minpermdist> distance after moving      6 atoms=     3.804748277    
+ minpermdist> distance after moving      0 atoms=     3.756113731    
+ minpermdist> distance after moving     24 atoms=     5.632111168    
+ minpermdist> distance after moving      6 atoms=     4.284442923    
+ minpermdist> distance after moving      0 atoms=     4.245536684    
+ minpermdist> distance after moving     24 atoms=     7.654819975    
+ minpermdist> distance after moving      4 atoms=     6.088443781    
+ minpermdist> distance after moving      0 atoms=     6.085356509    
+ minpermdist> distance after moving     22 atoms=     8.625094543    
+ minpermdist> distance after moving      6 atoms=     6.028694519    
+ minpermdist> distance after moving      2 atoms=     5.995543207    
+ minpermdist> distance after moving      0 atoms=     5.989024483    
+ minpermdist> distance after moving     24 atoms=     7.742779829    
+ minpermdist> distance after moving      8 atoms=     3.730912081    
+ minpermdist> distance after moving      0 atoms=     3.726175732    
+ minpermdist> distance after moving     16 atoms=     7.313089697    
+ minpermdist> distance after moving      2 atoms=     4.916512745    
+ minpermdist> distance after moving      0 atoms=     4.913839196    
+ minpermdist> distance after moving     16 atoms=     9.104844776    
+ minpermdist> distance after moving      2 atoms=     6.101599362    
+ minpermdist> distance after moving      0 atoms=     6.096686817    
+ minpermdist> distance after moving     22 atoms=     7.965421257    
+ minpermdist> distance after moving      4 atoms=     6.020125484    
+ minpermdist> distance after moving      2 atoms=     5.995543207    
+ minpermdist> distance after moving      0 atoms=     5.989024483    
+ minpermdist> distance after moving     24 atoms=     8.238950689    
+ minpermdist> distance after moving      8 atoms=     5.541020040    
+ minpermdist> distance after moving      0 atoms=     5.527306792    
+ minpermdist> distance after moving     12 atoms=     8.463388620    
+ minpermdist> distance after moving      4 atoms=     7.159823542    
+ minpermdist> distance after moving      0 atoms=     7.145891642    
+ minpermdist> distance after moving     24 atoms=     8.109912086    
+ minpermdist> distance after moving      6 atoms=     6.512978503    
+ minpermdist> distance after moving      0 atoms=     6.510021292    
+ minpermdist> distance after moving     24 atoms=     9.417583121    
+ minpermdist> distance after moving      4 atoms=     4.554071944    
+ minpermdist> distance after moving      0 atoms=     4.533808432    
+ minpermdist> distance after moving     18 atoms=     7.265661765    
+ minpermdist> distance after moving      4 atoms=     3.791078110    
+ minpermdist> distance after moving      0 atoms=     3.756113731    
+ minpermdist> distance after moving     20 atoms=     8.432208173    
+ minpermdist> distance after moving     10 atoms=     7.121770865    
+ minpermdist> distance after moving      4 atoms=     5.377503394    
+ minpermdist> distance after moving      0 atoms=     5.369353393    
+ minpermdist> distance after moving     24 atoms=     8.103395701    
+ minpermdist> distance after moving      8 atoms=     6.913045551    
+ minpermdist> distance after moving      0 atoms=     6.904963414    
+ minpermdist> distance after moving     22 atoms=     7.564720648    
+ minpermdist> distance after moving      6 atoms=     5.256291487    
+ minpermdist> distance after moving      0 atoms=     5.247040778    
+ minpermdist> distance after moving     24 atoms=     5.988068528    
+ minpermdist> distance after moving      6 atoms=     5.186009980    
+ minpermdist> distance after moving      0 atoms=     5.182556002    
+ minpermdist> distance after moving     24 atoms=     6.819800650    
+ minpermdist> distance after moving      8 atoms=     4.549975193    
+ minpermdist> distance after moving      0 atoms=     4.538725806    
+ minpermdist> distance after moving     24 atoms=     8.778084856    
+ minpermdist> distance after moving     14 atoms=     7.091085403    
+ minpermdist> distance after moving      4 atoms=     5.536939655    
+ minpermdist> distance after moving      0 atoms=     5.527306792    
+ minpermdist> distance after moving     24 atoms=     8.615985965    
+ minpermdist> distance after moving     10 atoms=     3.057479191    
+ minpermdist> distance after moving      0 atoms=     3.050585329    
+ minpermdist> distance after moving     24 atoms=     7.781349692    
+ minpermdist> distance after moving      4 atoms=     6.511296913    
+ minpermdist> distance after moving      0 atoms=     6.510021292    
+ minpermdist> distance after moving     24 atoms=     6.380862699    
+ minpermdist> distance after moving     10 atoms=     3.057479191    
+ minpermdist> distance after moving      0 atoms=     3.050585329    
+ minpermdist> distance after moving     24 atoms=     8.917563527    
+ minpermdist> distance after moving      6 atoms=     7.895492831    
+ minpermdist> distance after moving      0 atoms=     7.877376025    
+ minpermdist> distance after moving     22 atoms=     8.649521404    
+ minpermdist> distance after moving      6 atoms=     5.951909661    
+ minpermdist> distance after moving      0 atoms=     5.942101891    
+ minpermdist> distance after moving     16 atoms=     8.969650557    
+ minpermdist> distance after moving      4 atoms=     7.565874432    
+ minpermdist> distance after moving      2 atoms=     7.557304806    
+ minpermdist> distance after moving      0 atoms=     7.551733084    
+ minpermdist> distance after moving     22 atoms=     7.866028240    
+ minpermdist> distance after moving      4 atoms=     5.949190703    
+ minpermdist> distance after moving      0 atoms=     5.942101891    
+ minpermdist> distance after moving     24 atoms=     10.37494277    
+ minpermdist> distance after moving     10 atoms=     5.533348024    
+ minpermdist> distance after moving      0 atoms=     5.527306792    
+ minpermdist> distance after moving     24 atoms=     8.123425183    
+ minpermdist> distance after moving      6 atoms=     7.258706308    
+ minpermdist> distance after moving      0 atoms=     7.250098730    
+ minpermdist> distance after moving     18 atoms=     7.417699737    
+ minpermdist> distance after moving      2 atoms=     3.478302050    
+ minpermdist> distance after moving      0 atoms=     3.473573193    
+ minpermdist> distance after moving     16 atoms=     8.324985916    
+ minpermdist> distance after moving      4 atoms=     7.137725132    
+ minpermdist> distance after moving      0 atoms=     7.127635860    
+ minpermdist> distance after moving     24 atoms=     8.672465555    
+ minpermdist> distance after moving      4 atoms=     6.439233520    
+ minpermdist> distance after moving      0 atoms=     6.426032238    
+ minpermdist> distance after moving     24 atoms=     6.741957386    
+ minpermdist> distance after moving      8 atoms=     4.338120403    
+ minpermdist> distance after moving      0 atoms=     4.300398328    
+ minpermdist> distance after moving     16 atoms=     6.022036704    
+ minpermdist> distance after moving      0 atoms=     4.733066427    
+ minpermdist> distance after moving     16 atoms=     7.398734187    
+ minpermdist> distance after moving      2 atoms=     7.089567330    
+ minpermdist> distance after moving      0 atoms=     7.086555414    
+ minpermdist> distance after moving     18 atoms=     8.841362746    
+ minpermdist> distance after moving      2 atoms=     3.478738803    
+ minpermdist> distance after moving      0 atoms=     3.473573193    
+ minpermdist> distance after moving     18 atoms=     8.680371459    
+ minpermdist> distance after moving      8 atoms=     7.246334489    
+ minpermdist> distance after moving      0 atoms=     7.231915120    
+ minpermdist> distance after moving     22 atoms=     8.720709576    
+ minpermdist> distance after moving      4 atoms=     7.161090551    
+ minpermdist> distance after moving      0 atoms=     7.147742961    
+ minpermdist> distance after moving     16 atoms=     8.357233640    
+ minpermdist> distance after moving      4 atoms=     6.640282165    
+ minpermdist> distance after moving      0 atoms=     6.632118500    
+ minpermdist> distance after moving     24 atoms=     7.168569014    
+ minpermdist> distance after moving      6 atoms=     5.918905155    
+ minpermdist> distance after moving      0 atoms=     5.916408159    
+ minpermdist> distance after moving     24 atoms=     6.037527799    
+ minpermdist> distance after moving      6 atoms=     4.284442923    
+ minpermdist> distance after moving      0 atoms=     4.245536684    
+ minpermdist> distance after moving     22 atoms=     7.936696330    
+ minpermdist> distance after moving     10 atoms=     7.101512604    
+ minpermdist> distance after moving      2 atoms=     6.055366512    
+ minpermdist> distance after moving      0 atoms=     6.048781127    
+ minpermdist> distance after moving     24 atoms=     9.232489792    
+ minpermdist> distance after moving      4 atoms=     4.257954613    
+ minpermdist> distance after moving      0 atoms=     4.245536684    
+ minpermdist> distance after moving     16 atoms=     8.193173206    
+ minpermdist> distance after moving     10 atoms=     6.261747854    
+ minpermdist> distance after moving      4 atoms=     4.971756590    
+ minpermdist> distance after moving      0 atoms=     4.950369724    
+ minpermdist> distance after moving     24 atoms=     9.207547955    
+ minpermdist> distance after moving     10 atoms=     6.425655297    
+ minpermdist> distance after moving      0 atoms=     6.386534728    
+ minpermdist> distance after moving     16 atoms=     7.910150751    
+ minpermdist> distance after moving      2 atoms=     4.740833893    
+ minpermdist> distance after moving      0 atoms=     4.733066427    
+ minpermdist> distance after moving     20 atoms=     8.221858911    
+ minpermdist> distance after moving      0 atoms=     5.868391149    
+ minpermdist> distance after moving     24 atoms=     9.032050369    
+ minpermdist> distance after moving      6 atoms=     7.623474102    
+ minpermdist> distance after moving      0 atoms=     7.617418209    
+ minpermdist> distance after moving     22 atoms=     7.179143327    
+ minpermdist> distance after moving      4 atoms=     5.949190703    
+ minpermdist> distance after moving      0 atoms=     5.942101891    
+ minpermdist> distance after moving     16 atoms=     7.712617646    
+ minpermdist> distance after moving      4 atoms=     7.190312689    
+ minpermdist> distance after moving      0 atoms=     7.182273855    
+ minpermdist> distance after moving     24 atoms=     8.770662952    
+ minpermdist> distance after moving      8 atoms=     6.406623340    
+ minpermdist> distance after moving      0 atoms=     6.386534728    
+ minpermdist> distance after moving     24 atoms=     7.992001138    
+ minpermdist> distance after moving      8 atoms=     5.541020040    
+ minpermdist> distance after moving      0 atoms=     5.527306792    
+ final   energy for structure A=                  -193.671270772555090 RMS=        0.000000140363220
+ final   energy for structure B=                  -196.290778845630371 RMS=        0.000000735586727
+
+ tryconnect> 210-iteration DNEB run for minima 1_S and 2_F using 7 images  (DNEB attempt #1)  ...
+ newneb> Number of atoms or variables =           24
+ KeyNEB> Initial and final NEB force constants     100.0000000        100.0000000     factor=    1.010000000    
+ KeyNEB> Using 7 images
+ KeyNEB> NEB coordinates will be saved to xyz file "neb.xyz" every 100 iterations
+ KeyNEB> NEB coordinates will be saved to binary file "neb.out" every 100 iterations
+ KeyNEB> Energy profile will be saved to file "neb.EofS" every 100 iterations
+ KeyNEB> Verbose printing is on
+ KeyNEB> Evolution of AvDev, E, Rms and S will be saved to files "AvDevofI", "EofI", "RmsofI" and "SofI"
+ KeyGrad> Overall rotation and translation will NOT be removed
+ KeyGrad> Using doubly nudged elastic band gradient
+ KeyOutput> Transition state candidates will be optimized
+ KeyOutput> Verbose printing during transition states optimization
+ KeyOutput> Transition state candidates are maxima along NEB
+ KeyMin> Number of iterations: min, max = 0, 210
+ KeyMin> RMS convergence criterion is set to 0.03
+ KeyMin> L-BFGS minimization
+ KeyLBFGS> Maximum step size per image =     0.2000000000    
+ KeyLBFGS> 100 Hessian updates per iteration
+ KeyLBFGS> Guess for inverse Hessian diagonal elements =     0.1000000000E-02
+ KeyTau> Using Henkelman and Jonsson's improved tangent
+ 
+ rwg> NEB coordinates were saved to xyz file "neb.0.xyz"
+ writeprofile> NEB profile was saved to file "neb.EofS"
+                  Iter   Energy per image      RMS Force       Av.Dev    Path     Step per image
+ lbfgs> steps:      1    -193.8164554        0.7990720550        2.17%   2.324        -0.74327E-03
+ lbfgs> steps:      2    -193.9373702        0.5570488006        2.04%   2.327        -0.30336E-02
+ lbfgs> steps:      3    -193.9790828        0.6925078015        1.82%   2.330        -0.46226E-02
+ lbfgs> steps:      4    -194.0042618        0.4492762833        1.76%   2.329        -0.41103E-02
+ lbfgs> Decreasing DNEB force constant to      95.23809524    
+ lbfgs> steps:      5    -194.0306254        0.7623326930        1.68%   2.336        -0.12598E-01
+ lbfgs> steps:      6    -194.0309738        0.4811002311        1.53%   2.330        -0.45163E-03
+ lbfgs> steps:      7    -194.0391091        0.3523841462        1.50%   2.330        -0.40449E-02
+ lbfgs> steps:      8    -194.0574588        0.4795779101        1.29%   2.334        -0.13263E-01
+ lbfgs> steps:      9    -194.0641853        0.3822085254        1.21%   2.334        -0.85652E-02
+ lbfgs> Decreasing DNEB force constant to      90.70294785    
+ lbfgs> steps:     10    -194.0813546        0.7588267171        1.23%   2.345        -0.49711E-01
+ lbfgs> steps:     11    -194.0819339        0.6885992324        1.24%   2.344         0.20314E-02
+ lbfgs> steps:     12    -194.0821476        0.3356056382        1.17%   2.336         0.24347E-01
+ lbfgs> steps:     13    -194.0879010        0.3534954738        1.20%   2.337        -0.94616E-02
+ lbfgs> steps:     14    -194.0935719        0.3080756814        1.18%   2.339        -0.81834E-02
+ lbfgs> Decreasing DNEB force constant to      86.38375985    
+ lbfgs> steps:     15    -194.1214996        0.8829823158        1.22%   2.359        -0.63001E-01
+ lbfgs> steps:     16    -194.1211921        0.7911743542        1.19%   2.357         0.30695E-02
+ lbfgs> steps:     17    -194.1213985        0.7437141258        1.17%   2.356         0.22963E-02
+ lbfgs> steps:     18    -194.1219885        0.6505353915        1.14%   2.354         0.23757E-02
+ lbfgs> steps:     19    -194.1227617        0.5500961543        1.11%   2.353         0.15530E-02
+ lbfgs> Decreasing DNEB force constant to      82.27024748    
+ lbfgs> steps:     20    -194.1235593        0.4694912858        1.08%   2.352         0.11087E-02
+ lbfgs> steps:     21    -194.1243434        0.4173129958        0.97%   2.350         0.90736E-02
+ lbfgs> steps:     22    -194.1258904        0.2503369555        0.98%   2.349        -0.25380E-02
+ lbfgs> steps:     23    -194.1289573        0.2527556668        1.03%   2.350        -0.66248E-02
+ lbfgs> steps:     24    -194.1305542        0.2322837001        1.05%   2.350        -0.17467E-02
+ lbfgs> Decreasing DNEB force constant to      78.35261665    
+ lbfgs> steps:     25    -194.1384568        0.3965460192        1.18%   2.354        -0.13410E-01
+ lbfgs> steps:     26    -194.1384012        0.3647285114        1.17%   2.353         0.31959E-03
+ lbfgs> steps:     27    -194.1405119        0.3183184972        1.13%   2.354        -0.71494E-02
+ lbfgs> steps:     28    -194.1410613        0.2064559899        1.12%   2.353         0.14815E-02
+ lbfgs> steps:     29    -194.1431281        0.2054837496        1.09%   2.354        -0.24311E-02
+ lbfgs> Decreasing DNEB force constant to      74.62153966    
+ lbfgs> steps:     30    -194.1523065        0.2676557731        1.00%   2.358        -0.17930E-01
+ lbfgs> steps:     31    -194.1586976        0.4844039331        1.07%   2.362        -0.19344E-01
+ lbfgs> steps:     32    -194.1584356        0.4616271173        1.06%   2.362         0.10178E-02
+ lbfgs> steps:     33    -194.1585904        0.3829980933        1.05%   2.362         0.53636E-03
+ lbfgs> steps:     34    -194.1578288        0.6672178236        0.94%   2.365        -0.56715E-02
+ lbfgs> Decreasing DNEB force constant to      71.06813301    
+ lbfgs> steps:     35    -194.1582269        0.3175619577        0.98%   2.361         0.62237E-02
+ lbfgs> steps:     36    -194.1583514        0.2470111663        0.98%   2.361         0.21018E-03
+ lbfgs> steps:     37    -194.1592100        0.1974390871        0.98%   2.361        -0.96793E-03
+ lbfgs> steps:     38    -194.1594413        0.1568016110        0.97%   2.361        -0.49404E-03
+ lbfgs> steps:     39    -194.1607730        0.1771193983        0.95%   2.362        -0.32274E-02
+ lbfgs> Decreasing DNEB force constant to      67.68393620    
+ lbfgs> steps:     40    -194.1629066        0.2013828400        0.95%   2.363        -0.59012E-02
+ lbfgs> steps:     41    -194.1675523        0.3035555096        0.95%   2.369        -0.15755E-01
+ lbfgs> steps:     42    -194.1674947        0.2734169538        0.95%   2.368         0.56487E-03
+ lbfgs> steps:     43    -194.1682217        0.3947065713        0.93%   2.368         0.25737E-04
+ lbfgs> steps:     44    -194.1681353        0.3705570545        0.93%   2.368         0.45218E-03
+ lbfgs> Decreasing DNEB force constant to      64.46089162    
+ lbfgs> steps:     45    -194.1681160        0.3151315422        0.92%   2.368         0.30625E-03
+ lbfgs> steps:     46    -194.1678219        0.3292850361        0.89%   2.368        -0.44691E-03
+ lbfgs> steps:     47    -194.1683121        0.1726480031        0.89%   2.368         0.98013E-03
+ lbfgs> steps:     48    -194.1686635        0.1677419707        0.88%   2.368        -0.14524E-03
+ lbfgs> steps:     49    -194.1688359        0.1271243007        0.86%   2.368        -0.27433E-03
+ lbfgs> Decreasing DNEB force constant to      61.39132535    
+ lbfgs> steps:     50    -194.1695407        0.1385809587        0.83%   2.368        -0.15144E-02
+ lbfgs> steps:     51    -194.1707328        0.1638479922        0.78%   2.370        -0.33813E-02
+ lbfgs> steps:     52    -194.1722071        0.2457555419        0.69%   2.373        -0.57339E-02
+ lbfgs> steps:     53    -194.1724061        0.1983950450        0.69%   2.373        -0.53605E-03
+ lbfgs> steps:     54    -194.1714518        0.1595455875        0.75%   2.371         0.43510E-02
+ lbfgs> Decreasing DNEB force constant to      58.46792891    
+ lbfgs> steps:     55    -194.1718739        0.1253395264        0.73%   2.372        -0.80505E-03
+ lbfgs> steps:     56    -194.1730788        0.1493911332        0.66%   2.374        -0.33204E-02
+ lbfgs> steps:     57    -194.1742611        0.1928033563        0.58%   2.376        -0.37570E-02
+ lbfgs> steps:     58    -194.1745888        0.1411587085        0.58%   2.376        -0.15587E-03
+ lbfgs> steps:     59    -194.1748787        0.1304501873        0.58%   2.376         0.82401E-04
+ lbfgs> Decreasing DNEB force constant to      55.68374182    
+ lbfgs> steps:     60    -194.1755283        0.1218503553        0.55%   2.377        -0.12627E-02
+ lbfgs> steps:     61    -194.1773509        0.1679459562        0.46%   2.381        -0.45072E-02
+ lbfgs> steps:     62    -194.1774900        0.1934203918        0.47%   2.380         0.69948E-03
+ lbfgs> steps:     63    -194.1773335        0.1869995621        0.48%   2.380         0.62122E-03
+ lbfgs> steps:     64    -194.1769322        0.1706383513        0.53%   2.378         0.25797E-02
+ lbfgs> Decreasing DNEB force constant to      53.03213506    
+ lbfgs> steps:     65    -194.1767063        0.1126640467        0.55%   2.378         0.20689E-02
+ lbfgs> steps:     66    -194.1775285        0.1120802623        0.50%   2.379        -0.15206E-02
+ lbfgs> steps:     67    -194.1789987        0.1160466958        0.43%   2.381        -0.28871E-02
+ lbfgs> steps:     68    -194.1826864        0.2120128692        0.27%   2.388        -0.71110E-02
+ lbfgs> steps:     69    -194.1817978        0.1525919503        0.30%   2.386         0.32508E-02
+ lbfgs> Decreasing DNEB force constant to      50.50679530    
+ lbfgs> steps:     70    -194.1817534        0.8799279866E-01    0.31%   2.386         0.10451E-02
+ lbfgs> steps:     71    -194.1830578        0.1175321436        0.26%   2.388        -0.12009E-02
+ lbfgs> steps:     72    -194.1838113        0.1066907818        0.23%   2.390        -0.45013E-03
+ lbfgs> steps:     73    -194.1860624        0.2844975771        0.31%   2.396        -0.27119E-02
+ lbfgs> steps:     74    -194.1859238        0.2531817065        0.29%   2.395         0.16914E-03
+ lbfgs> Decreasing DNEB force constant to      48.10170981    
+ lbfgs> steps:     75    -194.1855560        0.1583948473        0.27%   2.394         0.48198E-03
+ lbfgs> steps:     76    -194.1852108        0.1033125470        0.25%   2.394         0.90652E-03
+ lbfgs> steps:     77    -194.1853929        0.6203869991E-01    0.25%   2.394        -0.40450E-03
+ lbfgs> steps:     78    -194.1857839        0.8049021309E-01    0.25%   2.395        -0.76003E-03
+ lbfgs> steps:     79    -194.1864255        0.1070800424        0.25%   2.396        -0.86542E-03
+ lbfgs> Decreasing DNEB force constant to      45.81115220    
+ lbfgs> steps:     80    -194.1873231        0.1228156596        0.30%   2.399        -0.89959E-03
+ lbfgs> steps:     81    -194.1881269        0.1500043476        0.35%   2.401        -0.28818E-03
+ lbfgs> steps:     82    -194.1880671        0.1254568251        0.36%   2.401         0.35769E-03
+ lbfgs> steps:     83    -194.1880681        0.1384503337        0.36%   2.401         0.95508E-03
+ lbfgs> steps:     84    -194.1878530        0.1595022423        0.34%   2.401         0.81439E-03
+ lbfgs> Decreasing DNEB force constant to      43.62966876    
+ lbfgs> steps:     85    -194.1875190        0.2028624574        0.32%   2.400         0.12232E-02
+ Search direction has positive projection onto gradient - reversing step
+ lbfgs> steps:     86    -194.1873840        0.2161819706        0.31%   2.400         0.13601E-03
+ lbfgs> steps:     87    -194.1871094        0.2637472832        0.28%   2.399         0.19888E-03
+ Search direction has positive projection onto gradient - reversing step
+ lbfgs> steps:     88    -194.1861213        0.3495394835        0.21%   2.397        -0.31087E-03
+ Search direction has positive projection onto gradient - reversing step
+ lbfgs> steps:     89    -194.1860238        0.3543028987        0.20%   2.396         0.83456E-04
+ Search direction has positive projection onto gradient - reversing step
+ lbfgs> Decreasing DNEB force constant to      41.55206549    
+ lbfgs> steps:     90    -194.1859141        0.3604377258        0.20%   2.396         0.32953E-03
+ Search direction has positive projection onto gradient - reversing step
+ lbfgs> steps:     91    -194.1858045        0.3526219323        0.19%   2.396        -0.65049E-03
+ lbfgs> steps:     92    -194.1856210        0.3592354707        0.19%   2.396         0.85693E-04
+ lbfgs> steps:     93    -194.1852188        0.3743548479        0.19%   2.395         0.22496E-02
+ lbfgs> steps:     94    -194.1847267        0.3857174679        0.24%   2.396         0.65021E-02
+ lbfgs> Decreasing DNEB force constant to      39.57339570    
+ lbfgs> steps:     95    -194.1868036        0.3539332867        0.30%   2.399        -0.54904E-02
+ lbfgs> steps:     96    -194.1867247        0.3377799977        0.30%   2.399         0.35805E-03
+ Search direction has positive projection onto gradient - reversing step
+ lbfgs> steps:     97    -194.1865094        0.3258295277        0.26%   2.398        -0.35674E-03
+ lbfgs> steps:     98    -194.1864684        0.3151396438        0.25%   2.398         0.12006E-02
+ lbfgs> steps:     99    -194.1865942        0.3203621925        0.22%   2.397         0.23449E-02
+ lbfgs> Decreasing DNEB force constant to      37.68894829    
+ lbfgs> steps:    100    -194.1863029        0.3415417777        0.19%   2.396         0.66352E-03
+ rwg> NEB coordinates were saved to xyz file "neb.100.xyz"
+ NEB coordinates were saved to binary file "neb.out"
+ writeprofile> NEB profile was saved to file "neb.EofS.100"
+ lbfgs> steps:    101    -194.1858215        0.3567411621        0.18%   2.395         0.85007E-03
+ lbfgs> steps:    102    -194.1850905        0.3814168984        0.27%   2.394         0.10829E-02
+ lbfgs> steps:    103    -194.1848514        0.3872353747        0.30%   2.394         0.29517E-03
+ lbfgs> steps:    104    -194.1847255        0.3897764097        0.32%   2.394         0.96600E-04
+ lbfgs> Decreasing DNEB force constant to      35.89423646    
+ lbfgs> steps:    105    -194.1846237        0.3913087744        0.34%   2.393         0.67973E-04
+ lbfgs> steps:    106    -194.1839779        0.3778229598        0.55%   2.391        -0.63756E-03
+ lbfgs> steps:    107    -194.1840415        0.3784668164        0.57%   2.391         0.20795E-02
+ lbfgs> steps:    108    -194.1847957        0.3679074753        0.54%   2.391         0.77353E-03
+ lbfgs> steps:    109    -194.1867541        0.3394369046        0.50%   2.392         0.53112E-03
+ lbfgs> Decreasing DNEB force constant to      34.18498711    
+ lbfgs> steps:    110    -194.1871083        0.3336959298        0.55%   2.391         0.35049E-03
+ lbfgs> steps:    111    -194.1882479        0.2952284643        0.64%   2.391        -0.16389E-02
+ lbfgs> steps:    112    -194.1881973        0.2918090976        0.63%   2.391        -0.11329E-02
+ lbfgs> steps:    113    -194.1890469        0.2680570708        0.55%   2.392        -0.33372E-02
+ lbfgs> steps:    114    -194.1896060        0.2401639191        0.43%   2.394        -0.52306E-02
+ lbfgs> Decreasing DNEB force constant to      32.55713058    
+ lbfgs> steps:    115    -194.1892568        0.2456482390        0.40%   2.393         0.48063E-02
+ lbfgs> steps:    116    -194.1892171        0.2428776524        0.40%   2.393         0.11746E-02
+ lbfgs> steps:    117    -194.1892234        0.2285941988        0.36%   2.393        -0.43376E-03
+ lbfgs> steps:    118    -194.1892412        0.2069815362        0.24%   2.395        -0.13793E-02
+ lbfgs> steps:    119    -194.1891900        0.2055647891        0.23%   2.395        -0.71283E-04
+ lbfgs> Decreasing DNEB force constant to      31.00679103    
+ lbfgs> steps:    120    -194.1891549        0.2017097283        0.20%   2.395        -0.22223E-04
+ lbfgs> steps:    121    -194.1890739        0.1937601372        0.20%   2.395        -0.37141E-03
+ lbfgs> steps:    122    -194.1889742        0.1796343189        0.17%   2.396        -0.86092E-03
+ lbfgs> steps:    123    -194.1886632        0.1610839196        0.24%   2.397        -0.23472E-02
+ lbfgs> steps:    124    -194.1889355        0.1703196505        0.16%   2.396         0.19283E-02
+ lbfgs> Decreasing DNEB force constant to      29.53027717    
+ lbfgs> steps:    125    -194.1889404        0.1690683738        0.17%   2.396         0.55971E-04
+ lbfgs> steps:    126    -194.1889513        0.1627875312        0.17%   2.396        -0.10636E-03
+ Search direction has positive projection onto gradient - reversing step
+ lbfgs> steps:    127    -194.1889456        0.1625128397        0.17%   2.396        -0.62928E-07
+ lbfgs> steps:    128    -194.1889248        0.1620798062        0.17%   2.396         0.24653E-04
+ lbfgs> steps:    129    -194.1886941        0.1578749730        0.19%   2.396         0.47209E-03
+ lbfgs> Decreasing DNEB force constant to      28.12407350    
+ lbfgs> steps:    130    -194.1879527        0.1405710997        0.28%   2.397         0.17564E-02
+ lbfgs> steps:    131    -194.1875477        0.1552661759        0.35%   2.398         0.92575E-03
+ lbfgs> steps:    132    -194.1876729        0.1540013540        0.31%   2.398         0.88878E-03
+ lbfgs> steps:    133    -194.1885977        0.1551787311        0.16%   2.397        -0.93027E-03
+ lbfgs> steps:    134    -194.1890197        0.1662387118        0.13%   2.396        -0.21696E-02
+ lbfgs> Decreasing DNEB force constant to      26.78483190    
+ lbfgs> steps:    135    -194.1891452        0.1611863479        0.14%   2.396        -0.46886E-03
+ lbfgs> steps:    136    -194.1891014        0.1371581267        0.19%   2.396        -0.46241E-03
+ lbfgs> steps:    137    -194.1888799        0.1204297737        0.23%   2.397        -0.46663E-04
+ lbfgs> steps:    138    -194.1882872        0.1246135299        0.29%   2.398         0.15331E-02
+ lbfgs> steps:    139    -194.1879945        0.1513236906        0.28%   2.398         0.22300E-02
+ lbfgs> Decreasing DNEB force constant to      25.50936371    
+ lbfgs> steps:    140    -194.1884320        0.1766158821        0.13%   2.397         0.15981E-02
+ lbfgs> steps:    141    -194.1885272        0.1325338048        0.16%   2.397        -0.74546E-03
+ lbfgs> steps:    142    -194.1887212        0.1418799688        0.30%   2.398        -0.43765E-02
+ lbfgs> steps:    143    -194.1886421        0.8302193599E-01    0.21%   2.397         0.33768E-02
+ lbfgs> steps:    144    -194.1884337        0.8351805776E-01    0.24%   2.398         0.24014E-03
+ lbfgs> Decreasing DNEB force constant to      24.29463211    
+ lbfgs> steps:    145    -194.1885364        0.6799959434E-01    0.23%   2.398        -0.63990E-03
+ lbfgs> steps:    146    -194.1887455        0.7641082778E-01    0.25%   2.399        -0.21451E-02
+ lbfgs> steps:    147    -194.1886605        0.4801473209E-01    0.24%   2.399         0.72487E-03
+ lbfgs> steps:    148    -194.1887047        0.4392534754E-01    0.22%   2.399        -0.12897E-03
+ lbfgs> steps:    149    -194.1888050        0.5231710827E-01    0.22%   2.399        -0.79784E-03
+ lbfgs> Decreasing DNEB force constant to      23.13774487    
+ lbfgs> steps:    150    -194.1889012        0.4632587045E-01    0.21%   2.399        -0.47762E-03
+ lbfgs> steps:    151    -194.1890350        0.5229523620E-01    0.19%   2.399        -0.38326E-03
+ lbfgs> steps:    152    -194.1891896        0.5458951615E-01    0.16%   2.399        -0.17016E-03
+ lbfgs> steps:    153    -194.1894160        0.5545064265E-01    0.14%   2.399        -0.31632E-03
+ lbfgs> steps:    154    -194.1895734        0.5578131354E-01    0.12%   2.399         0.21289E-03
+ lbfgs> Decreasing DNEB force constant to      22.03594749    
+ lbfgs> steps:    155    -194.1896227        0.4892181351E-01    0.12%   2.399         0.24324E-03
+ lbfgs> steps:    156    -194.1897497        0.5016552688E-01    0.11%   2.399        -0.70604E-04
+ lbfgs> steps:    157    -194.1900781        0.5746947348E-01    0.11%   2.399        -0.21157E-03
+ lbfgs> steps:    158    -194.1902501        0.5685441370E-01    0.13%   2.399         0.14138E-03
+ lbfgs> steps:    159    -194.1901929        0.4692113165E-01    0.12%   2.399         0.17979E-03
+ lbfgs> Decreasing DNEB force constant to      20.98661666    
+ lbfgs> steps:    160    -194.1902044        0.4535017841E-01    0.13%   2.399         0.11120E-03
+ lbfgs> steps:    161    -194.1903501        0.5110180255E-01    0.16%   2.400        -0.23646E-04
+ lbfgs> steps:    162    -194.1903484        0.4532040222E-01    0.16%   2.400        -0.10120E-03
+ lbfgs> steps:    163    -194.1904400        0.4625454665E-01    0.17%   2.400        -0.29549E-03
+ lbfgs> steps:    164    -194.1904747        0.4398033622E-01    0.18%   2.400        -0.10858E-03
+ lbfgs> Decreasing DNEB force constant to      19.98725396    
+ lbfgs> steps:    165    -194.1905558        0.4058315818E-01    0.19%   2.400        -0.22004E-03
+ lbfgs> steps:    166    -194.1906552        0.4070193090E-01    0.20%   2.400        -0.68377E-04
+ lbfgs> steps:    167    -194.1907560        0.4195088553E-01    0.22%   2.400        -0.54967E-04
+ lbfgs> steps:    168    -194.1910077        0.4986036533E-01    0.27%   2.400        -0.26418E-03
+ lbfgs> steps:    169    -194.1909767        0.4927265921E-01    0.26%   2.400         0.64656E-05
+ lbfgs> Decreasing DNEB force constant to      19.03547996    
+ lbfgs> steps:    170    -194.1906438        0.4931985594E-01    0.20%   2.400         0.33544E-03
+ lbfgs> steps:    171    -194.1905956        0.4300737819E-01    0.19%   2.400         0.13721E-03
+ lbfgs> steps:    172    -194.1907389        0.4523681883E-01    0.22%   2.400        -0.15616E-03
+ lbfgs> steps:    173    -194.1907181        0.4371127080E-01    0.22%   2.400        -0.62639E-04
+ lbfgs> steps:    174    -194.1906970        0.4441643778E-01    0.22%   2.400        -0.25652E-03
+ lbfgs> Decreasing DNEB force constant to      18.12902854    
+ lbfgs> steps:    175    -194.1907054        0.4502186054E-01    0.24%   2.401        -0.30064E-03
+ lbfgs> steps:    176    -194.1904693        0.4961969594E-01    0.23%   2.401        -0.33963E-03
+ lbfgs> steps:    177    -194.1903443        0.4135051398E-01    0.21%   2.401         0.21575E-03
+ lbfgs> steps:    178    -194.1903025        0.4255154827E-01    0.21%   2.401         0.19424E-03
+ lbfgs> steps:    179    -194.1902287        0.4193189829E-01    0.22%   2.401        -0.65501E-04
+ lbfgs> Decreasing DNEB force constant to      17.26574146    
+ lbfgs> steps:    180    -194.1901647        0.5246136303E-01    0.27%   2.402        -0.84936E-03
+ lbfgs> steps:    181    -194.1898069        0.6062639325E-01    0.30%   2.402        -0.63501E-03
+ lbfgs> steps:    182    -194.1897665        0.4587731404E-01    0.26%   2.402         0.45374E-03
+ lbfgs> steps:    183    -194.1899807        0.3967005553E-01    0.22%   2.401         0.56212E-03
+ lbfgs> steps:    184    -194.1899815        0.4010883330E-01    0.24%   2.402        -0.10529E-03
+ lbfgs> Decreasing DNEB force constant to      16.44356330    
+ lbfgs> steps:    185    -194.1899190        0.4377651843E-01    0.28%   2.402        -0.51223E-04
+ lbfgs> steps:    186    -194.1900196        0.3649188072E-01    0.31%   2.402        -0.26405E-03
+ lbfgs> steps:    187    -194.1900554        0.5608265122E-01    0.40%   2.403        -0.97184E-03
+ lbfgs> steps:    188    -194.1901134        0.4832203579E-01    0.46%   2.404        -0.13878E-03
+ lbfgs> steps:    189    -194.1901057        0.4620623007E-01    0.54%   2.405        -0.17393E-04
+ lbfgs> Decreasing DNEB force constant to      15.66053647    
+ lbfgs> steps:    190    -194.1900605        0.4004884033E-01    0.51%   2.405         0.42894E-03
+ lbfgs> steps:    191    -194.1900112        0.2738222042E-01    0.48%   2.405         0.15786E-04
+ lbfgs> Final DNEB force constant      15.66053647    
+ newneb> mean image separation is       0.3006
+ writeprofile> NEB profile was saved to file "neb.EofS"
+ rwg> NEB coordinates were saved to xyz file "neb.0.xyz"
+ NEB coordinates were saved to binary file "neb.out"
+ Time to go through NEB:   0.181972000000000     
+ Convergence criterion was satisfied.
+ time= 0.18 sec (0. sec/iteration)
+ Following    1 images are candidates for TS:    5  
+ Index of first candidate is            6
+ Image energies are  -196.290778845630       -195.993924674825     
+  -195.074654221214       -194.140007841121       -193.595471482310     
+  -193.429331366960       -193.487012932225       -193.609675776554     
+  -193.671270772555     
+bfgsts> WARNING - GMAX     0.1000000000E-05 is different from CONVR     0.1000000000E-04 - resetting
+bfgsts> WARNING - CONVU <= MINMAX - resetting CONVU
+ bfgsts> resetting maximum step sizes to     0.5000000000E-01
+ 
+ BFGSTS> Beginning of optimization cycle    1.
+ ---------------------------------------
+D,D2,D3,E+,E-,E,RMS=     45.751         45.751         45.751      -193.429148929      -193.429468055      -193.429331367      22.7    
+predicted gradient component=    0.1595630171    
+xmylbfgs> Eigenvalue and RMS=     45.75071359         22.69164179     after      0 steps
+D,D2,D3,E+,E-,E,RMS=     29.467         29.467         29.467      -193.429158260      -193.429475007      -193.429331367      16.1    
+predicted gradient component=    0.1583733864    
+xmylbfgs> Eigenvalue, RMS, % change=     29.46679079         16.08199494         55.26194866     after      1 steps, step: 0.1000000000
+D,D2,D3,E+,E-,E,RMS=     10.760         10.760         10.760      -193.429174341      -193.429477633      -193.429331367      7.64    
+predicted gradient component=    0.1516462116    
+xmylbfgs> Eigenvalue, RMS, % change=     10.76002033         7.641892923         173.8544156     after      2 steps, step: 0.2000000000
+D,D2,D3,E+,E-,E,RMS=     2.9512         2.9512         2.9512      -193.429189366      -193.429470417      -193.429331367      6.70    
+predicted gradient component=    0.1405253184    
+xmylbfgs> Eigenvalue, RMS, % change=     2.951214200         6.695039379         264.5963865     after      3 steps, step: 0.2000000000
+D,D2,D3,E+,E-,E,RMS=    -1.6487        -1.6487        -1.6487      -193.429200469      -193.429463914      -193.429331367      4.31    
+predicted gradient component=    0.1317227656    
+xmylbfgs> Eigenvalue, RMS, % change=    -1.648721832         4.314739921         279.0001287     after      4 steps, step: 0.1694036877
+D,D2,D3,E+,E-,E,RMS=    -2.7379        -2.7379        -2.7379      -193.429210824      -193.429454648      -193.429331367      6.71    
+predicted gradient component=    0.1219119462    
+xmylbfgs> Eigenvalue, RMS, % change=    -2.737906075         6.712723525         39.78165115     after      5 steps, step: 0.2000000000
+D,D2,D3,E+,E-,E,RMS=    -4.1881        -4.1881        -4.1881      -193.429212338      -193.429454584      -193.429331367      1.41    
+predicted gradient component=    0.1211234509    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.188078855         1.414257340         34.62620523     after      6 steps, step: 0.0624306254
+D,D2,D3,E+,E-,E,RMS=    -4.3081        -4.3081        -4.3081      -193.429211216      -193.429455826      -193.429331367     0.961    
+predicted gradient component=    0.1223052714    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.308129960        0.9610721501         2.786617538     after      7 steps, step: 0.0181417159
+D,D2,D3,E+,E-,E,RMS=    -4.4896        -4.4896        -4.4896      -193.429210994      -193.429456230      -193.429331367     0.553    
+predicted gradient component=    0.1226181663    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.489599883        0.5532560719         4.042006573     after      8 steps, step: 0.0363098660
+D,D2,D3,E+,E-,E,RMS=    -4.5738        -4.5738        -4.5738      -193.429211480      -193.429455828      -193.429331367     0.453    
+predicted gradient component=    0.1221742426    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.573779545        0.4528009581         1.840483597     after      9 steps, step: 0.0312593721
+D,D2,D3,E+,E-,E,RMS=    -4.6371        -4.6371        -4.6371      -193.429211720      -193.429455651      -193.429331367     0.689    
+predicted gradient component=    0.1219654633    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.637117047        0.6893935371         1.365881023     after     10 steps, step: 0.0477657694
+D,D2,D3,E+,E-,E,RMS=    -4.6479        -4.6479        -4.6479      -193.429212315      -193.429455067      -193.429331367     0.726    
+predicted gradient component=    0.1213761324    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.647855364        0.7263745524        0.2310381233     after     11 steps, step: 0.0401373586
+D,D2,D3,E+,E-,E,RMS=    -4.6765        -4.6765        -4.6765      -193.429211910      -193.429455500      -193.429331367     0.173    
+predicted gradient component=    0.1217947567    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.676457129        0.1733382699        0.6116118100     after     12 steps, step: 0.0171512457
+D,D2,D3,E+,E-,E,RMS=    -4.6806        -4.6806        -4.6806      -193.429211686      -193.429455729      -193.429331367     0.127    
+predicted gradient component=    0.1220214907    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.680554088        0.1267852980        0.8753151399E-01 after     13 steps, step: 0.0042664526
+D,D2,D3,E+,E-,E,RMS=    -4.6854        -4.6854        -4.6854      -193.429211462      -193.429455957      -193.429331367     0.109    
+predicted gradient component=    0.1222473366    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.685437786        0.1089809217        0.1042313946     after     14 steps, step: 0.0102931633
+D,D2,D3,E+,E-,E,RMS=    -4.6835        -4.6835        -4.6835      -193.429211154      -193.429456264      -193.429331367     0.290    
+predicted gradient component=    0.1225551501    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.683494858        0.2903442994        0.4148456568E-01 after     15 steps, step: 0.0082423662
+D,D2,D3,E+,E-,E,RMS=    -4.6870        -4.6870        -4.6870      -193.429211357      -193.429456063      -193.429331367     0.533E-01
+predicted gradient component=    0.1223530170    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.686975139        0.5330527834E-01    0.7425430743E-01 after     16 steps, step: 0.0038049005
+D,D2,D3,E+,E-,E,RMS=    -4.6873        -4.6873        -4.6873      -193.429211383      -193.429456038      -193.429331367     0.400E-01
+predicted gradient component=    0.1223272369    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.687261967        0.3995207279E-01    0.6119307358E-02 after     17 steps, step: 0.0008790012
+D,D2,D3,E+,E-,E,RMS=    -4.6880        -4.6880        -4.6880      -193.429211432      -193.429455990      -193.429331367     0.351E-01
+predicted gradient component=    0.1222791961    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.687959904        0.3506500191E-01    0.1488786235E-01 after     18 steps, step: 0.0038362879
+D,D2,D3,E+,E-,E,RMS=    -4.6882        -4.6882        -4.6882      -193.429211440      -193.429455982      -193.429331367     0.325E-01
+predicted gradient component=    0.1222709597    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.688218767        0.3248806456E-01    0.5521570317E-02 after     19 steps, step: 0.0024283060
+D,D2,D3,E+,E-,E,RMS=    -4.6883        -4.6883        -4.6883      -193.429211422      -193.429456000      -193.429331367     0.468E-01
+predicted gradient component=    0.1222890669    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.688253222        0.4684807730E-01    0.7349207735E-03 after     20 steps, step: 0.0026952425
+D,D2,D3,E+,E-,E,RMS=    -4.6884        -4.6884        -4.6884      -193.429211415      -193.429456007      -193.429331367     0.135E-01
+predicted gradient component=    0.1222958736    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.688365553        0.1347234887E-01    0.2395949337E-02 after     21 steps, step: 0.0008966275
+D,D2,D3,E+,E-,E,RMS=    -4.6884        -4.6884        -4.6884      -193.429211415      -193.429456007      -193.429331367     0.958E-02
+predicted gradient component=    0.1222962322    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.688383545        0.9580261588E-02    0.3837572927E-03 after     22 steps, step: 0.0002839931
+D,D2,D3,E+,E-,E,RMS=    -4.6884        -4.6884        -4.6884      -193.429211415      -193.429456008      -193.429331367     0.831E-02
+predicted gradient component=    0.1222965732    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.688407838        0.8307797015E-02    0.5181414232E-03 after     23 steps, step: 0.0005998114
+D,D2,D3,E+,E-,E,RMS=    -4.6884        -4.6884        -4.6884      -193.429211422      -193.429456000      -193.429331367     0.942E-02
+predicted gradient component=    0.1222888579    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.688425408        0.9423848701E-02    0.3747540314E-03 after     24 steps, step: 0.0006940666
+D,D2,D3,E+,E-,E,RMS=    -4.6884        -4.6884        -4.6884      -193.429211427      -193.429455995      -193.429331367     0.617E-02
+predicted gradient component=    0.1222842722    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.688433716        0.6168565491E-02    0.1772012289E-03 after     25 steps, step: 0.0005007696
+D,D2,D3,E+,E-,E,RMS=    -4.6884        -4.6884        -4.6884      -193.429211425      -193.429455998      -193.429331367     0.397E-02
+predicted gradient component=    0.1222863430    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.688437533        0.3974298174E-02    0.8141618085E-04 after     26 steps, step: 0.0001846985
+D,D2,D3,E+,E-,E,RMS=    -4.6884        -4.6884        -4.6884      -193.429211422      -193.429456000      -193.429331367     0.330E-02
+predicted gradient component=    0.1222889149    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.688440378        0.3302302653E-02    0.6068651456E-04 after     27 steps, step: 0.0001786741
+D,D2,D3,E+,E-,E,RMS=    -4.6884        -4.6884        -4.6884      -193.429211416      -193.429456006      -193.429331367     0.404E-02
+predicted gradient component=    0.1222947558    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.688442455        0.4036946451E-02    0.4429041631E-04 after     28 steps, step: 0.0002948000
+D,D2,D3,E+,E-,E,RMS=    -4.6884        -4.6884        -4.6884      -193.429211413      -193.429456009      -193.429331367     0.442E-02
+predicted gradient component=    0.1222983168    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.688442347        0.4415392940E-02    0.2285943715E-05 after     29 steps, step: 0.0001520435
+D,D2,D3,E+,E-,E,RMS=    -4.6884        -4.6884        -4.6884      -193.429211416      -193.429456007      -193.429331367     0.706E-03
+predicted gradient component=    0.1222954937    
+xmylbfgs> Eigenvalue, RMS, % change=    -4.688443313        0.7061323558E-03    0.2059950069E-04 after     30 steps, step: 0.0001041285
+xmylbfgs> Smallest eigenvalue converged in   30 steps. Eigenvalue=     -4.6884433 RMS force=      0.0007061 % change=    0.20600E-04
+xmylbfgs> Diagonal inverse Hessian elements are now         0.0013221446
+beig> Overlap with previous vector=      0.7640023
+ -------------------------------------------------------------------------------
+ Vector      Gradient        Secder       Step          Max step    Trust ratio
+ -------------------------------------------------------------------------------
+    1    0.122292E+00   -0.468844E+01  0.260661E-01 0.550000E-01    0.527343E-01
+ -------------------------------------------------------------------------------
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -193.4276806        0.1583731918E-01 after      0 steps
+ mylbfgs> Energy and RMS force=    -193.4277460        0.2542159791E-01 after      1 steps, step:  0.18059E-02
+ mylbfgs> Energy and RMS force=    -193.4278032        0.9620925930E-02 after      2 steps, step:  0.62234E-03
+ bfgsts> RMS grad=      0.0096458 subspace grad=      0.0096209 unscaled EF step length=      0.0260661
+ 
+ BFGSTS> Beginning of optimization cycle    2.
+ ---------------------------------------
+D,D2,D3,E+,E-,E,RMS=    -4.2150        -4.2150        -4.2150      -193.427799406      -193.427811164      -193.427803178     0.286    
+predicted gradient component=    0.5878807258E-02
+xmylbfgs> Eigenvalue and RMS=    -4.215035677        0.2861311181     after      0 steps
+D,D2,D3,E+,E-,E,RMS=    -1.2794        -1.2794        -1.2794      -193.427798273      -193.427809362      -193.427803178      8.21    
+predicted gradient component=    0.5544711655E-02
+ eigenvalue increased from       -4.2150356773 to -1.279359706     decreasing step to      0.01000000
+D,D2,D3,E+,E-,E,RMS=    -4.2072        -4.2072        -4.2072      -193.427799433      -193.427811129      -193.427803178     0.614    
+predicted gradient component=    0.5847851526E-02
+ eigenvalue increased from       -4.2150356773 to -4.207237194     decreasing step to      0.00100000
+D,D2,D3,E+,E-,E,RMS=    -4.2171        -4.2171        -4.2171      -193.427799410      -193.427811162      -193.427803178     0.214    
+predicted gradient component=    0.5875738339E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.217142794        0.2141965536        0.4996551775E-01 after      1 steps, step: 0.0010000000
+D,D2,D3,E+,E-,E,RMS=    -4.2212        -4.2212        -4.2212      -193.427799392      -193.427811185      -193.427803178     0.106    
+predicted gradient component=    0.5896415701E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.221225773        0.1056885361        0.9672495793E-01 after      2 steps, step: 0.0039171296
+D,D2,D3,E+,E-,E,RMS=    -4.2225        -4.2225        -4.2225      -193.427799390      -193.427811187      -193.427803178     0.910E-01
+predicted gradient component=    0.5898424433E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.222501294        0.9096405923E-01    0.3020769307E-01 after      3 steps, step: 0.0022769029
+D,D2,D3,E+,E-,E,RMS=    -4.2231        -4.2231        -4.2231      -193.427799334      -193.427811244      -193.427803178     0.153    
+predicted gradient component=    0.5955041217E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.223097975        0.1525223698        0.1412899576E-01 after      4 steps, step: 0.0049950294
+D,D2,D3,E+,E-,E,RMS=    -4.2239        -4.2239        -4.2239      -193.427799391      -193.427811188      -193.427803178     0.392E-01
+predicted gradient component=    0.5898235827E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.223923162        0.3917537862E-01    0.1953604620E-01 after      5 steps, step: 0.0013687890
+D,D2,D3,E+,E-,E,RMS=    -4.2240        -4.2240        -4.2240      -193.427799393      -193.427811186      -193.427803178     0.286E-01
+predicted gradient component=    0.5896236985E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224027654        0.2864635997E-01    0.2473737047E-02 after      6 steps, step: 0.0004946252
+D,D2,D3,E+,E-,E,RMS=    -4.2243        -4.2243        -4.2243      -193.427799397      -193.427811182      -193.427803178     0.204E-01
+predicted gradient component=    0.5892703598E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224272541        0.2038523915E-01    0.5797149058E-02 after      7 steps, step: 0.0015893228
+D,D2,D3,E+,E-,E,RMS=    -4.2244        -4.2244        -4.2244      -193.427799385      -193.427811194      -193.427803178     0.228E-01
+predicted gradient component=    0.5904500028E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224446431        0.2284378512E-01    0.4116284212E-02 after      8 steps, step: 0.0019677011
+D,D2,D3,E+,E-,E,RMS=    -4.2244        -4.2244        -4.2244      -193.427799342      -193.427811237      -193.427803178     0.686E-01
+predicted gradient component=    0.5947396915E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224351623        0.6859448443E-01    0.2244325230E-02 after      9 steps, step: 0.0031482478
+D,D2,D3,E+,E-,E,RMS=    -4.2246        -4.2246        -4.2246      -193.427799355      -193.427811225      -193.427803178     0.945E-02
+predicted gradient component=    0.5934971966E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224567737        0.9452858785E-02    0.5115642905E-02 after     10 steps, step: 0.0011040242
+D,D2,D3,E+,E-,E,RMS=    -4.2246        -4.2246        -4.2246      -193.427799351      -193.427811229      -193.427803178     0.625E-02
+predicted gradient component=    0.5939026948E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224578224        0.6253183933E-02    0.2482315983E-03 after     11 steps, step: 0.0001811342
+D,D2,D3,E+,E-,E,RMS=    -4.2246        -4.2246        -4.2246      -193.427799343      -193.427811236      -193.427803178     0.519E-02
+predicted gradient component=    0.5946386977E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224589244        0.5194049517E-02    0.2608474013E-03 after     12 steps, step: 0.0004079731
+D,D2,D3,E+,E-,E,RMS=    -4.2246        -4.2246        -4.2246      -193.427799335      -193.427811244      -193.427803178     0.144E-01
+predicted gradient component=    0.5954557651E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224585823        0.1435664960E-01    0.8096212064E-04 after     13 steps, step: 0.0003826121
+D,D2,D3,E+,E-,E,RMS=    -4.2246        -4.2246        -4.2246      -193.427799340      -193.427811240      -193.427803178     0.296E-02
+predicted gradient component=    0.5950122841E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224593686        0.2958977252E-02    0.1861105460E-03 after     14 steps, step: 0.0001494759
+D,D2,D3,E+,E-,E,RMS=    -4.2246        -4.2246        -4.2246      -193.427799340      -193.427811239      -193.427803178     0.216E-02
+predicted gradient component=    0.5949374781E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224594553        0.2162300992E-02    0.2054175249E-04 after     15 steps, step: 0.0000476776
+D,D2,D3,E+,E-,E,RMS=    -4.2246        -4.2246        -4.2246      -193.427799341      -193.427811238      -193.427803178     0.231E-02
+predicted gradient component=    0.5948357796E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224596343        0.2309041799E-02    0.4236187928E-04 after     16 steps, step: 0.0001702502
+D,D2,D3,E+,E-,E,RMS=    -4.2246        -4.2246        -4.2246      -193.427799342      -193.427811238      -193.427803178     0.186E-02
+predicted gradient component=    0.5948216085E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224597708        0.1857143888E-02    0.3230159903E-04 after     17 steps, step: 0.0001707272
+D,D2,D3,E+,E-,E,RMS=    -4.2246        -4.2246        -4.2246      -193.427799337      -193.427811242      -193.427803178     0.115E-01
+predicted gradient component=    0.5952650213E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224594055        0.1151858395E-01    0.8645155529E-04 after     18 steps, step: 0.0002604286
+D,D2,D3,E+,E-,E,RMS=    -4.2246        -4.2246        -4.2246      -193.427799341      -193.427811239      -193.427803178     0.714E-03
+predicted gradient component=    0.5949170486E-02
+xmylbfgs> Eigenvalue, RMS, % change=    -4.224598322        0.7135184421E-03    0.1009844328E-03 after     19 steps, step: 0.0001336258
+xmylbfgs> Smallest eigenvalue converged in   19 steps. Eigenvalue=     -4.2245983 RMS force=      0.0007135 % change=    0.10098E-03
+xmylbfgs> Diagonal inverse Hessian elements are now         0.0011218628
+beig> Overlap with previous vector=      0.9999035
+ -------------------------------------------------------------------------------
+ Vector      Gradient        Secder       Step          Max step    Trust ratio
+ -------------------------------------------------------------------------------
+    1    0.594612E-02   -0.422460E+01  0.140750E-02 0.605000E-01    0.305013E-02
+ -------------------------------------------------------------------------------
+ mylbfgs> Not resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -193.4277990        0.9620672745E-02 after      0 steps
+ mylbfgs> Energy and RMS force=    -193.4278090        0.5870093401E-02 after      1 steps, step:  0.17366E-03
+ mylbfgs> Energy and RMS force=    -193.4278211        0.4629559627E-02 after      2 steps, step:  0.39040E-03
+ mylbfgs> Energy and RMS force=    -193.4278313        0.5549797381E-02 after      3 steps, step:  0.54571E-03
+ mylbfgs> Energy and RMS force=    -193.4278386        0.7995748737E-02 after      4 steps, step:  0.85077E-03
+ mylbfgs> Energy and RMS force=    -193.4278458        0.3453925328E-02 after      5 steps, step:  0.24923E-03
+ mylbfgs> Energy and RMS force=    -193.4278503        0.2898858936E-02 after      6 steps, step:  0.29872E-03
+ mylbfgs> Energy and RMS force=    -193.4278541        0.2717020395E-02 after      7 steps, step:  0.40300E-03
+ mylbfgs> Energy and RMS force=    -193.4278567        0.3037193586E-02 after      8 steps, step:  0.52555E-03
+ energy increase:    -193.427856683713     to     -193.427856402564     decreasing step to  0.26064054E-04
+ mylbfgs> Energy and RMS force=    -193.4278570        0.2460641547E-02 after      9 steps, step:  0.26064E-04
+ mylbfgs> Energy and RMS force=    -193.4278577        0.6749310426E-03 after     10 steps, step:  0.70402E-04
+ mylbfgs> Energy and RMS force=    -193.4278578        0.6597879840E-03 after     11 steps, step:  0.22135E-04
+ mylbfgs> Energy and RMS force=    -193.4278581        0.9000971240E-03 after     12 steps, step:  0.11387E-03
+ mylbfgs> Energy and RMS force=    -193.4278584        0.9309130018E-03 after     13 steps, step:  0.13051E-03
+ energy increase:    -193.427858362644     to     -193.427857886343     decreasing step to  0.29647116E-04
+ mylbfgs> Energy and RMS force=    -193.4278584        0.8646308863E-03 after     14 steps, step:  0.29647E-04
+ mylbfgs> Energy and RMS force=    -193.4278587        0.4324325326E-03 after     15 steps, step:  0.17539E-03
+ mylbfgs> Energy and RMS force=    -193.4278588        0.2201559959E-03 after     16 steps, step:  0.58630E-04
+ mylbfgs> Energy and RMS force=    -193.4278588        0.1740435182E-03 after     17 steps, step:  0.52287E-04
+ energy increase:    -193.427858806960     to     -193.427858804304     decreasing step to  0.35346289E-05
+ mylbfgs> Energy and RMS force=    -193.4278588        0.1496068633E-03 after     18 steps, step:  0.35346E-05
+ mylbfgs> Energy and RMS force=    -193.4278588        0.1449276060E-03 after     19 steps, step:  0.25913E-04
+ mylbfgs> Energy and RMS force=    -193.4278588        0.1572744486E-03 after     20 steps, step:  0.26523E-04
+ mylbfgs> Energy and RMS force=    -193.4278588        0.3723714523E-03 after     21 steps, step:  0.60562E-04
+ mylbfgs> Energy and RMS force=    -193.4278589        0.7790275814E-04 after     22 steps, step:  0.10249E-04
+ mylbfgs> Energy and RMS force=    -193.4278589        0.3660317809E-04 after     23 steps, step:  0.57040E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.2223145217E-04 after     24 steps, step:  0.34950E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.2293663347E-04 after     25 steps, step:  0.29371E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.2201735070E-04 after     26 steps, step:  0.45149E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.2108656347E-04 after     27 steps, step:  0.56556E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.1227122623E-04 after     28 steps, step:  0.44098E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.1036128991E-04 after     29 steps, step:  0.11073E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.2177173818E-05 after     30 steps, step:  0.61084E-06
+ bfgsts> RMS grad=      0.0000032 subspace grad=      0.0000022 unscaled EF step length=      0.0014075
+ 
+ BFGSTS> Beginning of optimization cycle    3.
+ ---------------------------------------
+D,D2,D3,E+,E-,E,RMS=    -4.1942        -4.1942        -4.1942      -193.427860932      -193.427860978      -193.427858858     0.207E-01
+predicted gradient component=    0.2270945743E-04
+xmylbfgs> Eigenvalue and RMS=    -4.194151375        0.2066899178E-01 after      0 steps
+D,D2,D3,E+,E-,E,RMS=    -4.1916        -4.1916        -4.1916      -193.427860931      -193.427860977      -193.427858858     0.241    
+predicted gradient component=    0.2265920784E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.191632490        0.2407440762        0.6009316182E-01 after      1 steps, step: 0.0030758920
+D,D2,D3,E+,E-,E,RMS=    -4.1942        -4.1942        -4.1942      -193.427860932      -193.427860978      -193.427858858     0.690E-02
+predicted gradient component=    0.2270445520E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.194182406        0.6899121368E-02    0.6079650010E-01 after      2 steps, step: 0.0027569864
+D,D2,D3,E+,E-,E,RMS=    -4.1942        -4.1942        -4.1942      -193.427860933      -193.427860978      -193.427858858     0.531E-02
+predicted gradient component=    0.2270456889E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.194186199        0.5308677006E-02    0.9043482395E-04 after      3 steps, step: 0.0000793277
+D,D2,D3,E+,E-,E,RMS=    -4.1942        -4.1942        -4.1942      -193.427860933      -193.427860978      -193.427858858     0.523E-02
+predicted gradient component=    0.2270365940E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.194193168        0.5234782439E-02    0.1661397065E-03 after      4 steps, step: 0.0003661670
+D,D2,D3,E+,E-,E,RMS=    -4.1942        -4.1942        -4.1942      -193.427860933      -193.427860978      -193.427858858     0.136E-01
+predicted gradient component=    0.2270530786E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.194188524        0.1359800048E-01    0.1107265424E-03 after      5 steps, step: 0.0001965928
+D,D2,D3,E+,E-,E,RMS=    -4.1942        -4.1942        -4.1942      -193.427860933      -193.427860978      -193.427858858     0.161E-02
+predicted gradient component=    0.2270371624E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.194194368        0.1611137371E-02    0.1393540123E-03 after      6 steps, step: 0.0001449166
+D,D2,D3,E+,E-,E,RMS=    -4.1942        -4.1942        -4.1942      -193.427860933      -193.427860978      -193.427858858     0.142E-02
+predicted gradient component=    0.2270405730E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.194194554        0.1424611601E-02    0.4417007037E-05 after      7 steps, step: 0.0000156870
+D,D2,D3,E+,E-,E,RMS=    -4.1942        -4.1942        -4.1942      -193.427860933      -193.427860978      -193.427858858     0.133E-02
+predicted gradient component=    0.2270564892E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.194195840        0.1325237255E-02    0.3066050151E-04 after      8 steps, step: 0.0002054078
+D,D2,D3,E+,E-,E,RMS=    -4.1942        -4.1942        -4.1942      -193.427860933      -193.427860978      -193.427858858     0.201E-02
+predicted gradient component=    0.2270684263E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.194196072        0.2009944731E-02    0.5539692177E-05 after      9 steps, step: 0.0001106642
+D,D2,D3,E+,E-,E,RMS=    -4.1942        -4.1942        -4.1942      -193.427860933      -193.427860978      -193.427858858     0.625E-03
+predicted gradient component=    0.2270735422E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.194196256        0.6247395065E-03    0.4394557681E-05 after     10 steps, step: 0.0000397551
+xmylbfgs> Smallest eigenvalue converged in   10 steps. Eigenvalue=     -4.1941963 RMS force=      0.0006247 % change=    0.43946E-05
+xmylbfgs> Diagonal inverse Hessian elements are now         0.0025754146
+beig> Overlap with previous vector=      0.9999996
+ -------------------------------------------------------------------------------
+ Vector      Gradient        Secder       Step          Max step    Trust ratio
+ -------------------------------------------------------------------------------
+    1    0.196601E-04   -0.419420E+01  0.468746E-05 0.665500E-01    0.941542E-05
+ -------------------------------------------------------------------------------
+ mylbfgs> Not resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -193.4278589        0.2176208296E-05 after      0 steps
+ mylbfgs> Energy and RMS force=    -193.4278589        0.1949391337E-05 after      1 steps, step:  0.11556E-06
+ mylbfgs> Energy and RMS force=    -193.4278589        0.2526639482E-05 after      2 steps, step:  0.72888E-06
+ mylbfgs> Energy and RMS force=    -193.4278589        0.4102908249E-05 after      3 steps, step:  0.70917E-06
+ mylbfgs> Energy and RMS force=    -193.4278589        0.1175600059E-05 after      4 steps, step:  0.32248E-06
+ mylbfgs> Energy and RMS force=    -193.4278589        0.5633908891E-06 after      5 steps, step:  0.11523E-06
+ mylbfgs> Final energy is   -193.42785885808075    
+ bfgsts> RMS grad=      0.0000006 subspace grad=      0.0000006 unscaled EF step length=      0.0000047
+ Converged to TS (number of iterations):          3
+ DNEB run yielded 1 true transition state(s) time=      0.01
+
+ >>>>>  Path run for ts 1 ...
+ bfgsts> resetting maximum step sizes to     0.5000000000E-01
+ 
+ bfgsts> Stepping away from saddle along softest mode + direction
+ -------------------------------------------------------------------------------
+ Vector      Gradient        Secder       Step          Max step    Trust ratio
+ -------------------------------------------------------------------------------
+    1    0.000000E+00   -0.419420E+01  0.500000E-01 0.454545E-01    0.100000E+01
+ -------------------------------------------------------------------------------
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -193.4327157        0.3249281710E-01 after      0 steps
+ mylbfgs> Energy and RMS force=    -193.4332889        0.6653157470E-01 after      1 steps, step:  0.38008E-02
+ mylbfgs> Energy and RMS force=    -193.4351318        0.1519183639     after      2 steps, step:  0.12691E-01
+ mylbfgs> Energy and RMS force=    -193.4509878        0.7031154064     after      3 steps, step:  0.11176    
+ mylbfgs> Energy and RMS force=    -193.4740637         1.436167575     after      4 steps, step:  0.20000    
+ mylbfgs> Energy and RMS force=    -193.4849150         1.772412793     after      5 steps, step:  0.19216    
+ mylbfgs> Energy and RMS force=    -193.5219342         1.537611408     after      6 steps, step:  0.19721E-01
+ mylbfgs> Energy and RMS force=    -193.6188823        0.6759793329     after      7 steps, step:  0.85853E-01
+ mylbfgs> Energy and RMS force=    -193.6431546        0.3215431701     after      8 steps, step:  0.26037E-01
+ mylbfgs> Energy and RMS force=    -193.6538475        0.2024237801     after      9 steps, step:  0.10505E-01
+ mylbfgs> Energy and RMS force=    -193.6582269        0.1583510731     after     10 steps, step:  0.22542E-01
+ mylbfgs> Energy and RMS force=    -193.6606931        0.1416671691     after     11 steps, step:  0.40309E-01
+ mylbfgs> Energy and RMS force=    -193.6632394        0.1190961090     after     12 steps, step:  0.14853E-01
+ mylbfgs> Energy and RMS force=    -193.6657789        0.9024617750E-01 after     13 steps, step:  0.11906E-01
+ mylbfgs> Energy and RMS force=    -193.6671335        0.7388495847E-01 after     14 steps, step:  0.83297E-02
+ mylbfgs> Energy and RMS force=    -193.6686593        0.9519958255E-01 after     15 steps, step:  0.12843E-01
+ mylbfgs> Energy and RMS force=    -193.6689408        0.1464526544     after     16 steps, step:  0.15753E-01
+ mylbfgs> Energy and RMS force=    -193.6699481        0.4945598160E-01 after     17 steps, step:  0.49338E-02
+ mylbfgs> Energy and RMS force=    -193.6702095        0.3525308885E-01 after     18 steps, step:  0.21950E-02
+ mylbfgs> Energy and RMS force=    -193.6706024        0.3345037361E-01 after     19 steps, step:  0.66352E-02
+ mylbfgs> Energy and RMS force=    -193.6708851        0.2844058403E-01 after     20 steps, step:  0.55368E-02
+ energy increase:    -193.670885086889     to     -193.670847384848     decreasing step to  0.85715209E-03
+ mylbfgs> Energy and RMS force=    -193.6709174        0.2384417579E-01 after     21 steps, step:  0.85715E-03
+ mylbfgs> Energy and RMS force=    -193.6710299        0.1355897700E-01 after     22 steps, step:  0.41879E-02
+ mylbfgs> Energy and RMS force=    -193.6710781        0.1367475676E-01 after     23 steps, step:  0.11338E-02
+ mylbfgs> Energy and RMS force=    -193.6711442        0.4082469476E-01 after     24 steps, step:  0.54684E-02
+ mylbfgs> Energy and RMS force=    -193.6712270        0.1500420149E-01 after     25 steps, step:  0.17943E-02
+ mylbfgs> Energy and RMS force=    -193.6712440        0.6547620282E-02 after     26 steps, step:  0.77769E-03
+ mylbfgs> Energy and RMS force=    -193.6712523        0.3804359198E-02 after     27 steps, step:  0.43349E-03
+ mylbfgs> Energy and RMS force=    -193.6712569        0.2985549344E-02 after     28 steps, step:  0.52919E-03
+ mylbfgs> Energy and RMS force=    -193.6712613        0.2521142480E-02 after     29 steps, step:  0.50554E-03
+ mylbfgs> Energy and RMS force=    -193.6712635        0.7799263120E-02 after     30 steps, step:  0.11905E-02
+ mylbfgs> Energy and RMS force=    -193.6712682        0.2179516875E-02 after     31 steps, step:  0.37360E-03
+ mylbfgs> Energy and RMS force=    -193.6712689        0.1191560984E-02 after     32 steps, step:  0.18864E-03
+ mylbfgs> Energy and RMS force=    -193.6712694        0.9278396704E-03 after     33 steps, step:  0.17567E-03
+ mylbfgs> Energy and RMS force=    -193.6712698        0.1434618431E-02 after     34 steps, step:  0.23344E-03
+ mylbfgs> Energy and RMS force=    -193.6712702        0.8857363207E-03 after     35 steps, step:  0.15938E-03
+ mylbfgs> Energy and RMS force=    -193.6712705        0.6927251884E-03 after     36 steps, step:  0.15887E-03
+ mylbfgs> Energy and RMS force=    -193.6712706        0.7388796462E-03 after     37 steps, step:  0.13606E-03
+ mylbfgs> Energy and RMS force=    -193.6712707        0.3568631069E-03 after     38 steps, step:  0.56306E-04
+ mylbfgs> Energy and RMS force=    -193.6712707        0.2040401258E-03 after     39 steps, step:  0.46626E-04
+ mylbfgs> Energy and RMS force=    -193.6712707        0.2070813573E-03 after     40 steps, step:  0.26297E-04
+ mylbfgs> Energy and RMS force=    -193.6712707        0.1938399109E-03 after     41 steps, step:  0.37504E-04
+ mylbfgs> Energy and RMS force=    -193.6712708        0.2549934621E-03 after     42 steps, step:  0.56893E-04
+ mylbfgs> Energy and RMS force=    -193.6712708        0.2057007825E-03 after     43 steps, step:  0.45056E-04
+ mylbfgs> Energy and RMS force=    -193.6712708        0.6430067077E-04 after     44 steps, step:  0.15068E-04
+ mylbfgs> Energy and RMS force=    -193.6712708        0.5156147908E-04 after     45 steps, step:  0.54933E-05
+ mylbfgs> Energy and RMS force=    -193.6712708        0.5553452136E-04 after     46 steps, step:  0.78143E-05
+ mylbfgs> Energy and RMS force=    -193.6712708        0.2837829352E-04 after     47 steps, step:  0.11651E-04
+ mylbfgs> Energy and RMS force=    -193.6712708        0.7067030551E-05 after     48 steps, step:  0.48131E-05
+ mylbfgs> Energy and RMS force=    -193.6712708        0.3526081388E-05 after     49 steps, step:  0.69649E-06
+ mylbfgs> Energy and RMS force=    -193.6712708        0.3411718839E-05 after     50 steps, step:  0.48030E-06
+ mylbfgs> Energy and RMS force=    -193.6712708        0.2972589666E-05 after     51 steps, step:  0.64778E-06
+ mylbfgs> Energy and RMS force=    -193.6712708        0.5643259468E-05 after     52 steps, step:  0.71003E-06
+ mylbfgs> Energy and RMS force=    -193.6712708        0.4921931564E-06 after     53 steps, step:  0.28478E-06
+ mylbfgs> Final energy is   -193.67127077255464    
+ Plus  side of path:                      54 steps. Energy=    -193.6712708       time=       0.01
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -193.4334768        0.3985883210E-01 after      0 steps
+ mylbfgs> Energy and RMS force=    -193.4346366        0.8503050871E-01 after      1 steps, step:  0.57194E-02
+ mylbfgs> Energy and RMS force=    -193.4409144        0.3297029626     after      2 steps, step:  0.31690E-01
+ mylbfgs> Energy and RMS force=    -193.5442461         1.719817777     after      3 steps, step:  0.20000    
+Search direction has positive projection onto gradient     0.1003521307     reversing step
+ mylbfgs> Energy and RMS force=    -193.9110604         2.918582574     after      4 steps, step:  0.20000    
+Search direction has positive projection onto gradient     0.1491646858     reversing step
+ mylbfgs> Energy and RMS force=    -194.5012075         4.021625415     after      5 steps, step:  0.20000    
+Search direction has positive projection onto gradient     0.1141439993     reversing step
+ energy increase:    -194.501207493238     to     -194.462023245633     decreasing step to  0.20000000E-01
+ mylbfgs> Energy and RMS force=    -194.5537041         4.131835162     after      6 steps, step:  0.20000E-01
+ mylbfgs> Energy and RMS force=    -195.0995927         4.002702499     after      7 steps, step:  0.20000    
+ mylbfgs> Energy and RMS force=    -195.6023508         2.419733705     after      8 steps, step:  0.82933E-01
+ mylbfgs> Energy and RMS force=    -195.7664903         1.668464279     after      9 steps, step:  0.30939E-01
+ mylbfgs> Energy and RMS force=    -195.8517531         1.292657398     after     10 steps, step:  0.26776E-01
+ mylbfgs> Energy and RMS force=    -196.0427648        0.5917883885     after     11 steps, step:  0.73106E-01
+ mylbfgs> Energy and RMS force=    -196.0939324        0.6363444003     after     12 steps, step:  0.30177E-01
+ mylbfgs> Energy and RMS force=    -196.1533558        0.7775430959     after     13 steps, step:  0.55699E-01
+ mylbfgs> Energy and RMS force=    -196.1785182        0.9728724007     after     14 steps, step:  0.40601E-01
+ mylbfgs> Energy and RMS force=    -196.2066038        0.6369450383     after     15 steps, step:  0.13777E-01
+ mylbfgs> Energy and RMS force=    -196.2325831        0.4162486950     after     16 steps, step:  0.23383E-01
+ mylbfgs> Energy and RMS force=    -196.2511737        0.3717659872     after     17 steps, step:  0.25817E-01
+ mylbfgs> Energy and RMS force=    -196.2761139        0.2586484291     after     18 steps, step:  0.46978E-01
+ mylbfgs> Energy and RMS force=    -196.2777987        0.4217277925     after     19 steps, step:  0.34240E-01
+ mylbfgs> Energy and RMS force=    -196.2864239        0.8704925093E-01 after     20 steps, step:  0.69815E-02
+ mylbfgs> Energy and RMS force=    -196.2871084        0.8259211163E-01 after     21 steps, step:  0.39046E-02
+ mylbfgs> Energy and RMS force=    -196.2881798        0.8732557055E-01 after     22 steps, step:  0.52537E-02
+ mylbfgs> Energy and RMS force=    -196.2889204        0.1255904262     after     23 steps, step:  0.89766E-02
+ mylbfgs> Energy and RMS force=    -196.2898941        0.4995588697E-01 after     24 steps, step:  0.43572E-02
+ mylbfgs> Energy and RMS force=    -196.2902002        0.3220526461E-01 after     25 steps, step:  0.33838E-02
+ mylbfgs> Energy and RMS force=    -196.2903806        0.2328039690E-01 after     26 steps, step:  0.25356E-02
+ mylbfgs> Energy and RMS force=    -196.2905446        0.1938267699E-01 after     27 steps, step:  0.27049E-02
+ mylbfgs> Energy and RMS force=    -196.2906335        0.3256619718E-01 after     28 steps, step:  0.40930E-02
+ mylbfgs> Energy and RMS force=    -196.2907231        0.9784133321E-02 after     29 steps, step:  0.12623E-02
+ mylbfgs> Energy and RMS force=    -196.2907418        0.7443180630E-02 after     30 steps, step:  0.61225E-03
+ mylbfgs> Energy and RMS force=    -196.2907604        0.6798991404E-02 after     31 steps, step:  0.90389E-03
+ mylbfgs> Energy and RMS force=    -196.2907634        0.1268496244E-01 after     32 steps, step:  0.11816E-02
+ mylbfgs> Energy and RMS force=    -196.2907742        0.3510404128E-02 after     33 steps, step:  0.30816E-03
+ mylbfgs> Energy and RMS force=    -196.2907765        0.2277633345E-02 after     34 steps, step:  0.19416E-03
+ mylbfgs> Energy and RMS force=    -196.2907782        0.1317039642E-02 after     35 steps, step:  0.28923E-03
+ mylbfgs> Energy and RMS force=    -196.2907787        0.5364452698E-03 after     36 steps, step:  0.16771E-03
+ mylbfgs> Energy and RMS force=    -196.2907787        0.7555215026E-03 after     37 steps, step:  0.60773E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.3403666265E-03 after     38 steps, step:  0.23177E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1812151270E-03 after     39 steps, step:  0.34776E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1175049437E-03 after     40 steps, step:  0.19778E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1070776941E-03 after     41 steps, step:  0.20449E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1743546397E-03 after     42 steps, step:  0.39072E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1469019573E-03 after     43 steps, step:  0.37277E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.5652681105E-04 after     44 steps, step:  0.13528E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.2093968761E-04 after     45 steps, step:  0.51336E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.9712777881E-05 after     46 steps, step:  0.10072E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.8978305702E-05 after     47 steps, step:  0.33976E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.9210122567E-05 after     48 steps, step:  0.28210E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1764218625E-04 after     49 steps, step:  0.17353E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.3376340806E-05 after     50 steps, step:  0.57129E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1665079701E-05 after     51 steps, step:  0.14828E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.8507043715E-06 after     52 steps, step:  0.22306E-06
+ mylbfgs> Final energy is   -196.29077884563071    
+ Minus side of path:                      53 steps. Energy=    -196.2907788       time=       0.01
+ path> number of entries in EofS file=   108
+ Frames will be dumped to points.path.xyz with probability     1.0000/    1.0000 steps on the plus/minus sides
+ Transition state will be frame number     19
+ 
+         E+        Ets - E+           Ets       Ets - E-           E-          S       D      gamma   ~N
+     -193.6712708 0.24341         -193.4278589  2.8629         -196.2907788   3.147   2.362  24.000   1.000
+ isnewmin> I,E,MI(I)%DATA%E=     1    -193.6712708        -196.2907788    
+ isnewmin> I,E,MI(I)%DATA%E=     2    -193.6712708        -193.6712708    
+ initial energy for structure A=                  -193.671270772554635 RMS=        0.000000492193145
+ initial energy for structure B=                  -193.671270772555090 RMS=        0.000000140363220
+ minpermdist> Initial distance before standard orientation=     0.000000000    
+ minpermdist> distance after moving      0 atoms=    0.5673868078E-07
+ minpermdist> distance after moving      0 atoms=    0.4701199821E-07
+ final   energy for structure A=                  -193.671270772554408 RMS=        0.000000491356679
+ final   energy for structure B=                  -193.671270772555090 RMS=        0.000000140363220
+isnewmin> minimum distance=     0.000000000    
+ isnewmin> I,E,MI(I)%DATA%E=     1    -196.2907788        -196.2907788    
+ initial energy for structure A=                  -196.290778845630484 RMS=        0.000000850704391
+ initial energy for structure B=                  -196.290778845630371 RMS=        0.000000735586727
+ minpermdist> Initial distance before standard orientation=    0.3328589096E-06
+ minpermdist> distance after moving      0 atoms=    0.3807365045E-06
+ minpermdist> distance after moving      0 atoms=    0.3596137079E-06
+ final   energy for structure A=                  -196.290778845630371 RMS=        0.000000850122551
+ final   energy for structure B=                  -196.290778845630371 RMS=        0.000000735586727
+isnewmin> minimum distance=    0.3328589096E-06
+ potential> allocating hessian with dimension         72
+        Known (#2)                                              Known (#1)
+ Connected path found
+  ts        E+         Ets - E+          Ets       Ets - E-          E-          S       D      gamma   ~N
+   1     -196.2907788  2.8629        -193.4278589 0.24341        -193.6712708   3.147   2.362  24.000   1.000
+
+ Number of TS in the path       =      1
+ Number of cycles               =      1
+ 
+ Elapsed time=                                 0.26
+ OPTIM> # of energy calls=                          0 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient calls=              1866 time=           0.03 %= 13.2
+ OPTIM> # of energy+gradient+Hessian calls=         3 time=           0.00 %=  0.4

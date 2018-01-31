@@ -1,0 +1,885 @@
+
+ OPTIM version 31508, Copyright (C) David J. Wales
+ OPTIM comes with ABSOLUTELY NO WARRANTY; for details supply WARRANTY as an input keyword.
+ This is free software, and you are welcome to redistribute it
+ under certain conditions; provide keyword COPYRIGHT to see the details.
+
+ getparams> Number of atoms (or variables)  determined as     12
+ getparams> Number of optimisation degrees of freedom     36
+ keywords> Frequencies (and square frequencies) will be given in cm^-1 (cm^-2)
+ keywords> FRQCONV =    53.0883746000000     
+ keywords> number of symmetry operations for rigid body=     4
+ keywords> rigid-body symmetry operation     1
+        1.0000000000        0.0000000000        0.0000000000
+        0.0000000000
+ keywords> rigid-body symmetry operation     2
+        1.0000000000        0.0000000000        0.0000000000
+        0.0000000000
+ keywords> rigid-body symmetry operation     3
+        1.0000000000       -1.0000000000        0.0000000000
+        0.0000000000
+ keywords> rigid-body symmetry operation     4
+        0.0000000000       -1.0000000000        0.0000000000
+        0.0000000000
+ fetchz> Hybrid EF/BFGS transition state search, maximum steps=  1000
+         maximum tangent space steps=   2 or   30 when overlap is better than     0.999900
+ fetchz> Uphill mode is    0 for initial step and    0 after that
+ fetchz> No Hessian: Rayleigh-Ritz max steps=2000 RMS <       0.0010 and |% change|<     1.0    
+ fetchz> Hessian eigenvector in Rayleigh-Ritz scheme calculated using method    2
+ 
+ fetchz> Coordinates of second point read from file finish
+ 
+ fetchz> Number of random initial orientations in permutational alignment=   100
+ fetchz> Point group checked when RMS force <     0.00100000, highest symmetry axis tested for=  6
+ fetchz> Initial distance and eigenvalue tolerances in symmetry determination=     0.00010000     0.00010000
+ fetchz> Minimum number of optimization steps=     0
+ fetchz> Pathways will be calculated saving    100 frames on each side
+ fetchz> Convergence criterion for LBFGS optimization: RMS force< 0.10000000E-05 maximum steps=   30000
+ fetchz> Maximum energy rise in LBFGS minimization=    0.1000000000E-09
+ fetchz> Number of updates in LBFGS=     6000
+ fetchz> Number of updates in XLBFGS=  10
+ fetchz> Number of updates in mind=  10
+ fetchz> Initial guess for diagonal elements in LBFGS=     0.1000
+ fetchz> Initial guess for diagonal elements in XLBFGS=    0.1000
+ fetchz> Maximum step size in LBFGS energy minimization=     0.2000
+ fetchz> Maximum step size in XLBFGS=    0.2000
+ fetchz> Maximum step size in LBFGS neb image minimization=                 0.2000
+ fetchz> Warnings will be issued if atoms become closer than 0.5 units
+ 
+ 
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.16986         0.17442         0.21019       286.40691       345.13905       354.41041
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ OPTIM> Using translational/rotational ev shift=     1000000.000    
+ OPTIM> Initial energy=    -196.2907788     RMS force=    0.3420413372E-06
+ OPTIM> Final energy  =    -193.6712708     RMS force=    0.3192181030E-06
+ initial energy for structure A=                  -193.671270772621597 RMS=        0.000000319218103
+ initial energy for structure B=                  -196.290778845711657 RMS=        0.000000342041337
+ KeyConnect> Maximum cycles = 100, maximum images = 7
+ KeyConnect> Maximum attempts per pair of minima = 1, with increment image density of 3.00
+ KeyConnect> Image density = 5.00, iteration density = 30.00
+ KeyNEB> Initial and final NEB force constants     100.0000000        100.0000000     factor=    1.010000000    
+ KeyNEB> Number of images will vary depending on the separation of the endpoints
+ KeyNEB> NEB coordinates will be saved to xyz file "neb.xyz" every 100 iterations
+ KeyNEB> NEB coordinates will be saved to binary file "neb.out" every 100 iterations
+ KeyNEB> Energy profile will be saved to file "neb.EofS" every 100 iterations
+ KeyNEB> Verbose printing is on
+ KeyNEB> Evolution of AvDev, E, Rms and S will be saved to files "AvDevofI", "EofI", "RmsofI" and "SofI"
+ KeyGrad> Overall rotation and translation will NOT be removed
+ KeyGrad> Using doubly nudged elastic band gradient
+ KeyOutput> Transition state candidates will be optimized
+ KeyOutput> Verbose printing during transition states optimization
+ KeyOutput> Transition state candidates are maxima along NEB
+ KeyMin> Maximal number of iterations will vary, depending on the number of images in the band
+ KeyMin> RMS convergence criterion is set to 0.03
+ KeyMin> L-BFGS minimization
+ KeyLBFGS> Maximum step size per image =     0.2000000000    
+ KeyLBFGS> 100 Hessian updates per iteration
+ KeyLBFGS> Guess for inverse Hessian diagonal elements =     0.1000000000E-02
+ KeyTau> Using Henkelman and Jonsson's improved tangent
+ KeyConnect> Verbose printing is on
+ KeyDecide> Cost function in Dijkstra algorithm is D^25
+ 
+ >>>>>>>>>>>>>>>>>>>>> CONNECT CYCLE 1 >>>>>>>>>>>>>>>>>>>>> 2 minima and 0 ts are known >>>>>>>>>>>>>>>>>>>>
+ decide> Shortest path in Dijkstra has      1 steps with      1 missing connections, weight=    0.12091E+10
+ decide> The unconnected minima in the chain and their distances are:
+     2        2.31     1 
+ 
+ initial energy for structure A=                  -193.671270772621256 RMS=        0.000000319184280
+ initial energy for structure B=                  -196.290778845711657 RMS=        0.000000342041337
+
+ tryconnect> 210-iteration DNEB run for minima 1_S and 2_F using 7 images  (DNEB attempt #1)  ...
+ newneb> Number of atoms or variables =           12
+ KeyNEB> Initial and final NEB force constants     100.0000000        100.0000000     factor=    1.010000000    
+ KeyNEB> Using 7 images
+ KeyNEB> NEB coordinates will be saved to xyz file "neb.xyz" every 100 iterations
+ KeyNEB> NEB coordinates will be saved to binary file "neb.out" every 100 iterations
+ KeyNEB> Energy profile will be saved to file "neb.EofS" every 100 iterations
+ KeyNEB> Verbose printing is on
+ KeyNEB> Evolution of AvDev, E, Rms and S will be saved to files "AvDevofI", "EofI", "RmsofI" and "SofI"
+ KeyGrad> Overall rotation and translation will NOT be removed
+ KeyGrad> Using doubly nudged elastic band gradient
+ KeyOutput> Transition state candidates will be optimized
+ KeyOutput> Verbose printing during transition states optimization
+ KeyOutput> Transition state candidates are maxima along NEB
+ KeyMin> Number of iterations: min, max = 0, 210
+ KeyMin> RMS convergence criterion is set to 0.03
+ KeyMin> L-BFGS minimization
+ KeyLBFGS> Maximum step size per image =     0.2000000000    
+ KeyLBFGS> 100 Hessian updates per iteration
+ KeyLBFGS> Guess for inverse Hessian diagonal elements =     0.1000000000E-02
+ KeyTau> Using Henkelman and Jonsson's improved tangent
+ 
+ rwg> NEB coordinates were saved to xyz file "neb.0.xyz"
+ writeprofile> NEB profile was saved to file "neb.EofS"
+                  Iter   Energy per image      RMS Force       Av.Dev    Path     Step per image
+ lbfgs> steps:      1    -193.8202797         1.132992017        0.77%   1.758        -0.58846E-03
+ lbfgs> steps:      2    -193.9438274        0.6585856545        0.66%   1.761        -0.14730E-02
+ lbfgs> steps:      3    -193.9996596        0.6216701873        0.59%   1.766        -0.53580E-02
+ lbfgs> steps:      4    -194.0367802         1.129589213        1.02%   1.781        -0.16238E-01
+ lbfgs> Decreasing DNEB force constant to      95.23809524    
+ lbfgs> steps:      5    -194.0524763        0.4561645546        0.60%   1.773        -0.63276E-04
+ lbfgs> steps:      6    -194.0653440        0.5506825985        0.59%   1.777        -0.94080E-02
+ lbfgs> steps:      7    -194.0772375        0.4562114853        0.61%   1.779        -0.76379E-02
+ lbfgs> steps:      8    -194.1199681        0.9172059356        1.75%   1.812        -0.53606E-01
+ lbfgs> steps:      9    -194.1205671        0.8465372586        1.63%   1.809         0.27426E-02
+ lbfgs> Decreasing DNEB force constant to      90.70294785    
+ lbfgs> steps:     10    -194.1225474        0.7179356922        1.54%   1.807         0.26643E-02
+ lbfgs> steps:     11    -194.1248991        0.5745042941        1.49%   1.805         0.14725E-02
+ lbfgs> steps:     12    -194.1281715        0.6537658132        1.48%   1.803         0.48934E-02
+ lbfgs> steps:     13    -194.1297258        0.5507224825        1.27%   1.800         0.95769E-03
+ lbfgs> steps:     14    -194.1324983        0.4258478687        1.15%   1.799         0.33666E-03
+ lbfgs> Decreasing DNEB force constant to      86.38375985    
+ lbfgs> steps:     15    -194.1375924        0.3427113530        1.11%   1.800        -0.26496E-02
+ lbfgs> steps:     16    -194.1534292        0.5337752990        1.73%   1.807        -0.11742E-01
+ lbfgs> steps:     17    -194.1534312        0.5110916370        1.69%   1.807         0.15189E-03
+ lbfgs> steps:     18    -194.1546777        0.4246492374        1.63%   1.807        -0.52797E-03
+ lbfgs> steps:     19    -194.1565935        0.3338272112        1.60%   1.807        -0.12443E-02
+ lbfgs> Decreasing DNEB force constant to      82.27024748    
+ lbfgs> steps:     20    -194.1620194        0.5317653903        1.48%   1.811        -0.45954E-02
+ lbfgs> steps:     21    -194.1615593        0.3088602711        1.21%   1.809         0.11687E-02
+ lbfgs> steps:     22    -194.1636940        0.2753938089        1.11%   1.810        -0.15020E-02
+ lbfgs> steps:     23    -194.1680637        0.2947983369        1.06%   1.811        -0.31304E-02
+ lbfgs> steps:     24    -194.1870214        0.4173748368        2.05%   1.822        -0.14971E-01
+ lbfgs> Decreasing DNEB force constant to      78.35261665    
+ lbfgs> steps:     25    -194.1888934        0.5261943050        1.62%   1.822         0.17898E-02
+ lbfgs> steps:     26    -194.1887885        0.5099320842        1.61%   1.822         0.12535E-03
+ lbfgs> steps:     27    -194.1905522        0.3804350646        1.53%   1.822         0.31443E-03
+ lbfgs> steps:     28    -194.1919932        0.4751146095        1.18%   1.824         0.14469E-02
+ lbfgs> steps:     29    -194.1931919        0.3010862998        1.11%   1.823         0.12976E-02
+ lbfgs> Decreasing DNEB force constant to      74.62153966    
+ lbfgs> steps:     30    -194.1947243        0.2863883451        0.95%   1.824         0.14208E-02
+ lbfgs> steps:     31    -194.1960993        0.2338625582        0.81%   1.825         0.11004E-02
+ lbfgs> steps:     32    -194.1998321        0.2717998327        0.84%   1.829         0.25230E-02
+ lbfgs> steps:     33    -194.2031155        0.3363157930        0.83%   1.832         0.11577E-02
+ lbfgs> steps:     34    -194.2045086        0.3004432300        0.80%   1.832         0.10324E-03
+ lbfgs> Decreasing DNEB force constant to      71.06813301    
+ lbfgs> steps:     35    -194.2087584        0.3033338550        0.90%   1.834         0.16263E-02
+ lbfgs> steps:     36    -194.2127331        0.3420133521        1.09%   1.837         0.27568E-02
+ lbfgs> steps:     37    -194.2123274        0.3027313648        1.13%   1.836         0.15179E-03
+ lbfgs> steps:     38    -194.2136187        0.2349757095        0.93%   1.837         0.10862E-02
+ lbfgs> steps:     39    -194.2189607        0.3224383300        0.82%   1.842         0.36975E-02
+ lbfgs> Decreasing DNEB force constant to      67.68393620    
+ lbfgs> steps:     40    -194.2208286        0.2395174744        0.82%   1.843         0.19851E-02
+ lbfgs> steps:     41    -194.2340130        0.4754631710        1.48%   1.857         0.11078E-01
+ lbfgs> steps:     42    -194.2335795        0.4219955619        1.42%   1.856        -0.51711E-03
+ lbfgs> steps:     43    -194.2344938        0.4696886324        1.16%   1.855        -0.11934E-02
+ lbfgs> steps:     44    -194.2342786        0.4363937131        1.15%   1.855        -0.36654E-03
+ lbfgs> Decreasing DNEB force constant to      64.46089162    
+ lbfgs> steps:     45    -194.2336910        0.3645154769        1.06%   1.853        -0.11721E-02
+ lbfgs> steps:     46    -194.2337255        0.2601063815        1.03%   1.852        -0.12064E-02
+ lbfgs> steps:     47    -194.2346594        0.1743169882        0.99%   1.852        -0.61322E-03
+ lbfgs> steps:     48    -194.2366165        0.1874061541        0.94%   1.853        -0.52981E-03
+ lbfgs> steps:     49    -194.2429491        0.2211514788        0.81%   1.857        -0.15985E-02
+ lbfgs> Decreasing DNEB force constant to      61.39132535    
+ lbfgs> steps:     50    -194.2523923        0.2891088052        0.80%   1.863        -0.14283E-02
+ lbfgs> steps:     51    -194.2555053        0.1795730683        0.80%   1.865         0.98050E-04
+ lbfgs> steps:     52    -194.2712454        0.5158427290        1.02%   1.878         0.32376E-03
+ lbfgs> steps:     53    -194.2711268        0.5130126429        1.01%   1.878         0.17224E-04
+ lbfgs> steps:     54    -194.2710112        0.5082197177        1.01%   1.878         0.37725E-04
+ lbfgs> Decreasing DNEB force constant to      58.46792891    
+ lbfgs> steps:     55    -194.2702753        0.4428572534        0.96%   1.877         0.46078E-03
+ lbfgs> steps:     56    -194.2698461        0.3514862566        0.92%   1.876         0.48813E-03
+ lbfgs> steps:     57    -194.2697337        0.3215955983        0.90%   1.876         0.30286E-03
+ lbfgs> steps:     58    -194.2696277        0.2851348424        0.88%   1.876         0.46809E-03
+ lbfgs> steps:     59    -194.2695911        0.2499097900        0.85%   1.876         0.69073E-03
+ lbfgs> Decreasing DNEB force constant to      55.68374182    
+ lbfgs> steps:     60    -194.2696376        0.2050415050        0.81%   1.876         0.10584E-02
+ lbfgs> steps:     61    -194.2697473        0.3751188419        0.66%   1.876         0.86178E-02
+ lbfgs> steps:     62    -194.2697112        0.1891842569        0.61%   1.876        -0.22541E-02
+ lbfgs> steps:     63    -194.2702479        0.1423167851        0.59%   1.876        -0.49517E-03
+ lbfgs> steps:     64    -194.2708487        0.1318389615        0.56%   1.876         0.13691E-02
+ lbfgs> Decreasing DNEB force constant to      53.03213506    
+ lbfgs> steps:     65    -194.2730007        0.1801609657        0.53%   1.878         0.45536E-02
+ lbfgs> steps:     66    -194.2737082        0.2220958292        0.53%   1.878         0.21200E-02
+ lbfgs> steps:     67    -194.2729390        0.2775064756        0.54%   1.878         0.63850E-03
+ lbfgs> steps:     68    -194.2726943        0.2470964320        0.48%   1.878         0.28239E-03
+ lbfgs> steps:     69    -194.2729042        0.1688631654        0.49%   1.878         0.89850E-03
+ lbfgs> Decreasing DNEB force constant to      50.50679530    
+ lbfgs> steps:     70    -194.2737354        0.1833870210        0.55%   1.878         0.16568E-02
+ lbfgs> steps:     71    -194.2744946        0.1316402826        0.59%   1.879         0.19234E-02
+ lbfgs> steps:     72    -194.2767807        0.1499484963        0.65%   1.881         0.28819E-02
+ lbfgs> steps:     73    -194.2781911        0.1610119854        0.69%   1.882         0.15051E-02
+ lbfgs> steps:     74    -194.2842832        0.2309779174        0.90%   1.888         0.49170E-02
+ lbfgs> Decreasing DNEB force constant to      48.10170981    
+ lbfgs> steps:     75    -194.2906111        0.4370789666        1.17%   1.895         0.48503E-02
+ lbfgs> steps:     76    -194.2902601        0.4018710330        1.13%   1.895        -0.73191E-03
+ lbfgs> steps:     77    -194.2900152        0.3566042881        1.09%   1.894        -0.54571E-03
+ lbfgs> steps:     78    -194.2914728        0.4318259022        0.71%   1.893        -0.45318E-02
+ lbfgs> steps:     79    -194.2905840        0.4438191763        0.53%   1.890        -0.99307E-02
+ lbfgs> Decreasing DNEB force constant to      45.81115220    
+ lbfgs> steps:     80    -194.2901501        0.4397377556        0.50%   1.890        -0.15313E-03
+ lbfgs> steps:     81    -194.2900166        0.4204660072        0.50%   1.889        -0.49463E-04
+ lbfgs> steps:     82    -194.2899029        0.4146584940        0.49%   1.889         0.49328E-04
+ lbfgs> steps:     83    -194.2889846        0.3735192748        0.44%   1.888        -0.19122E-03
+ lbfgs> steps:     84    -194.2881220        0.3206429148        0.41%   1.887        -0.28411E-03
+ lbfgs> Decreasing DNEB force constant to      43.62966876    
+ lbfgs> steps:     85    -194.2875314        0.2726211174        0.41%   1.886        -0.32162E-03
+ lbfgs> steps:     86    -194.2872720        0.2330664765        0.40%   1.886         0.27826E-04
+ lbfgs> steps:     87    -194.2871660        0.2086103057        0.37%   1.886         0.30073E-03
+ lbfgs> steps:     88    -194.2870517        0.1725168482        0.36%   1.886         0.66175E-03
+ lbfgs> steps:     89    -194.2870004        0.1493933333        0.37%   1.886         0.51379E-03
+ lbfgs> Decreasing DNEB force constant to      41.55206549    
+ lbfgs> steps:     90    -194.2865927        0.2054263240        0.41%   1.886         0.32135E-02
+ lbfgs> steps:     91    -194.2869353        0.1065689908        0.35%   1.886        -0.25162E-02
+ lbfgs> steps:     92    -194.2872741        0.9883007073E-01    0.31%   1.886        -0.13910E-03
+ lbfgs> steps:     93    -194.2882486        0.1103823259        0.21%   1.887        -0.25397E-03
+ lbfgs> steps:     94    -194.2892992        0.1168898261        0.17%   1.887         0.55511E-04
+ lbfgs> Decreasing DNEB force constant to      39.57339570    
+ lbfgs> steps:     95    -194.2909745        0.1204688016        0.24%   1.888         0.43743E-03
+ lbfgs> steps:     96    -194.2951963        0.1423631486        0.41%   1.891         0.15344E-02
+ lbfgs> steps:     97    -194.2990888        0.1475559377        0.45%   1.893         0.33287E-02
+ lbfgs> steps:     98    -194.3076300        0.1672433586        0.39%   1.899         0.10439E-01
+ lbfgs> steps:     99    -194.3132867        0.2068794338        0.47%   1.904         0.81955E-02
+ lbfgs> Decreasing DNEB force constant to      37.68894829    
+ lbfgs> steps:    100    -194.3131921        0.1974482161        0.46%   1.904         0.20829E-03
+ rwg> NEB coordinates were saved to xyz file "neb.100.xyz"
+ NEB coordinates were saved to binary file "neb.out"
+ writeprofile> NEB profile was saved to file "neb.EofS.100"
+ lbfgs> steps:    101    -194.3194948        0.3129079326        0.88%   1.912         0.16538E-01
+ lbfgs> steps:    102    -194.3187653        0.2897160576        0.83%   1.911        -0.13875E-02
+ lbfgs> steps:    103    -194.3184963        0.2613559860        0.80%   1.910        -0.85340E-03
+ lbfgs> steps:    104    -194.3184344        0.2321003555        0.78%   1.910        -0.45952E-03
+ lbfgs> Decreasing DNEB force constant to      35.89423646    
+ lbfgs> steps:    105    -194.3189603        0.2711499583        0.51%   1.911        -0.31406E-02
+ lbfgs> steps:    106    -194.3187782        0.2463731291        0.50%   1.910        -0.19558E-03
+ lbfgs> steps:    107    -194.3193228        0.1425829834        0.37%   1.910        -0.18029E-02
+ lbfgs> steps:    108    -194.3192218        0.1170238851        0.33%   1.910        -0.11165E-02
+ lbfgs> steps:    109    -194.3191625        0.1004169336        0.27%   1.910        -0.11485E-02
+ lbfgs> Decreasing DNEB force constant to      34.18498711    
+ lbfgs> steps:    110    -194.3201518        0.1174355452        0.32%   1.910        -0.30972E-02
+ lbfgs> steps:    111    -194.3203746        0.1037911299        0.27%   1.911        -0.74894E-04
+ lbfgs> steps:    112    -194.3219603        0.1334877501        0.30%   1.912        -0.20132E-02
+ lbfgs> steps:    113    -194.3220442        0.9909014829E-01    0.25%   1.912         0.83052E-03
+ lbfgs> steps:    114    -194.3232415        0.8989243252E-01    0.22%   1.913         0.60009E-03
+ lbfgs> Decreasing DNEB force constant to      32.55713058    
+ lbfgs> steps:    115    -194.3275458        0.1374661684        0.21%   1.916         0.10783E-02
+ lbfgs> steps:    116    -194.3290059        0.1114365431        0.21%   1.917         0.13725E-02
+ lbfgs> steps:    117    -194.3765705        0.5643880881        1.46%   1.974         0.41882E-01
+ lbfgs> steps:    118    -194.3761999        0.5610694328        1.45%   1.974        -0.36549E-03
+ lbfgs> steps:    119    -194.3760994        0.5604202622        1.44%   1.973        -0.91069E-04
+ lbfgs> Decreasing DNEB force constant to      31.00679103    
+ lbfgs> steps:    120    -194.3759990        0.5596709759        1.44%   1.973        -0.70793E-04
+ lbfgs> steps:    121    -194.3750156        0.5348538904        1.42%   1.972        -0.69982E-03
+ lbfgs> steps:    122    -194.3748578        0.5334396677        1.41%   1.972        -0.90795E-04
+ lbfgs> steps:    123    -194.3740473        0.5275754073        1.39%   1.971        -0.47077E-03
+ lbfgs> steps:    124    -194.3732433        0.5212689802        1.37%   1.970        -0.38884E-03
+ lbfgs> Decreasing DNEB force constant to      29.53027717    
+ lbfgs> steps:    125    -194.3725215        0.5153343357        1.35%   1.969        -0.28731E-03
+ lbfgs> steps:    126    -194.3717974        0.4914211696        1.32%   1.968        -0.22857E-03
+ lbfgs> steps:    127    -194.3716807        0.4899927183        1.32%   1.968        -0.18290E-04
+ lbfgs> steps:    128    -194.3711467        0.4837180987        1.30%   1.967        -0.70268E-04
+ lbfgs> steps:    129    -194.3705413        0.4761675570        1.27%   1.966        -0.19286E-04
+ lbfgs> Decreasing DNEB force constant to      28.12407350    
+ lbfgs> steps:    130    -194.3699318        0.4677840291        1.25%   1.966         0.48756E-04
+ lbfgs> steps:    131    -194.3692688        0.4422667543        1.22%   1.965         0.13634E-03
+ lbfgs> steps:    132    -194.3691559        0.4402132900        1.21%   1.965         0.47062E-04
+ lbfgs> steps:    133    -194.3687291        0.4325454260        1.19%   1.964         0.19044E-03
+ lbfgs> steps:    134    -194.3682375        0.4236201524        1.16%   1.964         0.24550E-03
+ lbfgs> Decreasing DNEB force constant to      26.78483190    
+ lbfgs> steps:    135    -194.3677355        0.4144278182        1.14%   1.963         0.27816E-03
+ lbfgs> steps:    136    -194.3672515        0.3918864362        1.11%   1.963         0.28833E-03
+ lbfgs> steps:    137    -194.3664354        0.3766439289        1.06%   1.962         0.54076E-03
+ lbfgs> steps:    138    -194.3661981        0.3720294318        1.05%   1.962         0.10772E-03
+ lbfgs> steps:    139    -194.3657309        0.3641409875        1.02%   1.961         0.21599E-03
+ lbfgs> Decreasing DNEB force constant to      25.50936371    
+ lbfgs> steps:    140    -194.3654557        0.3590533409        1.00%   1.961         0.11231E-03
+ lbfgs> steps:    141    -194.3650423        0.3412819731        0.98%   1.961         0.15009E-03
+ lbfgs> steps:    142    -194.3643858        0.3336294533        0.94%   1.960         0.14476E-03
+ lbfgs> steps:    143    -194.3641648        0.3308869345        0.92%   1.960         0.19043E-04
+ lbfgs> steps:    144    -194.3639074        0.3276155260        0.90%   1.960        -0.15184E-04
+ lbfgs> Decreasing DNEB force constant to      24.29463211    
+ lbfgs> steps:    145    -194.3636380        0.3248302281        0.89%   1.960        -0.13334E-04
+ lbfgs> steps:    146    -194.3633658        0.3101215599        0.87%   1.960        -0.69287E-04
+ lbfgs> steps:    147    -194.3629050        0.3050914985        0.83%   1.959        -0.22143E-03
+ lbfgs> steps:    148    -194.3627260        0.3017230965        0.82%   1.959        -0.11766E-03
+ lbfgs> steps:    149    -194.3624609        0.2979159282        0.82%   1.959        -0.17690E-03
+ lbfgs> Decreasing DNEB force constant to      23.13774487    
+ lbfgs> steps:    150    -194.3622333        0.2943540370        0.83%   1.959        -0.16914E-03
+ lbfgs> steps:    151    -194.3620391        0.2807154675        0.83%   1.959        -0.15809E-03
+ lbfgs> steps:    152    -194.3617126        0.2750373036        0.84%   1.958        -0.43440E-03
+ lbfgs> steps:    153    -194.3615800        0.2722859146        0.85%   1.958        -0.20831E-03
+ lbfgs> steps:    154    -194.3614255        0.2681879286        0.85%   1.958        -0.25441E-03
+ lbfgs> Decreasing DNEB force constant to      22.03594749    
+ lbfgs> steps:    155    -194.3612689        0.2644443110        0.86%   1.958        -0.28762E-03
+ lbfgs> steps:    156    -194.3611408        0.2509982855        0.86%   1.958        -0.26213E-03
+ lbfgs> steps:    157    -194.3609176        0.2422271754        0.88%   1.958        -0.71650E-03
+ lbfgs> steps:    158    -194.3608203        0.2371604603        0.88%   1.958        -0.35097E-03
+ lbfgs> steps:    159    -194.3607239        0.2310127496        0.89%   1.958        -0.39810E-03
+ lbfgs> Decreasing DNEB force constant to      20.98661666    
+ lbfgs> steps:    160    -194.3606336        0.2238787719        0.90%   1.958        -0.42280E-03
+ lbfgs> steps:    161    -194.3597366        0.1501716152        0.95%   1.958        -0.42413E-02
+ lbfgs> steps:    162    -194.3590272        0.1608142062        1.13%   1.958        -0.53768E-02
+ lbfgs> steps:    163    -194.3592196        0.1099933855        1.12%   1.958        -0.12509E-02
+ lbfgs> steps:    164    -194.3597716        0.9986514730E-01    1.09%   1.959         0.19926E-03
+ lbfgs> Decreasing DNEB force constant to      19.98725396    
+ lbfgs> steps:    165    -194.3601976        0.8443099782E-01    1.08%   1.959        -0.10265E-02
+ lbfgs> steps:    166    -194.3615844        0.7288862258E-01    1.12%   1.960        -0.25064E-02
+ lbfgs> steps:    167    -194.3627292        0.8417571810E-01    1.06%   1.960        -0.14340E-03
+ lbfgs> steps:    168    -194.3640451        0.7507115126E-01    0.98%   1.961        -0.14276E-03
+ lbfgs> steps:    169    -194.3672692        0.6806023689E-01    0.75%   1.961        -0.18183E-03
+ lbfgs> Decreasing DNEB force constant to      19.03547996    
+ lbfgs> steps:    170    -194.3680999        0.7988945012E-01    0.65%   1.962         0.62171E-03
+ lbfgs> steps:    171    -194.3689252        0.6446202871E-01    0.58%   1.962         0.38289E-03
+ lbfgs> steps:    172    -194.3709908        0.6964667712E-01    0.65%   1.963         0.16703E-03
+ lbfgs> steps:    173    -194.3702334        0.6009804674E-01    0.59%   1.962        -0.90263E-06
+ lbfgs> steps:    174    -194.3705030        0.6190382777E-01    0.54%   1.963        -0.52821E-03
+ lbfgs> Decreasing DNEB force constant to      18.12902854    
+ lbfgs> steps:    175    -194.3716539        0.7458504411E-01    0.46%   1.963        -0.48851E-03
+ lbfgs> steps:    176    -194.3716666        0.6375772642E-01    0.43%   1.963         0.42477E-03
+ lbfgs> steps:    177    -194.3718605        0.6052729476E-01    0.43%   1.964        -0.47397E-03
+ lbfgs> steps:    178    -194.3722806        0.5392973391E-01    0.44%   1.964        -0.42927E-03
+ lbfgs> steps:    179    -194.3730955        0.6070586860E-01    0.48%   1.965        -0.11660E-02
+ lbfgs> Decreasing DNEB force constant to      17.26574146    
+ lbfgs> steps:    180    -194.3727350        0.8906643431E-01    0.42%   1.965        -0.73966E-03
+ lbfgs> steps:    181    -194.3725667        0.8490728661E-01    0.40%   1.965        -0.12455E-04
+ lbfgs> steps:    182    -194.3724630        0.7903364982E-01    0.39%   1.965        -0.30813E-04
+ lbfgs> steps:    183    -194.3723173        0.6952643490E-01    0.38%   1.965        -0.12184E-03
+ lbfgs> steps:    184    -194.3722192        0.5672469528E-01    0.36%   1.965        -0.20811E-03
+ lbfgs> Decreasing DNEB force constant to      16.44356330    
+ lbfgs> steps:    185    -194.3714353        0.1294238981        0.45%   1.966        -0.23973E-02
+ lbfgs> steps:    186    -194.3712181        0.6020175238E-01    0.42%   1.965         0.72118E-03
+ lbfgs> steps:    187    -194.3712814        0.7035433562E-01    0.39%   1.965         0.95891E-03
+ lbfgs> steps:    188    -194.3712567        0.4777204783E-01    0.39%   1.965        -0.92589E-04
+ lbfgs> steps:    189    -194.3715097        0.7262347564E-01    0.42%   1.965        -0.88191E-03
+ lbfgs> Decreasing DNEB force constant to      15.66053647    
+ lbfgs> steps:    190    -194.3716068        0.4935915711E-01    0.40%   1.965         0.57414E-03
+ lbfgs> steps:    191    -194.3719853        0.4541507532E-01    0.39%   1.965         0.34492E-03
+ lbfgs> steps:    192    -194.3723460        0.4075620097E-01    0.39%   1.966         0.74001E-04
+ lbfgs> steps:    193    -194.3732010        0.5111215750E-01    0.41%   1.967        -0.14370E-03
+ lbfgs> steps:    194    -194.3734049        0.5040594673E-01    0.42%   1.967        -0.65807E-03
+ lbfgs> Decreasing DNEB force constant to      14.91479664    
+ lbfgs> steps:    195    -194.3735123        0.5118300461E-01    0.44%   1.968        -0.64299E-03
+ lbfgs> steps:    196    -194.3731171        0.4279307207E-01    0.44%   1.968        -0.49119E-03
+ lbfgs> steps:    197    -194.3727587        0.4720903136E-01    0.47%   1.968        -0.83784E-03
+ lbfgs> steps:    198    -194.3718998        0.5890733654E-01    0.56%   1.968        -0.19877E-02
+ lbfgs> steps:    199    -194.3720169        0.6996853767E-01    0.56%   1.968        -0.38819E-03
+ lbfgs> Decreasing DNEB force constant to      14.20456823    
+ lbfgs> steps:    200    -194.3723662        0.3745510093E-01    0.53%   1.968         0.48775E-03
+ rwg> NEB coordinates were saved to xyz file "neb.200.xyz"
+ NEB coordinates were saved to binary file "neb.out"
+ writeprofile> NEB profile was saved to file "neb.EofS.200"
+ lbfgs> steps:    201    -194.3730688        0.5115331562E-01    0.53%   1.969        -0.57157E-04
+ lbfgs> steps:    202    -194.3731115        0.3432125482E-01    0.53%   1.969        -0.13535E-03
+ lbfgs> steps:    203    -194.3737173        0.4922986247E-01    0.55%   1.970        -0.72290E-03
+ lbfgs> steps:    204    -194.3739312        0.4398035617E-01    0.56%   1.970        -0.19658E-03
+ lbfgs> Decreasing DNEB force constant to      13.52816022    
+ lbfgs> steps:    205    -194.3800770        0.1433598532        0.89%   1.977        -0.33382E-02
+ lbfgs> steps:    206    -194.3795958        0.1288281801        0.84%   1.976         0.26685E-03
+ lbfgs> steps:    207    -194.3791248        0.1209536224        0.79%   1.976        -0.10788E-03
+ lbfgs> steps:    208    -194.3781733        0.9901432150E-01    0.73%   1.976        -0.52343E-03
+ lbfgs> steps:    209    -194.3775745        0.8352325616E-01    0.72%   1.976        -0.51029E-03
+ lbfgs> Decreasing DNEB force constant to      12.88396211    
+ lbfgs> steps:    210    -194.3771918        0.7280509921E-01    0.75%   1.976        -0.36077E-03
+ lbfgs> Final DNEB force constant      12.88396211    
+ newneb> mean image separation is       0.2469
+ writeprofile> NEB profile was saved to file "neb.EofS"
+ rwg> NEB coordinates were saved to xyz file "neb.0.xyz"
+ NEB coordinates were saved to binary file "neb.out"
+ Time to go through NEB:   0.138979000000000     
+ Reached maximal number of iterations limit.
+ time= 0.14 sec (0. sec/iteration)
+ Following    1 images are candidates for TS:    5  
+ Index of first candidate is            6
+ Image energies are  -196.290778845712       -196.224734078671     
+  -195.658985945748       -194.519521988589       -193.706091283785     
+  -193.434433972567       -193.484716083288       -193.611859391528     
+  -193.671270772622     
+bfgsts> WARNING - GMAX     0.1000000000E-05 is different from CONVR     0.1000000000E-04 - resetting
+bfgsts> WARNING - CONVU <= MINMAX - resetting CONVU
+ bfgsts> resetting maximum step sizes to     0.5000000000E-01
+ 
+ BFGSTS> Beginning of optimization cycle    1.
+ ---------------------------------------
+D,D2,D3,E+,E-,E,RMS=    -5.2360        -5.2360        -5.2360      -193.434170341      -193.434702840      -193.434433973      1.24    
+predicted gradient component=    0.2662491767    
+xmylbfgs> Eigenvalue and RMS=    -5.236015120         1.244087868     after      0 steps
+D,D2,D3,E+,E-,E,RMS=    -2.8577        -2.8577        -2.8577      -193.434177934      -193.434692869      -193.434433973      10.8    
+predicted gradient component=    0.2574677728    
+ eigenvalue increased from       -5.2360151195 to -2.857658813     decreasing step to      0.01000000
+D,D2,D3,E+,E-,E,RMS=    -5.2792        -5.2792        -5.2792      -193.434171126      -193.434702098      -193.434433973     0.605    
+predicted gradient component=    0.2654861898    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.279170184        0.6052308482        0.8174592480     after      1 steps, step: 0.0100000000
+D,D2,D3,E+,E-,E,RMS=    -5.2964        -5.2964        -5.2964      -193.434171720      -193.434701521      -193.434433973     0.461    
+predicted gradient component=    0.2649005384    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.296364382        0.4614547093        0.3246415155     after      2 steps, step: 0.0067657000
+D,D2,D3,E+,E-,E,RMS=    -5.3128        -5.3128        -5.3128      -193.434173316      -193.434699942      -193.434433973     0.474    
+predicted gradient component=    0.2633125350    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.312813731        0.4741246769        0.3096165164     after      3 steps, step: 0.0159655119
+D,D2,D3,E+,E-,E,RMS=    -5.3171        -5.3171        -5.3171      -193.434173859      -193.434699404      -193.434433973     0.433    
+predicted gradient component=    0.2627724814    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.317118235        0.4326130003        0.8095557697E-01 after      4 steps, step: 0.0072183860
+D,D2,D3,E+,E-,E,RMS=    -5.3203        -5.3203        -5.3203      -193.434173718      -193.434699547      -193.434433973     0.185    
+predicted gradient component=    0.2629146007    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.320300332        0.1849806620        0.5981047681E-01 after      5 steps, step: 0.0024053042
+D,D2,D3,E+,E-,E,RMS=    -5.3221        -5.3221        -5.3221      -193.434173880      -193.434699388      -193.434433973     0.116    
+predicted gradient component=    0.2627540094    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.322145367        0.1164949362        0.3466713480E-01 after      6 steps, step: 0.0025204399
+D,D2,D3,E+,E-,E,RMS=    -5.3241        -5.3241        -5.3241      -193.434174312      -193.434698957      -193.434433973     0.134    
+predicted gradient component=    0.2623224210    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.324076795        0.1337537272        0.3627724353E-01 after      7 steps, step: 0.0049171391
+D,D2,D3,E+,E-,E,RMS=    -5.3261        -5.3261        -5.3261      -193.434174765      -193.434698507      -193.434433973     0.120    
+predicted gradient component=    0.2618709306    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.326052100        0.1201004743        0.3708760693E-01 after      8 steps, step: 0.0059547300
+D,D2,D3,E+,E-,E,RMS=    -5.3262        -5.3262        -5.3262      -193.434175353      -193.434697919      -193.434433973     0.222    
+predicted gradient component=    0.2612828619    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.326246536        0.2224627510        0.3650516862E-02 after      9 steps, step: 0.0102531229
+D,D2,D3,E+,E-,E,RMS=    -5.3276        -5.3276        -5.3276      -193.434175317      -193.434697956      -193.434433973     0.516E-01
+predicted gradient component=    0.2613193728    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.327644283        0.5164504846E-01    0.2623575165E-01 after     10 steps, step: 0.0024981979
+D,D2,D3,E+,E-,E,RMS=    -5.3278        -5.3277        -5.3278      -193.434175211      -193.434698061      -193.434433973     0.176E-01
+predicted gradient component=    0.2614249759    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.327748051        0.1763720343E-01    0.1947679112E-02 after     11 steps, step: 0.0014703957
+D,D2,D3,E+,E-,E,RMS=    -5.3278        -5.3278        -5.3278      -193.434175206      -193.434698067      -193.434433973     0.122E-01
+predicted gradient component=    0.2614305944    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.327770697        0.1223209601E-01    0.4250610918E-03 after     12 steps, step: 0.0003038218
+D,D2,D3,E+,E-,E,RMS=    -5.3278        -5.3278        -5.3278      -193.434175212      -193.434698061      -193.434433973     0.151E-01
+predicted gradient component=    0.2614240462    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.327794095        0.1507868815E-01    0.4391709674E-03 after     13 steps, step: 0.0006058992
+D,D2,D3,E+,E-,E,RMS=    -5.3278        -5.3278        -5.3278      -193.434175228      -193.434698045      -193.434433973     0.181E-01
+predicted gradient component=    0.2614082682    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.327810570        0.1812803629E-01    0.3092167602E-03 after     14 steps, step: 0.0006757415
+D,D2,D3,E+,E-,E,RMS=    -5.3278        -5.3278        -5.3278      -193.434175238      -193.434698035      -193.434433973     0.747E-02
+predicted gradient component=    0.2613980877    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.327822142        0.7474332771E-02    0.2172018862E-03 after     15 steps, step: 0.0003862094
+D,D2,D3,E+,E-,E,RMS=    -5.3278        -5.3278        -5.3278      -193.434175244      -193.434698029      -193.434433973     0.376E-02
+predicted gradient component=    0.2613920605    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.327825559        0.3755589278E-02    0.6412883106E-04 after     16 steps, step: 0.0001887224
+D,D2,D3,E+,E-,E,RMS=    -5.3278        -5.3278        -5.3278      -193.434175243      -193.434698030      -193.434433973     0.313E-02
+predicted gradient component=    0.2613933793    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.327826589        0.3134575745E-02    0.1934816249E-04 after     17 steps, step: 0.0000829145
+D,D2,D3,E+,E-,E,RMS=    -5.3278        -5.3278        -5.3278      -193.434175242      -193.434698031      -193.434433973     0.192E-02
+predicted gradient component=    0.2613943105    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.327827564        0.1923890939E-02    0.1829107565E-04 after     18 steps, step: 0.0001289331
+D,D2,D3,E+,E-,E,RMS=    -5.3278        -5.3278        -5.3278      -193.434175240      -193.434698033      -193.434433973     0.412E-02
+predicted gradient component=    0.2613966718    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.327827616        0.4116294605E-02    0.9721552864E-06 after     19 steps, step: 0.0000879762
+D,D2,D3,E+,E-,E,RMS=    -5.3278        -5.3278        -5.3278      -193.434175241      -193.434698032      -193.434433973     0.128E-02
+predicted gradient component=    0.2613955407    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.327827948        0.1283268971E-02    0.6231179880E-05 after     20 steps, step: 0.0000267359
+D,D2,D3,E+,E-,E,RMS=    -5.3278        -5.3278        -5.3278      -193.434175241      -193.434698032      -193.434433973     0.936E-03
+predicted gradient component=    0.2613952158    
+xmylbfgs> Eigenvalue, RMS, % change=    -5.327828039        0.9359404196E-03    0.1708061337E-05 after     21 steps, step: 0.0000167383
+xmylbfgs> Smallest eigenvalue converged in   21 steps. Eigenvalue=     -5.3278280 RMS force=      0.0009359 % change=    0.17081E-05
+xmylbfgs> Diagonal inverse Hessian elements are now         0.0010497016
+beig> Overlap with previous vector=      0.9990561
+ -------------------------------------------------------------------------------
+ Vector      Gradient        Secder       Step          Max step    Trust ratio
+ -------------------------------------------------------------------------------
+    1    0.261392E+00   -0.532783E+01  0.489441E-01 0.550000E-01    0.902267E-01
+ -------------------------------------------------------------------------------
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -193.4276400        0.1939638766E-01 after      0 steps
+ mylbfgs> Energy and RMS force=    -193.4276790        0.4006366456E-01 after      1 steps, step:  0.13544E-02
+ mylbfgs> Energy and RMS force=    -193.4277498        0.1906721954E-01 after      2 steps, step:  0.44870E-03
+ bfgsts> RMS grad=      0.0195174 subspace grad=      0.0190672 unscaled EF step length=      0.0489441
+ 
+ BFGSTS> Beginning of optimization cycle    2.
+ ---------------------------------------
+D,D2,D3,E+,E-,E,RMS=    -4.3391        -4.3391        -4.3391      -193.427726965      -193.427776986      -193.427749806     0.771    
+predicted gradient component=    0.2501058322E-01
+xmylbfgs> Eigenvalue and RMS=    -4.339079772        0.7706518959     after      0 steps
+D,D2,D3,E+,E-,E,RMS=    -1.4437        -1.4437        -1.4437      -193.427722544      -193.427778512      -193.427749806      11.7    
+predicted gradient component=    0.2798364835E-01
+ eigenvalue increased from       -4.3390797722 to -1.443724954     decreasing step to      0.01000000
+D,D2,D3,E+,E-,E,RMS=    -4.3515        -4.3515        -4.3515      -193.427726661      -193.427777303      -193.427749806     0.636    
+predicted gradient component=    0.2532056021E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.351450593        0.6358790488        0.2842918715     after      1 steps, step: 0.0100000000
+D,D2,D3,E+,E-,E,RMS=    -4.3594        -4.3594        -4.3594      -193.427726668      -193.427777304      -193.427749806     0.251    
+predicted gradient component=    0.2531766086E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.359361413        0.2514309769        0.1814674067     after      2 steps, step: 0.0032640368
+D,D2,D3,E+,E-,E,RMS=    -4.3627        -4.3627        -4.3627      -193.427726599      -193.427777376      -193.427749806     0.177    
+predicted gradient component=    0.2538873161E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.362657929        0.1765614290        0.7556211717E-01 after      3 steps, step: 0.0029656482
+D,D2,D3,E+,E-,E,RMS=    -4.3659        -4.3659        -4.3659      -193.427726403      -193.427777575      -193.427749806     0.151    
+predicted gradient component=    0.2558624180E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.365896785        0.1505998091        0.7418534569E-01 after      4 steps, step: 0.0054216376
+D,D2,D3,E+,E-,E,RMS=    -4.3667        -4.3667        -4.3667      -193.427726149      -193.427777830      -193.427749806     0.258    
+predicted gradient component=    0.2584078123E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.366680229        0.2581977754        0.1794141561E-01 after      5 steps, step: 0.0052815885
+D,D2,D3,E+,E-,E,RMS=    -4.3679        -4.3679        -4.3679      -193.427726074      -193.427777906      -193.427749806     0.721E-01
+predicted gradient component=    0.2591589111E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.367891028        0.7210837710E-01    0.2772044342E-01 after      6 steps, step: 0.0016359131
+D,D2,D3,E+,E-,E,RMS=    -4.3682        -4.3682        -4.3682      -193.427726027      -193.427777954      -193.427749806     0.558E-01
+predicted gradient component=    0.2596345820E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.368171592        0.5577044555E-01    0.6422921866E-02 after      7 steps, step: 0.0009753655
+D,D2,D3,E+,E-,E,RMS=    -4.3685        -4.3685        -4.3685      -193.427725912      -193.427778069      -193.427749806     0.650E-01
+predicted gradient component=    0.2607811047E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.368545265        0.6497077727E-01    0.8553712628E-02 after      8 steps, step: 0.0020516547
+D,D2,D3,E+,E-,E,RMS=    -4.3690        -4.3690        -4.3690      -193.427725741      -193.427778241      -193.427749806     0.583E-01
+predicted gradient component=    0.2625010933E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369022793        0.5826274300E-01    0.1092986448E-01 after      9 steps, step: 0.0031748830
+D,D2,D3,E+,E-,E,RMS=    -4.3692        -4.3692        -4.3692      -193.427725511      -193.427778470      -193.427749806     0.660E-01
+predicted gradient component=    0.2647948594E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369150091        0.6604482356E-01    0.2913562552E-02 after     10 steps, step: 0.0041953692
+D,D2,D3,E+,E-,E,RMS=    -4.3693        -4.3693        -4.3693      -193.427725554      -193.427778428      -193.427749806     0.392E-01
+predicted gradient component=    0.2643707734E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369272381        0.3921559107E-01    0.2798849293E-02 after     11 steps, step: 0.0010382933
+D,D2,D3,E+,E-,E,RMS=    -4.3693        -4.3693        -4.3693      -193.427725581      -193.427778401      -193.427749806     0.772E-02
+predicted gradient component=    0.2640998730E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369314753        0.7716718306E-02    0.9697659992E-03 after     12 steps, step: 0.0007540460
+D,D2,D3,E+,E-,E,RMS=    -4.3693        -4.3693        -4.3693      -193.427725578      -193.427778404      -193.427749806     0.564E-02
+predicted gradient component=    0.2641310260E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369317823        0.5642458040E-02    0.7026992383E-04 after     13 steps, step: 0.0001006592
+D,D2,D3,E+,E-,E,RMS=    -4.3693        -4.3693        -4.3693      -193.427725571      -193.427778411      -193.427749806     0.684E-02
+predicted gradient component=    0.2641998765E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369323073        0.6841477344E-02    0.1201497845E-03 after     14 steps, step: 0.0002588265
+D,D2,D3,E+,E-,E,RMS=    -4.3693        -4.3693        -4.3693      -193.427725563      -193.427778419      -193.427749806     0.808E-02
+predicted gradient component=    0.2642797688E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369328240        0.8079127346E-02    0.1182629815E-03 after     15 steps, step: 0.0003430392
+D,D2,D3,E+,E-,E,RMS=    -4.3693        -4.3693        -4.3693      -193.427725566      -193.427778416      -193.427749806     0.140E-01
+predicted gradient component=    0.2642487948E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369327666        0.1398403040E-01    0.1313522069E-04 after     16 steps, step: 0.0005028605
+D,D2,D3,E+,E-,E,RMS=    -4.3693        -4.3693        -4.3693      -193.427725561      -193.427778421      -193.427749806     0.213E-02
+predicted gradient component=    0.2642988272E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369332199        0.2128972793E-02    0.1037368851E-03 after     17 steps, step: 0.0001616866
+D,D2,D3,E+,E-,E,RMS=    -4.3693        -4.3693        -4.3693      -193.427725562      -193.427778420      -193.427749806     0.135E-02
+predicted gradient component=    0.2642925188E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369332406        0.1346979009E-02    0.4734455091E-05 after     18 steps, step: 0.0000299779
+D,D2,D3,E+,E-,E,RMS=    -4.3693        -4.3693        -4.3693      -193.427725562      -193.427778420      -193.427749806     0.126E-02
+predicted gradient component=    0.2642891570E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369332623        0.1260959290E-02    0.4985027036E-05 after     19 steps, step: 0.0000434296
+D,D2,D3,E+,E-,E,RMS=    -4.3693        -4.3693        -4.3693      -193.427725562      -193.427778420      -193.427749806     0.169E-02
+predicted gradient component=    0.2642911238E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369332798        0.1692722573E-02    0.4003612539E-05 after     20 steps, step: 0.0000618713
+D,D2,D3,E+,E-,E,RMS=    -4.3693        -4.3693        -4.3693      -193.427725561      -193.427778421      -193.427749806     0.122E-02
+predicted gradient component=    0.2643005740E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369332898        0.1215519620E-02    0.2275569137E-05 after     21 steps, step: 0.0000489494
+D,D2,D3,E+,E-,E,RMS=    -4.3693        -4.3693        -4.3693      -193.427725561      -193.427778421      -193.427749806     0.594E-03
+predicted gradient component=    0.2643028733E-01
+xmylbfgs> Eigenvalue, RMS, % change=    -4.369332942        0.5941774460E-03    0.1018395123E-05 after     22 steps, step: 0.0000135438
+xmylbfgs> Smallest eigenvalue converged in   22 steps. Eigenvalue=     -4.3693329 RMS force=      0.0005942 % change=    0.10184E-05
+xmylbfgs> Diagonal inverse Hessian elements are now         0.0016260288
+beig> Overlap with previous vector=      0.9997130
+ -------------------------------------------------------------------------------
+ Vector      Gradient        Secder       Step          Max step    Trust ratio
+ -------------------------------------------------------------------------------
+    1    0.264272E-01   -0.436933E+01  0.604812E-02 0.605000E-01    0.128587E-01
+ -------------------------------------------------------------------------------
+ mylbfgs> Not resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -193.4276692        0.1897593196E-01 after      0 steps
+ mylbfgs> Energy and RMS force=    -193.4277297        0.1033725791E-01 after      1 steps, step:  0.12062E-02
+ mylbfgs> Energy and RMS force=    -193.4277564        0.1192497394E-01 after      2 steps, step:  0.95826E-03
+ bfgsts> RMS grad=      0.0119253 subspace grad=      0.0119250 unscaled EF step length=      0.0060481
+ 
+ BFGSTS> Beginning of optimization cycle    3.
+ ---------------------------------------
+D,D2,D3,E+,E-,E,RMS=    -4.2272        -4.2272        -4.2272      -193.427757956      -193.427759002      -193.427756365     0.107    
+predicted gradient component=    0.5232639069E-03
+xmylbfgs> Eigenvalue and RMS=    -4.227187306        0.1065959601     after      0 steps
+D,D2,D3,E+,E-,E,RMS=    -3.6407        -3.6407        -3.6407      -193.427757826      -193.427758545      -193.427756365      5.25    
+predicted gradient component=    0.3596547344E-03
+ eigenvalue increased from       -4.2271873063 to -3.640746690     decreasing step to      0.00409057
+D,D2,D3,E+,E-,E,RMS=    -4.2237        -4.2237        -4.2237      -193.427757970      -193.427758984      -193.427756365     0.438    
+predicted gradient component=    0.5069262556E-03
+xmylbfgs> Eigenvalue, RMS, % change=    -4.223667730        0.4376990951        0.8332985357E-01 after      1 steps, step: 0.0040905715
+D,D2,D3,E+,E-,E,RMS=    -4.2275        -4.2275        -4.2275      -193.427757965      -193.427758993      -193.427756365     0.293E-01
+predicted gradient component=    0.5141882298E-03
+xmylbfgs> Eigenvalue, RMS, % change=    -4.227523768        0.2931293564E-01    0.9121268956E-01 after      2 steps, step: 0.0031201863
+D,D2,D3,E+,E-,E,RMS=    -4.2276        -4.2276        -4.2276      -193.427757966      -193.427758992      -193.427756365     0.236E-01
+predicted gradient component=    0.5133551326E-03
+xmylbfgs> Eigenvalue, RMS, % change=    -4.227556305        0.2356613007E-01    0.7696345107E-03 after      3 steps, step: 0.0002124848
+D,D2,D3,E+,E-,E,RMS=    -4.2276        -4.2276        -4.2276      -193.427757977      -193.427758981      -193.427756365     0.386E-01
+predicted gradient component=    0.5021762490E-03
+xmylbfgs> Eigenvalue, RMS, % change=    -4.227625405        0.3863773492E-01    0.1634496869E-02 after      4 steps, step: 0.0013974790
+D,D2,D3,E+,E-,E,RMS=    -4.2276        -4.2276        -4.2276      -193.427757962      -193.427758997      -193.427756365     0.353E-01
+predicted gradient component=    0.5174836133E-03
+xmylbfgs> Eigenvalue, RMS, % change=    -4.227643304        0.3534109206E-01    0.4233791572E-03 after      5 steps, step: 0.0005537454
+D,D2,D3,E+,E-,E,RMS=    -4.2277        -4.2277        -4.2277      -193.427757964      -193.427758995      -193.427756365     0.122E-01
+predicted gradient component=    0.5155325766E-03
+xmylbfgs> Eigenvalue, RMS, % change=    -4.227663247        0.1223860198E-01    0.4717066777E-03 after      6 steps, step: 0.0002732935
+D,D2,D3,E+,E-,E,RMS=    -4.2277        -4.2277        -4.2277      -193.427757960      -193.427758998      -193.427756365     0.857E-02
+predicted gradient component=    0.5190904062E-03
+xmylbfgs> Eigenvalue, RMS, % change=    -4.227670330        0.8574701579E-02    0.1675584928E-03 after      7 steps, step: 0.0001224363
+D,D2,D3,E+,E-,E,RMS=    -4.2277        -4.2277        -4.2277      -193.427757942      -193.427759016      -193.427756365     0.106E-01
+predicted gradient component=    0.5374203624E-03
+xmylbfgs> Eigenvalue, RMS, % change=    -4.227686945        0.1061070018E-01    0.3930031332E-03 after      8 steps, step: 0.0005592968
+D,D2,D3,E+,E-,E,RMS=    -4.2277        -4.2277        -4.2277      -193.427757922      -193.427759036      -193.427756365     0.866E-02
+predicted gradient component=    0.5566693630E-03
+xmylbfgs> Eigenvalue, RMS, % change=    -4.227696495        0.8664829727E-02    0.2258889357E-03 after      9 steps, step: 0.0004454828
+D,D2,D3,E+,E-,E,RMS=    -4.2277        -4.2277        -4.2277      -193.427757891      -193.427759067      -193.427756365     0.147E-01
+predicted gradient component=    0.5878299021E-03
+xmylbfgs> Eigenvalue, RMS, % change=    -4.227695940        0.1467054475E-01    0.1313412162E-04 after     10 steps, step: 0.0006752458
+D,D2,D3,E+,E-,E,RMS=    -4.2277        -4.2277        -4.2277      -193.427757895      -193.427759064      -193.427756365     0.313E-02
+predicted gradient component=    0.5844910902E-03
+xmylbfgs> Eigenvalue, RMS, % change=    -4.227702842        0.3127176968E-02    0.1632579112E-03 after     11 steps, step: 0.0001880789
+D,D2,D3,E+,E-,E,RMS=    -4.2277        -4.2277        -4.2277      -193.427757898      -193.427759060      -193.427756365     0.114E-02
+predicted gradient component=    0.5810757671E-03
+xmylbfgs> Eigenvalue, RMS, % change=    -4.227703230        0.1144149820E-02    0.9168079344E-05 after     12 steps, step: 0.0000826830
+D,D2,D3,E+,E-,E,RMS=    -4.2277        -4.2277        -4.2277      -193.427757898      -193.427759060      -193.427756365     0.953E-03
+predicted gradient component=    0.5810562698E-03
+xmylbfgs> Eigenvalue, RMS, % change=    -4.227703343        0.9529998424E-03    0.2678627083E-05 after     13 steps, step: 0.0000208877
+xmylbfgs> Smallest eigenvalue converged in   13 steps. Eigenvalue=     -4.2277033 RMS force=      0.0009530 % change=    0.26786E-05
+xmylbfgs> Diagonal inverse Hessian elements are now         0.0022787128
+beig> Overlap with previous vector=      0.9999943
+ -------------------------------------------------------------------------------
+ Vector      Gradient        Secder       Step          Max step    Trust ratio
+ -------------------------------------------------------------------------------
+    1    0.577987E-03   -0.422770E+01  0.136714E-03 0.665500E-01    0.296990E-03
+ -------------------------------------------------------------------------------
+ mylbfgs> Not resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -193.4277563        0.1192490619E-01 after      0 steps
+ energy increase:    -193.427756325685     to     -193.427728039493     decreasing step to  0.28591097E-03
+ mylbfgs> Energy and RMS force=    -193.4277667        0.1175844015E-01 after      1 steps, step:  0.28591E-03
+ mylbfgs> Energy and RMS force=    -193.4278191        0.1186148459E-01 after      2 steps, step:  0.22624E-02
+ mylbfgs> Energy and RMS force=    -193.4278371        0.2067459012E-01 after      3 steps, step:  0.19729E-02
+ mylbfgs> Energy and RMS force=    -193.4278530        0.4210972309E-02 after      4 steps, step:  0.32667E-03
+ mylbfgs> Energy and RMS force=    -193.4278541        0.2131055122E-02 after      5 steps, step:  0.11985E-03
+ mylbfgs> Energy and RMS force=    -193.4278549        0.2111010531E-02 after      6 steps, step:  0.96142E-04
+ mylbfgs> Energy and RMS force=    -193.4278560        0.2526200161E-02 after      7 steps, step:  0.18554E-03
+ mylbfgs> Energy and RMS force=    -193.4278573        0.3157389171E-02 after      8 steps, step:  0.30258E-03
+ mylbfgs> Energy and RMS force=    -193.4278580        0.2603175099E-02 after      9 steps, step:  0.36843E-03
+ mylbfgs> Energy and RMS force=    -193.4278585        0.7323503766E-03 after     10 steps, step:  0.89486E-04
+ mylbfgs> Energy and RMS force=    -193.4278586        0.5903386270E-03 after     11 steps, step:  0.41429E-04
+ mylbfgs> Energy and RMS force=    -193.4278587        0.5564044055E-03 after     12 steps, step:  0.49019E-04
+ energy increase:    -193.427858677747     to     -193.427858676064     decreasing step to  0.96883396E-05
+ mylbfgs> Energy and RMS force=    -193.4278587        0.4582188435E-03 after     13 steps, step:  0.96883E-05
+ mylbfgs> Energy and RMS force=    -193.4278588        0.3404870337E-03 after     14 steps, step:  0.75144E-04
+ mylbfgs> Energy and RMS force=    -193.4278588        0.2546770931E-03 after     15 steps, step:  0.34701E-04
+ mylbfgs> Energy and RMS force=    -193.4278588        0.3144661166E-03 after     16 steps, step:  0.72465E-04
+ energy increase:    -193.427858836266     to     -193.427858822242     decreasing step to  0.38368174E-05
+ mylbfgs> Energy and RMS force=    -193.4278588        0.2415849759E-03 after     17 steps, step:  0.38368E-05
+ mylbfgs> Energy and RMS force=    -193.4278588        0.9489946908E-04 after     18 steps, step:  0.13406E-04
+ mylbfgs> Energy and RMS force=    -193.4278588        0.9284056424E-04 after     19 steps, step:  0.57237E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.1291991191E-03 after     20 steps, step:  0.20812E-04
+ mylbfgs> Energy and RMS force=    -193.4278589        0.1331339217E-03 after     21 steps, step:  0.20248E-04
+ mylbfgs> Energy and RMS force=    -193.4278589        0.4694564593E-04 after     22 steps, step:  0.40820E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.3043469602E-04 after     23 steps, step:  0.41521E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.1973790505E-04 after     24 steps, step:  0.32242E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.2967500407E-04 after     25 steps, step:  0.37797E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.1681615326E-04 after     26 steps, step:  0.27756E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.1239623614E-04 after     27 steps, step:  0.11421E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.1998130932E-04 after     28 steps, step:  0.29802E-05
+ mylbfgs> Energy and RMS force=    -193.4278589        0.8797035647E-05 after     29 steps, step:  0.64848E-06
+ mylbfgs> Energy and RMS force=    -193.4278589        0.2619943479E-05 after     30 steps, step:  0.39975E-06
+ bfgsts> RMS grad=      0.0000063 subspace grad=      0.0000026 unscaled EF step length=      0.0001367
+ 
+ BFGSTS> Beginning of optimization cycle    4.
+ ---------------------------------------
+D,D2,D3,E+,E-,E,RMS=    -4.2145        -4.2145        -4.2145      -193.427860997      -193.427860934      -193.427858858     0.675E-01
+predicted gradient component=   -0.3108556257E-04
+xmylbfgs> Eigenvalue and RMS=    -4.214467723        0.6754069292E-01 after      0 steps
+D,D2,D3,E+,E-,E,RMS=    -4.1295        -4.1295        -4.1295      -193.427860954      -193.427860892      -193.427858858      1.97    
+predicted gradient component=   -0.3121255077E-04
+ eigenvalue increased from       -4.2144677233 to -4.129543584     decreasing step to      0.00164223
+D,D2,D3,E+,E-,E,RMS=    -4.2142        -4.2142        -4.2142      -193.427860996      -193.427860934      -193.427858858     0.144    
+predicted gradient component=   -0.3109897762E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.214217203        0.1438901523        0.5944654161E-02 after      1 steps, step: 0.0016422283
+D,D2,D3,E+,E-,E,RMS=    -4.2146        -4.2146        -4.2146      -193.427860997      -193.427860935      -193.427858858     0.200E-01
+predicted gradient component=   -0.3108999636E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.214620807        0.1999472038E-01    0.9576291148E-02 after      2 steps, step: 0.0009741049
+D,D2,D3,E+,E-,E,RMS=    -4.2146        -4.2146        -4.2146      -193.427860997      -193.427860935      -193.427858858     0.141E-01
+predicted gradient component=   -0.3108976898E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.214636184        0.1414012977E-01    0.3648549718E-03 after      3 steps, step: 0.0001552224
+D,D2,D3,E+,E-,E,RMS=    -4.2147        -4.2147        -4.2147      -193.427860997      -193.427860935      -193.427858858     0.901E-02
+predicted gradient component=   -0.3109011004E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.214662109        0.9013068773E-02    0.6150970028E-03 after      4 steps, step: 0.0005385199
+D,D2,D3,E+,E-,E,RMS=    -4.2147        -4.2147        -4.2147      -193.427860997      -193.427860935      -193.427858858     0.198E-01
+predicted gradient component=   -0.3109255431E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.214664558        0.1984669427E-01    0.5812382811E-04 after      5 steps, step: 0.0003329193
+D,D2,D3,E+,E-,E,RMS=    -4.2147        -4.2147        -4.2147      -193.427860997      -193.427860935      -193.427858858     0.682E-02
+predicted gradient component=   -0.3109215641E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.214670900        0.6816790672E-02    0.1504600427E-03 after      6 steps, step: 0.0000952233
+D,D2,D3,E+,E-,E,RMS=    -4.2147        -4.2147        -4.2147      -193.427860997      -193.427860935      -193.427858858     0.481E-02
+predicted gradient component=   -0.3109192903E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.214673233        0.4813006057E-02    0.5535142259E-04 after      7 steps, step: 0.0001042249
+D,D2,D3,E+,E-,E,RMS=    -4.2147        -4.2147        -4.2147      -193.427860997      -193.427860935      -193.427858858     0.613E-02
+predicted gradient component=   -0.3109283853E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.214675582        0.6125964707E-02    0.5573425213E-04 after      8 steps, step: 0.0001604170
+D,D2,D3,E+,E-,E,RMS=    -4.2147        -4.2147        -4.2147      -193.427860997      -193.427860935      -193.427858858     0.660E-02
+predicted gradient component=   -0.3109266800E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.214679710        0.6602197844E-02    0.9795504000E-04 after      9 steps, step: 0.0003086748
+D,D2,D3,E+,E-,E,RMS=    -4.2147        -4.2147        -4.2147      -193.427860997      -193.427860935      -193.427858858     0.705E-02
+predicted gradient component=   -0.3109124691E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.214681783        0.7053681836E-02    0.4918718035E-04 after     10 steps, step: 0.0004037756
+D,D2,D3,E+,E-,E,RMS=    -4.2147        -4.2147        -4.2147      -193.427860997      -193.427860935      -193.427858858     0.541E-02
+predicted gradient component=   -0.3109084901E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.214682276        0.5410450468E-02    0.1168245688E-04 after     11 steps, step: 0.0001323226
+D,D2,D3,E+,E-,E,RMS=    -4.2147        -4.2147        -4.2147      -193.427860997      -193.427860935      -193.427858858     0.978E-03
+predicted gradient component=   -0.3109090585E-04
+xmylbfgs> Eigenvalue, RMS, % change=    -4.214683053        0.9782144388E-03    0.1843860551E-04 after     12 steps, step: 0.0001213508
+xmylbfgs> Smallest eigenvalue converged in   12 steps. Eigenvalue=     -4.2146831 RMS force=      0.0009782 % change=    0.18439E-04
+xmylbfgs> Diagonal inverse Hessian elements are now         0.0012753577
+beig> Overlap with previous vector=      0.9999979
+ -------------------------------------------------------------------------------
+ Vector      Gradient        Secder       Step          Max step    Trust ratio
+ -------------------------------------------------------------------------------
+    1   -0.341578E-04   -0.421468E+01 -0.810448E-05 0.732050E-01    0.184963E-04
+ -------------------------------------------------------------------------------
+ mylbfgs> Not resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -193.4278589        0.2621366312E-05 after      0 steps
+ mylbfgs> Energy and RMS force=    -193.4278589        0.2421046273E-05 after      1 steps, step:  0.93671E-07
+ mylbfgs> Energy and RMS force=    -193.4278589        0.4135160856E-05 after      2 steps, step:  0.98679E-06
+ mylbfgs> Energy and RMS force=    -193.4278589        0.2674246915E-05 after      3 steps, step:  0.65822E-06
+ mylbfgs> Energy and RMS force=    -193.4278589        0.3443569720E-05 after      4 steps, step:  0.41663E-06
+ mylbfgs> Energy and RMS force=    -193.4278589        0.3895550386E-06 after      5 steps, step:  0.14007E-06
+ mylbfgs> Final energy is   -193.42785885815636    
+ bfgsts> RMS grad=      0.0000004 subspace grad=      0.0000004 unscaled EF step length=      0.0000081
+ Converged to TS (number of iterations):          4
+ DNEB run yielded 1 true transition state(s) time=      0.01
+
+ >>>>>  Path run for ts 1 ...
+ bfgsts> resetting maximum step sizes to     0.5000000000E-01
+ 
+ bfgsts> Stepping away from saddle along softest mode + direction
+ -------------------------------------------------------------------------------
+ Vector      Gradient        Secder       Step          Max step    Trust ratio
+ -------------------------------------------------------------------------------
+    1    0.000000E+00   -0.421468E+01  0.500000E-01 0.454545E-01    0.100000E+01
+ -------------------------------------------------------------------------------
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -193.4327391        0.3263821024E-01 after      0 steps
+ mylbfgs> Energy and RMS force=    -193.4333202        0.6702985331E-01 after      1 steps, step:  0.38349E-02
+ mylbfgs> Energy and RMS force=    -193.4351914        0.1534118660     after      2 steps, step:  0.12819E-01
+ mylbfgs> Energy and RMS force=    -193.4514287        0.7169028314     after      3 steps, step:  0.11393    
+ mylbfgs> Energy and RMS force=    -193.4742126         1.450965840     after      4 steps, step:  0.20000    
+ mylbfgs> Energy and RMS force=    -193.4871189         1.751598922     after      5 steps, step:  0.17410    
+ mylbfgs> Energy and RMS force=    -193.5265995         1.525279847     after      6 steps, step:  0.13971E-01
+ mylbfgs> Energy and RMS force=    -193.6279480        0.4865072749     after      7 steps, step:  0.12810    
+ mylbfgs> Energy and RMS force=    -193.6392976        0.3163561036     after      8 steps, step:  0.10217    
+ mylbfgs> Energy and RMS force=    -193.6547569        0.3215372297     after      9 steps, step:  0.70892E-01
+ mylbfgs> Energy and RMS force=    -193.6553154        0.4180950005     after     10 steps, step:  0.11518E-01
+ mylbfgs> Energy and RMS force=    -193.6604862        0.1018438809     after     11 steps, step:  0.81586E-02
+ mylbfgs> Energy and RMS force=    -193.6612672        0.8472456122E-01 after     12 steps, step:  0.16242E-02
+ mylbfgs> Energy and RMS force=    -193.6647242        0.1197074578     after     13 steps, step:  0.11664E-01
+ mylbfgs> Energy and RMS force=    -193.6666974        0.1142686719     after     14 steps, step:  0.92496E-02
+ mylbfgs> Energy and RMS force=    -193.6681625        0.1362448637     after     15 steps, step:  0.21538E-01
+ mylbfgs> Energy and RMS force=    -193.6694928        0.6169472802E-01 after     16 steps, step:  0.43018E-02
+ mylbfgs> Energy and RMS force=    -193.6699048        0.4420498418E-01 after     17 steps, step:  0.23110E-02
+ mylbfgs> Energy and RMS force=    -193.6703400        0.3678407796E-01 after     18 steps, step:  0.55436E-02
+ mylbfgs> Energy and RMS force=    -193.6707041        0.5921181713E-01 after     19 steps, step:  0.98637E-02
+ mylbfgs> Energy and RMS force=    -193.6708846        0.3775261748E-01 after     20 steps, step:  0.45353E-02
+ mylbfgs> Energy and RMS force=    -193.6709692        0.1570172497E-01 after     21 steps, step:  0.93376E-03
+ mylbfgs> Energy and RMS force=    -193.6710041        0.1422469642E-01 after     22 steps, step:  0.62262E-03
+ mylbfgs> Energy and RMS force=    -193.6710657        0.1676065129E-01 after     23 steps, step:  0.14784E-02
+ mylbfgs> Energy and RMS force=    -193.6711554        0.1775903443E-01 after     24 steps, step:  0.27395E-02
+ energy increase:    -193.671155355100     to     -193.670963502897     decreasing step to  0.59237375E-03
+ mylbfgs> Energy and RMS force=    -193.6711731        0.1691850612E-01 after     25 steps, step:  0.59237E-03
+ mylbfgs> Energy and RMS force=    -193.6712398        0.8793893219E-02 after     26 steps, step:  0.33739E-02
+ mylbfgs> Energy and RMS force=    -193.6712550        0.6120281143E-02 after     27 steps, step:  0.10672E-02
+ mylbfgs> Energy and RMS force=    -193.6712578        0.6300976841E-02 after     28 steps, step:  0.44354E-03
+ mylbfgs> Energy and RMS force=    -193.6712605        0.2693912400E-02 after     29 steps, step:  0.19887E-03
+ mylbfgs> Energy and RMS force=    -193.6712622        0.2155580996E-02 after     30 steps, step:  0.15669E-03
+ mylbfgs> Energy and RMS force=    -193.6712654        0.3157667081E-02 after     31 steps, step:  0.45870E-03
+ mylbfgs> Energy and RMS force=    -193.6712681        0.2793083006E-02 after     32 steps, step:  0.56980E-03
+ mylbfgs> Energy and RMS force=    -193.6712686        0.4267222333E-02 after     33 steps, step:  0.69364E-03
+ mylbfgs> Energy and RMS force=    -193.6712700        0.1613096703E-02 after     34 steps, step:  0.14799E-03
+ mylbfgs> Energy and RMS force=    -193.6712703        0.6461851248E-03 after     35 steps, step:  0.11323E-03
+ mylbfgs> Energy and RMS force=    -193.6712704        0.5619946837E-03 after     36 steps, step:  0.62956E-04
+ mylbfgs> Energy and RMS force=    -193.6712706        0.6888401218E-03 after     37 steps, step:  0.13805E-03
+ mylbfgs> Energy and RMS force=    -193.6712706        0.1043194535E-02 after     38 steps, step:  0.13212E-03
+ mylbfgs> Energy and RMS force=    -193.6712707        0.2001899118E-03 after     39 steps, step:  0.48261E-04
+ mylbfgs> Energy and RMS force=    -193.6712707        0.1370403783E-03 after     40 steps, step:  0.14623E-04
+ mylbfgs> Energy and RMS force=    -193.6712707        0.1706948665E-03 after     41 steps, step:  0.16649E-04
+ mylbfgs> Energy and RMS force=    -193.6712707        0.2447220457E-03 after     42 steps, step:  0.37913E-04
+ mylbfgs> Energy and RMS force=    -193.6712708        0.2247139267E-03 after     43 steps, step:  0.52509E-04
+ energy increase:    -193.671270765269     to     -193.671270740862     decreasing step to  0.67039571E-05
+ mylbfgs> Energy and RMS force=    -193.6712708        0.1827062311E-03 after     44 steps, step:  0.67040E-05
+ mylbfgs> Energy and RMS force=    -193.6712708        0.5566365233E-04 after     45 steps, step:  0.23622E-04
+ mylbfgs> Energy and RMS force=    -193.6712708        0.2202230893E-04 after     46 steps, step:  0.35436E-05
+ mylbfgs> Energy and RMS force=    -193.6712708        0.2170378511E-04 after     47 steps, step:  0.23431E-05
+ mylbfgs> Energy and RMS force=    -193.6712708        0.2336475490E-04 after     48 steps, step:  0.24703E-05
+ mylbfgs> Energy and RMS force=    -193.6712708        0.1274132117E-04 after     49 steps, step:  0.36095E-05
+ mylbfgs> Energy and RMS force=    -193.6712708        0.1587505801E-04 after     50 steps, step:  0.20607E-05
+ mylbfgs> Energy and RMS force=    -193.6712708        0.3224257703E-05 after     51 steps, step:  0.70198E-06
+ mylbfgs> Energy and RMS force=    -193.6712708        0.2896804916E-05 after     52 steps, step:  0.18751E-06
+ mylbfgs> Energy and RMS force=    -193.6712708        0.2928719984E-05 after     53 steps, step:  0.54575E-06
+ mylbfgs> Energy and RMS force=    -193.6712708        0.1185363776E-05 after     54 steps, step:  0.46581E-06
+ mylbfgs> Energy and RMS force=    -193.6712708        0.5001148924E-06 after     55 steps, step:  0.13425E-06
+ mylbfgs> Final energy is   -193.67127077262114    
+ Plus  side of path:                      56 steps. Energy=    -193.6712708       time=       0.00
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -193.4335051        0.4005587356E-01 after      0 steps
+ mylbfgs> Energy and RMS force=    -193.4346825        0.8573235745E-01 after      1 steps, step:  0.57761E-02
+ mylbfgs> Energy and RMS force=    -193.4410788        0.3338315357     after      2 steps, step:  0.32062E-01
+ mylbfgs> Energy and RMS force=    -193.5449072         1.732790267     after      3 steps, step:  0.20000    
+Search direction has positive projection onto gradient     0.1000303850     reversing step
+ mylbfgs> Energy and RMS force=    -193.9130036         2.940647536     after      4 steps, step:  0.20000    
+Search direction has positive projection onto gradient     0.1484482868     reversing step
+ mylbfgs> Energy and RMS force=    -194.5029468         4.051181973     after      5 steps, step:  0.20000    
+Search direction has positive projection onto gradient     0.1137572241     reversing step
+ energy increase:    -194.502946757975     to     -194.458262957723     decreasing step to  0.20000000E-01
+ mylbfgs> Energy and RMS force=    -194.5556196         4.160196914     after      6 steps, step:  0.20000E-01
+ mylbfgs> Energy and RMS force=    -195.3166216         3.170418406     after      7 steps, step:  0.20000    
+ mylbfgs> Energy and RMS force=    -195.8132383         1.116915860     after      8 steps, step:  0.73314E-01
+ mylbfgs> Energy and RMS force=    -195.8824942        0.6899880498     after      9 steps, step:  0.23743E-01
+ mylbfgs> Energy and RMS force=    -195.9437827        0.5894659438     after     10 steps, step:  0.25288E-01
+ mylbfgs> Energy and RMS force=    -196.0366906        0.7606734595     after     11 steps, step:  0.55030E-01
+ mylbfgs> Energy and RMS force=    -196.1001224        0.9683268600     after     12 steps, step:  0.61565E-01
+ mylbfgs> Energy and RMS force=    -196.1475674        0.9891236678     after     13 steps, step:  0.53209E-01
+ mylbfgs> Energy and RMS force=    -196.1775401        0.8254158201     after     14 steps, step:  0.17667E-01
+ mylbfgs> Energy and RMS force=    -196.2190973        0.5988272404     after     15 steps, step:  0.39853E-01
+ mylbfgs> Energy and RMS force=    -196.2421764        0.4506925797     after     16 steps, step:  0.31923E-01
+ mylbfgs> Energy and RMS force=    -196.2602006        0.3925415341     after     17 steps, step:  0.52905E-01
+ mylbfgs> Energy and RMS force=    -196.2718760        0.2340569575     after     18 steps, step:  0.12600E-01
+ mylbfgs> Energy and RMS force=    -196.2765773        0.2028714956     after     19 steps, step:  0.82489E-02
+ mylbfgs> Energy and RMS force=    -196.2804579        0.1659221876     after     20 steps, step:  0.11771E-01
+ mylbfgs> Energy and RMS force=    -196.2834839        0.1282434083     after     21 steps, step:  0.97926E-02
+ mylbfgs> Energy and RMS force=    -196.2856000        0.1032779672     after     22 steps, step:  0.78514E-02
+ mylbfgs> Energy and RMS force=    -196.2878658        0.1014814356     after     23 steps, step:  0.14036E-01
+ mylbfgs> Energy and RMS force=    -196.2891217        0.5993511890E-01 after     24 steps, step:  0.66401E-02
+ mylbfgs> Energy and RMS force=    -196.2896779        0.4410916496E-01 after     25 steps, step:  0.36768E-02
+ mylbfgs> Energy and RMS force=    -196.2900983        0.3997016984E-01 after     26 steps, step:  0.41075E-02
+ mylbfgs> Energy and RMS force=    -196.2903890        0.3882043298E-01 after     27 steps, step:  0.41747E-02
+ mylbfgs> Energy and RMS force=    -196.2906107        0.2272770634E-01 after     28 steps, step:  0.32057E-02
+ mylbfgs> Energy and RMS force=    -196.2907167        0.1416270373E-01 after     29 steps, step:  0.23935E-02
+ mylbfgs> Energy and RMS force=    -196.2907404        0.1287136152E-01 after     30 steps, step:  0.10747E-02
+ mylbfgs> Energy and RMS force=    -196.2907552        0.6649682942E-02 after     31 steps, step:  0.32648E-03
+ mylbfgs> Energy and RMS force=    -196.2907674        0.4543659606E-02 after     32 steps, step:  0.57619E-03
+ mylbfgs> Energy and RMS force=    -196.2907737        0.3492349826E-02 after     33 steps, step:  0.53062E-03
+ mylbfgs> Energy and RMS force=    -196.2907776        0.2112255602E-02 after     34 steps, step:  0.59118E-03
+ energy increase:    -196.290777630275     to     -196.290776381183     decreasing step to  0.27772530E-04
+ mylbfgs> Energy and RMS force=    -196.2907778        0.1593138068E-02 after     35 steps, step:  0.27773E-04
+ mylbfgs> Energy and RMS force=    -196.2907782        0.7485821243E-03 after     36 steps, step:  0.92312E-04
+ mylbfgs> Energy and RMS force=    -196.2907783        0.7344002388E-03 after     37 steps, step:  0.46523E-04
+ mylbfgs> Energy and RMS force=    -196.2907785        0.6299979459E-03 after     38 steps, step:  0.10290E-03
+ mylbfgs> Energy and RMS force=    -196.2907787        0.4613539151E-03 after     39 steps, step:  0.10834E-03
+ mylbfgs> Energy and RMS force=    -196.2907788        0.6258184513E-03 after     40 steps, step:  0.14611E-03
+ mylbfgs> Energy and RMS force=    -196.2907788        0.4654869206E-03 after     41 steps, step:  0.85166E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1926243067E-03 after     42 steps, step:  0.21330E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.8416366969E-04 after     43 steps, step:  0.19728E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.4511698288E-04 after     44 steps, step:  0.10712E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.5011886306E-04 after     45 steps, step:  0.66056E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.2309267812E-04 after     46 steps, step:  0.18029E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.2023554553E-04 after     47 steps, step:  0.18025E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.2061409447E-04 after     48 steps, step:  0.44315E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.8778562864E-05 after     49 steps, step:  0.27868E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.4294832314E-05 after     50 steps, step:  0.57373E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1341293034E-05 after     51 steps, step:  0.17983E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1158396839E-05 after     52 steps, step:  0.58908E-07
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1372963112E-05 after     53 steps, step:  0.16385E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1307049803E-05 after     54 steps, step:  0.21707E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.4464294941E-06 after     55 steps, step:  0.18967E-06
+ mylbfgs> Final energy is   -196.29077884571166    
+ Minus side of path:                      56 steps. Energy=    -196.2907788       time=       0.01
+ path> number of entries in EofS file=   113
+ Frames will be dumped to points.path.xyz with probability     1.0000/    1.0000 steps on the plus/minus sides
+ Transition state will be frame number     17
+ 
+         E+        Ets - E+           Ets       Ets - E-           E-          S       D      gamma   ~N
+     -193.6712708 0.24341         -193.4278589  2.8629         -196.2907788   2.409   1.733   3.693   3.250
+ isnewmin> I,E,MI(I)%DATA%E=     1    -193.6712708        -196.2907788    
+ isnewmin> I,E,MI(I)%DATA%E=     2    -193.6712708        -193.6712708    
+ initial energy for structure A=                  -193.671270772621142 RMS=        0.000000500114892
+ initial energy for structure B=                  -193.671270772621028 RMS=        0.000000319184263
+isnewmin> minimum distance=    0.6172671614E-07
+ isnewmin> I,E,MI(I)%DATA%E=     1    -196.2907788        -196.2907788    
+ initial energy for structure A=                  -196.290778845711657 RMS=        0.000000446429494
+ initial energy for structure B=                  -196.290778845711657 RMS=        0.000000342041337
+isnewmin> minimum distance=     0.000000000    
+ potential> allocating hessian with dimension         36
+        Known (#2)                                              Known (#1)
+ Connected path found
+  ts        E+         Ets - E+          Ets       Ets - E-          E-          S       D      gamma   ~N
+   1     -196.2907788  2.8629        -193.4278589 0.24341        -193.6712708   2.409   1.733   3.693   3.250
+
+ Number of TS in the path       =      1
+ Number of cycles               =      1
+ 
+ Elapsed time=                                 0.19
+ OPTIM> # of energy calls=                          0 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient calls=              2718 time=           0.08 %= 41.2
+ OPTIM> # of energy+gradient+Hessian calls=         6 time=           0.00 %=  0.0

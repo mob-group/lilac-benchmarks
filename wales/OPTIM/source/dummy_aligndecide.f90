@@ -1,0 +1,28 @@
+SUBROUTINE ALIGN_DECIDE(COORDSB,COORDSA,NATOMS,DEBUG,NBOXLX,NBOXLY,NBOXLZ,BULKT,TWOD,DISTANCE,DIST2,RIGID,RMATBEST)
+
+USE KEY, ONLY: FASTOVERLAPT, BNB_ALIGNT, &    ! Logicals to determine which alignment routine to use
+                   KERNELWIDTH,NDISPLACEMENTS, &  ! Parameters for the Bulk FASTOVERLAP routine
+                   MAX_ANGMOM, NROTATIONS, &      ! Parameters for the Cluster FASTOVERLAP routine
+                   BNB_NSTEPS, &                  ! Parameter for the BNB align routine    
+                   BULK_BOXVEC, &                 ! Misc variables from the main program
+                   NSETS, PERMDIST, LOCALPERMDIST, NOINVERSION
+
+USE GENRIGID, ONLY: RIGIDINIT, ATOMRIGIDCOORDT    ! Keywords that need checking for compatibility
+
+IMPLICIT NONE
+
+INTEGER NATOMS
+DOUBLE PRECISION DIST2, COORDSA(3*NATOMS), COORDSB(3*NATOMS), DISTANCE, RMATBEST(3,3)
+LOGICAL DEBUG, TWOD, RIGID, BULKT, SAVEPERMOPT, SAVEPERMINVOPT
+DOUBLE PRECISION NBOXLX,NBOXLY,NBOXLZ
+
+IF (FASTOVERLAPT .OR. BNB_ALIGNT) THEN
+  WRITE(*,'(A)') "dummy_aligndecide> ERROR: Ran GMIN with command to use the new ALIGN routines,"
+  WRITE(*,'(A)') "but GMIN was compiled with ALIGN deactivated."
+  STOP
+
+ELSE
+   CALL MINPERMDIST(COORDSB,COORDSA,NATOMS,DEBUG,BULK_BOXVEC(1),BULK_BOXVEC(2),BULK_BOXVEC(3),BULKT,TWOD,DISTANCE,DIST2,RIGID,RMATBEST)
+ENDIF
+
+END SUBROUTINE

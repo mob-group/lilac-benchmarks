@@ -1,0 +1,89 @@
+
+ OPTIM version 31508, Copyright (C) David J. Wales
+ OPTIM comes with ABSOLUTELY NO WARRANTY; for details supply WARRANTY as an input keyword.
+ This is free software, and you are welcome to redistribute it
+ under certain conditions; provide keyword COPYRIGHT to see the details.
+
+ getparams> Number of atoms (or variables)  determined as     24
+ getparams> Number of optimisation degrees of freedom     72
+ genrigid> Reading masses from file 'mass'
+ keyword> Distance tolerance for distinguishing atoms in the same orbit=        0.00100
+ keyword> Maximum number of secondary sets in perm.allow file=  3
+ keyword> Number of groups of permutable atoms=     7
+ keyword> group      1 contains      6 atoms with      3 additional atom sets:
+     1     5     9    13    17    21 with      2 /      6 /     10 /     14 /     18 /     22 ;      3 /      7 /     11 /     15 /     19 /     23 ;      4 /      8 /     12 /     16 /     20 /     24
+  
+ keyword> group      2 contains      2 atoms with      0 additional atom sets:
+     2     3  
+ keyword> group      3 contains      2 atoms with      0 additional atom sets:
+     6     7  
+ keyword> group      4 contains      2 atoms with      0 additional atom sets:
+    10    11  
+ keyword> group      5 contains      2 atoms with      0 additional atom sets:
+    14    15  
+ keyword> group      6 contains      2 atoms with      0 additional atom sets:
+    18    19  
+ keyword> group      7 contains      2 atoms with      0 additional atom sets:
+    22    23  
+ fetchz> LBFGS minimization, maximum steps=   30000
+ 
+ 
+ fetchz> Number of random initial orientations in permutational alignment=   100
+ fetchz> Point group checked when RMS force <     0.00100000, highest symmetry axis tested for=  6
+ fetchz> Initial distance and eigenvalue tolerances in symmetry determination=     0.00010000     0.00010000
+ fetchz> Minimum number of optimization steps=     0
+ fetchz> Stationary point information will be printed to min.data
+ fetchz> Convergence criterion for LBFGS optimization: RMS force< 0.10000000E-05 maximum steps=   30000
+ fetchz> Maximum energy rise in LBFGS minimization=    0.1000000000E-09
+ fetchz> Number of updates in LBFGS=     6000
+ fetchz> Number of updates in mind=  10
+ fetchz> Initial guess for diagonal elements in LBFGS=     0.1000
+ fetchz> Maximum step size in LBFGS energy minimization=     0.2000
+ fetchz> Maximum step size in LBFGS neb image minimization=                 0.2000
+ fetchz> Warnings will be issued if atoms become closer than 0.5 units
+ 
+ 
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.16986         0.17442         0.21019       286.40692       345.13905       354.41041
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ OPTIM> Using translational/rotational ev shift=     1000000.000    
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -196.2907788        0.7355867271E-06 after      0 steps
+ mylbfgs> Final energy is   -196.29077884563037    
+ geopt> Number of zero/imaginary eigenvalues assumed to be      6
+ potential> allocating hessian with dimension         72
+ geopt>     36 Hessian eigenvalues:
+     274.9253475         254.3040411         217.5919076         163.1642144         150.3795440         146.7111725    
+     128.3742019         110.3165959         92.40452338         87.03392928         73.21709111         68.58217493    
+     61.85706325         49.42636209         46.30780135         25.93174958         23.43246288         20.54885279    
+     19.71607992         18.84045572         17.16009193         15.23495327         11.02653581         8.712242593    
+     6.886309398         3.464456559         2.784423630         1.732578120         1.122760395        0.8394274517    
+    0.8726787066E-08    0.8788941836E-13    0.4823441827E-13   -0.1851113387E-13   -0.1808909018E-08   -0.6854240786E-08
+ geopt> Frequencies in specified units:
+     16.58087294         15.94691321         14.75099684         12.77357485         12.26293374         12.11243875    
+     11.33023398         10.50317075         9.612727156         9.329197676         8.556698610         8.281435560    
+     7.864926144         7.030388474         6.804983567         5.092322611         4.840708924         4.533084247    
+     4.440279261         4.340559378         4.142474131         3.903197827         3.320622805         2.951650825    
+     2.624177852         1.861305069         1.668659231         1.316274333         1.059603886        0.9162027350    
+    0.9341727392E-04    0.2964614956E-06    0.2196233555E-06    0.1360556279E-06    0.4253127106E-04    0.8279034235E-04
+ geopt> Log product of       30 positive Hessian eigenvalues=      100.7344437323
+ geopt> X component of inertia tensor=           62.7029186600
+ geopt> Y component of inertia tensor=           81.4458224749
+ geopt> Z component of inertia tensor=           84.1025811905
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.16986         0.17442         0.21019       286.40692       345.13905       354.41041
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ 
+ geopt>                          **** CONVERGED ****
+ 
+ 
+ Elapsed time=                                 0.01
+ OPTIM> # of energy calls=                          0 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient calls=                 1 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient+Hessian calls=         1 time=           0.00 %=  0.0

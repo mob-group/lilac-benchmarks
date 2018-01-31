@@ -1,0 +1,894 @@
+!   Copyright (C) 2010- David J. Wales
+!
+!   OPTIM is free software; you can redistribute it and/or modify
+!   it under the terms of the GNU General Public License as published by
+!   the Free Software Foundation; either version 2 of the License, or
+!   (at your option) any later version.
+!
+!   OPTIM is distributed in the hope that it will be useful,
+!   but WITHOUT ANY WARRANTY; without even the implied warranty of
+!   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!   GNU General Public License for more details.
+!
+!   You should have received a copy of the GNU General Public License
+!   along with this program; if not, write to the Free Software
+!   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+!
+SUBROUTINE MAKE_CONPOT(NCPFIT,MINCOORDS)
+USE COMMONS, ONLY : INTCONSEP, NREPMAX, NREPULSIVE, CONDISTREF, DEBUG, REPCON, INTCONSTRAINTREP, &
+  & REPCUT, NCONSTRAINT, CONI, CONJ, CONDISTREF, CONDISTREFLOCAL, INTCONMAX, CONACTIVE, &
+  & INTCONSTRAINREPCUT, INTREPSEP, REPI, REPJ, INTCONSTRAINTTOL, REPCUT, NREPI, NREPJ, NREPCUT, NNREPULSIVE, NATOMS, &
+  & INTFROZEN, FREEZE, INTFREEZET, INTFREEZETOL
+
+IMPLICIT NONE 
+DOUBLE PRECISION DS, DF, DSHORT
+INTEGER :: J2,ISTAT,J1,J3,J4,NCPFIT,J5,NQCIFREEZE,NDUMMY
+INTEGER NCONFORNEWATOM, CONLIST(NATOMS)
+DOUBLE PRECISION :: DUMMY, NDIST, CONDIST(NATOMS), MINCOORDS(NCPFIT,3*NATOMS), DMIN, LINTCONSTRAINTTOL, LXYZ(6*NATOMS)
+LOGICAL CHANGED, ADDREP(NATOMS)
+INTEGER NDIST1(NATOMS), NCYCLE, DMIN1, DMAX1, NUNCON1
+
+NQCIFREEZE=0
+IF (FREEZE) THEN
+   PRINT '(A)','make_conpot> ERROR *** QCI has not been coded for frozen atoms yet'
+   STOP
+ENDIF
+IF (ALLOCATED(INTFROZEN)) DEALLOCATE(INTFROZEN)
+ALLOCATE(INTFROZEN(NATOMS))
+INTFROZEN(1:NATOMS)=.FALSE.
+IF (INTFREEZET) THEN
+   DO J1=1,NATOMS
+      DF=SQRT((MINCOORDS(1,3*(J1-1)+1)-MINCOORDS(2,3*(J1-1)+1))**2 &
+  &          +(MINCOORDS(1,3*(J1-1)+2)-MINCOORDS(2,3*(J1-1)+2))**2 &
+  &          +(MINCOORDS(1,3*(J1-1)+3)-MINCOORDS(2,3*(J1-1)+3))**2)
+      IF (DF.LT.INTFREEZETOL) THEN
+         NQCIFREEZE=NQCIFREEZE+1
+         INTFROZEN(J1)=.TRUE.
+!        IF (DEBUG) PRINT '(A,I6,A,F12.6,A,I6)','make_conpot> atom ',J1,' moves less than threshold: distance=',DF,
+!                                               ' total=',NQCIFREEZE
+      ENDIF
+   ENDDO
+   IF (DEBUG) PRINT '(A,I6,A,F12.6,A,I6)','make_conpot> Total number of atoms moving less than threshold=',NQCIFREEZE
+ENDIF
+
+!
+! Find distances that are conserved within tolerance between the NCPFIT, minima.
+!
+IF (.NOT.ALLOCATED(CONI)) THEN 
+   ALLOCATE(CONI(INTCONMAX),CONJ(INTCONMAX),CONDISTREF(INTCONMAX))
+   ALLOCATE(REPI(NREPMAX),REPJ(NREPMAX),NREPI(NREPMAX),NREPJ(NREPMAX),REPCUT(NREPMAX),NREPCUT(NREPMAX))
+ENDIF
+
+IF (NQCIFREEZE.EQ.NATOMS) THEN
+   NREPULSIVE=0
+   NNREPULSIVE=0
+   NCONSTRAINT=0
+   IF (DEBUG) PRINT '(A,2I10,A,G20.10)','make_conpot> Total number of constraints and repulsions=', &
+  &   NCONSTRAINT,NREPULSIVE
+   
+   IF (ALLOCATED(CONACTIVE)) DEALLOCATE(CONACTIVE)
+   ALLOCATE(CONACTIVE(NCONSTRAINT))
+   CONACTIVE(1:NCONSTRAINT)=.TRUE. 
+   IF (ALLOCATED(CONDISTREFLOCAL)) DEALLOCATE(CONDISTREFLOCAL)
+   ALLOCATE(CONDISTREFLOCAL(NCONSTRAINT))
+   RETURN
+ENDIF
+
+LXYZ(1:3*NATOMS)=MINCOORDS(1,1:3*NATOMS)
+LXYZ(3*NATOMS+1:6*NATOMS)=MINCOORDS(2,1:3*NATOMS)
+CALL CHECKPERC(0,LXYZ,LINTCONSTRAINTTOL)
+
+! PRINT '(A,I6,2(A,F15.5))','make_conpot> total distance constraints=',NCONSTRAINT
+! REPCON=-INTCONSTRAINTREP/INTCONSTRAINREPCUT**6
+
+REPCON=-INTCONSTRAINTREP/INTCONSTRAINREPCUT
+IF (ALLOCATED(CONDISTREFLOCAL)) THEN
+   DEALLOCATE(CONDISTREFLOCAL)
+ENDIF
+ALLOCATE(CONDISTREFLOCAL(NCONSTRAINT))
+CONDISTREFLOCAL(1:NCONSTRAINT)=CONDISTREF(1:NCONSTRAINT)
+DUMMY=1.0D100
+NREPULSIVE=0
+!
+! Add repulsions to non-constrained atoms.
+! Note that we do not limit the number of constraints per site in this
+! routine, unlike NEB/lbfgs.f90, where the result will depend on the
+! order in which the constraints are turned on. 
+!
+NDUMMY=1
+DO J1=1,NATOMS
+!
+! Make a list of repelling atoms here and then use it
+! CONI(j2) is always less than CONJ(j2) so we only need to
+! cycle over a given range of constraints and continue from
+! where we left off for the next atom j1
+!
+   ADDREP(1:J1+INTREPSEP)=.FALSE.
+   ADDREP(J1+INTREPSEP+1:NATOMS)=.TRUE. ! no repulsion for atoms too close in sequence
+   IF (INTFROZEN(J1)) THEN
+      DO J2=J1+INTREPSEP+1,NATOMS
+         IF (INTFROZEN(J2)) ADDREP(J2)=.FALSE.
+      ENDDO
+   ENDIF
+   addloop: DO J2=NDUMMY,NCONSTRAINT
+      IF (CONI(J2).EQ.J1) THEN
+         ADDREP(CONJ(J2))=.FALSE.
+      ELSE
+         NDUMMY=J2 ! for next atom
+         EXIT addloop
+      ENDIF
+   ENDDO addloop
+   rep2: DO J2=J1+INTREPSEP+1,NATOMS
+
+      IF (.NOT.ADDREP(J2)) CYCLE
+
+      DMIN=1.0D100
+      DO J3=1,NCPFIT
+         DF=SQRT((MINCOORDS(J3,3*(J1-1)+1)-MINCOORDS(J3,3*(J2-1)+1))**2+ &
+  &              (MINCOORDS(J3,3*(J1-1)+2)-MINCOORDS(J3,3*(J2-1)+2))**2+ &
+  &              (MINCOORDS(J3,3*(J1-1)+3)-MINCOORDS(J3,3*(J2-1)+3))**2)
+         IF (DF.LT.DMIN) DMIN=DF
+      ENDDO
+      
+      NREPULSIVE=NREPULSIVE+1
+      IF (NREPULSIVE.GT.NREPMAX) CALL REPDOUBLE
+      REPI(NREPULSIVE)=J1
+      REPJ(NREPULSIVE)=J2
+!
+! Use the minimum of the end point distances and INTCONSTRAINREPCUT for each contact.
+!
+      REPCUT(NREPULSIVE)=MIN(DMIN-1.0D-3,INTCONSTRAINREPCUT)
+!     IF (DEBUG) PRINT '(A,I6,A,I6,A,F15.5,A,I10)','make_conpot> Adding repulsion for atom ',J1, &
+! &              ' with atom ',J2,' cutoff=',DMIN,' # repulsions ',NREPULSIVE
+   ENDDO rep2
+ENDDO
+
+IF (DEBUG) PRINT '(A,2I10,A,G20.10)','make_conpot> Total number of constraints and repulsions=', &
+  &   NCONSTRAINT,NREPULSIVE,' for tolerance parameter ',LINTCONSTRAINTTOL
+
+IF (ALLOCATED(CONACTIVE)) DEALLOCATE(CONACTIVE)
+ALLOCATE(CONACTIVE(NCONSTRAINT))
+CONACTIVE(1:NCONSTRAINT)=.TRUE. 
+!
+! congrad routines actually use NREPI, NREPJ, etc., so we must assign these.
+!
+NREPI(1:NREPULSIVE)=REPI(1:NREPULSIVE)
+NREPJ(1:NREPULSIVE)=REPJ(1:NREPULSIVE)
+NNREPULSIVE=NREPULSIVE
+NREPCUT(1:NREPULSIVE)=REPCUT(1:NREPULSIVE)
+
+RETURN
+END SUBROUTINE MAKE_CONPOT
+
+SUBROUTINE CONPOT(COORDS1,COORDS2,ETOTAL)
+USE COMMONS, ONLY : NREPMAX, NREPULSIVE, CONDISTREF, INTCONSTRAINTDEL, &
+  & REPCUT, NCONSTRAINT, CONI, CONJ, INTCONMAX, INTCONSTRAINTREP, &
+  & INTCONSTRAINREPCUT, REPI, REPJ, REPCUT, CONDISTREFLOCAL, NNREPULSIVE, NREPCUT, NREPI, NREPJ
+USE COMMONS, ONLY : NATOMS, DEBUG
+IMPLICIT NONE
+           
+INTEGER :: J1,J2,NI,NJ
+DOUBLE PRECISION :: ECON, EREP, ETOTAL
+DOUBLE PRECISION R1AX,R1AY,R1AZ,R2AX,R2AY,R2AZ,R1BX,R1BY,R1BZ,R2BX,R2BY,R2BZ,DMIN,DMAX
+DOUBLE PRECISION G1MAX(3),G2MIN(3),CONCUT,DINT,G1INT(3),G2INT(3)
+DOUBLE PRECISION DUMMY, REPGRAD(3), INtCONST, D12, DSQ0, DSQP, DSQI, COORDS1(3*NATOMS), COORDS2(3*NATOMS)
+DOUBLE PRECISION, PARAMETER :: MINCONPOT=1.0D-2
+LOGICAL NOINT
+
+ECON=0.0D0; EREP=0.0D0
+!
+!  Constraint potential energy and (optionally) forces.
+!
+DO J2=1,NCONSTRAINT
+!
+! We consider the line segment between COORDS1 and COORDS2
+! A and B refer to atoms, 1 and 2 to COORDS1 and COORDS2
+!
+   NI=3*(CONI(J2)-1)
+   NJ=3*(CONJ(J2)-1)
+   R1AX=COORDS1(NI+1); R1AY=COORDS1(NI+2); R1AZ=COORDS1(NI+3)
+   R1BX=COORDS1(NJ+1); R1BY=COORDS1(NJ+2); R1BZ=COORDS1(NJ+3)
+   R2AX=COORDS2(NI+1); R2AY=COORDS2(NI+2); R2AZ=COORDS2(NI+3)
+   R2BX=COORDS2(NJ+1); R2BY=COORDS2(NJ+2); R2BZ=COORDS2(NJ+3)
+   CALL MINMAXD2(R1AX,R1AY,R1AZ,R2AX,R2AY,R2AZ,R1BX,R1BY,R1BZ,R2BX,R2BY,R2BZ, &
+  &              DMIN,DMAX,DINT,G1MAX,G2MIN,G1INT,G2INT,NOINT,.FALSE.)
+!
+! Need to include both DMIN and DMAX contributions if they are both outside tolerance.
+! Otherwise we get discontinuities if they are very close and swap over.
+!
+! terms for image J1 - non-zero derivatives only for J1
+!
+   IF (ABS(DMIN-CONDISTREFLOCAL(J2)).GT.CONCUT) THEN 
+      DUMMY=DMIN-CONDISTREFLOCAL(J2)  
+      ECON=ECON+INTCONSTRAINTDEL*(DUMMY**2-CONCUT**2)**2/(2.0D0*CONCUT**2)
+   ENDIF
+!
+! terms for image J1-1 - non-zero derivatives only for J1-1
+!
+   IF (ABS(DMAX-CONDISTREFLOCAL(J2)).GT.CONCUT) THEN  
+      DUMMY=DMAX-CONDISTREFLOCAL(J2)  
+      ECON=ECON+INTCONSTRAINTDEL*(DUMMY**2-CONCUT**2)**2/(2.0D0*CONCUT**2)
+   ENDIF
+   IF ((.NOT.NOINT).AND.(ABS(DINT-CONDISTREFLOCAL(J2)).GT.CONCUT)) THEN
+      DUMMY=DINT-CONDISTREFLOCAL(J2)  
+      ECON=ECON+INTCONSTRAINTDEL*(DUMMY**2-CONCUT**2)**2/(2.0D0*CONCUT**2)
+   ENDIF
+ENDDO
+
+DO J2=1,NNREPULSIVE
+!  INTCONST=NREPCUT(J2)**13
+   INTCONST=NREPCUT(J2)**3
+   NI=3*(NREPI(J2)-1)
+   NJ=3*(NREPJ(J2)-1)
+   R1AX=COORDS1(NI+1); R1AY=COORDS1(NI+2); R1AZ=COORDS1(NI+3)
+   R1BX=COORDS1(NJ+1); R1BY=COORDS1(NJ+2); R1BZ=COORDS1(NJ+3)
+   R2AX=COORDS2(NI+1); R2AY=COORDS2(NI+2); R2AZ=COORDS2(NI+3)
+   R2BX=COORDS2(NJ+1); R2BY=COORDS2(NJ+2); R2BZ=COORDS2(NJ+3)
+   CALL MINMAXD2R(R1AX,R1AY,R1AZ,R2AX,R2AY,R2AZ,R1BX,R1BY,R1BZ,R2BX,R2BY,R2BZ, &
+  &                 DMIN,DMAX,DINT,DSQ0,DSQP,DSQI,G1MAX,G2MIN,G1INT,G2INT,NOINT,.FALSE.,NREPCUT(J2))
+   DUMMY=0.0D0 
+   IF (DMIN.LT.NREPCUT(J2)) THEN ! terms for image J1 - non-zero derivatives only for J1
+!     D12=DSQ0**6
+      D12=DSQ0 ! this is a squared distance
+!     DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(12.0D0*DMIN-13.0D0*NREPCUT(J2))/INTCONST)
+      DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(2.0D0*DMIN-3.0D0*NREPCUT(J2))/INTCONST)
+      EREP=EREP+DUMMY
+   ENDIF
+   DUMMY=0.0D0
+   IF (DMAX.LT.NREPCUT(J2)) THEN ! terms for image J1-1 - non-zero derivatives only for J1-1
+!     D12=DSQP**6
+      D12=DSQP
+!     DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(12.0D0*DMAX-13.0D0*NREPCUT(J2))/INTCONST)
+      DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(2.0D0*DMAX-3.0D0*NREPCUT(J2))/INTCONST)
+      EREP=EREP+DUMMY
+   ENDIF
+   DUMMY=0.0D0
+   IF ((.NOT.NOINT).AND.(DINT.LT.NREPCUT(J2))) THEN
+!     D12=DSQI**6
+      D12=DSQI
+!     DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(12.0D0*DINT-13.0D0*NREPCUT(J2))/INTCONST)
+      DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(2.0D0*DINT-3.0D0*NREPCUT(J2))/INTCONST)
+      EREP=EREP+DUMMY
+   ENDIF
+ENDDO
+
+ETOTAL=MAX(EREP+ECON,MINCONPOT)
+
+END SUBROUTINE CONPOT
+
+
+SUBROUTINE REPDOUBLE
+USE COMMONS, ONLY : NREPMAX, REPI, REPJ, REPCUT, NREPI, NREPJ, NREPCUT
+IMPLICIT NONE
+INTEGER, ALLOCATABLE :: IREPTEMP(:)
+DOUBLE PRECISION, ALLOCATABLE :: REPTEMP(:)
+
+ALLOCATE(IREPTEMP(NREPMAX),REPTEMP(NREPMAX))
+
+IREPTEMP(1:NREPMAX)=REPI(1:NREPMAX)
+DEALLOCATE(REPI)
+ALLOCATE(REPI(2*NREPMAX))
+REPI(1:NREPMAX)=IREPTEMP(1:NREPMAX)
+IREPTEMP(1:NREPMAX)=REPJ(1:NREPMAX)
+DEALLOCATE(REPJ)
+ALLOCATE(REPJ(2*NREPMAX))
+REPJ(1:NREPMAX)=IREPTEMP(1:NREPMAX)
+REPTEMP(1:NREPMAX)=REPCUT(1:NREPMAX)
+DEALLOCATE(REPCUT)
+ALLOCATE(REPCUT(2*NREPMAX))
+REPCUT(1:NREPMAX)=REPTEMP(1:NREPMAX)
+
+IREPTEMP(1:NREPMAX)=NREPI(1:NREPMAX)
+DEALLOCATE(NREPI)
+ALLOCATE(NREPI(2*NREPMAX))
+NREPI(1:NREPMAX)=IREPTEMP(1:NREPMAX)
+IREPTEMP(1:NREPMAX)=NREPJ(1:NREPMAX)
+DEALLOCATE(NREPJ)
+ALLOCATE(NREPJ(2*NREPMAX))
+NREPJ(1:NREPMAX)=IREPTEMP(1:NREPMAX)
+REPTEMP(1:NREPMAX)=NREPCUT(1:NREPMAX)
+DEALLOCATE(NREPCUT)
+ALLOCATE(NREPCUT(2*NREPMAX))
+NREPCUT(1:NREPMAX)=REPTEMP(1:NREPMAX)
+
+DEALLOCATE(IREPTEMP,REPTEMP)
+NREPMAX=2*NREPMAX
+
+END SUBROUTINE REPDOUBLE
+
+
+SUBROUTINE CONDOUBLE
+USE COMMONS, ONLY : CONI, CONJ, CONDISTREF, INTCONMAX 
+IMPLICIT NONE
+DOUBLE PRECISION, ALLOCATABLE :: CPTEMP(:)
+INTEGER, ALLOCATABLE :: ICPTEMP(:)
+
+ALLOCATE(ICPTEMP(INTCONMAX))
+                
+ICPTEMP(1:INTCONMAX)=CONI(1:INTCONMAX)
+DEALLOCATE(CONI)
+ALLOCATE(CONI(2*INTCONMAX))
+CONI(1:INTCONMAX)=ICPTEMP(1:INTCONMAX)
+               
+ICPTEMP(1:INTCONMAX)=CONJ(1:INTCONMAX)
+DEALLOCATE(CONJ)
+ALLOCATE(CONJ(2*INTCONMAX))
+CONJ(1:INTCONMAX)=ICPTEMP(1:INTCONMAX)
+               
+DEALLOCATE(ICPTEMP)
+ALLOCATE(CPTEMP(1:INTCONMAX))
+               
+CPTEMP(1:INTCONMAX)=CONDISTREF(1:INTCONMAX)
+DEALLOCATE(CONDISTREF)
+ALLOCATE(CONDISTREF(2*INTCONMAX))
+CONDISTREF(1:INTCONMAX)=CPTEMP(1:INTCONMAX)
+
+INTCONMAX=2*INTCONMAX
+DEALLOCATE(CPTEMP)
+
+END SUBROUTINE CONDOUBLE
+
+SUBROUTINE MINMAXD2(R1AX,R1AY,R1AZ,R2AX,R2AY,R2AZ,R1BX,R1BY,R1BZ,R2BX,R2BY,R2BZ, &
+  &                 D2,D1,DINT,G1,G2,G1INT,G2INT,NOINT,DEBUG)
+IMPLICIT NONE
+DOUBLE PRECISION R1AX,R1AY,R1AZ,R2AX,R2AY,R2AZ,R1BX,R1BY,R1BZ,R2BX,R2BY,R2BZ,D2,D1,DINT
+DOUBLE PRECISION G1(3),G2(3),G1INT(3),G2INT(3)
+DOUBLE PRECISION DSQ2, DSQ1, DSQI, r1apr2bmr2amr1bsq, r1amr1bsq, r2amr2bsq
+DOUBLE PRECISION r1amr1bdr2amr2b, r1amr1bdr2amr2bsq, DUMMY
+LOGICAL NOINT, DEBUG
+!
+! Squared distance between atoms A and B for theta=0 - distance in image 2
+!
+DSQ2=MAX(0.0D0,r2ax**2 + r2ay**2 + r2az**2 + r2bx**2 + r2by**2 + r2bz**2 - 2*(r2ax*r2bx + r2ay*r2by + r2az*r2bz))
+!
+! Squared distance between atoms A and B for theta=Pi/2 - distance in image 1
+!
+DSQ1=MAX(0.0D0,r1ax**2 + r1ay**2 + r1az**2 + r1bx**2 + r1by**2 + r1bz**2 - 2*(r1ax*r1bx + r1ay*r1by + r1az*r1bz))
+! PRINT '(A,6F15.10)','R1AX,R1AY,R1AZ,R2AX,R2AY,R2AZ=',R1AX,R1AY,R1AZ,R2AX,R2AY,R2AZ
+! PRINT '(A,6F15.10)','R1BX,R1BY,R1BZ,R2BX,R2BY,R2BZ=',R1BX,R1BY,R1BZ,R2BX,R2BY,R2BZ
+!
+! Is there an internal extremum?
+!
+r1apr2bmr2amr1bsq=(r1ax-r1bx-r2ax+r2bx)**2+(r1ay-r1by-r2ay+r2by)**2+(r1az-r1bz-r2az+r2bz)**2
+IF (r1apr2bmr2amr1bsq.EQ.0.0D0) THEN
+   DUMMY=2.0D0 ! just to skip the internal extremum part
+ELSE
+   DUMMY=((r1ax-r1bx)*(r1ax-r1bx-r2ax+r2bx)+(r1ay-r1by)*(r1ay-r1by-r2ay+r2by)+(r1az-r1bz)*(r1az-r1bz-r2az+r2bz))/r1apr2bmr2amr1bsq
+ENDIF
+NOINT=.TRUE.
+IF ((DUMMY.GT.0.0D0).AND.(DUMMY.LT.1.0D0)) NOINT=.FALSE.
+G2(1:3)=0.0D0
+G1(1:3)=0.0D0
+G1INT(1:3)=0.0D0
+G2INT(1:3)=0.0D0
+D2=SQRT(DSQ2)
+D1=SQRT(DSQ1)
+DSQI=1.0D10
+DINT=1.0D10
+IF (.NOT.NOINT) THEN
+   r1amr1bdr2amr2b=(r1ax-r1bx)*(r2ax-r2bx)+(r1ay-r1by)*(r2ay-r2by)+(r1az-r1bz)*(r2az-r2bz)
+   r1amr1bdr2amr2bsq=r1amr1bdr2amr2b**2
+   r1amr1bsq=(r1ax - r1bx)**2 + (r1ay - r1by)**2 + (r1az - r1bz)**2
+   r2amr2bsq=(r2ax - r2bx)**2 + (r2ay - r2by)**2 + (r2az - r2bz)**2
+   DSQI=(-r1amr1bdr2amr2bsq + r1amr1bsq*r2amr2bsq)/r1apr2bmr2amr1bsq
+   DUMMY=r1apr2bmr2amr1bsq**2
+   DINT=SQRT(DSQI)
+ENDIF
+!
+! Convert derivatives of distance^2 to derivative of distance.
+! We have cancelled a factor of two above and below!
+!
+! PRINT '(A,3G12.5,L5)','D2,D1,DINT,NOINT=',D2,D1,DINT,NOINT
+
+END SUBROUTINE MINMAXD2
+
+!
+! This version of congrad tests for an internal minimum in the
+! constraint distances as well as the repulsions.
+!
+SUBROUTINE CONGRAD2(NMAXINT,NMININT,ETOTAL,XYZ)
+USE COMMONS, ONLY: FROZEN, FREEZE, NREPI, NREPJ, NNREPULSIVE, DEBUG, &
+  &            NCONSTRAINT, CONI, CONJ, INTCONSTRAINTDEL, CONDISTREF, INTCONSTRAINTREP, CONDISTREFLOCAL, &
+  &            CONACTIVE, INTCONSTRAINREPCUT, NREPCUT, INTIMAGE, NATOMS
+IMPLICIT NONE
+           
+INTEGER :: J1,J2,NI2,NI1,NJ2,NJ1,NMAXINT,NMININT,NCONINT(INTIMAGE+2),NREPINT(INTIMAGE+2), NOPT
+DOUBLE PRECISION :: ECON, EREP, ETOTAL, RMS
+DOUBLE PRECISION R1AX,R1AY,R1AZ,R2AX,R2AY,R2AZ,R1BX,R1BY,R1BZ,R2BX,R2BY,R2BZ,D2,D1
+DOUBLE PRECISION G1(3),G2(3),CONCUT,DINT,G1INT(3),G2INT(3)
+DOUBLE PRECISION DUMMY, REPGRAD(3), INTCONST, D12, DSQ2, DSQ1, DSQI
+DOUBLE PRECISION CONE(INTIMAGE+2), REPE(INTIMAGE+2),MAXINT,MININT,REPEINT(INTIMAGE+2),CONEINT(INTIMAGE+2),RMSIMAGE(INTIMAGE+2)
+LOGICAL NOINT, LPRINT
+DOUBLE PRECISION XYZ(3*NATOMS*(INTIMAGE+2)), GGG(3*NATOMS*(INTIMAGE+2)), EEE(INTIMAGE+2)
+LOGICAL IMGFREEZE(INTIMAGE)
+
+NOPT=3*NATOMS
+EEE(1:INTIMAGE+2)=0.0D0
+CONE(1:INTIMAGE+2)=0.0D0
+REPE(1:INTIMAGE+2)=0.0D0
+NCONINT(1:INTIMAGE+2)=0
+NREPINT(1:INTIMAGE+2)=0
+REPEINT(1:INTIMAGE+2)=0.0D0
+CONEINT(1:INTIMAGE+2)=0.0D0
+GGG(1:NOPT*(INTIMAGE+2))=0.0D0
+ECON=0.0D0; EREP=0.0D0
+LPRINT=.FALSE.
+!
+!  Constraint energy and forces.
+!
+! For J1 we consider the line segment between image J1-1 and J1.
+! There are INTIMAGE+1 line segments in total, with an energy contribution
+! and corresponding gradient terms for each. 
+! A and B refer to atoms, 1 and 2 to images J1-1 and J1 corresponding to J1-2 and J1-1 below.
+!
+DO J2=1,NCONSTRAINT
+   IF (.NOT.CONACTIVE(J2)) CYCLE
+   DO J1=2,INTIMAGE+2
+      NI1=NOPT*(J1-2)+3*(CONI(J2)-1)
+      NI2=NOPT*(J1-1)+3*(CONI(J2)-1)
+      NJ1=NOPT*(J1-2)+3*(CONJ(J2)-1)
+      NJ2=NOPT*(J1-1)+3*(CONJ(J2)-1)
+      R1AX=XYZ(NI1+1); R1AY=XYZ(NI1+2); R1AZ=XYZ(NI1+3)
+      R1BX=XYZ(NJ1+1); R1BY=XYZ(NJ1+2); R1BZ=XYZ(NJ1+3)
+      R2AX=XYZ(NI2+1); R2AY=XYZ(NI2+2); R2AZ=XYZ(NI2+3)
+      R2BX=XYZ(NJ2+1); R2BY=XYZ(NJ2+2); R2BZ=XYZ(NJ2+3)
+      CALL MINMAXD2(R1AX,R1AY,R1AZ,R2AX,R2AY,R2AZ,R1BX,R1BY,R1BZ,R2BX,R2BY,R2BZ, &
+  &                 D2,D1,DINT,G1,G2,G1INT,G2INT,NOINT,.FALSE.)
+!
+! Need to include both D2 and D1 contributions if they are both outside tolerance.
+! Otherwise we get discontinuities if they are very close and swap over.
+!
+      CONCUT=CONDISTREF(J2)*0.2D0
+!
+! terms for image J1 - non-zero derivatives only for J1. D2 is the distance for image J1.
+!
+!     IF (LPRINT) PRINT '(A,I6,5G15.5)', &
+! &       'J1,D2,D1,DINT,MIN diff,CONCUT=',J1,D2,D1,DINT,ABS(D2-CONDISTREFLOCAL(J2)),CONCUT
+      IF ((ABS(D2-CONDISTREFLOCAL(J2)).GT.CONCUT).AND.(J1.LT.INTIMAGE+2)) THEN 
+         DUMMY=D2-CONDISTREFLOCAL(J2)  
+         REPGRAD(1:3)=2*INTCONSTRAINTDEL*((DUMMY/CONCUT)**2-1.0D0)*DUMMY*G2(1:3)
+         DUMMY=INTCONSTRAINTDEL*(DUMMY**2-CONCUT**2)**2/(2.0D0*CONCUT**2)
+         EEE(J1)=EEE(J1)+DUMMY
+         CONE(J1)=CONE(J1)+DUMMY
+         ECON=ECON      +DUMMY
+      ENDIF
+!
+! Don't add energy contributions to EEE(2) from D1, since the gradients are non-zero only for image 1.
+!
+! terms for image J1-1 - non-zero derivatives only for J1-1. D1 is the distance for image J1-1.
+!
+!     IF (LPRINT) PRINT '(A,I6,5G15.5)', &
+! &       'J1,D2,D1,DINT,MAX diff,CONCUT=',J1,D2,D1,DINT,ABS(D1-CONDISTREFLOCAL(J2)),CONCUT
+      IF ((ABS(D1-CONDISTREFLOCAL(J2)).GT.CONCUT).AND.(J1.GT.2)) THEN  
+         DUMMY=D1-CONDISTREFLOCAL(J2)  
+         REPGRAD(1:3)=2*INTCONSTRAINTDEL*((DUMMY/CONCUT)**2-1.0D0)*DUMMY*G1(1:3)
+         DUMMY=INTCONSTRAINTDEL*(DUMMY**2-CONCUT**2)**2/(2.0D0*CONCUT**2)
+         EEE(J1-1)=EEE(J1-1)+DUMMY
+         CONE(J1-1)=CONE(J1-1)+DUMMY
+         ECON=ECON      +DUMMY
+      ENDIF
+      IF ((.NOT.NOINT).AND.(ABS(DINT-CONDISTREFLOCAL(J2)).GT.CONCUT)) THEN
+         DUMMY=DINT-CONDISTREFLOCAL(J2)  
+         DUMMY=INTCONSTRAINTDEL*(DUMMY**2-CONCUT**2)**2/(2.0D0*CONCUT**2)
+         ECON=ECON+DUMMY
+         IF (J1.EQ.2) THEN
+            EEE(J1)=EEE(J1)+DUMMY
+            CONEINT(J1)=CONEINT(J1)+DUMMY
+            NCONINT(J1)=NCONINT(J1)+1
+         ELSE IF (J1.LT.INTIMAGE+2) THEN
+            EEE(J1)=EEE(J1)+DUMMY/2.0D0
+            EEE(J1-1)=EEE(J1-1)+DUMMY/2.0D0
+            CONEINT(J1)=CONEINT(J1)+DUMMY/2.0D0
+            CONEINT(J1-1)=CONEINT(J1-1)+DUMMY/2.0D0
+            NCONINT(J1)=NCONINT(J1)+1
+            NCONINT(J1-1)=NCONINT(J1-1)+1
+         ELSE IF (J1.EQ.INTIMAGE+2) THEN
+            EEE(J1-1)=EEE(J1-1)+DUMMY
+            CONEINT(J1-1)=CONEINT(J1-1)+DUMMY
+            NCONINT(J1-1)=NCONINT(J1-1)+1
+         ENDIF
+      ENDIF
+   ENDDO
+ENDDO
+
+! INTCONST=INTCONSTRAINREPCUT**13
+
+DO J2=1,NNREPULSIVE
+!  INTCONST=NREPCUT(J2)**13
+   INTCONST=NREPCUT(J2)**3
+   DO J1=2,INTIMAGE+2
+      NI1=NOPT*(J1-2)+3*(NREPI(J2)-1)
+      NI2=NOPT*(J1-1)+3*(NREPI(J2)-1)
+      NJ1=NOPT*(J1-2)+3*(NREPJ(J2)-1)
+      NJ2=NOPT*(J1-1)+3*(NREPJ(J2)-1)
+      R1AX=XYZ(NI1+1); R1AY=XYZ(NI1+2); R1AZ=XYZ(NI1+3)
+      R1BX=XYZ(NJ1+1); R1BY=XYZ(NJ1+2); R1BZ=XYZ(NJ1+3)
+      R2AX=XYZ(NI2+1); R2AY=XYZ(NI2+2); R2AZ=XYZ(NI2+3)
+      R2BX=XYZ(NJ2+1); R2BY=XYZ(NJ2+2); R2BZ=XYZ(NJ2+3)
+      CALL MINMAXD2R(R1AX,R1AY,R1AZ,R2AX,R2AY,R2AZ,R1BX,R1BY,R1BZ,R2BX,R2BY,R2BZ, &
+  &                 D2,D1,DINT,DSQ2,DSQ1,DSQI,G1,G2,G1INT,G2INT,NOINT,.FALSE.,NREPCUT(J2))
+!     IF ((NREPI(J2).EQ.135).AND.(NREPJ(J2).EQ.192)) THEN
+!        PRINT '(A,3G20.10)',' congrad2> R1AX,R1AY,R1AZ=',R1AX,R1AY,R1AZ
+!        PRINT '(A,3G20.10)',' congrad2> R1BX,R1BY,R1BZ=',R1BX,R1BY,R1BZ
+!        PRINT '(A,3G20.10)',' congrad2> R2AX,R2AY,R2AZ=',R2AX,R2AY,R2AZ
+!        PRINT '(A,3G20.10)',' congrad2> R2BX,R2BY,R2BZ=',R2BX,R2BY,R2BZ
+!        PRINT '(A,I6,A,2I6)',' congrad2> J1=',J1,' edge between images: ',J1-1,J1
+!        PRINT '(A,L5,3G20.10)',' congrad2> NOINT,D2,D1,DINT=',NOINT,D2,D1,DINT
+!     ENDIF
+      DUMMY=0.0D0 
+!
+! Skip image INTIMAGE+2 - no non-zero gradients on other images and no energy contributions.
+!
+!     IF ((D2.LT.INTCONSTRAINREPCUT).AND.(J1.LT.INTIMAGE+2)) THEN ! terms for image J1 - non-zero derivatives only for J1
+      IF ((D2.LT.NREPCUT(J2)).AND.(J1.LT.INTIMAGE+2)) THEN ! terms for image J1 - non-zero derivatives only for J1
+!        D12=DSQ2**6
+         D12=DSQ2
+!        DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(12.0D0*D2-13.0D0*INTCONSTRAINREPCUT)/INTCONST)
+!        DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(12.0D0*D2-13.0D0*NREPCUT(J2))/INTCONST)
+         DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(2.0D0*D2-3.0D0*NREPCUT(J2))/INTCONST)
+         EEE(J1)=EEE(J1)+DUMMY
+         REPE(J1)=REPE(J1)+DUMMY
+         EREP=EREP+DUMMY
+!        DUMMY=-12.0D0*INTCONSTRAINTREP*(1.0D0/(D2*D12)-1.0D0/INTCONST)
+         DUMMY=-2.0D0*INTCONSTRAINTREP*(1.0D0/(D2*D12)-1.0D0/INTCONST)
+      ENDIF
+      DUMMY=0.0D0
+!
+! Don't add energy contributions to EEE(2) from D1, since the gradients are non-zero only for image 1.
+!
+!     IF ((D1.LT.INTCONSTRAINREPCUT).AND.(J1.GT.2)) THEN ! terms for image J1-1 - non-zero derivatives only for J1-1
+      IF ((D1.LT.NREPCUT(J2)).AND.(J1.GT.2)) THEN ! terms for image J1-1 - non-zero derivatives only for J1-1
+!        D12=DSQ1**6
+         D12=DSQ1
+!        DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(12.0D0*D1-13.0D0*INTCONSTRAINREPCUT)/INTCONST)
+!        DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(12.0D0*D1-13.0D0*NREPCUT(J2))/INTCONST)
+         DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(2.0D0*D1-3.0D0*NREPCUT(J2))/INTCONST)
+         EEE(J1-1)=EEE(J1-1)+DUMMY
+         REPE(J1-1)=REPE(J1-1)+DUMMY
+         EREP=EREP+DUMMY
+!        DUMMY=-12.0D0*INTCONSTRAINTREP*(1.0D0/(D1*D12)-1.0D0/INTCONST)
+         DUMMY=-2.0D0*INTCONSTRAINTREP*(1.0D0/(D1*D12)-1.0D0/INTCONST)
+      ENDIF
+      DUMMY=0.0D0
+!     IF ((.NOT.NOINT).AND.(DINT.LT.INTCONSTRAINREPCUT)) THEN
+      IF ((.NOT.NOINT).AND.(DINT.LT.NREPCUT(J2))) THEN
+!        D12=DSQI**6
+         D12=DSQI
+!        DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(12.0D0*DINT-13.0D0*INTCONSTRAINREPCUT)/INTCONST)
+!        DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(12.0D0*DINT-13.0D0*NREPCUT(J2))/INTCONST)
+         DUMMY=INTCONSTRAINTREP*(1.0D0/D12+(2.0D0*DINT-3.0D0*NREPCUT(J2))/INTCONST)
+         EREP=EREP+DUMMY
+!        IF (DUMMY.GT.1.0D7) PRINT '(A,3I6,3G20.10)','J2,NREPI(J2),NREPJ(J2),DINT,NREPCUT(J2),DUMMY=', &
+! &                                                   J2,NREPI(J2),NREPJ(J2),DINT,NREPCUT(J2),DUMMY
+!        IF (((NREPI(J2).EQ.143).AND.(NREPJ(J2).EQ.191)).OR.  &
+! &          ((NREPJ(J2).EQ.143).AND.(NREPI(J2).EQ.191))) THEN
+!            PRINT '(A,3I6,3G20.10)','J2,NREPI(J2),NREPJ(J2),DINT,NREPCUT(J2),DUMMY=', &
+! &                                   J2,NREPI(J2),NREPJ(J2),DINT,NREPCUT(J2),DUMMY
+!        ENDIF
+         IF (J1.EQ.2) THEN
+            EEE(J1)=EEE(J1)+DUMMY
+            REPEINT(J1)=REPEINT(J1)+DUMMY
+            NREPINT(J1)=NREPINT(J1)+1
+         ELSE IF (J1.LT.INTIMAGE+2) THEN
+            EEE(J1)=EEE(J1)+DUMMY/2.0D0
+            EEE(J1-1)=EEE(J1-1)+DUMMY/2.0D0
+            REPEINT(J1)=REPEINT(J1)+DUMMY/2.0D0
+            REPEINT(J1-1)=REPEINT(J1-1)+DUMMY/2.0D0
+            NREPINT(J1)=NREPINT(J1)+1
+            NREPINT(J1-1)=NREPINT(J1-1)+1
+         ELSE IF (J1.EQ.INTIMAGE+2) THEN
+            EEE(J1-1)=EEE(J1-1)+DUMMY
+            REPEINT(J1-1)=REPEINT(J1-1)+DUMMY
+            NREPINT(J1-1)=NREPINT(J1-1)+1
+         ENDIF
+!        DUMMY=-12.0D0*INTCONSTRAINTREP*(1.0D0/(DINT*D12)-1.0D0/INTCONST)
+         DUMMY=-2.0D0*INTCONSTRAINTREP*(1.0D0/(DINT*D12)-1.0D0/INTCONST)
+      ENDIF
+   ENDDO
+ENDDO
+!
+! For INTIMAGE images there are INTIMAGE+2 replicas including the end points,
+! and INTIMAGE+1 line segements, with associated energies stored in EEE(2:INTIMAGE+2)
+!
+ETOTAL=0.0D0
+MAXINT=-1.0D100
+MININT=1.0D100
+DO J1=2,INTIMAGE+1
+   ETOTAL=ETOTAL+EEE(J1)
+!  IF (DEBUG) PRINT '(A,I6,A,4G15.5)',' congrad2> con/rep and con/rep int image ', &
+! &      J1,' ',CONE(J1),REPE(J1),CONEINT(J1),REPEINT(J1)
+   IF (CONEINT(J1)+REPEINT(J1).LT.MININT) THEN
+      MININT=CONEINT(J1)+REPEINT(J1)
+      NMININT=J1
+   ENDIF
+   IF (CONEINT(J1)+REPEINT(J1).GT.MAXINT) THEN
+      MAXINT=CONEINT(J1)+REPEINT(J1)
+      NMAXINT=J1
+   ENDIF
+ENDDO
+! IF (DEBUG) PRINT '(A,G20.10,A,2I6)',' congrad2> largest  internal energy=',MAXINT,' for image ',NMAXINT
+! IF (DEBUG) PRINT '(A,G20.10,A,2I6)',' congrad2> smallest internal energy=',MININT,' for image ',NMININT
+IF (INTIMAGE.EQ.0) ETOTAL=EEE(1)+EEE(2)
+
+END SUBROUTINE CONGRAD2
+
+SUBROUTINE INTGRADLJ(ETOTAL,XYZ)
+USE COMMONS, ONLY: FROZEN, FREEZE, DEBUG, INTIMAGE, ATOMACTIVE, INTLJDEL, INTLJEPS, NATOMS
+IMPLICIT NONE
+           
+INTEGER :: J1,J2,NI2,NI1,NJ2,NJ1,NMAXINT,NMININT,NLJINT(INTIMAGE+2),J3,NSHIFT,NOPT
+DOUBLE PRECISION :: ETOTAL, RMS, R6, COS2, SIN2, DCUT
+DOUBLE PRECISION R1AX,R1AY,R1AZ,R2AX,R2AY,R2AZ,R1BX,R1BY,R1BZ,R2BX,R2BY,R2BZ,D2,D1,DI,D2SQ,G2(3)
+DOUBLE PRECISION G1(3),G1INT(3),G2INT(3),G1MIN(3)
+DOUBLE PRECISION DUMMY, GRAD(3), D1SQ, DISQ
+DOUBLE PRECISION MAXINT,MININT,LJEINT(INTIMAGE+2),RMSIMAGE(INTIMAGE+2)
+LOGICAL NOINT, LPRINT, EDGEINT(INTIMAGE+1,NATOMS,NATOMS)
+DOUBLE PRECISION XYZ(3*NATOMS*(INTIMAGE+2)), GGG(3*NATOMS*(INTIMAGE+2)), XLOCAL(6*NATOMS), GLOCAL(6*NATOMS)
+DOUBLE PRECISION VEC1(3), VEC2(3), VEC1M2(3), E1, E2, EINT, VDUM(3)
+LOGICAL IMGFREEZE(INTIMAGE), PEDGE
+DOUBLE PRECISION R1APR2BMR2AMR1BSQ, R1AMR1BSQ, R2AMR2BSQ, R1AMR1BDR2AMR2B, R1AMR1BDR2AMR2BSQ
+
+NLJINT(1:INTIMAGE+2)=0     ! number of energy contributions from internal minima
+! LJEINT(1:INTIMAGE+2)=0.0D0 ! energy contributions from internal minima
+NOPT=3*NATOMS
+GGG(1:NOPT*(INTIMAGE+2))=0.0D0
+ETOTAL=0.0D0 ! normal LJ energy summed over images
+LPRINT=.FALSE.
+DCUT=0.1D0
+!
+! For J1 we consider the line segment between image J1-1 and J1.
+! There are INTIMAGE+1 line segments in total, with an energy contribution
+! and corresponding gradient terms for each. 
+! A and B refer to atoms, 1 and 2 to images J1-1 and J1 (or J1-2 and J1-1 below).
+!
+! IMGFREEZE(1:INTIMAGE) refers to the images excluding end points!
+!
+DO J1=2,INTIMAGE+2
+   NSHIFT=NOPT*(J1-2)
+   XLOCAL(1:2*NOPT)=XYZ(NSHIFT+1:NSHIFT+2*NOPT)
+   DO J2=1,NATOMS
+      NI1=3*(J2-1)
+      NI2=NOPT+NI1
+      R1AX=XLOCAL(NI1+1); R1AY=XLOCAL(NI1+2); R1AZ=XLOCAL(NI1+3)
+      R2AX=XLOCAL(NI2+1); R2AY=XLOCAL(NI2+2); R2AZ=XLOCAL(NI2+3)
+      DO J3=J2+1,NATOMS
+         NJ1=3*(J3-1)
+         NJ2=NOPT+NJ1
+         R1BX=XLOCAL(NJ1+1); R1BY=XLOCAL(NJ1+2); R1BZ=XLOCAL(NJ1+3)
+         R2BX=XLOCAL(NJ2+1); R2BY=XLOCAL(NJ2+2); R2BZ=XLOCAL(NJ2+3)
+         VEC1(1)=R1AX-R1BX; VEC1(2)=R1AY-R1BY; VEC1(3)=R1AZ-R1BZ
+         VEC2(1)=R2AX-R2BX; VEC2(2)=R2AY-R2BY; VEC2(3)=R2AZ-R2BZ
+         VEC1M2(1:3)=VEC1(1:3)-VEC2(1:3)
+         R1APR2BMR2AMR1BSQ=VEC1M2(1)**2+VEC1M2(2)**2+VEC1M2(3)**2
+         NOINT=.TRUE.
+         D1SQ=R1AX**2+R1AY**2+R1AZ**2+R1BX**2+R1BY**2+R1BZ**2-2*(R1AX*R1BX+R1AY*R1BY+R1AZ*R1BZ)
+         IF (J1.GT.2) THEN ! images 1 and 2 correspond to J1-1 and J1
+            R6=1.0D0/D1SQ**3
+            ETOTAL=ETOTAL+4*R6*(R6-1.0D0)
+         ENDIF
+         IF (R1APR2BMR2AMR1BSQ.NE.0.0D0) THEN
+            COS2=(VEC1(1)*VEC1M2(1)+VEC1(2)*VEC1M2(2)+VEC1(3)*VEC1M2(3))/R1APR2BMR2AMR1BSQ
+            IF ((COS2.GT.0.0D0).AND.(COS2.LT.1.0D0)) THEN ! internal minimum
+               NOINT=.FALSE.
+               R1AMR1BDR2AMR2B=VEC1(1)*VEC2(1)+VEC1(2)*VEC2(2)+VEC1(3)*VEC2(3)
+               R1AMR1BDR2AMR2BSQ=R1AMR1BDR2AMR2B**2
+               R1AMR1BSQ=VEC1(1)**2+VEC1(2)**2+VEC1(3)**2
+               R2AMR2BSQ=VEC2(1)**2+VEC2(2)**2+VEC2(3)**2
+               DISQ=(-R1AMR1BDR2AMR2BSQ + R1AMR1BSQ*R2AMR2BSQ)/R1APR2BMR2AMR1BSQ
+               DI=SQRT(DISQ); D1=SQRT(D1)
+               IF (D1-DI.LE.INTLJDEL) THEN
+                  NOINT=.TRUE.
+               ELSE
+                  D2SQ=R2AX**2+R2AY**2+R2AZ**2+R2BX**2+R2BY**2+R2BZ**2-2*(R2AX*R2BX+R2AY*R2BY+R2AZ*R2BZ)
+                  D2=SQRT(D2SQ)
+                  IF (D2-DI.LE.INTLJDEL) THEN
+                     NOINT=.TRUE.
+                  ENDIF
+               ENDIF
+            ENDIF
+         ENDIF
+!
+! terms for image J1
+! D1 is the distance for image 1 (R1..) J1-1
+! D2 is the distance for image 2 (R2..) J1
+! There are two terms for each image 2 <= J1 <= INTIMAGE+1
+!
+         IF (.NOT.NOINT) THEN
+            DUMMY=INTLJEPS*((-D1+DI+INTLJDEL)*(-D2+DI+INTLJDEL)/DISQ**2)**2
+            ETOTAL=ETOTAL+DUMMY
+         ENDIF
+      ENDDO
+   ENDDO
+ENDDO
+
+END SUBROUTINE INTGRADLJ
+
+SUBROUTINE MINMAXD2R(R1AX,R1AY,R1AZ,R2AX,R2AY,R2AZ,R1BX,R1BY,R1BZ,R2BX,R2BY,R2BZ, &
+  &                 D2,D1,DINT,DSQ2,DSQ1,DSQI,G1,G2,G1INT,G2INT,NOINT,DEBUG,INTCONSTRAINREPCUT)
+IMPLICIT NONE
+DOUBLE PRECISION R1AX,R1AY,R1AZ,R2AX,R2AY,R2AZ,R1BX,R1BY,R1BZ,R2BX,R2BY,R2BZ,D2,D1,DINT
+DOUBLE PRECISION G1(3),G2(3),G1INT(3),G2INT(3),INTCONSTRAINREPCUT
+DOUBLE PRECISION DSQ2, DSQ1, DSQI, r1apr2bmr2amr1bsq, r1amr1bsq, r2amr2bsq
+DOUBLE PRECISION r1amr1bdr2amr2b, r1amr1bdr2amr2bsq, DUMMY
+LOGICAL NOINT, DEBUG
+!
+! Squared distance between atoms A and B for theta=0 - distance in image 2
+!
+DSQ2=r2ax**2 + r2ay**2 + r2az**2 + r2bx**2 + r2by**2 + r2bz**2 - 2*(r2ax*r2bx + r2ay*r2by + r2az*r2bz)
+!
+! Squared distance between atoms A and B for theta=Pi/2 - distance in image 1
+!
+DSQ1=r1ax**2 + r1ay**2 + r1az**2 + r1bx**2 + r1by**2 + r1bz**2 - 2*(r1ax*r1bx + r1ay*r1by + r1az*r1bz)
+!
+! Is there an internal extremum?
+!
+r1apr2bmr2amr1bsq=(r1ax-r1bx-r2ax+r2bx)**2+(r1ay-r1by-r2ay+r2by)**2+(r1az-r1bz-r2az+r2bz)**2
+IF (r1apr2bmr2amr1bsq.EQ.0.0D0) THEN
+   DUMMY=2.0D0 ! just to skip the internal solution
+ELSE
+   DUMMY=((r1ax-r1bx)*(r1ax-r1bx-r2ax+r2bx)+(r1ay-r1by)*(r1ay-r1by-r2ay+r2by)+(r1az-r1bz)*(r1az-r1bz-r2az+r2bz))/r1apr2bmr2amr1bsq
+ENDIF
+NOINT=.TRUE.
+IF ((DUMMY.GT.0.0D0).AND.(DUMMY.LT.1.0D0)) NOINT=.FALSE.
+G2(1:3)=0.0D0
+G1(1:3)=0.0D0
+G1INT(1:3)=0.0D0
+G2INT(1:3)=0.0D0
+D2=SQRT(DSQ2)
+D1=SQRT(DSQ1)
+DSQI=1.0D10
+DINT=1.0D10
+IF (.NOT.NOINT) THEN
+   r1amr1bdr2amr2b=(r1ax-r1bx)*(r2ax-r2bx)+(r1ay-r1by)*(r2ay-r2by)+(r1az-r1bz)*(r2az-r2bz)
+   r1amr1bdr2amr2bsq=r1amr1bdr2amr2b**2
+   r1amr1bsq=(r1ax - r1bx)**2 + (r1ay - r1by)**2 + (r1az - r1bz)**2
+   r2amr2bsq=(r2ax - r2bx)**2 + (r2ay - r2by)**2 + (r2az - r2bz)**2
+   DSQI=(-r1amr1bdr2amr2bsq + r1amr1bsq*r2amr2bsq)/r1apr2bmr2amr1bsq
+   DUMMY=r1apr2bmr2amr1bsq**2
+   DINT=SQRT(DSQI)
+ENDIF
+END SUBROUTINE MINMAXD2R
+
+SUBROUTINE CHECKPERC(INTIMAGE,XYZ,LINTCONSTRAINTTOL)
+USE COMMONS, ONLY : ATOMACTIVE, NCONSTRAINT, INTFROZEN, CONI, CONJ, CONDISTREF, INTCONMAX, INTCONSTRAINTTOL, &
+  &             INTCONSEP, INTFREEZET, NATOMS, DEBUG
+IMPLICIT NONE
+INTEGER NDIST1(NATOMS), NCYCLE, DMIN1, DMAX1, NUNCON1, J1, J2, J3, INTIMAGE
+DOUBLE PRECISION LINTCONSTRAINTTOL, MAXCONDIST, MINCONDIST, DS, DF, XYZ(3*NATOMS*(INTIMAGE+2))
+LOGICAL CHANGED
+
+LINTCONSTRAINTTOL=INTCONSTRAINTTOL
+
+IF (.NOT.ALLOCATED(ATOMACTIVE)) ALLOCATE(ATOMACTIVE(NATOMS))
+51   NCONSTRAINT=0 
+MAXCONDIST=-1.0D0
+MINCONDIST=1.0D100
+DO J2=1,NATOMS
+   DO J3=J2+1,NATOMS
+      IF (J3-J2.GT.INTCONSEP) CYCLE ! forbid constraints corresponding to atoms distant in sequence
+      IF (INTFROZEN(J2).AND.INTFROZEN(J3)) CYCLE ! no constraints between intfrozen atoms
+      DS=SQRT((XYZ(3*(J2-1)+1)-XYZ(3*(J3-1)+1))**2 &
+  &          +(XYZ(3*(J2-1)+2)-XYZ(3*(J3-1)+2))**2 &
+  &          +(XYZ(3*(J2-1)+3)-XYZ(3*(J3-1)+3))**2) 
+      IF (DS.GT.5.0D0) CYCLE ! don't allow constraints if either endpoint separation is too large DJW
+!     IF (DS.GT.15.0D0) CYCLE ! don't allow constraints if either endpoint separation is too large DJW
+      DF=SQRT((XYZ((INTIMAGE+1)*3*NATOMS+3*(J2-1)+1)-XYZ((INTIMAGE+1)*3*NATOMS+3*(J3-1)+1))**2 &
+  &          +(XYZ((INTIMAGE+1)*3*NATOMS+3*(J2-1)+2)-XYZ((INTIMAGE+1)*3*NATOMS+3*(J3-1)+2))**2 &
+  &          +(XYZ((INTIMAGE+1)*3*NATOMS+3*(J2-1)+3)-XYZ((INTIMAGE+1)*3*NATOMS+3*(J3-1)+3))**2) 
+      IF (DF.GT.5.0D0) CYCLE ! don't allow constraints if either endpoint separation is too large DJW
+!     IF (DF.GT.15.0D0) CYCLE ! don't allow constraints if either endpoint separation is too large DJW
+!     IF (2.0D0*ABS(DS-DF)/(DS+DF).LT.LINTCONSTRAINTTOL) THEN
+      IF (ABS(DS-DF).LT.LINTCONSTRAINTTOL) THEN
+!
+!  Add constraint for this distance to the list.
+!
+         NCONSTRAINT=NCONSTRAINT+1
+!        PRINT '(A,2I6,A,I6)','checkperc> Adding constraint for atoms ',J2,J3,'  total=',NCONSTRAINT
+         IF (NCONSTRAINT.GT.INTCONMAX) CALL CONDOUBLE
+         CONI(NCONSTRAINT)=J2
+         CONJ(NCONSTRAINT)=J3
+         CONDISTREF(NCONSTRAINT)=(DF+DS)/2.0D0
+         IF (CONDISTREF(NCONSTRAINT).GT.MAXCONDIST) MAXCONDIST=CONDISTREF(NCONSTRAINT)
+         IF (CONDISTREF(NCONSTRAINT).LT.MINCONDIST) MINCONDIST=CONDISTREF(NCONSTRAINT)
+!        IF (DEBUG) PRINT '(A,2I6,A,2F12.2,A,F12.4,A,I8)','checkperc> constrain distance for atoms ',CONI(NCONSTRAINT), &
+! &              CONJ(NCONSTRAINT),' values are ',DS,DF,' fraction=',2*ABS(DS-DF)/(DS+DF), &
+! &             ' # constraints=',NCONSTRAINT
+      ENDIF
+   ENDDO
+ENDDO
+  IF (DEBUG) PRINT '(A,I6,2(A,F15.5))','checkperc> Total distance constraints=',NCONSTRAINT, &
+    &                    ' shortest=',MINCONDIST,' longest=',MAXCONDIST
+!
+! Check that we have a percolating constraint network. If not, increase the tolerance and try again!
+! Calculate minimum number of steps of each atom from number 1,
+! or from any frozen atom.
+!
+NDIST1(1:NATOMS)=1000000
+NDIST1(1)=0
+DO J1=1,NATOMS
+   IF (INTFROZEN(J1)) NDIST1(J1)=0
+ENDDO
+NCYCLE=0
+5    CHANGED=.FALSE.
+NCYCLE=NCYCLE+1
+DMIN1=100000
+DMAX1=0
+NUNCON1=0
+DO J1=1,NATOMS
+   IF (NDIST1(J1).EQ.0) CYCLE ! minimum 1
+     DO J2=1,NCONSTRAINT
+        IF (CONI(J2).EQ.J1) THEN
+           IF (NDIST1(CONJ(J2))+1.LT.NDIST1(J1)) THEN
+              CHANGED=.TRUE.
+              NDIST1(J1)=NDIST1(CONJ(J2))+1
+           ENDIF
+        ELSE IF (CONJ(J2).EQ.J1) THEN
+           IF (NDIST1(CONI(J2))+1.LT.NDIST1(J1)) THEN
+              CHANGED=.TRUE.
+              NDIST1(J1)=NDIST1(CONI(J2))+1
+           ENDIF
+        ENDIF
+     ENDDO
+     IF ((NDIST1(J1).GT.DMAX1).AND.(NDIST1(J1).NE.1000000)) DMAX1=NDIST1(J1)
+     IF (NDIST1(J1).LT.DMIN1) DMIN1=NDIST1(J1)
+     IF (NDIST1(J1).EQ.1000000) NUNCON1=NUNCON1+1
+ENDDO
+IF (CHANGED) GOTO 5
+! PRINT '(3(A,I8))','checkperc> steps to atom 1 converged in ',NCYCLE-1, &
+!   &               ' cycles; maximum=',DMAX1,' disconnected=',NUNCON1
+IF (NUNCON1.GT.0) THEN
+   LINTCONSTRAINTTOL=LINTCONSTRAINTTOL*1.1D0
+   IF (DEBUG) PRINT '(A,F15.5)','checkperc> increasing the local constraint tolerance parameter to ',LINTCONSTRAINTTOL
+   IF (LINTCONSTRAINTTOL.GT.100.0D0) THEN
+      IF (DEBUG) PRINT '(A,G20.10)','checkperc> Likely error *** LINTCONSTRAINTTOL=',LINTCONSTRAINTTOL
+      STOP
+   ENDIF
+   GOTO 51
+ENDIF
+! PRINT '(A,F15.5)',' checkperc> Final constraint tolerance parameter to ',LINTCONSTRAINTTOL
+! !
+! ! Now turn off constraints between frozen atoms for efficiency.
+! !
+! IF (INTFREEZET) THEN
+!    NCONSTRAINT=0 
+!    MAXCONDIST=-1.0D0
+!    MINCONDIST=1.0D100
+!    DO J2=1,NATOMS
+!       DO J3=J2+1,NATOMS
+!          IF (J3-J2.GT.INTCONSEP) CYCLE ! forbid constraints corresponding to atoms distant in sequence
+!          IF (INTFROZEN(J2).AND.INTFROZEN(J3)) CYCLE ! no constraints between intfrozen atoms
+!          DS=SQRT((XYZ(3*(J2-1)+1)-XYZ(3*(J3-1)+1))**2 &
+!   &             +(XYZ(3*(J2-1)+2)-XYZ(3*(J3-1)+2))**2 &
+!   &             +(XYZ(3*(J2-1)+3)-XYZ(3*(J3-1)+3))**2) 
+!          IF (DS.GT.5.0D0) CYCLE ! don't allow constraints if either endpoint separation is too large DJW
+! !     IF (DS.GT.15.0D0) CYCLE ! don't allow constraints if either endpoint separation is too large DJW
+!          DF=SQRT((XYZ((INTIMAGE+1)*3*NATOMS+3*(J2-1)+1)-XYZ((INTIMAGE+1)*3*NATOMS+3*(J3-1)+1))**2 &
+!   &             +(XYZ((INTIMAGE+1)*3*NATOMS+3*(J2-1)+2)-XYZ((INTIMAGE+1)*3*NATOMS+3*(J3-1)+2))**2 &
+!   &             +(XYZ((INTIMAGE+1)*3*NATOMS+3*(J2-1)+3)-XYZ((INTIMAGE+1)*3*NATOMS+3*(J3-1)+3))**2) 
+!          IF (DF.GT.5.0D0) CYCLE ! don't allow constraints if either endpoint separation is too large DJW
+! !        IF (DF.GT.15.0D0) CYCLE ! don't allow constraints if either endpoint separation is too large DJW
+! !        IF (2.0D0*ABS(DS-DF)/(DS+DF).LT.LINTCONSTRAINTTOL) THEN
+!          IF (ABS(DS-DF).LT.LINTCONSTRAINTTOL) THEN
+! !
+! !  Add constraint for this distance to the list.
+! !  
+!             NCONSTRAINT=NCONSTRAINT+1
+! !           PRINT '(A,2I6,A,I6)','checkperc> B Adding constraint for atoms ',J2,J3,'  total=',NCONSTRAINT
+!             CONI(NCONSTRAINT)=J2
+!             CONJ(NCONSTRAINT)=J3
+!             CONDISTREF(NCONSTRAINT)=(DF+DS)/2.0D0
+!             IF (CONDISTREF(NCONSTRAINT).GT.MAXCONDIST) MAXCONDIST=CONDISTREF(NCONSTRAINT)
+!             IF (CONDISTREF(NCONSTRAINT).LT.MINCONDIST) MINCONDIST=CONDISTREF(NCONSTRAINT)
+! !           IF (DEBUG) PRINT '(A,2I6,A,2F12.2,A,F12.4,A,I8)',' checkperc> constrain distance for atoms ',CONI(NCONSTRAINT), &
+! ! &                 CONJ(NCONSTRAINT),' values are ',DS,DF,' fraction=',2*ABS(DS-DF)/(DS+DF), & 
+! ! &                ' # constraints=',NCONSTRAINT
+!          ENDIF
+!       ENDDO
+!    ENDDO
+! ENDIF
+! 
+! PRINT '(A,I6,2(A,F15.5))','checkperc> total distance constraints=',NCONSTRAINT, &
+!   &                    ' shortest=',MINCONDIST,' longest=',MAXCONDIST
+
+END SUBROUTINE CHECKPERC
+

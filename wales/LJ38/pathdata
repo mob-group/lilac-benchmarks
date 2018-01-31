@@ -1,0 +1,27 @@
+! EXTRACTTS -1
+! comment REMOVEUNCONNECTED AB
+NATOMS          38
+PERMDIST
+SYSTEM          AX
+CONNECTIONS     1
+! PERTURB        0.40
+ETOL           1.0D-7
+GEOMDIFFTOL    0.1
+ITOL           0.1D0
+SEED           1
+EXEC           /home/bruce/code/sparse/wales/bin/OPTIM
+
+CYCLES 0
+CPUS 1
+NCONNMIN 0
+PFOLD 100000
+! comment SDGT T T T T
+! NGT 1 F
+! comment MAXTSENERGY -169.5
+! DIJKSTRA 0
+! comment KSHORTESTPATHS 1000 0 T
+! 
+! UNTRAP 0.035 3.0
+
+TEMPERATURE 0.01
+DIRECTION AB

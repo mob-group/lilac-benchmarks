@@ -1,0 +1,1 @@
+cmd='/home/bruce/code/sparse/wales/MYFFTW/configure;F77=gfortran;--prefix=/home/bruce/code/sparse/wales/MYFFTW/local_build/install;--disable-doc'

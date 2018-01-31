@@ -1,0 +1,28 @@
+
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+1.0 1.0 1.0 1.0
+
+NREPMIN, NREP, NBINS, NQBINS, TMIN, TMAX, NTEMP, KAPPA, PTSTART, BSSTART, BSPTFINISH, NEGLECT, SIGMAX
+
+!
+! PTSTART 'na' means subtract nothing for PT analysis
+! PTSTART 'number' means subtract the Visits statistics for this step in PT analysis
+! The PT analysis goes up to the same step as specified by BSPTFINISH
+! BSSTART 'na' means subtract nothing for quench analysis
+! BSPTFINISH 'all' means use the final Visits.his and Visits2.his files
+! BSPTFINISH 'number' means use step number as the final point in the fitting
+! 

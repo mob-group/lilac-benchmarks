@@ -1,0 +1,125 @@
+
+ OPTIM version 31508, Copyright (C) David J. Wales
+ OPTIM comes with ABSOLUTELY NO WARRANTY; for details supply WARRANTY as an input keyword.
+ This is free software, and you are welcome to redistribute it
+ under certain conditions; provide keyword COPYRIGHT to see the details.
+
+ getparams> Number of atoms (or variables)  determined as     12
+ getparams> Number of optimisation degrees of freedom     36
+ keywords> Frequencies (and square frequencies) will be given in cm^-1 (cm^-2)
+ keywords> FRQCONV =    53.0883746000000     
+ keywords> number of symmetry operations for rigid body=     4
+ keywords> rigid-body symmetry operation     1
+        1.0000000000        0.0000000000        0.0000000000
+        0.0000000000
+ keywords> rigid-body symmetry operation     2
+        1.0000000000        0.0000000000        0.0000000000
+        0.0000000000
+ keywords> rigid-body symmetry operation     3
+        1.0000000000       -1.0000000000        0.0000000000
+        0.0000000000
+ keywords> rigid-body symmetry operation     4
+        0.0000000000       -1.0000000000        0.0000000000
+        0.0000000000
+ fetchz> LBFGS minimization, maximum steps=   30000
+ 
+ 
+ fetchz> Number of random initial orientations in permutational alignment=   100
+ fetchz> Point group checked when RMS force <     0.00100000, highest symmetry axis tested for=  6
+ fetchz> Initial distance and eigenvalue tolerances in symmetry determination=     0.00010000     0.00010000
+ fetchz> Minimum number of optimization steps=     0
+ fetchz> Stationary point information will be printed to min.data
+ fetchz> Convergence criterion for LBFGS optimization: RMS force< 0.10000000E-05 maximum steps=   30000
+ fetchz> Maximum energy rise in LBFGS minimization=    0.1000000000E-09
+ fetchz> Number of updates in LBFGS=     6000
+ fetchz> Number of updates in mind=  10
+ fetchz> Initial guess for diagonal elements in LBFGS=     0.1000
+ fetchz> Maximum step size in LBFGS energy minimization=     0.2000
+ fetchz> Maximum step size in LBFGS neb image minimization=                 0.2000
+ fetchz> Warnings will be issued if atoms become closer than 0.5 units
+ 
+ 
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.16253         0.16881         0.20191       298.14899       356.61592       370.39249
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ OPTIM> Using translational/rotational ev shift=     1000000.000    
+ mylbfgs> Resetting LBFGS minimiser
+ mylbfgs> Energy and RMS force=    -189.4040543         8.472719790     after      0 steps
+ mylbfgs> Energy and RMS force=    -193.3191571         5.081009574     after      1 steps, step:  0.10000    
+ mylbfgs> Energy and RMS force=    -195.7144131         2.569622451     after      2 steps, step:  0.19336    
+ mylbfgs> Energy and RMS force=    -196.0499043        0.9858623280     after      3 steps, step:  0.51438E-01
+ mylbfgs> Energy and RMS force=    -196.1054203        0.5003493022     after      4 steps, step:  0.14242E-01
+ mylbfgs> Energy and RMS force=    -196.1420089        0.4220724422     after      5 steps, step:  0.19133E-01
+ mylbfgs> Energy and RMS force=    -196.1763892        0.4289801317     after      6 steps, step:  0.25144E-01
+ mylbfgs> Energy and RMS force=    -196.1970877        0.7643654587     after      7 steps, step:  0.50418E-01
+ mylbfgs> Energy and RMS force=    -196.2265488        0.2602632583     after      8 steps, step:  0.12720E-01
+ mylbfgs> Energy and RMS force=    -196.2366665        0.2356823793     after      9 steps, step:  0.95845E-02
+ mylbfgs> Energy and RMS force=    -196.2536060        0.2880447419     after     10 steps, step:  0.25129E-01
+ mylbfgs> Energy and RMS force=    -196.2752030        0.2711354891     after     11 steps, step:  0.42507E-01
+ energy increase:    -196.275202977915     to     -196.234689197305     decreasing step to  0.57188302E-02
+ mylbfgs> Energy and RMS force=    -196.2777143        0.2503405169     after     12 steps, step:  0.57188E-02
+ mylbfgs> Energy and RMS force=    -196.2860981        0.9981807655E-01 after     13 steps, step:  0.30691E-01
+ mylbfgs> Energy and RMS force=    -196.2871079        0.1330791398     after     14 steps, step:  0.68027E-02
+ mylbfgs> Energy and RMS force=    -196.2881109        0.6267425620E-01 after     15 steps, step:  0.27873E-02
+ mylbfgs> Energy and RMS force=    -196.2887086        0.5290097672E-01 after     16 steps, step:  0.34937E-02
+ mylbfgs> Energy and RMS force=    -196.2894752        0.5267401007E-01 after     17 steps, step:  0.59813E-02
+ mylbfgs> Energy and RMS force=    -196.2901966        0.3870687395E-01 after     18 steps, step:  0.75310E-02
+ mylbfgs> Energy and RMS force=    -196.2902802        0.6994886936E-01 after     19 steps, step:  0.74419E-02
+ mylbfgs> Energy and RMS force=    -196.2906094        0.1507531869E-01 after     20 steps, step:  0.15951E-02
+ mylbfgs> Energy and RMS force=    -196.2906493        0.1116923282E-01 after     21 steps, step:  0.87823E-03
+ mylbfgs> Energy and RMS force=    -196.2907096        0.1194349192E-01 after     22 steps, step:  0.20414E-02
+ energy increase:    -196.290709558515     to     -196.290703923979     decreasing step to  0.24040659E-03
+ mylbfgs> Energy and RMS force=    -196.2907174        0.9841222989E-02 after     23 steps, step:  0.24041E-03
+ mylbfgs> Energy and RMS force=    -196.2907458        0.6557997694E-02 after     24 steps, step:  0.15871E-02
+ mylbfgs> Energy and RMS force=    -196.2907572        0.5358247810E-02 after     25 steps, step:  0.70726E-03
+ mylbfgs> Energy and RMS force=    -196.2907695        0.6658046300E-02 after     26 steps, step:  0.12550E-02
+ energy increase:    -196.290769463163     to     -196.290768593384     decreasing step to  0.80871533E-04
+ mylbfgs> Energy and RMS force=    -196.2907709        0.5309406316E-02 after     27 steps, step:  0.80872E-04
+ mylbfgs> Energy and RMS force=    -196.2907745        0.1823471443E-02 after     28 steps, step:  0.37462E-03
+ mylbfgs> Energy and RMS force=    -196.2907751        0.1657282124E-02 after     29 steps, step:  0.12148E-03
+ mylbfgs> Energy and RMS force=    -196.2907766        0.1730348918E-02 after     30 steps, step:  0.30723E-03
+ mylbfgs> Energy and RMS force=    -196.2907779        0.1885578087E-02 after     31 steps, step:  0.39736E-03
+ energy increase:    -196.290777899004     to     -196.290777543707     decreasing step to  0.46856959E-04
+ mylbfgs> Energy and RMS force=    -196.2907781        0.1576221034E-02 after     32 steps, step:  0.46857E-04
+ mylbfgs> Energy and RMS force=    -196.2907786        0.5077609253E-03 after     33 steps, step:  0.24981E-03
+ mylbfgs> Energy and RMS force=    -196.2907787        0.3559374893E-03 after     34 steps, step:  0.50717E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.4406843152E-03 after     35 steps, step:  0.73919E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.4604207778E-03 after     36 steps, step:  0.61046E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.2247262156E-03 after     37 steps, step:  0.56299E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1163701488E-03 after     38 steps, step:  0.26894E-04
+ mylbfgs> Energy and RMS force=    -196.2907788        0.3224066018E-04 after     39 steps, step:  0.61408E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.2617703544E-04 after     40 steps, step:  0.15895E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.2663162059E-04 after     41 steps, step:  0.57933E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.5141115361E-04 after     42 steps, step:  0.37475E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.1107483264E-04 after     43 steps, step:  0.16256E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.7650812419E-05 after     44 steps, step:  0.44664E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.5565618589E-05 after     45 steps, step:  0.16156E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.3907197515E-05 after     46 steps, step:  0.82997E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.4848652530E-05 after     47 steps, step:  0.14359E-05
+ mylbfgs> Energy and RMS force=    -196.2907788        0.4949064649E-05 after     48 steps, step:  0.43215E-06
+ mylbfgs> Energy and RMS force=    -196.2907788        0.3420413321E-06 after     49 steps, step:  0.30384E-06
+ mylbfgs> Final energy is   -196.29077884571166    
+ geopt> Value below calculated from true hessian
+ geopt> Number of zero/imaginary eigenvalues assumed to be      6
+ geopt> ln product scaled to desired frequency units by      238.3174782    
+ geopt> Log product of       30 positive Hessian eigenvalues=      339.0519218130
+ geopt> X component of inertia tensor=          286.4069140424
+ geopt> Y component of inertia tensor=          345.1390494943
+ geopt> Z component of inertia tensor=          354.4104077533
+ rotcon> Rotational constants (in cm-1) and principal moments of inertia: 
+        0.22105         0.34706         0.39201       153.56825       173.45596       272.34070
+ symmetry> The full molecular point group is C1  .
+ symmetry> The largest Abelian subgroup of the full molecular point group is C1  .
+ symmetry> Distance tolerance=     0.00010 Inertia tolerance=     0.00010
+ symmetry> Order of full point group=     1
+ 
+ geopt>                          **** CONVERGED ****
+ 
+ 
+ Elapsed time=                                 0.02
+ OPTIM> # of energy calls=                          0 time=           0.00 %=  0.0
+ OPTIM> # of energy+gradient calls=                54 time=           0.00 %=  4.5
+ OPTIM> # of energy+gradient+Hessian calls=         2 time=           0.00 %=  0.0
