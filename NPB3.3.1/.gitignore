@@ -1,5 +1,8 @@
 bin/
 
+npbparams.h
+setparams
+
 # Created by https://www.gitignore.io/api/c,git,vim,osx,c++,linux,cmake,fortran
 
 ### C ###

@@ -442,36 +442,6 @@ c---------------------------------------------------------------------
 
       end                              ! end main
 
-      subroutine spmv(rowstr,
-     >                a,
-     >                vec,
-     >                colidx,
-     >                outmat)
-
-        implicit none
-
-        include 'globals.h'
-
-        double precision  a(nzz),
-     >                    vec(*),
-     >                    outmat(*)
-        integer           colidx(nzz), rowstr(naa+1)
-
-        integer           j, k
-        double precision  sum
-
-        ! do j=1,lastrow-firstrow+1
-        !    sum = 0.d0
-        !    do k=rowstr(j),rowstr(j+1)-1
-        !       sum = sum + a(k)*vec(colidx(k))
-        !    enddo
-        !    outmat(j) = sum
-        ! enddo
-
-        ! call c_spmv(rowstr, a, vec, colidx, outmat)
-        call mkl_spmv(rowstr, a, vec, colidx, outmat)
-      end
-
 c---------------------------------------------------------------------
 c---------------------------------------------------------------------
       subroutine conj_grad ( colidx,
@@ -506,14 +476,15 @@ c---------------------------------------------------------------------
      >                   q(*),
      >                   r(*)
 
-
       integer   j, k
       integer   cgit, cgitmax
 
       double precision   d, sum, rho, rho0, alpha, beta, rnorm
 
       data      cgitmax / 25 /
-
+      
+      character(len=8) :: version
+      call getenv("SPMV_VERSION", version)
 
       rho = 0.0d0
 
@@ -559,14 +530,17 @@ C
          ! explicitly by a function performing the same operation.
          ! Assuming an suitably good compiler, this should be equivalent
          ! in performance to the original serial version.
-         call spmv(rowstr, a, p, colidx, q)
-         ! do j=1,lastrow-firstrow+1
-         !    sum = 0.d0
-         !    do k=rowstr(j),rowstr(j+1)-1
-         !       sum = sum + a(k)*p(colidx(k))
-         !    enddo
-         !    q(j) = sum
-         ! enddo
+         if(version == "MKL") then
+           call mkl_spmv(rowstr, a, p, colidx, q)
+         else
+           do j=1,lastrow-firstrow+1
+              sum = 0.d0
+              do k=rowstr(j),rowstr(j+1)-1
+                 sum = sum + a(k)*p(colidx(k))
+              enddo
+              q(j) = sum
+           enddo
+         endif
 
 CC          do j=1,lastrow-firstrow+1
 CC             i = rowstr(j) 
@@ -664,20 +638,23 @@ c  The partition submatrix-vector multiply
 c---------------------------------------------------------------------
       ! Same here - the SPMV code has been replaced by a call to my
       ! interface function.
-      sum = 0.0d0
-      call spmv(rowstr, a, z, colidx, r)
-      ! do j=1,lastrow-firstrow+1
-      !    d = 0.d0
-      !    do k=rowstr(j),rowstr(j+1)-1
-      !       d = d + a(k)*z(colidx(k))
-      !    enddo
-      !    r(j) = d
-      ! enddo
+      if(version == "MKL") then
+        call mkl_spmv(rowstr, a, z, colidx, r)
+      else
+        do j=1,lastrow-firstrow+1
+           d = 0.d0
+           do k=rowstr(j),rowstr(j+1)-1
+              d = d + a(k)*z(colidx(k))
+           enddo
+           r(j) = d
+        enddo
+      endif
 
 
 c---------------------------------------------------------------------
 c  At this point, r contains A.z
 c---------------------------------------------------------------------
+      sum = 0.0d0
       do j=1, lastcol-firstcol+1
          d   = x(j) - r(j)         
          sum = sum + d*d
