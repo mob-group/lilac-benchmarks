@@ -213,36 +213,25 @@ SUBROUTINE PFOLD
 !  OMEGA is the damping factor for successive overrelaxation method (SOR)
 !  OMEGA=1 is pure Gauss-Seidel. OMEGA should be < 2
 !
-   itloop: DO J1=1,NPFOLD
+   DO J1=1,NPFOLD
       ! This is the inner loop
       ! The outer loop above this one is the iterative solver, so
-      ! Let's assume OMEGA=1 for simplicity
+      ! Let's assume OMEGA=1 for simplicity, and get rid of convergence as it's not being called anyway
       ! BEGIN SPMV
+      IF (OMEGA .NE. 1.0) THEN
+        STOP 1
+      ENDIF
+
       DO J3=1,NMIN
          IF (NCOL(J3).EQ.0) CYCLE
          LDUMMY=0.0D0
          DO J2=ROW_PTR(J3),ROW_PTR(J3+1)-1
-!           LDUMMY=LDUMMY+DVEC(J2)*GPFOLD(COL_IND(J2))    ! Jacobi
             LDUMMY=LDUMMY+DVEC(J2)*NEWPFOLD(COL_IND(J2)) ! Gauss-Seidel, a bit faster
          ENDDO
-!!!         NEWPFOLD(J3)=LDUMMY
-         GPDIFF(J3)=ABS(OMEGA*LDUMMY+(1.0D0-OMEGA)*GPFOLD(J3) - GPFOLD(J3))/MAX(GPFOLD(J3),tiny(1.0d0))
-         GPFOLD(J3)=OMEGA*LDUMMY+(1.0D0-OMEGA)*GPFOLD(J3)  ! SOR
-         NEWPFOLD(J3)=GPFOLD(J3)
-!        PRINT '(A,4I6,2G20.10)','J3,J3,limits,LDUMMY,GPFOLD=',J3,J3,ROW_PTR(J3),ROW_PTR(J3+1)-1,LDUMMY,GPFOLD(J3)
-!        NEWPFOLD(J3)=MAX(MIN(LDUMMY,1.0D0),0.0D0)
-!        GPFOLD(J3)=MAX(MIN(OMEGA*LDUMMY+(1.0D0-OMEGA)*GPFOLD(J3),1.0D0),0.0D0)  ! SOR
+         NEWPFOLD(J3)=LDUMMY
       ENDDO
       ! END SPMV
-      IF(MAXVAL(GPDIFF).LT.PFOLDCONV) THEN
-        PRINT *,'PFOLD> convergence criterion on the largest fractional change in GPFOLD has been met:',MAXVAL(GPDIFF),PFOLDCONV
-        PRINT *,'PFOLD> stopping after iteration ',j1
-        EXIT
-      END IF
-!     PRINT '(A,I8,F20.10)','J1,GPFOLD(2) ',J1,GPFOLD(2)
-   ENDDO itloop
-!  PRINT '(A)','final PFOLD values in PFOLD:'
-!  PRINT '(6G20.10)',GPFOLD(1:NMIN)
+   ENDDO
 
    DEALLOCATE(DVEC,COL_IND,NVAL,DMATMC)
 
