@@ -218,18 +218,7 @@ SUBROUTINE PFOLD
       ! The outer loop above this one is the iterative solver, so
       ! Let's assume OMEGA=1 for simplicity, and get rid of convergence as it's not being called anyway
       ! BEGIN SPMV
-      IF (OMEGA .NE. 1.0) THEN
-        STOP 1
-      ENDIF
-
-      DO J3=1,NMIN
-         IF (NCOL(J3).EQ.0) CYCLE
-         LDUMMY=0.0D0
-         DO J2=ROW_PTR(J3),ROW_PTR(J3+1)-1
-            LDUMMY=LDUMMY+DVEC(J2)*NEWPFOLD(COL_IND(J2)) ! Gauss-Seidel, a bit faster
-         ENDDO
-         NEWPFOLD(J3)=LDUMMY
-      ENDDO
+      CALL SPMV(DVEC, NCOL, NEWPFOLD, ROW_PTR, COL_IND, NONZERO)
       ! END SPMV
    ENDDO
 
@@ -241,6 +230,30 @@ SUBROUTINE PFOLD
    RETURN
 
 END SUBROUTINE PFOLD
+
+SUBROUTINE SPMV(DVEC, NCOL, NEWPFOLD, ROW_PTR, COL_IND, NONZERO)
+   USE COMMONS, ONLY: NMIN, OMEGA
+
+   IMPLICIT NONE
+   INTEGER NCOL(NMIN), J2, J3
+   DOUBLE PRECISION LDUMMY, NEWPFOLD(NMIN)
+   INTEGER ROW_PTR(NMIN+1), NONZERO
+   INTEGER COL_IND(NONZERO)
+   DOUBLE PRECISION DVEC(NONZERO)
+
+   IF (OMEGA .NE. 1.0) THEN
+     STOP 1
+   ENDIF
+
+   DO J3=1,NMIN
+      IF (NCOL(J3).EQ.0) CYCLE
+      LDUMMY=0.0D0
+      DO J2=ROW_PTR(J3),ROW_PTR(J3+1)-1
+         LDUMMY=LDUMMY+DVEC(J2)*NEWPFOLD(COL_IND(J2)) ! Gauss-Seidel, a bit faster
+      ENDDO
+      NEWPFOLD(J3)=LDUMMY
+   ENDDO
+END SUBROUTINE SPMV
 
 !
 ! Calculate the mean wating time for a transition to any product minimum using an
