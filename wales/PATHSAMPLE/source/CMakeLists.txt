@@ -59,7 +59,7 @@ message("CMAKE_Fortran_COMPILER = ${CMAKE_Fortran_COMPILER}")
 set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/modules)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/modules)
 
-set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -g -pg -no-pie")
+set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -pg -no-pie")
 
 include_directories(${CMAKE_SOURCE_DIR})
 
