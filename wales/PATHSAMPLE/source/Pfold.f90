@@ -214,6 +214,10 @@ SUBROUTINE PFOLD
 !  OMEGA=1 is pure Gauss-Seidel. OMEGA should be < 2
 !
    itloop: DO J1=1,NPFOLD
+      ! This is the inner loop
+      ! The outer loop above this one is the iterative solver, so
+      ! Let's assume OMEGA=1 for simplicity
+      ! BEGIN SPMV
       DO J3=1,NMIN
          IF (NCOL(J3).EQ.0) CYCLE
          LDUMMY=0.0D0
@@ -229,6 +233,7 @@ SUBROUTINE PFOLD
 !        NEWPFOLD(J3)=MAX(MIN(LDUMMY,1.0D0),0.0D0)
 !        GPFOLD(J3)=MAX(MIN(OMEGA*LDUMMY+(1.0D0-OMEGA)*GPFOLD(J3),1.0D0),0.0D0)  ! SOR
       ENDDO
+      ! END SPMV
       IF(MAXVAL(GPDIFF).LT.PFOLDCONV) THEN
         PRINT *,'PFOLD> convergence criterion on the largest fractional change in GPFOLD has been met:',MAXVAL(GPDIFF),PFOLDCONV
         PRINT *,'PFOLD> stopping after iteration ',j1
