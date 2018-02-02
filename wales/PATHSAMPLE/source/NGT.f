@@ -997,24 +997,8 @@ C
 !
       CALL CPU_TIME(TNEW)
       DO J1=1,NPFOLD
-         DO J3=NMINABSAVE+1,NMIN ! i.e, freeze the known committor probabilities for the end point minima
-            IF (NCOL(J3).EQ.0) CYCLE
-            LDUMMY=0.0D0
-            DO J2=ROW_PTR(J3),ROW_PTR(J3+1)-1
-!              LDUMMY=LDUMMY+DVEC(J2)*GPFOLD(COL_IND(J2))    ! Jacobi
-               LDUMMY=LDUMMY+DVEC(J2)*NEWPFOLD(COL_IND(J2)) ! Gauss-Seidel, a bit faster
-            ENDDO
-!!!            NEWPFOLD(J3)=LDUMMY
-            GPDIFF(J3)=ABS(OMEGA*LDUMMY+(1.0D0-OMEGA)*GPFOLD(J3) - GPFOLD(J3))/MAX(GPFOLD(J3),tiny(1.0d0))
-            GPFOLD(J3)=OMEGA*LDUMMY+(1.0D0-OMEGA)*GPFOLD(J3)  ! SOR
-            NEWPFOLD(J3)=GPFOLD(J3)
-         ENDDO
-         IF(MAXVAL(GPDIFF).LT.PFOLDCONV) THEN
-           WRITE(*,'(A,2G20.10)') 'NGT> convergence criterion on the largest fractional change in GPFOLD has been met ',
-     &                     MAXVAL(GPDIFF),PFOLDCONV
-           WRITE(*,'(A,I10)') 'NGT> stopping after iteration ',J1
-           EXIT
-         END IF
+        CALL SPMV(GPFOLD, DVEC, NEWPFOLD, ROW_PTR, COL_IND, NMIN, NONZERO, NCOL)
+        NEWPFOLD(1:NMIN) = GPFOLD(1:NMIN)
       ENDDO
       CALL CPU_TIME(ELAPSED)
       WRITE(*,*) 'NGT> CPU time spent iterating committor probability =',ELAPSED-TNEW,' s'

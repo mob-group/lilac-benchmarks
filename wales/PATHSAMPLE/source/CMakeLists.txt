@@ -59,7 +59,7 @@ message("CMAKE_Fortran_COMPILER = ${CMAKE_Fortran_COMPILER}")
 set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/modules)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/modules)
 
-set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -pg -no-pie")
+set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -pg -no-pie -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl")
 
 include_directories(${CMAKE_SOURCE_DIR})
 
@@ -76,7 +76,7 @@ endif (NOT (NOT_PATHSAMPLE_SOURCES STREQUAL ""))
 
 
 # ---- add generated source files 
-set(PATHSAMPLE_SOURCES ${PATHSAMPLE_SOURCES} porfuncs.f90)
+set(PATHSAMPLE_SOURCES ${PATHSAMPLE_SOURCES} porfuncs.f90 spmv.c)
 
 # ---- porfuncs.f90 TODO: shuold it build every time?
 #message("compiler switch ${COMPILER_SWITCH}")
@@ -89,6 +89,9 @@ set_property(DIRECTORY APPEND PROPERTY ADDITIONAL_MAKE_CLEAN_FILES porfuncs.f90)
 # ----- Libraries 
 # ----- generate a pathsample library to avoid recompiling the whole code for every executable
 add_library(pathsamplelib ${PATHSAMPLE_SOURCES})
+set_target_properties(pathsamplelib PROPERTIES
+  LINK_FLAGS efwkpo
+)
 
 find_package(MYBLAS)
 find_package(MYLAPACK)

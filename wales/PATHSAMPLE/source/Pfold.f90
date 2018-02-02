@@ -213,13 +213,13 @@ SUBROUTINE PFOLD
 !  OMEGA is the damping factor for successive overrelaxation method (SOR)
 !  OMEGA=1 is pure Gauss-Seidel. OMEGA should be < 2
 !
+   IF (OMEGA .NE. 1.0) THEN
+     STOP 1
+   ENDIF
+
    DO J1=1,NPFOLD
-      ! This is the inner loop
-      ! The outer loop above this one is the iterative solver, so
-      ! Let's assume OMEGA=1 for simplicity, and get rid of convergence as it's not being called anyway
-      ! BEGIN SPMV
-      CALL SPMV(DVEC, NEWPFOLD, ROW_PTR, COL_IND, NONZERO, NCOL)
-      ! END SPMV
+     CALL SPMV(GPFOLD, DVEC, NEWPFOLD, ROW_PTR, COL_IND, NMIN, NONZERO, NCOL)
+     NEWPFOLD(1:NMIN) = GPFOLD(1:NMIN)
    ENDDO
 
    DEALLOCATE(DVEC,COL_IND,NVAL,DMATMC)
@@ -230,30 +230,6 @@ SUBROUTINE PFOLD
    RETURN
 
 END SUBROUTINE PFOLD
-
-SUBROUTINE SPMV(VEC, A, IA, JA, NONZERO, NCOL)
-   USE COMMONS, ONLY: NMIN, OMEGA
-
-   IMPLICIT NONE
-   INTEGER NCOL(NMIN), J2, J3
-   DOUBLE PRECISION SUM, A(NMIN)
-   INTEGER IA(NMIN+1), NONZERO
-   INTEGER JA(NONZERO)
-   DOUBLE PRECISION VEC(NONZERO)
-
-   IF (OMEGA .NE. 1.0) THEN
-     STOP 1
-   ENDIF
-
-   DO J3=1,NMIN
-      IF (NCOL(J3).EQ.0) CYCLE
-      SUM =0.0D0
-      DO J2 = IA(J3), IA(J3+1)-1
-         SUM = SUM+VEC(J2)*A(JA(J2)) ! Gauss-Seidel, a bit faster
-      ENDDO
-      A(J3) = SUM
-   ENDDO
-END SUBROUTINE SPMV
 
 !
 ! Calculate the mean wating time for a transition to any product minimum using an
