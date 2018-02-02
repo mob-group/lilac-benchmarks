@@ -216,9 +216,9 @@ C     Sem: end GT2 controls
       else
         TFOLDT=.TRUE.
       endif
-      NTFOLD=1.0D4 ! real not integer !
+      NTFOLD=1.0D5 ! real not integer !
       TOMEGA=1.0D0
-      TFOLDTHRESH=1.0D-4
+      TFOLDTHRESH=1.0D-5
       MAXATTEMPT=1
       CALCORDERT=.FALSE.
       OSTART=1

@@ -998,8 +998,8 @@ C
       CALL CPU_TIME(TNEW)
       DO J1=1,NPFOLD
         CALL SPMV(GPFOLD, DVEC, NEWPFOLD, ROW_PTR, COL_IND, NMIN, NONZERO, NCOL)
-        NEWPFOLD(1:NMIN) = GPFOLD(1:NMIN)
       ENDDO
+
       CALL CPU_TIME(ELAPSED)
       WRITE(*,*) 'NGT> CPU time spent iterating committor probability =',ELAPSED-TNEW,' s'
 
