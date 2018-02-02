@@ -1,3 +1,0 @@
-plot "n_chain.ados" u 1:2 w l
-replot "n_coo.N-N.coop" u 1:2 w l
-replot "n_coo.N-N.cohp" u 1:2 w l

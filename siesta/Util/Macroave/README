@@ -1,3 +1,0 @@
-If you are interested only in a planar average of a grid function (such as
-the V(z) profile for a slab) you might want to look also at the octave/matlab
-scripts in Util/Grid.
