@@ -1,0 +1,3 @@
+SCF_NOT_CONV: SCF did not converge in maximum number of steps.
+Geom step, scf iteration, dmax:   2 50    0.002844
+Job completed

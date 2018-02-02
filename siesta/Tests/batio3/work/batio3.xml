@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<cml convention="CMLComp" xmlns="http://www.xml-cml.org/schema"
+ xmlns:siesta="http://www.uam.es/siesta/namespace"
+ xmlns:siestaUnits="http://www.uam.es/siesta/namespace/units"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:fpx="http://www.uszla.me.uk/fpx"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:units="http://www.uszla.me.uk/FoX/units"
+ xmlns:cmlUnits="http://www.xml-cml.org/units/units"
+ xmlns:siUnits="http://www.xml-cml.org/units/siUnits"
+ xmlns:atomicUnits="http://www.xml-cml.org/units/atomic">
+ <metadataList>
+  <metadata name="siesta:Program" content="Siesta" />
+  <metadata name="siesta:Version" content="siesta-4.1--736" />
+  <metadata name="siesta:Arch" content="unknown" />
+  <metadata name="siesta:Flags"
+   content="gfortran -O2 -fPIC -ftree-vectorize -pg -no-pie" />
+  <metadata name="siesta:PPFlags" content="-DFC_HAVE_ABORT" />
+  <metadata name="siesta:StartTime" content="2018-01-12T10-44-17" />
+  <metadata name="siesta:run_UUID"
+   content="97718600-f785-11e7-490f-6f64b7dd813c" />
+  <metadata name="siesta:Mode" content="Serial" />
+  <metadata name="siesta:Nodes" content="         1" />
+  <metadata name="siesta:NetCDF" content="false" />
+ </metadataList>
+ <module title="Initial System">
+  <molecule>
+   <atomArray>
+    <atom elementType="Ba" id="a1" ref="siesta:e001"
+     x3="    0.00000000                               "
+     y3="    0.00000000                               "
+     z3="    0.00000000                               " />
+    <atom elementType="Ti" id="a2" ref="siesta:e002"
+     x3="    2.00293495                               "
+     y3="    2.00293495                               "
+     z3="    2.00293495                               " />
+    <atom elementType="O" id="a3" ref="siesta:e003"
+     x3="    0.00000000                               "
+     y3="    2.00293495                               "
+     z3="    2.00293495                               " />
+    <atom elementType="O" id="a4" ref="siesta:e003"
+     x3="    2.00293495                               "
+     y3="    0.00000000                               "
+     z3="    2.00293495                               " />
+    <atom elementType="O" id="a5" ref="siesta:e003"
+     x3="    2.00293495                               "
+     y3="    2.00293495                               "
+     z3="    0.00000000                               " />
+   </atomArray>
+  </molecule>
+  <lattice dictRef="siesta:ucell">
+   <latticeVector units="siestaUnits:angstrom" dictRef="cml:latticeVector">
+  7.570000000000E+00  0.000000000000E+00  0.000000000000E+00
+
+   </latticeVector>
+   <latticeVector units="siestaUnits:angstrom" dictRef="cml:latticeVector">
+  0.000000000000E+00  7.570000000000E+00  0.000000000000E+00
+
+   </latticeVector>
+   <latticeVector units="siestaUnits:angstrom" dictRef="cml:latticeVector">
+  0.000000000000E+00  0.000000000000E+00  7.570000000000E+00
+
+   </latticeVector>
+  </lattice>
+  <property dictRef="siesta:shape">
+   <scalar>bulk
+   </scalar>
+  </property>
+ </module>
+ <parameterList title="Input Parameters">
+  <parameter name="SystemName" dictRef="siesta:sname">
+   <scalar dataType="xsd:string">Barium titanate (BaTiO3) cubic structure
+   </scalar>
+  </parameter>
+  <parameter name="SystemLabel" dictRef="siesta:slabel">
+   <scalar dataType="xsd:string">batio3
+   </scalar>
+  </parameter>
+  <parameter name="LongOutput" dictRef="siesta:verbosity">
+   <scalar dataType="xsd:boolean">false
+   </scalar>
+  </parameter>
+  <parameter title="NumberOfSpecies" dictRef="siesta:ns">
+   <scalar dataType="xsd:integer" units="cmlUnits:countable">3
+   </scalar>
+  </parameter>
+  <parameter name="WriteDenChar">
+   <scalar dataType="xsd:boolean">false
+   </scalar>
+  </parameter>
+  <parameter name="WriteMullikenPop">
+   <scalar dataType="xsd:integer" units="cmlUnits:dimensionless">0
+   </scalar>
+  </parameter>
+  <parameter name="MeshCutOff" dictRef="siesta:g2max">
+   <scalar dataType="xsd:double" units="siestaUnits:Ry">200.000000000                                                                                       
+   </scalar>
+  </parameter>
+  <parameter name="NetCharge" dictRef="siesta:NetCharge">
+   <scalar dataType="xsd:double" units="siestaUnits:e__">0.00000000000                                                                                       
+   </scalar>
+  </parameter>
+  <parameter name="MaxSCFIterations" dictRef="siesta:maxscf">
+   <scalar dataType="xsd:integer" units="cmlUnits:countable">100
+   </scalar>
+  </parameter>
+  <parameter name="MinSCFIterations" dictRef="siesta:minscf">
+   <scalar dataType="xsd:integer" units="cmlUnits:countable">0
+   </scalar>
+  </parameter>
+  <parameter name="DM.NumberPulay" dictRef="siesta:maxsav">
+   <scalar dataType="xsd:integer" units="cmlUnits:countable">3
+   </scalar>
+  </parameter>
+  <parameter name="DM.NumberBroyden" dictRef="siesta:broyden_maxit">
+   <scalar dataType="xsd:integer" units="cmlUnits:countable">0
+   </scalar>
+  </parameter>
+  <parameter name="DM.MixSCF1" dictRef="siesta:mix">
+   <scalar dataType="xsd:boolean">true
+   </scalar>
+  </parameter>
+  <parameter name="DM.PulayOnFile" dictRef="siesta:pulfile">
+   <scalar dataType="xsd:boolean">false
+   </scalar>
+  </parameter>
+  <parameter name="DM.MixingWeight" dictRef="siesta:wmix">
+   <scalar dataType="xsd:double" units="cmlUnits:dimensionless">
+   0.200000000000E-01                                                                                  
+   </scalar>
+  </parameter>
+  <parameter name="DM.OccupancyTolerance" dictRef="siesta:occtol">
+   <scalar dataType="xsd:double" units="cmlUnits:dimensionless">
+   0.100000000000E-11                                                                                  
+   </scalar>
+  </parameter>
+  <parameter name="DM.NumberKick" dictRef="siesta:nkick">
+   <scalar dataType="xsd:integer" units="cmlUnits:countable">15
+   </scalar>
+  </parameter>
+  <parameter name="DM.KickMixingWeight" dictRef="siesta:wmixkick">
+   <scalar dataType="xsd:double" units="cmlUnits:dimensionless">1.00000000000                                                                                       
+   </scalar>
+  </parameter>
+  <parameter name="SCF.Harris.Converge" dictRef="siesta:ReqHarrisConv">
+   <scalar dataType="xsd:boolean">false
+   </scalar>
+  </parameter>
+  <parameter name="SCF.Harris.Tolerance" dictRef="siesta:Harris_tolerance">
+   <scalar dataType="xsd:double" units="siestaUnits:eV">0.100000000000E-03                                                                                  
+   </scalar>
+  </parameter>
+  <parameter name="SCF.DM.Converge" dictRef="siesta:ReqDMConv">
+   <scalar dataType="xsd:boolean">true
+   </scalar>
+  </parameter>
+  <parameter name="SCF.DM.Tolerance" dictRef="siesta:dDtol">
+   <scalar dataType="xsd:double" units="siestaUnits:eAng_3">0.100000000000E-03                                                                                  
+   </scalar>
+  </parameter>
+  <parameter name="SCF.EDM.Converge" dictRef="siesta:ReqEDMConv">
+   <scalar dataType="xsd:boolean">false
+   </scalar>
+  </parameter>
+  <parameter name="SCF.EDM.Tolerance" dictRef="siesta:EDM_tolerance">
+   <scalar dataType="xsd:double" units="siestaUnits:eVeAng_3">
+   0.100000000000E-02                                                                                  
+   </scalar>
+  </parameter>
+  <parameter name="SCF.H.Converge" dictRef="siesta:ReqHConv">
+   <scalar dataType="xsd:boolean">true
+   </scalar>
+  </parameter>
+  <parameter name="SCF.H.Tolerance" dictRef="siesta:dHtol">
+   <scalar dataType="xsd:double" units="siestaUnits:eV">0.100000000000E-02                                                                                  
+   </scalar>
+  </parameter>
+  <parameter name="SCF.FreeE.Converge" dictRef="siesta:ReqEnergyConv">
+   <scalar dataType="xsd:boolean">false
+   </scalar>
+  </parameter>
+  <parameter name="SCF.FreeE.Tolerance" dictRef="siesta:dEtol">
+   <scalar dataType="xsd:double" units="siestaUnits:eV">0.100000000000E-03                                                                                  
+   </scalar>
+  </parameter>
+  <parameter name="DM.UseSaveDM" dictRef="siesta:usesavedm">
+   <scalar dataType="xsd:boolean">false
+   </scalar>
+  </parameter>
+  <parameter name="NeglNonOverlapInt" dictRef="siesta:negl">
+   <scalar dataType="xsd:boolean">false
+   </scalar>
+  </parameter>
+  <parameter name="SolutionMethod" dictRef="siesta:SCFmethod">
+   <scalar dataType="xsd:string">diagon
+   </scalar>
+  </parameter>
+  <parameter name="Diag.DivideAndConquer" dictRef="siesta:DaC">
+   <scalar dataType="xsd:boolean">true
+   </scalar>
+  </parameter>
+  <parameter name="Diag.Memory" dictRef="siesta:MemoryFactor">
+   <scalar dataType="xsd:double" units="cmlUnits:dimensionless">1.00000000000                                                                                       
+   </scalar>
+  </parameter>
+  <parameter name="ElectronicTemperature" dictRef="siesta:etemp">
+   <scalar dataType="xsd:double" units="siestaUnits:Ry">0.633356422972E-03                                                                                  
+   </scalar>
+  </parameter>
+  <parameter name="FixSpin" dictRef="siesta:fixspin">
+   <scalar dataType="xsd:boolean">false
+   </scalar>
+  </parameter>
+  <parameter name="TotalSpin" dictRef="siesta:ts">
+   <scalar dataType="xsd:double" units="siestaUnits:eSpin">0.00000000000                                                                                       
+   </scalar>
+  </parameter>
+  <parameter name="MD.TypeOfRun">
+   <scalar dataType="xsd:string">Single-Point
+   </scalar>
+  </parameter>
+  <parameter name="MD.BulkModulus">
+   <scalar dataType="xsd:double" units="siestaUnits:Ry_Bohr__3">
+   0.679773000000E-02                                                                                  
+   </scalar>
+  </parameter>
+ </parameterList>
+ <propertyList title="k-points" dictRef="siesta:kpoints">
+  <property dictRef="siesta:nkpnt">
+   <scalar dataType="xsd:integer" units="cmlUnits:countable">256
+   </scalar>
+  </property>
+  <kpoint coords=" -0.25937852 -0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.05187570  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.15562711  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.25937852  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.36312993  0.05187570" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.05187570  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.15562711  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.25937852  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.36312993  0.15562711" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.05187570  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.15562711  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.25937852  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.36312993  0.25937852" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.05187570  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.15562711  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.25937852  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852  0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711  0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570  0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.05187570  0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.15562711  0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.25937852  0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.36312993  0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993  0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.25937852 -0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.15562711 -0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.05187570 -0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.05187570 -0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.15562711 -0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.25937852 -0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords="  0.36312993 -0.36312993  0.36312993" weight="  0.00390625" />
+  <kpoint coords=" -0.36312993 -0.36312993  0.36312993" weight="  0.00390625" />
+  <property dictRef="siesta:kcutof">
+   <scalar dataType="xsd:double" units="siestaUnits:angstrom">16.0234795600                                                                                       
+   </scalar>
+  </property>
+ </propertyList>
+ <property dictRef="siesta:kscell">
+ <!--In matrix, row (first) index is fastest-->
+  <matrix units="siestaUnits:Ang" columns="3" rows="3" dataType="xsd:integer">
+           8           0           0
+           0           8           0
+           0           0           8
+
+  </matrix>
+ </property>
+ <property dictRef="siesta:kdispl">
+  <array units="siestaUnits:Ang" size="3" dataType="xsd:double">
+  5.000000000000E-01  5.000000000000E-01  5.000000000000E-01
+
+  </array>
+ </property>
+ <module dictRef="Single-Point" role="step" serial="1">
+  <molecule>
+   <atomArray>
+    <atom elementType="Ba" id="a1" ref="siesta:e001"
+     x3="    0.00000000                               "
+     y3="    0.00000000                               "
+     z3="    0.00000000                               " />
+    <atom elementType="Ti" id="a2" ref="siesta:e002"
+     x3="    2.00293495                               "
+     y3="    2.00293495                               "
+     z3="    2.00293495                               " />
+    <atom elementType="O" id="a3" ref="siesta:e003"
+     x3="    0.00000000                               "
+     y3="    2.00293495                               "
+     z3="    2.00293495                               " />
+    <atom elementType="O" id="a4" ref="siesta:e003"
+     x3="    2.00293495                               "
+     y3="    0.00000000                               "
+     z3="    2.00293495                               " />
+    <atom elementType="O" id="a5" ref="siesta:e003"
+     x3="    2.00293495                               "
+     y3="    2.00293495                               "
+     z3="    0.00000000                               " />
+   </atomArray>
+  </molecule>
+  <lattice dictRef="siesta:ucell">
+   <latticeVector units="siestaUnits:Ang" dictRef="cml:latticeVector">
+  4.005869890000E+00  0.000000000000E+00  0.000000000000E+00
+
+   </latticeVector>
+   <latticeVector units="siestaUnits:Ang" dictRef="cml:latticeVector">
+  0.000000000000E+00  4.005869890000E+00  0.000000000000E+00
+
+   </latticeVector>
+   <latticeVector units="siestaUnits:Ang" dictRef="cml:latticeVector">
+  0.000000000000E+00  0.000000000000E+00  4.005869890000E+00
+
+   </latticeVector>
+  </lattice>
+  <crystal title="Lattice Parameters">
+   <scalar title="a" dictRef="cml:a" units="units:angstrom                ">
+   4.005870                                                                                            
+   </scalar>
+   <scalar title="b" dictRef="cml:b" units="units:angstrom                ">
+   4.005870                                                                                            
+   </scalar>
+   <scalar title="c" dictRef="cml:c" units="units:angstrom                ">
+   4.005870                                                                                            
+   </scalar>
+   <scalar title="alpha" dictRef="cml:alpha"
+    units="units:degree                  ">90.000000                                                                                           
+   </scalar>
+   <scalar title="beta" dictRef="cml:beta"
+    units="units:degree                  ">90.000000                                                                                           
+   </scalar>
+   <scalar title="gamma" dictRef="cml:gamma"
+    units="units:degree                  ">90.000000                                                                                           
+   </scalar>
+  </crystal>
+  <propertyList>
+   <property title="Mesh" dictRef="siesta:ntm">
+    <array units="cmlUnits:countable" size="3" dataType="xsd:integer">
+          36          36          36
+
+    </array>
+   </property>
+   <property title="Requested Cut-Off" dictRef="siesta:g2max">
+    <scalar dataType="xsd:double" units="siestaUnits:Ry">200.000000000                                                                                       
+    </scalar>
+   </property>
+   <property title="Actual Cut-Off" dictRef="siesta:g2mesh">
+    <scalar dataType="xsd:double" units="siestaUnits:Ry">223.209661010                                                                                       
+    </scalar>
+   </property>
+  </propertyList>

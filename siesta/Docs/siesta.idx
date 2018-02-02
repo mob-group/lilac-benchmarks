@@ -1,0 +1,1746 @@
+\indexentry{Siesta@\siesta|hyperpage}{4}
+\indexentry{TranSIESTA@\tsiesta|hyperpage}{5}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{7}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{7}
+\indexentry{Makefile|hyperpage}{7}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{7}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{7}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{7}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{7}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{7}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{7}
+\indexentry{External library!MPI|hyperpage}{8}
+\indexentry{compile!MPI|hyperpage}{8}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{8}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{8}
+\indexentry{compile!pre-processor!-DMPI|hyperpage}{8}
+\indexentry{External library!OpenMP|hyperpage}{8}
+\indexentry{compile!OpenMP|hyperpage}{8}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{8}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{8}
+\indexentry{compile!libraries|hyperpage}{9}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{9}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{9}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{9}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{9}
+\indexentry{External library!BLAS|hyperpage}{9}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{10}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{10}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{10}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{10}
+\indexentry{External library!LAPACK|hyperpage}{10}
+\indexentry{External library!ScaLAPACK|hyperpage}{10}
+\indexentry{External library!fdict|hyperpage}{11}
+\indexentry{NetCDF format|hyperpage}{11}
+\indexentry{External library!NetCDF|hyperpage}{11}
+\indexentry{compile!pre-processor!-DCDF|hyperpage}{11}
+\indexentry{NetCDF format!3|hyperpage}{11}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{11}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{11}
+\indexentry{NetCDF format!4|hyperpage}{11}
+\indexentry{External library!ncdf|hyperpage}{11}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{11}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{11}
+\indexentry{compile!pre-processor!-DNCDF|hyperpage}{11}
+\indexentry{compile!pre-processor!-DNCDF\_4|hyperpage}{11}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{11}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{11}
+\indexentry{compile!pre-processor!-DNCDF\_PARALLEL|hyperpage}{11}
+\indexentry{Metis|hyperpage}{11}
+\indexentry{External library!Metis|hyperpage}{11}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{11}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{11}
+\indexentry{compile!pre-processor!-DSIESTA\_\_METIS|hyperpage}{11}
+\indexentry{MUMPS|hyperpage}{11}
+\indexentry{External library!MUMPS|hyperpage}{11}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{11}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{11}
+\indexentry{compile!pre-processor!-DSIESTA\_\_MUMPS|hyperpage}{11}
+\indexentry{PEXSI|hyperpage}{11}
+\indexentry{External library!PEXSI|hyperpage}{11}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{12}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{12}
+\indexentry{compile!pre-processor!-DSIESTA\_\_PEXSI|hyperpage}{12}
+\indexentry{flook|hyperpage}{12}
+\indexentry{External library!flook|hyperpage}{12}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{12}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{12}
+\indexentry{compile!pre-processor!-DSIESTA\_\_FLOOK|hyperpage}{12}
+\indexentry{Tests|hyperpage}{12}
+\indexentry{pseudopotential!example generation|hyperpage}{13}
+\indexentry[sfdf]{SystemLabel|hyperpage}{14}
+\indexentry{fdf.log|hyperpage}{14}
+\indexentry[sfdf]{SystemLabel|hyperpage}{15}
+\indexentry{FDF|hyperpage}{15}
+\indexentry{input file|hyperpage}{15}
+\indexentry{block@\%block|hyperpage}{15}
+\indexentry{fdf.log|hyperpage}{16}
+\indexentry{output!main output file|hyperpage}{16}
+\indexentry{output!customization|hyperpage}{17}
+\indexentry[sfdf]{LongOutput|hyperpage}{17}
+\indexentry[sfdf]{LongOutput|hyperpage}{17}
+\indexentry{output!long|hyperpage}{17}
+\indexentry[sfdf]{LongOutput|hyperpage}{17}
+\indexentry[sfdf]{WriteKpoints|hyperpage}{17}
+\indexentry{output!grid $\vec k$ points|hyperpage}{17}
+\indexentry[sfdf]{WriteKbands|hyperpage}{17}
+\indexentry{output!band $\vec k$ points|hyperpage}{17}
+\indexentry[sfdf]{WriteCoorStep|hyperpage}{17}
+\indexentry{output!atomic coordinates!in a dynamics step|hyperpage}{17}
+\indexentry[sfdf]{WriteForces|hyperpage}{17}
+\indexentry{output!forces|hyperpage}{17}
+\indexentry[sfdf]{WriteEigenvalues|hyperpage}{17}
+\indexentry{output!eigenvalues|hyperpage}{17}
+\indexentry[sfdf]{WriteWaveFunctions|hyperpage}{17}
+\indexentry{output!wave functions|hyperpage}{17}
+\indexentry[sfdf]{WriteMullikenPop|hyperpage}{17}
+\indexentry{output!Mulliken analysis|hyperpage}{17}
+\indexentry{Mulliken population analysis|hyperpage}{17}
+\indexentry{output!dedicated files|hyperpage}{17}
+\indexentry[sfdf]{LongOutput|hyperpage}{17}
+\indexentry[sfdf]{SystemLabel|hyperpage}{18}
+\indexentry[sfdf]{SystemName|hyperpage}{18}
+\indexentry[sfdf]{NumberOfSpecies|hyperpage}{18}
+\indexentry[sfdf]{ChemicalSpeciesLabel|hyperpage}{18}
+\indexentry[sfdf]{NumberOfAtoms|hyperpage}{18}
+\indexentry[sfdf]{AtomicCoordinatesAndAtomicSpecies|hyperpage}{18}
+\indexentry[sfdf]{ChemicalSpeciesLabel|hyperpage}{18}
+\indexentry{species|hyperpage}{18}
+\indexentry{ghost atoms|hyperpage}{18}
+\indexentry[sfdf]{PAO!Basis|hyperpage}{18}
+\indexentry[sfdf]{SyntheticAtoms|hyperpage}{18}
+\indexentry[sfdf]{SyntheticAtoms|hyperpage}{18}
+\indexentry[sfdf]{ChemicalSpeciesLabel|hyperpage}{18}
+\indexentry{synthetic atoms|hyperpage}{18}
+\indexentry{VCA|hyperpage}{18}
+\indexentry[sfdf]{SyntheticAtoms|hyperpage}{18}
+\indexentry{mixps       program|hyperpage}{19}
+\indexentry{fractional program|hyperpage}{19}
+\indexentry[sfdf]{AtomicMass|hyperpage}{19}
+\indexentry{isotopes|hyperpage}{19}
+\indexentry{pseudopotential!generation|hyperpage}{19}
+\indexentry[sfdf]{ChemicalSpeciesLabel|hyperpage}{19}
+\indexentry{pseudopotential!files|hyperpage}{19}
+\indexentry[sfdf]{ChemicalSpeciesLabel|hyperpage}{19}
+\indexentry[sfdf]{User.Basis|hyperpage}{20}
+\indexentry{Gen-basis@\program{Gen-basis}|hyperpage}{20}
+\indexentry[sfdf]{PAO!BasisType|hyperpage}{21}
+\indexentry[sfdf]{PAO!BasisType|hyperpage}{21}
+\indexentry[sfdf]{PAO!Basis|hyperpage}{21}
+\indexentry[sfdf]{PAO!Basis|hyperpage}{22}
+\indexentry[sfdf]{PAO!SoftDefault|hyperpage}{22}
+\indexentry{Charge confinement|hyperpage}{23}
+\indexentry[sfdf]{PAO!Basis|hyperpage}{23}
+\indexentry[sfdf]{PAO!BasisType|hyperpage}{23}
+\indexentry{basis!PAO|hyperpage}{23}
+\indexentry{finite-range pseudo-atomic       orbitals|hyperpage}{23}
+\indexentry{multiple-$\zeta$|hyperpage}{23}
+\indexentry{polarization orbitals|hyperpage}{23}
+\indexentry{diffuse orbitals|hyperpage}{23}
+\indexentry{split valence|hyperpage}{23}
+\indexentry{Gaussians|hyperpage}{23}
+\indexentry{minimal       basis|hyperpage}{23}
+\indexentry[sfdf]{PAO!BasisType!split|hyperpage}{23}
+\indexentry[sfdf]{PAO!BasisType!splitgauss|hyperpage}{24}
+\indexentry[sfdf]{PAO!BasisType!nodes|hyperpage}{24}
+\indexentry[sfdf]{PAO!BasisType!nonodes|hyperpage}{24}
+\indexentry[sfdf]{PAO!BasisType!filteret|hyperpage}{24}
+\indexentry[sfdf]{PAO!BasisSize|hyperpage}{24}
+\indexentry[sfdf]{PAO!EnergyShift|hyperpage}{24}
+\indexentry[sfdf]{PAO!SplitNorm|hyperpage}{24}
+\indexentry[sfdf]{PAO!BasisSize|hyperpage}{24}
+\indexentry{basis!PAO|hyperpage}{24}
+\indexentry[sfdf]{PAO!Basis|hyperpage}{24}
+\indexentry[sfdf]{PAO!BasisSize!SZ|hyperpage}{24}
+\indexentry[sfdf]{PAO!BasisSize!minimal|hyperpage}{24}
+\indexentry{basis!minimal|hyperpage}{24}
+\indexentry{single-$\zeta$|hyperpage}{24}
+\indexentry[sfdf]{PAO!BasisSize!DZ|hyperpage}{24}
+\indexentry{double-$\zeta$|hyperpage}{24}
+\indexentry[sfdf]{PAO!BasisType|hyperpage}{24}
+\indexentry[sfdf]{PAO!BasisSize!SZP|hyperpage}{24}
+\indexentry[sfdf]{PAO!BasisSize!DZP|hyperpage}{24}
+\indexentry{perturbative         polarization|hyperpage}{24}
+\indexentry{basis!polarization|hyperpage}{24}
+\indexentry{Ground-state         atomic configuration|hyperpage}{24}
+\indexentry[sfdf]{PAO!BasisSizes|hyperpage}{24}
+\indexentry{basis!PAO|hyperpage}{24}
+\indexentry[sfdf]{PAO!BasisSize|hyperpage}{24}
+\indexentry[sfdf]{PAO!EnergyShift|hyperpage}{24}
+\indexentry[sfdf]{PAO!Basis|hyperpage}{24}
+\indexentry[sfdf]{Write!Graphviz|hyperpage}{25}
+\indexentry[idx]{File!SystemLabel.ATOM.gv@\fontfile  {SystemLabel.ATOM.gv}|hyperpage}{25}
+\indexentry[sfiles]{SystemLabel.ATOM.gv@\fontfile  {SystemLabel.ATOM.gv}|hyperpage}{25}
+\indexentry[idx]{File!SystemLabel.ORB.gv@\fontfile  {SystemLabel.ORB.gv}|hyperpage}{25}
+\indexentry[sfiles]{SystemLabel.ORB.gv@\fontfile  {SystemLabel.ORB.gv}|hyperpage}{25}
+\indexentry[sfdf]{PAO!SplitNorm|hyperpage}{25}
+\indexentry{basis!split valence|hyperpage}{25}
+\indexentry{multiple-$\zeta$|hyperpage}{25}
+\indexentry[sfdf]{PAO!Basis|hyperpage}{25}
+\indexentry[sfdf]{PAO!SplitNormH|hyperpage}{25}
+\indexentry[sfdf]{PAO!SplitNorm|hyperpage}{25}
+\indexentry{basis!split valence for H|hyperpage}{25}
+\indexentry[sfdf]{PAO!SplitNorm|hyperpage}{25}
+\indexentry[sfdf]{PAO!NewSplitCode|hyperpage}{25}
+\indexentry{basis!new split-valence code|hyperpage}{25}
+\indexentry[sfdf]{PAO!FixSplitTable|hyperpage}{25}
+\indexentry{basis!fix split-valence table|hyperpage}{25}
+\indexentry[sfdf]{PAO!SplitTailNorm|hyperpage}{25}
+\indexentry{basis!new split-valence code|hyperpage}{25}
+\indexentry[sfdf]{PAO!NewSplitCode|hyperpage}{25}
+\indexentry[sfdf]{PAO!FixSplitTable|hyperpage}{26}
+\indexentry[sfdf]{PAO!NewSplitCode|hyperpage}{26}
+\indexentry[sfdf]{PAO!SplitTailNorm|hyperpage}{26}
+\indexentry[sfdf]{PAO!NewSplitCode|hyperpage}{26}
+\indexentry[sfdf]{PAO!EnergyCutoff|hyperpage}{26}
+\indexentry[sfdf]{PAO!BasisType|hyperpage}{26}
+\indexentry[sfdf]{PAO!EnergyPolCutoff|hyperpage}{26}
+\indexentry[sfdf]{PAO!BasisType|hyperpage}{26}
+\indexentry[sfdf]{PAO!ContractionCutoff|hyperpage}{26}
+\indexentry[sfdf]{PAO!BasisType|hyperpage}{26}
+\indexentry[sfdf]{PAO!SoftDefault|hyperpage}{26}
+\indexentry{basis!default soft confinement|hyperpage}{26}
+\indexentry[sfdf]{PAO!SoftInnerRadius|hyperpage}{26}
+\indexentry{basis!default soft confinement radius|hyperpage}{26}
+\indexentry[sfdf]{PAO!SoftPotential|hyperpage}{26}
+\indexentry{basis!default soft confinement potential|hyperpage}{26}
+\indexentry[sfdf]{PS!lmax|hyperpage}{26}
+\indexentry{Kleinman-Bylander projectors|hyperpage}{27}
+\indexentry[sfdf]{PS.KBprojectors|hyperpage}{27}
+\indexentry[sfdf]{PS!lmax|hyperpage}{27}
+\indexentry[sfdf]{KB.New.Reference.Orbitals|hyperpage}{28}
+\indexentry[sfdf]{PAO!Basis|hyperpage}{28}
+\indexentry{basis!PAO|hyperpage}{28}
+\indexentry{basis!PAO|hyperpage}{28}
+\indexentry[sfdf]{PAO!BasisSize|hyperpage}{28}
+\indexentry[sfdf]{PAO!BasisType|hyperpage}{28}
+\indexentry[sfdf]{PAO!EnergyShift|hyperpage}{28}
+\indexentry[sfdf]{PAO!SplitNorm|hyperpage}{28}
+\indexentry[sfdf]{PAO!SplitNormH|hyperpage}{28}
+\indexentry[sfdf]{PAO!SoftDefault|hyperpage}{28}
+\indexentry{cutoff radius|hyperpage}{28}
+\indexentry[sfdf]{PAO!EnergyShift|hyperpage}{28}
+\indexentry[sfdf]{PAO!SplitNorm|hyperpage}{28}
+\indexentry[sfdf]{ChemicalSpeciesLabel|hyperpage}{29}
+\indexentry[sfdf]{PAO!BasisType|hyperpage}{29}
+\indexentry{basis!per-shell split norm|hyperpage}{29}
+\indexentry{basis!soft confinement         potential|hyperpage}{29}
+\indexentry{basis!filteret basis set|hyperpage}{30}
+\indexentry[sfdf]{FilterCutoff|hyperpage}{30}
+\indexentry{Charge confinement|hyperpage}{30}
+\indexentry{scale factor|hyperpage}{30}
+\indexentry{perturbative     polarization|hyperpage}{30}
+\indexentry{basis!polarization|hyperpage}{30}
+\indexentry[sfdf]{PAO!OldStylePolOrbs|hyperpage}{30}
+\indexentry[sfdf]{PAO!Basis|hyperpage}{30}
+\indexentry[sfdf]{PAO!EnergyShift|hyperpage}{30}
+\indexentry{Bessel functions|hyperpage}{30}
+\indexentry{basis!Bessel functions|hyperpage}{30}
+\indexentry{ghost atoms|hyperpage}{30}
+\indexentry{basis!ghost atoms|hyperpage}{30}
+\indexentry{basis!basis set superposition error (BSSE)|hyperpage}{30}
+\indexentry[sfdf]{FilterCutoff|hyperpage}{31}
+\indexentry{basis!filtering|hyperpage}{31}
+\indexentry[sfdf]{FilterCutoff|hyperpage}{31}
+\indexentry[sfdf]{MeshCutoff|hyperpage}{31}
+\indexentry[sfdf]{MeshCutoff|hyperpage}{31}
+\indexentry[sfdf]{FilterCutoff|hyperpage}{31}
+\indexentry[sfdf]{FilterCutoff|hyperpage}{31}
+\indexentry[sfdf]{MeshCutoff|hyperpage}{31}
+\indexentry[sfdf]{FilterCutoff|hyperpage}{31}
+\indexentry[sfdf]{FilterTol|hyperpage}{31}
+\indexentry[sfdf]{FilterTol|hyperpage}{31}
+\indexentry{basis!filtering|hyperpage}{31}
+\indexentry[sfdf]{FilterCutoff|hyperpage}{31}
+\indexentry[sfdf]{FilterTol|hyperpage}{31}
+\indexentry[sfdf]{PAO!EnergyShift|hyperpage}{31}
+\indexentry[sfdf]{FilterTol|hyperpage}{31}
+\indexentry[sfdf]{FilterTol|hyperpage}{31}
+\indexentry[sfdf]{FilterCutoff|hyperpage}{31}
+\indexentry[sfdf]{FilterCutoff|hyperpage}{31}
+\indexentry[sfdf]{FilterTol|hyperpage}{31}
+\indexentry[sfdf]{FilterCutoff|hyperpage}{31}
+\indexentry[sfdf]{FilterTol|hyperpage}{31}
+\indexentry[sfdf]{MeshCutoff|hyperpage}{31}
+\indexentry[sfdf]{FilterTol|hyperpage}{31}
+\indexentry[sfdf]{AtomSetupOnly|hyperpage}{31}
+\indexentry{basis|hyperpage}{31}
+\indexentry{output!basis|hyperpage}{31}
+\indexentry{basis!Gen-basis standalone program|hyperpage}{31}
+\indexentry[sfdf]{ChemicalSpeciesLabel|hyperpage}{31}
+\indexentry{NetCDF format|hyperpage}{31}
+\indexentry[sfdf]{User!Basis|hyperpage}{31}
+\indexentry{basis!User basis|hyperpage}{31}
+\indexentry[sfdf]{ChemicalSpeciesLabel|hyperpage}{31}
+\indexentry{Gen-basis       program@\program{Gen-basis}|hyperpage}{31}
+\indexentry{basis!Gen-basis standalone       program|hyperpage}{31}
+\indexentry[sfdf]{User!Basis.NetCDF|hyperpage}{31}
+\indexentry{basis!User basis (NetCDF format)|hyperpage}{31}
+\indexentry{NetCDF format|hyperpage}{31}
+\indexentry[sfdf]{ChemicalSpeciesLabel|hyperpage}{32}
+\indexentry{Gen-basis       program@\program{Gen-basis}|hyperpage}{32}
+\indexentry{basis!Gen-basis standalone       program|hyperpage}{32}
+\indexentry[sfdf]{WriteIonPlotFiles|hyperpage}{32}
+\indexentry[sfdf]{BasisPressure|hyperpage}{32}
+\indexentry[idx]{File!BASIS\_ENTHALPY@\fontfile  {BASIS\_ENTHALPY}|hyperpage}{32}
+\indexentry[sfiles]{BASIS\_ENTHALPY@\fontfile  {BASIS\_ENTHALPY}|hyperpage}{32}
+\indexentry[sfdf]{PAO!EnergyShift|hyperpage}{32}
+\indexentry[sfdf]{Reparametrize.Pseudos|hyperpage}{32}
+\indexentry[sfdf]{Restricted.Radial.Grid|hyperpage}{33}
+\indexentry[sfdf]{New!A.Parameter|hyperpage}{33}
+\indexentry{basis!reparametrization of pseudopotential|hyperpage}{33}
+\indexentry[sfdf]{New!B.Parameter|hyperpage}{33}
+\indexentry{basis!reparametrization of pseudopotential|hyperpage}{33}
+\indexentry[sfdf]{Rmax.Radial.Grid|hyperpage}{33}
+\indexentry{basis!point at infinity|hyperpage}{33}
+\indexentry[sfdf]{Reparametrize.Pseudos|hyperpage}{33}
+\indexentry[sfdf]{Restricted.Radial.Grid|hyperpage}{33}
+\indexentry[sfdf]{Zmatrix|hyperpage}{33}
+\indexentry[sfdf]{ChemicalSpeciesLabel|hyperpage}{33}
+\indexentry[sfdf]{LatticeConstant|hyperpage}{33}
+\indexentry[sfdf]{LatticeParameters|hyperpage}{33}
+\indexentry[sfdf]{LatticeVectors|hyperpage}{33}
+\indexentry[sfdf]{SuperCell|hyperpage}{33}
+\indexentry[sfdf]{AtomicCoordinatesAndAtomicSpecies|hyperpage}{34}
+\indexentry[sfdf]{LatticeConstant|hyperpage}{34}
+\indexentry[sfdf]{LatticeParameters|hyperpage}{34}
+\indexentry[sfdf]{LatticeConstant|hyperpage}{34}
+\indexentry[sfdf]{LatticeConstant|hyperpage}{34}
+\indexentry[sfdf]{LatticeVectors|hyperpage}{34}
+\indexentry[sfdf]{LatticeConstant|hyperpage}{34}
+\indexentry[sfdf]{LatticeConstant|hyperpage}{34}
+\indexentry[sfdf]{LatticeVectors|hyperpage}{34}
+\indexentry[sfdf]{SuperCell|hyperpage}{34}
+\indexentry[sfdf]{SuperCell|hyperpage}{34}
+\indexentry[sfdf]{NumberOfAtoms|hyperpage}{34}
+\indexentry[sfdf]{kgrid!MonkhorstPack|hyperpage}{35}
+\indexentry[sfdf]{SuperCell|hyperpage}{35}
+\indexentry[sfdf]{AtomicCoordinatesFormat|hyperpage}{35}
+\indexentry[sfdf]{AtomicCoordinatesFormat!Bohr|hyperpage}{35}
+\indexentry[sfdf]{AtomicCoordinatesFormat!NotScaledCartesianBohr|hyperpage}{35}
+\indexentry[sfdf]{AtomicCoordinatesFormat!Ang|hyperpage}{35}
+\indexentry[sfdf]{AtomicCoordinatesFormat!NotScaledCartesianAng|hyperpage}{35}
+\indexentry[sfdf]{AtomicCoordinatesFormat!ScaledCartesian|hyperpage}{35}
+\indexentry[sfdf]{AtomicCoordinatesFormat!Fractional|hyperpage}{35}
+\indexentry[sfdf]{AtomicCoordinatesFormat!ScaledCartesian|hyperpage}{35}
+\indexentry[sfdf]{AtomCoorFormatOut|hyperpage}{35}
+\indexentry[sfdf]{AtomicCoordinatesFormat|hyperpage}{35}
+\indexentry[sfdf]{AtomicCoordinatesFormat|hyperpage}{35}
+\indexentry[sfdf]{AtomicCoordinatesOrigin|hyperpage}{35}
+\indexentry[sfdf]{LatticeVectors|hyperpage}{35}
+\indexentry[sfdf]{AtomicCoordinatesAndAtomicSpecies|hyperpage}{35}
+\indexentry[sfdf]{AtomicCoordinatesFormat|hyperpage}{35}
+\indexentry[sfdf]{NumberOfAtoms|hyperpage}{35}
+\indexentry[sfdf]{NumberOfAtoms|hyperpage}{35}
+\indexentry[sfdf]{Zmatrix|hyperpage}{35}
+\indexentry[sfdf]{Zmatrix|hyperpage}{36}
+\indexentry[sfdf]{Zmatrix|hyperpage}{36}
+\indexentry[sfdf]{ZM!UnitsLength|hyperpage}{39}
+\indexentry[sfdf]{ZM!UnitsAngle|hyperpage}{39}
+\indexentry[idx]{File!SystemLabel.STRUCT\_OUT@\fontfile  {SystemLabel.STRUCT\_OUT}|hyperpage}{39}
+\indexentry[sfiles]{SystemLabel.STRUCT\_OUT@\fontfile  {SystemLabel.STRUCT\_OUT}|hyperpage}{39}
+\indexentry[idx]{File!SystemLabel.STRUCT\_OUT@\fontfile  {SystemLabel.STRUCT\_OUT}|hyperpage}{39}
+\indexentry[sfiles]{SystemLabel.STRUCT\_OUT@\fontfile  {SystemLabel.STRUCT\_OUT}|hyperpage}{39}
+\indexentry[idx]{File!SystemLabel.STRUCT\_IN@\fontfile  {SystemLabel.STRUCT\_IN}|hyperpage}{39}
+\indexentry[sfiles]{SystemLabel.STRUCT\_IN@\fontfile  {SystemLabel.STRUCT\_IN}|hyperpage}{39}
+\indexentry[sfdf]{UseStructFile|hyperpage}{39}
+\indexentry[idx]{File!SystemLabel.STRUCT\_NEXT\_ITER@\fontfile  {SystemLabel.STRUCT\_NEXT\_ITER}|hyperpage}{39}
+\indexentry[sfiles]{SystemLabel.STRUCT\_NEXT\_ITER@\fontfile  {SystemLabel.STRUCT\_NEXT\_ITER}|hyperpage}{39}
+\indexentry[idx]{File!SystemLabel.STRUCT\_OUT@\fontfile  {SystemLabel.STRUCT\_OUT}|hyperpage}{39}
+\indexentry[sfiles]{SystemLabel.STRUCT\_OUT@\fontfile  {SystemLabel.STRUCT\_OUT}|hyperpage}{39}
+\indexentry[idx]{File!SystemLabel.STRUCT\_IN@\fontfile  {SystemLabel.STRUCT\_IN}|hyperpage}{39}
+\indexentry[sfiles]{SystemLabel.STRUCT\_IN@\fontfile  {SystemLabel.STRUCT\_IN}|hyperpage}{39}
+\indexentry[idx]{File!SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{39}
+\indexentry[sfiles]{SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{39}
+\indexentry[sfdf]{UseStructFile|hyperpage}{39}
+\indexentry[idx]{File!SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{39}
+\indexentry[sfiles]{SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{39}
+\indexentry[idx]{File!SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{39}
+\indexentry[sfiles]{SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{39}
+\indexentry[idx]{File!OUT.UCELL.ZMATRIX@\fontfile  {OUT.UCELL.ZMATRIX}|hyperpage}{39}
+\indexentry[sfiles]{OUT.UCELL.ZMATRIX@\fontfile  {OUT.UCELL.ZMATRIX}|hyperpage}{39}
+\indexentry[sfdf]{SystemLabel|hyperpage}{39}
+\indexentry[idx]{File!NEXT\_ITER.UCELL.ZMATRIX@\fontfile  {NEXT\_ITER.UCELL.ZMATRIX}|hyperpage}{39}
+\indexentry[sfiles]{NEXT\_ITER.UCELL.ZMATRIX@\fontfile  {NEXT\_ITER.UCELL.ZMATRIX}|hyperpage}{39}
+\indexentry[idx]{File!OUT.UCELL.ZMATRIX@\fontfile  {OUT.UCELL.ZMATRIX}|hyperpage}{39}
+\indexentry[sfiles]{OUT.UCELL.ZMATRIX@\fontfile  {OUT.UCELL.ZMATRIX}|hyperpage}{39}
+\indexentry[idx]{File!SystemLabel.MD@\fontfile  {SystemLabel.MD}|hyperpage}{40}
+\indexentry[sfiles]{SystemLabel.MD@\fontfile  {SystemLabel.MD}|hyperpage}{40}
+\indexentry[idx]{File!SystemLabel.MDX@\fontfile  {SystemLabel.MDX}|hyperpage}{40}
+\indexentry[sfiles]{SystemLabel.MDX@\fontfile  {SystemLabel.MDX}|hyperpage}{40}
+\indexentry[sfdf]{WriteMDHistory|hyperpage}{40}
+\indexentry[sfdf]{WriteCoorXmol|hyperpage}{40}
+\indexentry{JMol@\textsc{JMol}|hyperpage}{40}
+\indexentry{XMol@\textsc{XMol}|hyperpage}{40}
+\indexentry{Molden@\textsc{Molden}|hyperpage}{40}
+\indexentry[idx]{File!SystemLabel.xyz@\fontfile  {SystemLabel.xyz}|hyperpage}{40}
+\indexentry[sfiles]{SystemLabel.xyz@\fontfile  {SystemLabel.xyz}|hyperpage}{40}
+\indexentry[sfdf]{AtomicCoordinatesFormat|hyperpage}{40}
+\indexentry[sfdf]{AtomCoorFormatOut|hyperpage}{40}
+\indexentry[sfdf]{WriteCoorCerius|hyperpage}{40}
+\indexentry{Cerius2@\textsc{Cerius2}|hyperpage}{40}
+\indexentry[idx]{File!SystemLabel.xtl@\fontfile  {SystemLabel.xtl}|hyperpage}{40}
+\indexentry[sfiles]{SystemLabel.xtl@\fontfile  {SystemLabel.xtl}|hyperpage}{40}
+\indexentry[sfdf]{AtomicCoordinatesFormat|hyperpage}{40}
+\indexentry[sfdf]{AtomCoorFormatOut|hyperpage}{40}
+\indexentry[sfdf]{AtomicCoordinatesOrigin|hyperpage}{40}
+\indexentry{Sies2arc@\textsc{Sies2arc}|hyperpage}{40}
+\indexentry[idx]{File!SystemLabel..arc@\fontfile  {SystemLabel..arc}|hyperpage}{40}
+\indexentry[sfiles]{SystemLabel..arc@\fontfile  {SystemLabel..arc}|hyperpage}{40}
+\indexentry[sfdf]{WriteMDXmol|hyperpage}{40}
+\indexentry{XMol@\textsc{XMol}|hyperpage}{40}
+\indexentry{Molden@\textsc{Molden}|hyperpage}{40}
+\indexentry[idx]{File!SystemLabel.ANI@\fontfile  {SystemLabel.ANI}|hyperpage}{40}
+\indexentry[sfiles]{SystemLabel.ANI@\fontfile  {SystemLabel.ANI}|hyperpage}{40}
+\indexentry{animation|hyperpage}{40}
+\indexentry[sfdf]{AtomicCoordinatesFormat|hyperpage}{40}
+\indexentry[sfdf]{AtomCoorFormatOut|hyperpage}{40}
+\indexentry[idx]{File!SystemLabel.arc@\fontfile  {SystemLabel.arc}|hyperpage}{40}
+\indexentry[sfiles]{SystemLabel.arc@\fontfile  {SystemLabel.arc}|hyperpage}{40}
+\indexentry{Sies2arc@\program{Sies2arc}|hyperpage}{40}
+\indexentry[sfdf]{WriteCoorStep|hyperpage}{40}
+\indexentry[sfdf]{ChemicalSpeciesLabel|hyperpage}{40}
+\indexentry[sfdf]{MD!UseSaveXV|hyperpage}{40}
+\indexentry{reading saved data!XV|hyperpage}{40}
+\indexentry[idx]{File!SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{40}
+\indexentry[sfiles]{SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{40}
+\indexentry[sfdf]{UseSaveData|hyperpage}{40}
+\indexentry[sfdf]{UseStructFile|hyperpage}{40}
+\indexentry[idx]{File!SystemLabel.STRUCT\_IN@\fontfile  {SystemLabel.STRUCT\_IN}|hyperpage}{40}
+\indexentry[sfiles]{SystemLabel.STRUCT\_IN@\fontfile  {SystemLabel.STRUCT\_IN}|hyperpage}{40}
+\indexentry[idx]{File!SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{41}
+\indexentry[sfiles]{SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{41}
+\indexentry[idx]{File!SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{41}
+\indexentry[sfiles]{SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{41}
+\indexentry[sfdf]{MD!UseSaveZM|hyperpage}{41}
+\indexentry{reading saved data!ZM|hyperpage}{41}
+\indexentry[idx]{File!SystemLabel.ZM@\fontfile  {SystemLabel.ZM}|hyperpage}{41}
+\indexentry[sfiles]{SystemLabel.ZM@\fontfile  {SystemLabel.ZM}|hyperpage}{41}
+\indexentry[sfdf]{UseSaveData|hyperpage}{41}
+\indexentry[idx]{File!SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{41}
+\indexentry[sfiles]{SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{41}
+\indexentry[idx]{File!SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{41}
+\indexentry[sfiles]{SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{41}
+\indexentry[sfdf]{MD!TypeOfRun|hyperpage}{41}
+\indexentry[sfdf]{ChemicalSpeciesLabel|hyperpage}{41}
+\indexentry{structure input precedence issues|hyperpage}{41}
+\indexentry[sfdf]{MD!UseSaveXV|hyperpage}{41}
+\indexentry[sfdf]{UseStructFile|hyperpage}{41}
+\indexentry[sfdf]{MD!UseSaveZM|hyperpage}{41}
+\indexentry[sfdf]{WarningMinimumAtomicDistance|hyperpage}{41}
+\indexentry[sfdf]{MaxBondDistance|hyperpage}{41}
+\indexentry{interatomic       distances|hyperpage}{41}
+\indexentry[sfdf]{MaxBondDistance|hyperpage}{41}
+\indexentry[idx]{File!SystemLabel.BONDS@\fontfile  {SystemLabel.BONDS}|hyperpage}{41}
+\indexentry[sfiles]{SystemLabel.BONDS@\fontfile  {SystemLabel.BONDS}|hyperpage}{41}
+\indexentry[idx]{File!SystemLabel.BONDS\_FINAL@\fontfile  {SystemLabel.BONDS\_FINAL}|hyperpage}{41}
+\indexentry[sfiles]{SystemLabel.BONDS\_FINAL@\fontfile  {SystemLabel.BONDS\_FINAL}|hyperpage}{41}
+\indexentry[sfdf]{kgrid!Cutoff|hyperpage}{42}
+\indexentry[sfdf]{kgrid!MonkhorstPack|hyperpage}{42}
+\indexentry[sfdf]{ChangeKgridInMD|hyperpage}{42}
+\indexentry[sfdf]{kgrid!MonkhorstPack|hyperpage}{42}
+\indexentry[sfdf]{SuperCell|hyperpage}{42}
+\indexentry[sfdf]{SolutionMethod|hyperpage}{42}
+\indexentry[sfdf]{SuperCell|hyperpage}{42}
+\indexentry[sfdf]{LatticeVectors|hyperpage}{42}
+\indexentry[sfdf]{kgrid!Cutoff|hyperpage}{42}
+\indexentry[sfdf]{ChangeKgridInMD|hyperpage}{42}
+\indexentry[sfdf]{TimeReversalSymmetryForKpoints|hyperpage}{43}
+\indexentry[sfdf]{Spin|hyperpage}{43}
+\indexentry[sfdf]{Spin!Spiral|hyperpage}{43}
+\indexentry{output!grid $\vec k$ points|hyperpage}{43}
+\indexentry[idx]{File!SystemLabel.KP@\fontfile  {SystemLabel.KP}|hyperpage}{43}
+\indexentry[sfiles]{SystemLabel.KP@\fontfile  {SystemLabel.KP}|hyperpage}{43}
+\indexentry[sfdf]{WriteKpoints|hyperpage}{43}
+\indexentry{output!grid $\vec k$ points|hyperpage}{43}
+\indexentry[sfdf]{LongOutput|hyperpage}{43}
+\indexentry[sfdf]{XC!Functional|hyperpage}{43}
+\indexentry[sfdf]{XC!Authors|hyperpage}{43}
+\indexentry{exchange-correlation!CA|hyperpage}{43}
+\indexentry{exchange-correlation!PZ|hyperpage}{43}
+\indexentry{exchange-correlation!LDA|hyperpage}{43}
+\indexentry{exchange-correlation!LSD|hyperpage}{43}
+\indexentry{exchange-correlation!PW92|hyperpage}{43}
+\indexentry{exchange-correlation!PW91|hyperpage}{43}
+\indexentry{exchange-correlation!GGA|hyperpage}{43}
+\indexentry{exchange-correlation!PBE|hyperpage}{43}
+\indexentry{exchange-correlation!revPBE|hyperpage}{43}
+\indexentry{exchange-correlation!RPBE|hyperpage}{43}
+\indexentry{exchange-correlation!WC|hyperpage}{43}
+\indexentry{exchange-correlation!AM05|hyperpage}{44}
+\indexentry{exchange-correlation!PBEsol|hyperpage}{44}
+\indexentry{exchange-correlation!PBEJsJrLO|hyperpage}{44}
+\indexentry{exchange-correlation!PBEJsJrHEG|hyperpage}{44}
+\indexentry{exchange-correlation!PBEGcGxLO|hyperpage}{44}
+\indexentry{exchange-correlation!PBEGcGxHEG|hyperpage}{44}
+\indexentry{exchange-correlation!BLYP|hyperpage}{44}
+\indexentry{exchange-correlation!vdW-DF1|hyperpage}{44}
+\indexentry{exchange-correlation!DRSLL|hyperpage}{44}
+\indexentry{exchange-correlation!vdW|hyperpage}{44}
+\indexentry{exchange-correlation!vdW-DF|hyperpage}{44}
+\indexentry{exchange-correlation!vdW-DF2|hyperpage}{44}
+\indexentry{exchange-correlation!LMKLL|hyperpage}{44}
+\indexentry{exchange-correlation!KBM|hyperpage}{44}
+\indexentry{exchange-correlation!C09|hyperpage}{44}
+\indexentry{exchange-correlation!BH|hyperpage}{44}
+\indexentry{exchange-correlation!VV|hyperpage}{44}
+\indexentry[sfdf]{XC!Hybrid|hyperpage}{44}
+\indexentry[sfdf]{Spin|hyperpage}{45}
+\indexentry[idx]{File!SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{45}
+\indexentry[sfiles]{SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{45}
+\indexentry[sfdf]{Diag!ParallelOverK|hyperpage}{45}
+\indexentry[sfdf]{Spin!Fix|hyperpage}{45}
+\indexentry{fixed spin state|hyperpage}{45}
+\indexentry{LSD|hyperpage}{45}
+\indexentry[sfdf]{FixSpin|Spin!Fix}{45}
+\indexentry[sfdf]{Spin!Total|hyperpage}{45}
+\indexentry[sfdf]{Spin!Total|hyperpage}{45}
+\indexentry{fixed spin state|hyperpage}{45}
+\indexentry{LSD|hyperpage}{45}
+\indexentry{spin|hyperpage}{45}
+\indexentry[sfdf]{TotalSpin|Spin!Total}{45}
+\indexentry[sfdf]{Spin!Fix|hyperpage}{45}
+\indexentry[sfdf]{SingleExcitation|hyperpage}{45}
+\indexentry[sfdf]{Spin|hyperpage}{46}
+\indexentry[sfdf]{DM.InitSpin|hyperpage}{46}
+\indexentry[sfdf]{WriteOrbMom|hyperpage}{46}
+\indexentry[sfdf]{SCF.H!Tolerance|hyperpage}{46}
+\indexentry[sfdf]{ElectronicTemperature|hyperpage}{46}
+\indexentry[sfdf]{MeshCutoff|hyperpage}{46}
+\indexentry[sfdf]{ElectronicTemperature|hyperpage}{46}
+\indexentry[sfdf]{SCF.H!Tolerance|hyperpage}{46}
+\indexentry[sfdf]{MeshCutoff|hyperpage}{46}
+\indexentry[sfdf]{SCF.Mix|hyperpage}{46}
+\indexentry[sfdf]{Spin!OrbitStrength|hyperpage}{47}
+\indexentry[sfdf]{WriteOrbMom|hyperpage}{47}
+\indexentry[sfdf]{SCF!Want.Variational.EKS|hyperpage}{47}
+\indexentry[sfdf]{SCF.MixAfterConvergence|hyperpage}{47}
+\indexentry{Variational character of E\_KS|hyperpage}{47}
+\indexentry[sfdf]{SCF.MonitorForces|hyperpage}{47}
+\indexentry[sfdf]{Harris!Functional|hyperpage}{48}
+\indexentry[sfdf]{DM!UseSaveDM|hyperpage}{48}
+\indexentry[sfdf]{SCF!MustConverge|hyperpage}{48}
+\indexentry[sfdf]{SCF.Mix!First|hyperpage}{48}
+\indexentry[sfdf]{MaxSCFIterations|hyperpage}{48}
+\indexentry[sfdf]{MinSCFIterations|hyperpage}{48}
+\indexentry{SCF|hyperpage}{48}
+\indexentry[sfdf]{MaxSCFIterations|hyperpage}{48}
+\indexentry{SCF|hyperpage}{48}
+\indexentry[sfdf]{SCF!MustConverge|hyperpage}{48}
+\indexentry{SCF!mixing|hyperpage}{48}
+\indexentry[sfdf]{SCF.Mix|hyperpage}{48}
+\indexentry{SCF!mixing|hyperpage}{48}
+\indexentry{SCF!mixing!Hamiltonian|hyperpage}{48}
+\indexentry{SCF!mixing!Density|hyperpage}{48}
+\indexentry{SCF!mixing!Charge|hyperpage}{49}
+\indexentry[sfdf]{SCF.Mix!Spin|hyperpage}{49}
+\indexentry[sfdf]{SCF.Mix!First|hyperpage}{49}
+\indexentry[sfdf]{DM.MixSCF1|see SCF.Mix.First}{49}
+\indexentry[sfdf]{SCF.Mixer!Method|hyperpage}{49}
+\indexentry[sfdf]{SCF.Mixer!Variant|hyperpage}{49}
+\indexentry{SCF!mixing!Linear|hyperpage}{49}
+\indexentry{SCF!mixing!Pulay|hyperpage}{49}
+\indexentry{SCF!mixing!Broyden|hyperpage}{50}
+\indexentry[sfdf]{SCF.Mixer!Variant|hyperpage}{50}
+\indexentry[sfdf]{SCF.Mixer.<>!weight.linear|hyperpage}{50}
+\indexentry[sfdf]{SCF.Mixer!Weight|hyperpage}{50}
+\indexentry[sfdf]{DM.MixingWeight|see SCF.Mixer.Weight}{50}
+\indexentry[sfdf]{SCF.Mixer!Method|hyperpage}{50}
+\indexentry[sfdf]{SCF.Mixer!History|hyperpage}{50}
+\indexentry[sfdf]{DM.NumberPulay|see SCF.Mixer.History}{50}
+\indexentry[sfdf]{DM.NumberBroyden|see SCF.Mixer.History}{50}
+\indexentry[sfdf]{SCF.Mixer!Kick|hyperpage}{50}
+\indexentry[sfdf]{DM.NumberKick|see SCF.Mixer.Kick}{50}
+\indexentry[sfdf]{SCF.Mixer!Kick.Weight|hyperpage}{50}
+\indexentry[sfdf]{SCF.Mixer!Kick.Weight|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Weight|hyperpage}{51}
+\indexentry[sfdf]{DM.KickMixingWeight|see SCF.Mixer.Kick.Weight}{51}
+\indexentry[sfdf]{SCF.Mixer!Restart|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Kick|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Restart.Save|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Restart.Save|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Restart|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Linear.After|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Method|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Linear.After.Weight|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Linear.After.Weight|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Weight|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Method|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Linear.After.Weight|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixers|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer.<>|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer.<>|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer.<>!method|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Method|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer.<>!variant|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Variant|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer.<>!weight|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!Weight|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer.<>!history|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer!History|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer.<>!weight.linear|hyperpage}{51}
+\indexentry[sfdf]{SCF.Mixer.<>!restart|hyperpage}{52}
+\indexentry[sfdf]{SCF.Mixer!Restart|hyperpage}{52}
+\indexentry[sfdf]{SCF.Mixer.<>!restart.save|hyperpage}{52}
+\indexentry[sfdf]{SCF.Mixer!Restart.Save|hyperpage}{52}
+\indexentry[sfdf]{SCF.Mixer.<>!iterations|hyperpage}{52}
+\indexentry[sfdf]{SCF.Mixer.<>!next|hyperpage}{52}
+\indexentry[sfdf]{SCF.Mixer.<>!next.conv|hyperpage}{52}
+\indexentry[sfdf]{SCF.Mixer.<>!next.p|hyperpage}{52}
+\indexentry[sfdf]{SCF.Mixer.<>!restart.p|hyperpage}{52}
+\indexentry[sfdf]{Compat!Pre-v4-DM-H|hyperpage}{53}
+\indexentry{Backward compatibility|hyperpage}{53}
+\indexentry{SCF!compat-pre4-dm-h|hyperpage}{53}
+\indexentry[sfdf]{SCF.Mix!AfterConvergence|hyperpage}{53}
+\indexentry[sfdf]{SCF!RecomputeHAfterScf|hyperpage}{53}
+\indexentry[sfdf]{SCF.Mix!First|hyperpage}{53}
+\indexentry[sfdf]{SCF.Mix!AfterConvergence|hyperpage}{53}
+\indexentry{SCF!mixing|hyperpage}{53}
+\indexentry{SCF!mixing!end of cycle|hyperpage}{53}
+\indexentry[sfdf]{Compat!Pre-v4-DM-H|hyperpage}{54}
+\indexentry[sfdf]{SCF!RecomputeHAfterSCF|hyperpage}{54}
+\indexentry{SCF!Recomputing H|hyperpage}{54}
+\indexentry[sfdf]{Compat!Pre-v4-DM-H|hyperpage}{54}
+\indexentry{SCF!mixing!Charge|hyperpage}{54}
+\indexentry[sfdf]{SCF.Mix|hyperpage}{54}
+\indexentry[sfdf]{DM!MixingWeight|hyperpage}{54}
+\indexentry[sfdf]{SCF.Kerker.q0sq|hyperpage}{55}
+\indexentry[sfdf]{SCF.RhoGMixingCutoff|hyperpage}{55}
+\indexentry[sfdf]{SCF.RhoG.DIIS.Depth|hyperpage}{55}
+\indexentry[sfdf]{SCF.RhoG.Metric.Preconditioner.Cutoff|hyperpage}{55}
+\indexentry[sfdf]{SCF.DebugRhoGMixing|hyperpage}{55}
+\indexentry{SCF!mixing!Charge|hyperpage}{55}
+\indexentry[sfdf]{Debug!DIIS|hyperpage}{55}
+\indexentry{SCF!mixing!Charge|hyperpage}{55}
+\indexentry[sfdf]{SCF.MixCharge!SCF1|hyperpage}{55}
+\indexentry{SCF!mixing!Charge|hyperpage}{55}
+\indexentry[sfdf]{DM!UseSaveDM|hyperpage}{57}
+\indexentry{reading saved data!density matrix|hyperpage}{57}
+\indexentry[idx]{File!SystemLabel..DM@\fontfile  {SystemLabel..DM}|hyperpage}{57}
+\indexentry[sfiles]{SystemLabel..DM@\fontfile  {SystemLabel..DM}|hyperpage}{57}
+\indexentry[idx]{File!SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{57}
+\indexentry[sfiles]{SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{57}
+\indexentry[idx]{File!SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{57}
+\indexentry[sfiles]{SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{57}
+\indexentry[sfdf]{Spin|hyperpage}{57}
+\indexentry[sfdf]{Spin|hyperpage}{57}
+\indexentry[sfdf]{DM!FormattedFiles|hyperpage}{57}
+\indexentry{reading saved data!density matrix|hyperpage}{57}
+\indexentry[sfdf]{DM!FormattedInput|hyperpage}{57}
+\indexentry[sfdf]{DM!FormattedOutput|hyperpage}{57}
+\indexentry[idx]{File!SystemLabel.DMF@\fontfile  {SystemLabel.DMF}|hyperpage}{57}
+\indexentry[sfiles]{SystemLabel.DMF@\fontfile  {SystemLabel.DMF}|hyperpage}{57}
+\indexentry[sfdf]{DM!FormattedInput|hyperpage}{57}
+\indexentry{reading saved data!density matrix|hyperpage}{57}
+\indexentry[sfdf]{DM!FormattedOutput|hyperpage}{57}
+\indexentry{reading saved data!density matrix|hyperpage}{57}
+\indexentry[sfdf]{DM!InitSpin!AF|hyperpage}{57}
+\indexentry{spin!initialization|hyperpage}{57}
+\indexentry{ferromagnetic initial DM|hyperpage}{57}
+\indexentry{antiferromagnetic initial DM|hyperpage}{57}
+\indexentry[sfdf]{DM!InitSpin|hyperpage}{57}
+\indexentry[sfdf]{AtomicCoordinatesAndAtomicSpecies|hyperpage}{57}
+\indexentry[sfdf]{Spin|hyperpage}{57}
+\indexentry[sfdf]{DM!InitSpinAF|hyperpage}{58}
+\indexentry[sfdf]{DM!AllowReuse|hyperpage}{58}
+\indexentry[sfdf]{DM!AllowExtrapolation|hyperpage}{58}
+\indexentry[sfdf]{DM!History.Depth|hyperpage}{58}
+\indexentry[sfdf]{DM!History.Depth|hyperpage}{58}
+\indexentry[sfdf]{SCF.Read.Charge.NetCDF|hyperpage}{58}
+\indexentry{reading saved data!charge density|hyperpage}{58}
+\indexentry[idx]{File!Rho.IN.grid.nc@\fontfile  {Rho.IN.grid.nc}|hyperpage}{58}
+\indexentry[sfiles]{Rho.IN.grid.nc@\fontfile  {Rho.IN.grid.nc}|hyperpage}{58}
+\indexentry[idx]{File!SystemLabel.grid.nc@\fontfile  {SystemLabel.grid.nc}|hyperpage}{58}
+\indexentry[sfiles]{SystemLabel.grid.nc@\fontfile  {SystemLabel.grid.nc}|hyperpage}{58}
+\indexentry[sfdf]{SCF.Read.Deformation.Charge.NetCDF|hyperpage}{58}
+\indexentry{reading saved data!deformation charge density|hyperpage}{58}
+\indexentry[idx]{File!DeltaRho.IN.grid.nc@\fontfile  {DeltaRho.IN.grid.nc}|hyperpage}{58}
+\indexentry[sfiles]{DeltaRho.IN.grid.nc@\fontfile  {DeltaRho.IN.grid.nc}|hyperpage}{58}
+\indexentry[idx]{File!SystemLabel.grid.nc@\fontfile  {SystemLabel.grid.nc}|hyperpage}{58}
+\indexentry[sfiles]{SystemLabel.grid.nc@\fontfile  {SystemLabel.grid.nc}|hyperpage}{58}
+\indexentry{output!density matrix|hyperpage}{58}
+\indexentry[sfdf]{Use.Blocked.WriteMat|hyperpage}{58}
+\indexentry[sfdf]{Use.Blocked.WriteMat|hyperpage}{59}
+\indexentry[idx]{File!SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{59}
+\indexentry[sfiles]{SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{59}
+\indexentry[sfdf]{S.Only|hyperpage}{59}
+\indexentry[sfdf]{Write!DM|hyperpage}{59}
+\indexentry[sfdf]{Use.Blocked.WriteMat|hyperpage}{59}
+\indexentry[idx]{File!SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{59}
+\indexentry[sfiles]{SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{59}
+\indexentry[idx]{File!DM\_MIXED.blocked@\fontfile  {DM\_MIXED.blocked}|hyperpage}{59}
+\indexentry[sfiles]{DM\_MIXED.blocked@\fontfile  {DM\_MIXED.blocked}|hyperpage}{59}
+\indexentry[idx]{File!DM\_OUT.blocked@\fontfile  {DM\_OUT.blocked}|hyperpage}{59}
+\indexentry[sfiles]{DM\_OUT.blocked@\fontfile  {DM\_OUT.blocked}|hyperpage}{59}
+\indexentry[sfdf]{Write!DM.end.of.cycle|hyperpage}{59}
+\indexentry[sfdf]{Write!DM|hyperpage}{59}
+\indexentry[sfdf]{Write!DM|hyperpage}{59}
+\indexentry[sfdf]{SCF.MixAfterConvergence|hyperpage}{59}
+\indexentry[sfdf]{Write!H|hyperpage}{59}
+\indexentry[idx]{File!H\_MIXED@\fontfile  {H\_MIXED}|hyperpage}{59}
+\indexentry[sfiles]{H\_MIXED@\fontfile  {H\_MIXED}|hyperpage}{59}
+\indexentry[idx]{File!H\_DMGEN@\fontfile  {H\_DMGEN}|hyperpage}{59}
+\indexentry[sfiles]{H\_DMGEN@\fontfile  {H\_DMGEN}|hyperpage}{59}
+\indexentry[sfdf]{Use.Blocked.WriteMat|hyperpage}{59}
+\indexentry[sfdf]{Write!H.end.of.cycle|hyperpage}{59}
+\indexentry[sfdf]{Write!H|hyperpage}{59}
+\indexentry[sfdf]{Write!H|hyperpage}{59}
+\indexentry[sfdf]{SCF.MixAfterConvergence|hyperpage}{59}
+\indexentry[sfdf]{Write!DM.NetCDF|hyperpage}{59}
+\indexentry{output!density matrix|hyperpage}{59}
+\indexentry[idx]{File!DM.nc@\fontfile  {DM.nc}|hyperpage}{59}
+\indexentry[sfiles]{DM.nc@\fontfile  {DM.nc}|hyperpage}{59}
+\indexentry[sfdf]{Write!DM.History.NetCDF|hyperpage}{59}
+\indexentry[idx]{File!DM.nc@\fontfile  {DM.nc}|hyperpage}{59}
+\indexentry[sfiles]{DM.nc@\fontfile  {DM.nc}|hyperpage}{59}
+\indexentry[idx]{File!DM.nc@\fontfile  {DM.nc}|hyperpage}{59}
+\indexentry[sfiles]{DM.nc@\fontfile  {DM.nc}|hyperpage}{59}
+\indexentry[sfdf]{Write!DMHS.NetCDF|hyperpage}{60}
+\indexentry{output!density matrix|hyperpage}{60}
+\indexentry{output!Hamiltonian|hyperpage}{60}
+\indexentry{output!overlap matrix|hyperpage}{60}
+\indexentry[idx]{File!DMHS.nc@\fontfile  {DMHS.nc}|hyperpage}{60}
+\indexentry[sfiles]{DMHS.nc@\fontfile  {DMHS.nc}|hyperpage}{60}
+\indexentry[sfdf]{Write!DMHS.History.NetCDF|hyperpage}{60}
+\indexentry[sfdf]{Write!DM.History.NetCDF|hyperpage}{60}
+\indexentry{output!density matrix|hyperpage}{60}
+\indexentry{output!density matrix history|hyperpage}{60}
+\indexentry[idx]{File!DM-NNNN.nc@\fontfile  {DM-NNNN.nc}|hyperpage}{60}
+\indexentry[sfiles]{DM-NNNN.nc@\fontfile  {DM-NNNN.nc}|hyperpage}{60}
+\indexentry[sfdf]{Write!DM.NetCDF|hyperpage}{60}
+\indexentry[sfdf]{Write!DMHS.History.NetCDF|hyperpage}{60}
+\indexentry{output!density matrix history|hyperpage}{60}
+\indexentry{output!Hamiltonian history|hyperpage}{60}
+\indexentry{output!overlap matrix|hyperpage}{60}
+\indexentry[idx]{File!DMHS-NNNN.nc@\fontfile  {DMHS-NNNN.nc}|hyperpage}{60}
+\indexentry[sfiles]{DMHS-NNNN.nc@\fontfile  {DMHS-NNNN.nc}|hyperpage}{60}
+\indexentry[sfdf]{Write!DMHS.NetCDF|hyperpage}{60}
+\indexentry[sfdf]{Write!TSHS.History|hyperpage}{60}
+\indexentry{output!Hamiltonian history|hyperpage}{60}
+\indexentry{output!overlap matrix history|hyperpage}{60}
+\indexentry[idx]{File!SystemLabel.N.TSHS@\fontfile  {SystemLabel.N.TSHS}|hyperpage}{60}
+\indexentry[sfiles]{SystemLabel.N.TSHS@\fontfile  {SystemLabel.N.TSHS}|hyperpage}{60}
+\indexentry{SCF convergence criteria|hyperpage}{60}
+\indexentry[sfdf]{SCF.DM!Converge|hyperpage}{60}
+\indexentry{SCF!mixing!Density matrix convergence|hyperpage}{60}
+\indexentry[sfdf]{SCF.DM!Tolerance|hyperpage}{60}
+\indexentry[sfdf]{SCF.DM!Converge|hyperpage}{60}
+\indexentry[sfdf]{DM.Tolerance|hyperpage}{60}
+\indexentry[sfdf]{SCF.DM!Tolerance|hyperpage}{60}
+\indexentry[sfdf]{DM.Tolerance|hyperpage}{60}
+\indexentry[sfdf]{DM.Normalization.Tolerance|hyperpage}{60}
+\indexentry[sfdf]{SCF.H!Converge|hyperpage}{60}
+\indexentry{SCF!mixing!Hamiltonian convergence|hyperpage}{60}
+\indexentry[sfdf]{SCF.H!Tolerance|hyperpage}{61}
+\indexentry[sfdf]{SCF.H!Tolerance|hyperpage}{61}
+\indexentry[sfdf]{SCF.H!Converge|hyperpage}{61}
+\indexentry[sfdf]{SCF.H!Converge|hyperpage}{61}
+\indexentry[sfdf]{SCF.EDM!Converge|hyperpage}{61}
+\indexentry{SCF!mixing!energy density matrix convergence|hyperpage}{61}
+\indexentry[sfdf]{SCF.EDM!Tolerance|hyperpage}{61}
+\indexentry[sfdf]{SCF.DM!Tolerance|hyperpage}{61}
+\indexentry[sfdf]{SCF.EDM!Tolerance|hyperpage}{61}
+\indexentry[sfdf]{SCF.EDM!Converge|hyperpage}{61}
+\indexentry[sfdf]{SCF.EDM!Converge|hyperpage}{61}
+\indexentry[sfdf]{SCF.FreeE!Converge|hyperpage}{61}
+\indexentry{SCF!mixing!energy convergence|hyperpage}{61}
+\indexentry[sfdf]{DM.RequireEnergyConvergence|hyperpage}{61}
+\indexentry[sfdf]{SCF.FreeE!Tolerance|hyperpage}{61}
+\indexentry[sfdf]{SCF.FreeE!Tolerance|hyperpage}{61}
+\indexentry[sfdf]{SCF.FreeE!Converge|hyperpage}{61}
+\indexentry[sfdf]{DM.EnergyTolerance|hyperpage}{61}
+\indexentry[sfdf]{SCF.FreeE!Converge|hyperpage}{61}
+\indexentry[sfdf]{SCF.Harris!Converge|hyperpage}{61}
+\indexentry{SCF!mixing!harris energy convergence|hyperpage}{61}
+\indexentry[sfdf]{DM.Require.Harris.Convergence|hyperpage}{61}
+\indexentry[sfdf]{SCF.Harris!Tolerance|hyperpage}{61}
+\indexentry[idx]{File!BASIS\_HARRIS\_ENTHALPY@\fontfile  {BASIS\_HARRIS\_ENTHALPY}|hyperpage}{61}
+\indexentry[sfiles]{BASIS\_HARRIS\_ENTHALPY@\fontfile  {BASIS\_HARRIS\_ENTHALPY}|hyperpage}{61}
+\indexentry[idx]{File!BASIS\_ENTHALPY@\fontfile  {BASIS\_ENTHALPY}|hyperpage}{61}
+\indexentry[sfiles]{BASIS\_ENTHALPY@\fontfile  {BASIS\_ENTHALPY}|hyperpage}{61}
+\indexentry[sfdf]{SCF.DM!Converge|hyperpage}{61}
+\indexentry[sfdf]{SCF.H!Converge|hyperpage}{61}
+\indexentry[sfdf]{SCF.Harris!Tolerance|hyperpage}{61}
+\indexentry[sfdf]{SCF.Harris!Converge|hyperpage}{61}
+\indexentry[sfdf]{SCF.Harris!Converge|hyperpage}{61}
+\indexentry[sfdf]{MeshCutoff|hyperpage}{62}
+\indexentry[sfdf]{MeshCutoff|hyperpage}{62}
+\indexentry[sfdf]{MeshCutoff|hyperpage}{62}
+\indexentry{grid|hyperpage}{62}
+\indexentry{mesh|hyperpage}{62}
+\indexentry[sfdf]{MeshSubDivisions|hyperpage}{62}
+\indexentry{grid|hyperpage}{62}
+\indexentry{mesh|hyperpage}{62}
+\indexentry[sfdf]{Grid.CellSampling|hyperpage}{62}
+\indexentry{egg-box effect|hyperpage}{62}
+\indexentry{rippling|hyperpage}{62}
+\indexentry[sfdf]{Grid.CellSampling|hyperpage}{62}
+\indexentry[sfdf]{Grid.CellSampling|hyperpage}{63}
+\indexentry[sfdf]{EggboxRemove|hyperpage}{64}
+\indexentry{egg-box effect|hyperpage}{64}
+\indexentry{rippling|hyperpage}{64}
+\indexentry[sfdf]{EggboxScale|hyperpage}{64}
+\indexentry[sfdf]{MD.VariableCell|hyperpage}{65}
+\indexentry[sfdf]{EggboxScale|hyperpage}{65}
+\indexentry{egg-box effect|hyperpage}{65}
+\indexentry{rippling|hyperpage}{65}
+\indexentry[sfdf]{EggboxRemove|hyperpage}{65}
+\indexentry[sfdf]{NeglNonOverlapInt|hyperpage}{65}
+\indexentry[sfdf]{SaveHS|hyperpage}{65}
+\indexentry{output!Hamiltonian \& overlap|hyperpage}{65}
+\indexentry[idx]{File!SystemLabel.HSX@\fontfile  {SystemLabel.HSX}|hyperpage}{65}
+\indexentry[sfiles]{SystemLabel.HSX@\fontfile  {SystemLabel.HSX}|hyperpage}{65}
+\indexentry[idx]{File!SystemLabel.HSX@\fontfile  {SystemLabel.HSX}|hyperpage}{65}
+\indexentry[sfiles]{SystemLabel.HSX@\fontfile  {SystemLabel.HSX}|hyperpage}{65}
+\indexentry[idx]{File!SystemLabel.HS@\fontfile  {SystemLabel.HS}|hyperpage}{65}
+\indexentry[sfiles]{SystemLabel.HS@\fontfile  {SystemLabel.HS}|hyperpage}{65}
+\indexentry[idx]{File!SystemLabel.HS@\fontfile  {SystemLabel.HS}|hyperpage}{65}
+\indexentry[sfiles]{SystemLabel.HS@\fontfile  {SystemLabel.HS}|hyperpage}{65}
+\indexentry[idx]{File!SystemLabel.HSX@\fontfile  {SystemLabel.HSX}|hyperpage}{65}
+\indexentry[sfiles]{SystemLabel.HSX@\fontfile  {SystemLabel.HSX}|hyperpage}{65}
+\indexentry[sfdf]{COOP.Write|hyperpage}{65}
+\indexentry{output!HSX file|hyperpage}{65}
+\indexentry[sfdf]{Write!DMHS.NetCDF|hyperpage}{65}
+\indexentry[sfdf]{Write!DMHS.History.NetCDF|hyperpage}{65}
+\indexentry[sfdf]{FixAuxiliaryCell|hyperpage}{65}
+\indexentry[sfdf]{NaiveAuxiliaryCell|hyperpage}{65}
+\indexentry{COOP/COHP curves!Folding in Gamma-point calculations|hyperpage}{66}
+\indexentry[sfdf]{SolutionMethod|hyperpage}{66}
+\indexentry[sfdf]{NumberOfEigenStates|hyperpage}{66}
+\indexentry[sfdf]{Diag!ELPA|hyperpage}{67}
+\indexentry[sfdf]{NumberOfEigenStates|hyperpage}{67}
+\indexentry[sfdf]{Diag!ParallelOverK|hyperpage}{67}
+\indexentry[sfdf]{Diag!MRRR|hyperpage}{67}
+\indexentry[sfdf]{NumberOfEigenStates|hyperpage}{67}
+\indexentry[sfdf]{Diag!ParallelOverK|hyperpage}{67}
+\indexentry{compile!pre-processor!-DSIESTA\_\_MRRR|hyperpage}{67}
+\indexentry[sfdf]{Diag!UseNewDiagk|hyperpage}{67}
+\indexentry[sfdf]{NumberOfEigenStates|hyperpage}{67}
+\indexentry[idx]{File!OCCS@\fontfile  {OCCS}|hyperpage}{67}
+\indexentry[sfiles]{OCCS@\fontfile  {OCCS}|hyperpage}{67}
+\indexentry[sfdf]{Diag!ParallelOverK|hyperpage}{67}
+\indexentry[sfdf]{Diag!DivideAndConquer|hyperpage}{67}
+\indexentry[sfdf]{Diag!AllInOne|hyperpage}{68}
+\indexentry[sfdf]{Diag!NoExpert|hyperpage}{68}
+\indexentry[sfdf]{Diag!PreRotate|hyperpage}{68}
+\indexentry[sfdf]{Diag!Use2D|hyperpage}{68}
+\indexentry[idx]{File!WFS.nc@\fontfile  {WFS.nc}|hyperpage}{68}
+\indexentry[sfiles]{WFS.nc@\fontfile  {WFS.nc}|hyperpage}{68}
+\indexentry[sfdf]{Diag!UseNewDiagk|hyperpage}{68}
+\indexentry[idx]{File!SystemLabel.fullBZ.WFSX@\fontfile  {SystemLabel.fullBZ.WFSX}|hyperpage}{68}
+\indexentry[sfiles]{SystemLabel.fullBZ.WFSX@\fontfile  {SystemLabel.fullBZ.WFSX}|hyperpage}{68}
+\indexentry[sfdf]{COOP.Write|hyperpage}{68}
+\indexentry[sfdf]{WriteEigenvalues|hyperpage}{68}
+\indexentry{output!eigenvalues|hyperpage}{68}
+\indexentry[idx]{File!SystemLabel.EIG@\fontfile  {SystemLabel.EIG}|hyperpage}{68}
+\indexentry[sfiles]{SystemLabel.EIG@\fontfile  {SystemLabel.EIG}|hyperpage}{68}
+\indexentry{Eig2DOS@\textsc{Eig2DOS}|hyperpage}{68}
+\indexentry{density of states|hyperpage}{68}
+\indexentry[sfdf]{SolutionMethod|hyperpage}{68}
+\indexentry[sfdf]{OccupationFunction|hyperpage}{68}
+\indexentry[sfdf]{ElectronicTemperature|hyperpage}{69}
+\indexentry[sfdf]{ElectronicTemperature|hyperpage}{69}
+\indexentry[sfdf]{OccupationMPOrder|hyperpage}{69}
+\indexentry[sfdf]{OccupationMPOrder|hyperpage}{69}
+\indexentry[sfdf]{OccupationFunction|hyperpage}{69}
+\indexentry[sfdf]{ElectronicTemperature|hyperpage}{69}
+\indexentry[sfdf]{Spin!Fix|hyperpage}{69}
+\indexentry[sfdf]{Spin!Total|hyperpage}{69}
+\indexentry[sfdf]{Spin|hyperpage}{69}
+\indexentry[sfdf]{ON.eta|hyperpage}{70}
+\indexentry[sfdf]{ON.eta|hyperpage}{70}
+\indexentry[sfdf]{ON.eta|hyperpage}{70}
+\indexentry[sfdf]{OMM!UseCholesky|hyperpage}{70}
+\indexentry[sfdf]{OMM!Use2D|hyperpage}{70}
+\indexentry[sfdf]{OMM!UseSparse|hyperpage}{70}
+\indexentry[sfdf]{OMM!UseCholesky|hyperpage}{70}
+\indexentry[sfdf]{OMM!Use2D|hyperpage}{70}
+\indexentry[sfdf]{OMM!Precon|hyperpage}{70}
+\indexentry[sfdf]{OMM!UseCholesky|hyperpage}{70}
+\indexentry[sfdf]{OMM!PreconFirstStep|hyperpage}{70}
+\indexentry[sfdf]{OMM!Precon|hyperpage}{70}
+\indexentry[sfdf]{OMM!Precon|hyperpage}{70}
+\indexentry[sfdf]{OMM!Diagon|hyperpage}{70}
+\indexentry[sfdf]{SolutionMethod|hyperpage}{70}
+\indexentry[sfdf]{OMM!DiagonFirstStep|hyperpage}{70}
+\indexentry[sfdf]{OMM!Diagon|hyperpage}{70}
+\indexentry[sfdf]{OMM!Diagon|hyperpage}{70}
+\indexentry[sfdf]{OMM!BlockSize|hyperpage}{70}
+\indexentry[sfdf]{BlockSize|hyperpage}{70}
+\indexentry[sfdf]{BlockSize|hyperpage}{71}
+\indexentry[sfdf]{OMM!TPreconScale|hyperpage}{71}
+\indexentry[sfdf]{OMM!RelTol|hyperpage}{71}
+\indexentry[sfdf]{ON!Etol|hyperpage}{71}
+\indexentry[sfdf]{OMM!Eigenvalues|hyperpage}{71}
+\indexentry[sfdf]{OMM!WriteCoeffs|hyperpage}{71}
+\indexentry[sfdf]{OMM!ReadCoeffs|hyperpage}{71}
+\indexentry[sfdf]{DM.UseSaveDM|hyperpage}{71}
+\indexentry[sfdf]{OMM!Use2D|hyperpage}{71}
+\indexentry[sfdf]{OMM!BlockSize|hyperpage}{71}
+\indexentry[sfdf]{BlockSize|hyperpage}{71}
+\indexentry[sfdf]{OMM!LongOutput|hyperpage}{71}
+\indexentry[sfdf]{ON.functional|hyperpage}{71}
+\indexentry[sfdf]{ON.MaxNumIter|hyperpage}{72}
+\indexentry[sfdf]{ON.Etol|hyperpage}{72}
+\indexentry[sfdf]{ON.Etol|hyperpage}{72}
+\indexentry[sfdf]{ON.eta|hyperpage}{72}
+\indexentry[sfdf]{ON.eta.alpha|hyperpage}{72}
+\indexentry[sfdf]{ON.eta.beta|hyperpage}{72}
+\indexentry[sfdf]{ON.RcLWF|hyperpage}{72}
+\indexentry{Localized Wave Functions|hyperpage}{72}
+\indexentry[sfdf]{ON.ChemicalPotential|hyperpage}{72}
+\indexentry{Chemical Potential|hyperpage}{72}
+\indexentry{Chebyshev Polynomials|hyperpage}{72}
+\indexentry[sfdf]{ON.ChemicalPotential.Use|hyperpage}{72}
+\indexentry{Chemical Potential|hyperpage}{72}
+\indexentry[sfdf]{ON.eta|hyperpage}{73}
+\indexentry[sfdf]{ON.eta|hyperpage}{73}
+\indexentry[sfdf]{ON.ChemicalPotential|hyperpage}{73}
+\indexentry[sfdf]{ON.ChemicalPotential.Rc|hyperpage}{73}
+\indexentry{Chemical Potential|hyperpage}{73}
+\indexentry[sfdf]{ON.ChemicalPotential.Temperature|hyperpage}{73}
+\indexentry{Chemical Potential|hyperpage}{73}
+\indexentry[sfdf]{ON.ChemicalPotential.Order|hyperpage}{73}
+\indexentry{Chemical Potential|hyperpage}{73}
+\indexentry[sfdf]{ON.LowerMemory|hyperpage}{73}
+\indexentry{Lower order N memory|hyperpage}{73}
+\indexentry{Localized Wave Functions|hyperpage}{73}
+\indexentry[sfdf]{ON.UseSaveLWF|hyperpage}{73}
+\indexentry{reading saved data!localized wave functions (order-$N$)|hyperpage}{73}
+\indexentry{Restart of O(N) calculations|hyperpage}{73}
+\indexentry[idx]{File!SystemLabel.LWF@\fontfile  {SystemLabel.LWF}|hyperpage}{73}
+\indexentry[sfiles]{SystemLabel.LWF@\fontfile  {SystemLabel.LWF}|hyperpage}{73}
+\indexentry{PEXSI solver|hyperpage}{73}
+\indexentry[sfdf]{ElectronicTemperature|hyperpage}{74}
+\indexentry[sfdf]{PEXSI!NumPoles|hyperpage}{74}
+\indexentry[sfdf]{PEXSI!deltaE|hyperpage}{74}
+\indexentry[sfdf]{PEXSI!deltaE|hyperpage}{74}
+\indexentry[sfdf]{PEXSI!deltaE|hyperpage}{74}
+\indexentry[sfdf]{PEXSI!Verbosity|hyperpage}{74}
+\indexentry[sfdf]{PEXSI!Gap|hyperpage}{74}
+\indexentry[sfdf]{MPI!Nprocs.SIESTA|hyperpage}{74}
+\indexentry[sfdf]{PEXSI!NP-per-pole|hyperpage}{74}
+\indexentry[sfdf]{PEXSI!NP-per-pole|hyperpage}{75}
+\indexentry[sfdf]{PEXSI!NP-per-pole|hyperpage}{75}
+\indexentry[sfdf]{PEXSI!NP-per-pole|hyperpage}{75}
+\indexentry[sfdf]{PEXSI!Ordering|hyperpage}{75}
+\indexentry[sfdf]{PEXSI!Ordering|hyperpage}{75}
+\indexentry[sfdf]{PEXSI!Ordering|hyperpage}{75}
+\indexentry[sfdf]{PEXSI!NP-symbfact|hyperpage}{75}
+\indexentry[sfdf]{PEXSI!NP-symbfact|hyperpage}{75}
+\indexentry[sfdf]{PEXSI!Verbosity|hyperpage}{75}
+\indexentry[sfdf]{PEXSI!num-electron-tolerance|hyperpage}{75}
+\indexentry[sfdf]{PEXSI!num-electron-tolerance-lower-bound|hyperpage}{75}
+\indexentry[sfdf]{PEXSI!num-electron-tolerance-upper-bound|hyperpage}{76}
+\indexentry[sfdf]{PEXSI!num-electron-tolerance-upper-bound|hyperpage}{76}
+\indexentry[sfdf]{PEXSI!mu-max-iter|hyperpage}{76}
+\indexentry[sfdf]{PEXSI!mu|hyperpage}{76}
+\indexentry[sfdf]{PEXSI!mu-min|hyperpage}{76}
+\indexentry[sfdf]{PEXSI!mu-max|hyperpage}{76}
+\indexentry[sfdf]{PEXSI!mu-pexsi-safeguard|hyperpage}{76}
+\indexentry[sfdf]{PEXSI!mu-pexsi-safeguard|hyperpage}{76}
+\indexentry[sfdf]{PEXSI!Inertia-Counts|hyperpage}{76}
+\indexentry[sfdf]{PEXSI!safe-dDmax-no-inertia|hyperpage}{77}
+\indexentry[sfdf]{PEXSI!mu-min|hyperpage}{77}
+\indexentry[sfdf]{PEXSI!mu-max|hyperpage}{77}
+\indexentry[sfdf]{PEXSI!safe-dDmax-no-inertia|hyperpage}{77}
+\indexentry[sfdf]{PEXSI!Inertia-Counts|hyperpage}{77}
+\indexentry[sfdf]{PEXSI!safe-dDmax-no-inertia|hyperpage}{77}
+\indexentry[sfdf]{PEXSI!lateral-expansion-inertia|hyperpage}{77}
+\indexentry[sfdf]{PEXSI!Inertia-mu-tolerance|hyperpage}{77}
+\indexentry[sfdf]{PEXSI!Inertia-max-iter|hyperpage}{77}
+\indexentry[sfdf]{PEXSI!Inertia-min-num-shifts|hyperpage}{77}
+\indexentry[sfdf]{PEXSI!Inertia-energy-width-tolerance|hyperpage}{77}
+\indexentry[sfdf]{PEXSI!Inertia-mu-tolerance|hyperpage}{77}
+\indexentry[sfdf]{PEXSI!safe-width-ic-bracket|hyperpage}{78}
+\indexentry[sfdf]{PEXSI!safe-width-ic-bracket|hyperpage}{78}
+\indexentry[sfdf]{PEXSI!safe-dDmax-ef-inertia|hyperpage}{78}
+\indexentry[sfdf]{PEXSI!safe-dDmax-ef-inertia|hyperpage}{78}
+\indexentry[sfdf]{PEXSI!safe-dDmax-ef-solver|hyperpage}{78}
+\indexentry[sfdf]{PEXSI!safe-dDmax-ef-solver|hyperpage}{78}
+\indexentry[sfdf]{PEXSI!safe-width-solver-bracket|hyperpage}{78}
+\indexentry[sfdf]{PEXSI!safe-width-solver-bracket|hyperpage}{78}
+\indexentry[idx]{File!PEXSI\_INTDOS@\fontfile  {PEXSI\_INTDOS}|hyperpage}{79}
+\indexentry[sfiles]{PEXSI\_INTDOS@\fontfile  {PEXSI\_INTDOS}|hyperpage}{79}
+\indexentry[idx]{File!SystemLabel.EIG@\fontfile  {SystemLabel.EIG}|hyperpage}{79}
+\indexentry[sfiles]{SystemLabel.EIG@\fontfile  {SystemLabel.EIG}|hyperpage}{79}
+\indexentry[sfdf]{PEXSI!DOS|hyperpage}{79}
+\indexentry[sfdf]{PEXSI!DOS!Emin|hyperpage}{79}
+\indexentry[sfdf]{PEXSI!DOS!Ef.Reference|hyperpage}{79}
+\indexentry[sfdf]{PEXSI!DOS!Emax|hyperpage}{79}
+\indexentry[sfdf]{PEXSI!DOS!Ef.Reference|hyperpage}{79}
+\indexentry[sfdf]{PEXSI!DOS!Ef.Reference|hyperpage}{79}
+\indexentry[sfdf]{PEXSI!DOS!Emin|hyperpage}{79}
+\indexentry[sfdf]{PEXSI!DOS!Emax|hyperpage}{79}
+\indexentry[sfdf]{PEXSI!DOS!NPoints|hyperpage}{79}
+\indexentry[idx]{File!SystemLabel.LDSI@\fontfile  {SystemLabel.LDSI}|hyperpage}{79}
+\indexentry[sfiles]{SystemLabel.LDSI@\fontfile  {SystemLabel.LDSI}|hyperpage}{79}
+\indexentry[idx]{File!Rho.grid.nc@\fontfile  {Rho.grid.nc}|hyperpage}{79}
+\indexentry[sfiles]{Rho.grid.nc@\fontfile  {Rho.grid.nc}|hyperpage}{79}
+\indexentry[sfdf]{PEXSI!LDOS|hyperpage}{79}
+\indexentry[sfdf]{PEXSI!LDOS!Energy|hyperpage}{79}
+\indexentry[sfdf]{PEXSI!LDOS!Broadening|hyperpage}{79}
+\indexentry[sfdf]{PEXSI!LDOS!NP-per-pole|hyperpage}{80}
+\indexentry[sfdf]{PEXSI!NP-per-pole|hyperpage}{80}
+\indexentry[sfdf]{PEXSI!NP-per-pole|hyperpage}{80}
+\indexentry[sfdf]{PEXSI!NP-per-pole|hyperpage}{80}
+\indexentry[idx]{File!SystemLabel.bands@\fontfile  {SystemLabel.bands}|hyperpage}{80}
+\indexentry[sfiles]{SystemLabel.bands@\fontfile  {SystemLabel.bands}|hyperpage}{80}
+\indexentry[sfdf]{BandLinesScale|hyperpage}{80}
+\indexentry[sfdf]{BandLines|hyperpage}{80}
+\indexentry[sfdf]{BandPoints|hyperpage}{80}
+\indexentry[sfdf]{BandLines|hyperpage}{80}
+\indexentry[sfdf]{BandPoints|hyperpage}{80}
+\indexentry[sfdf]{BandPoints|hyperpage}{80}
+\indexentry[sfdf]{BandLinesScale|hyperpage}{80}
+\indexentry[sfdf]{BandLines|hyperpage}{80}
+\indexentry[idx]{File!SystemLabel.bands@\fontfile  {SystemLabel.bands}|hyperpage}{80}
+\indexentry[sfiles]{SystemLabel.bands@\fontfile  {SystemLabel.bands}|hyperpage}{80}
+\indexentry[sfdf]{BandLines|hyperpage}{80}
+\indexentry[sfdf]{WriteKbands|hyperpage}{81}
+\indexentry{output!band $\vec k$ points|hyperpage}{81}
+\indexentry[sfdf]{WriteBands|hyperpage}{81}
+\indexentry{output!band structure|hyperpage}{81}
+\indexentry{band structure|hyperpage}{81}
+\indexentry{gnubands@\texttt{gnubands}|hyperpage}{81}
+\indexentry[idx]{File!SystemLabel.bands@\fontfile  {SystemLabel.bands}|hyperpage}{81}
+\indexentry[sfiles]{SystemLabel.bands@\fontfile  {SystemLabel.bands}|hyperpage}{81}
+\indexentry[sfdf]{BandLines|hyperpage}{81}
+\indexentry[idx]{File!SystemLabel.bands.WFSX@\fontfile  {SystemLabel.bands.WFSX}|hyperpage}{81}
+\indexentry[sfiles]{SystemLabel.bands.WFSX@\fontfile  {SystemLabel.bands.WFSX}|hyperpage}{81}
+\indexentry[sfdf]{WFS.Write.For.Bands|hyperpage}{81}
+\indexentry{output of wave functions for bands|hyperpage}{81}
+\indexentry[sfdf]{BandLines|hyperpage}{81}
+\indexentry[sfdf]{BandPoints|hyperpage}{81}
+\indexentry[idx]{File!SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{81}
+\indexentry[sfiles]{SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{81}
+\indexentry{fatbands|hyperpage}{81}
+\indexentry[sfdf]{WFS.Band.Min|hyperpage}{81}
+\indexentry{output of wave functions for bands|hyperpage}{81}
+\indexentry[idx]{File!SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{82}
+\indexentry[sfiles]{SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{82}
+\indexentry[sfdf]{WFS.Band.Max|hyperpage}{82}
+\indexentry{output of wave functions for bands|hyperpage}{82}
+\indexentry[idx]{File!SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{82}
+\indexentry[sfiles]{SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{82}
+\indexentry[idx]{File!SystemLabel.selected.WFSX@\fontfile  {SystemLabel.selected.WFSX}|hyperpage}{82}
+\indexentry[sfiles]{SystemLabel.selected.WFSX@\fontfile  {SystemLabel.selected.WFSX}|hyperpage}{82}
+\indexentry[sfdf]{COOP.Write|hyperpage}{82}
+\indexentry[idx]{File!WFS.nc@\fontfile  {WFS.nc}|hyperpage}{82}
+\indexentry[sfiles]{WFS.nc@\fontfile  {WFS.nc}|hyperpage}{82}
+\indexentry[sfdf]{Diag!UseNewDiagk|hyperpage}{82}
+\indexentry[sfdf]{WaveFuncKPointsScale|hyperpage}{82}
+\indexentry[sfdf]{WaveFuncKPoints|hyperpage}{82}
+\indexentry[sfdf]{WaveFuncKPoints|hyperpage}{82}
+\indexentry[sfdf]{WFS.Energy.Min|hyperpage}{82}
+\indexentry[sfdf]{WFS.Energy.Max|hyperpage}{82}
+\indexentry[sfdf]{WriteWaveFunctions|hyperpage}{82}
+\indexentry{output!wave functions|hyperpage}{82}
+\indexentry[idx]{File!SystemLabel.selected.WFSX@\fontfile  {SystemLabel.selected.WFSX}|hyperpage}{82}
+\indexentry[sfiles]{SystemLabel.selected.WFSX@\fontfile  {SystemLabel.selected.WFSX}|hyperpage}{82}
+\indexentry[sfdf]{WaveFuncKPoints|hyperpage}{82}
+\indexentry[idx]{File!SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{83}
+\indexentry[sfiles]{SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{83}
+\indexentry{readwf|hyperpage}{83}
+\indexentry{readwfsx|hyperpage}{83}
+\indexentry[idx]{File!SystemLabel.WFS@\fontfile  {SystemLabel.WFS}|hyperpage}{83}
+\indexentry[sfiles]{SystemLabel.WFS@\fontfile  {SystemLabel.WFS}|hyperpage}{83}
+\indexentry[idx]{File!SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{83}
+\indexentry[sfiles]{SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{83}
+\indexentry{output!eigenvalues|hyperpage}{83}
+\indexentry{Eig2DOS@\textsc{Eig2DOS}|hyperpage}{83}
+\indexentry{density of states|hyperpage}{83}
+\indexentry[sfdf]{WriteEigenvalues|hyperpage}{83}
+\indexentry[sfdf]{ProjectedDensityOfStates|hyperpage}{83}
+\indexentry{output!projected density of states|hyperpage}{83}
+\indexentry[idx]{File!SystemLabel.DOS@\fontfile  {SystemLabel.DOS}|hyperpage}{83}
+\indexentry[sfiles]{SystemLabel.DOS@\fontfile  {SystemLabel.DOS}|hyperpage}{83}
+\indexentry[idx]{File!SystemLabel.PDOS@\fontfile  {SystemLabel.PDOS}|hyperpage}{83}
+\indexentry[sfiles]{SystemLabel.PDOS@\fontfile  {SystemLabel.PDOS}|hyperpage}{83}
+\indexentry[sfdf]{PDOS.kgrid.Cutoff|hyperpage}{84}
+\indexentry[sfdf]{PDOS.kgrid.MonkhorstPack|hyperpage}{84}
+\indexentry[sfdf]{kgrid.Cutoff|hyperpage}{84}
+\indexentry[sfdf]{kgrid.MonkhorstPack|hyperpage}{84}
+\indexentry[idx]{File!SystemLabel.DOS@\fontfile  {SystemLabel.DOS}|hyperpage}{84}
+\indexentry[sfiles]{SystemLabel.DOS@\fontfile  {SystemLabel.DOS}|hyperpage}{84}
+\indexentry[idx]{File!SystemLabel.PDOS@\fontfile  {SystemLabel.PDOS}|hyperpage}{84}
+\indexentry[sfiles]{SystemLabel.PDOS@\fontfile  {SystemLabel.PDOS}|hyperpage}{84}
+\indexentry[idx]{File!pdos.xml@\fontfile  {pdos.xml}|hyperpage}{84}
+\indexentry[sfiles]{pdos.xml@\fontfile  {pdos.xml}|hyperpage}{84}
+\indexentry[idx]{File!SystemLabel.PDOS@\fontfile  {SystemLabel.PDOS}|hyperpage}{84}
+\indexentry[sfiles]{SystemLabel.PDOS@\fontfile  {SystemLabel.PDOS}|hyperpage}{84}
+\indexentry[sfdf]{LocalDensityOfStates|hyperpage}{84}
+\indexentry{output!local density of states|hyperpage}{84}
+\indexentry[idx]{File!SystemLabel.LDOS@\fontfile  {SystemLabel.LDOS}|hyperpage}{84}
+\indexentry[sfiles]{SystemLabel.LDOS@\fontfile  {SystemLabel.LDOS}|hyperpage}{84}
+\indexentry[sfdf]{WriteMullikenPop|hyperpage}{84}
+\indexentry{Mulliken population analysis|hyperpage}{84}
+\indexentry{output!Mulliken analysis|hyperpage}{84}
+\indexentry[sfdf]{MullikenInSCF|hyperpage}{85}
+\indexentry[sfdf]{WriteMullikenPop|hyperpage}{85}
+\indexentry[sfdf]{WriteHirshfeldPop|hyperpage}{85}
+\indexentry{Hirshfeld population analysis|hyperpage}{85}
+\indexentry{output!Hirshfeld analysis|hyperpage}{85}
+\indexentry[sfdf]{WriteVoronoiPop|hyperpage}{85}
+\indexentry{Voronoi population analysis|hyperpage}{85}
+\indexentry{output!Voronoi analysis|hyperpage}{85}
+\indexentry[sfdf]{PartialChargesAtEveryGeometry|hyperpage}{85}
+\indexentry{Voronoi population analysis|hyperpage}{85}
+\indexentry{output!Voronoi analysis|hyperpage}{85}
+\indexentry{Hirshfeld population analysis|hyperpage}{85}
+\indexentry{output!Hirshfeld analysis|hyperpage}{85}
+\indexentry[sfdf]{PartialChargesAtEverySCFStep|hyperpage}{85}
+\indexentry{Voronoi population analysis|hyperpage}{85}
+\indexentry{output!Voronoi analysis|hyperpage}{85}
+\indexentry{Hirshfeld population analysis|hyperpage}{85}
+\indexentry{output!Hirshfeld analysis|hyperpage}{85}
+\indexentry{COOP/COHP curves|hyperpage}{86}
+\indexentry[sfdf]{COOP.Write|hyperpage}{86}
+\indexentry[sfdf]{COOP.Write|hyperpage}{86}
+\indexentry{output!Information for COOP/COHP curves|hyperpage}{86}
+\indexentry[idx]{File!SystemLabel.fullBZ.WFSX@\fontfile  {SystemLabel.fullBZ.WFSX}|hyperpage}{86}
+\indexentry[sfiles]{SystemLabel.fullBZ.WFSX@\fontfile  {SystemLabel.fullBZ.WFSX}|hyperpage}{86}
+\indexentry[idx]{File!SystemLabel.HSX@\fontfile  {SystemLabel.HSX}|hyperpage}{86}
+\indexentry[sfiles]{SystemLabel.HSX@\fontfile  {SystemLabel.HSX}|hyperpage}{86}
+\indexentry[idx]{File!SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{86}
+\indexentry[sfiles]{SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{86}
+\indexentry[idx]{File!SystemLabel.WFS@\fontfile  {SystemLabel.WFS}|hyperpage}{86}
+\indexentry[sfiles]{SystemLabel.WFS@\fontfile  {SystemLabel.WFS}|hyperpage}{86}
+\indexentry[sfdf]{WFS.Energy.Min|hyperpage}{86}
+\indexentry[sfdf]{WFS.Energy.Max|hyperpage}{86}
+\indexentry[sfdf]{WFS.Band.Min|hyperpage}{86}
+\indexentry[sfdf]{WFS.Band.Max|hyperpage}{86}
+\indexentry[sfdf]{WaveFuncKPoints|hyperpage}{86}
+\indexentry[sfdf]{WFS.Energy.Min|hyperpage}{86}
+\indexentry[idx]{File!SystemLabel.fullBZ.WFSX@\fontfile  {SystemLabel.fullBZ.WFSX}|hyperpage}{86}
+\indexentry[sfiles]{SystemLabel.fullBZ.WFSX@\fontfile  {SystemLabel.fullBZ.WFSX}|hyperpage}{86}
+\indexentry[sfdf]{WFS.Energy.Max|hyperpage}{86}
+\indexentry[idx]{File!SystemLabel.fullBZ.WFSX@\fontfile  {SystemLabel.fullBZ.WFSX}|hyperpage}{86}
+\indexentry[sfiles]{SystemLabel.fullBZ.WFSX@\fontfile  {SystemLabel.fullBZ.WFSX}|hyperpage}{86}
+\indexentry[sfdf]{OpticalCalculation|hyperpage}{86}
+\indexentry{Dielectric function,optical absorption|hyperpage}{86}
+\indexentry[idx]{File!SystemLabel.EPSIMG@\fontfile  {SystemLabel.EPSIMG}|hyperpage}{86}
+\indexentry[sfiles]{SystemLabel.EPSIMG@\fontfile  {SystemLabel.EPSIMG}|hyperpage}{86}
+\indexentry[sfdf]{Optical.Energy.Minimum|hyperpage}{87}
+\indexentry[sfdf]{Optical.Energy.Maximum|hyperpage}{87}
+\indexentry[sfdf]{Optical.Broaden|hyperpage}{87}
+\indexentry[sfdf]{Optical.Scissor|hyperpage}{87}
+\indexentry[sfdf]{Optical.NumberOfBands|hyperpage}{87}
+\indexentry[sfdf]{Optical.Mesh|hyperpage}{87}
+\indexentry[sfdf]{Optical.OffsetMesh|hyperpage}{87}
+\indexentry[sfdf]{Optical.PolarizationType|hyperpage}{87}
+\indexentry[sfdf]{Optical.Vector|hyperpage}{88}
+\indexentry[sfdf]{Optical.Vector|hyperpage}{88}
+\indexentry[sfdf]{PolarizationGrids|hyperpage}{88}
+\indexentry{bulk polarization|hyperpage}{88}
+\indexentry{Berry phase|hyperpage}{88}
+\indexentry[sfdf]{PolarizationGrids|hyperpage}{88}
+\indexentry[sfdf]{BornCharge|hyperpage}{89}
+\indexentry{Born effective charges|hyperpage}{89}
+\indexentry[sfdf]{PolarizationGrids|hyperpage}{89}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{89}
+\indexentry[idx]{File!SystemLabel.BC@\fontfile  {SystemLabel.BC}|hyperpage}{89}
+\indexentry[sfiles]{SystemLabel.BC@\fontfile  {SystemLabel.BC}|hyperpage}{89}
+\indexentry[sfdf]{Siesta2Wannier90.WriteMmn|hyperpage}{90}
+\indexentry[idx]{File!SystemLabel.nnkp@\fontfile  {SystemLabel.nnkp}|hyperpage}{90}
+\indexentry[sfiles]{SystemLabel.nnkp@\fontfile  {SystemLabel.nnkp}|hyperpage}{90}
+\indexentry[idx]{File!SystemLabel.mmn@\fontfile  {SystemLabel.mmn}|hyperpage}{90}
+\indexentry[sfiles]{SystemLabel.mmn@\fontfile  {SystemLabel.mmn}|hyperpage}{90}
+\indexentry[sfdf]{Siesta2Wannier90.WriteAmn|hyperpage}{90}
+\indexentry[idx]{File!SystemLabel.nnkp@\fontfile  {SystemLabel.nnkp}|hyperpage}{90}
+\indexentry[sfiles]{SystemLabel.nnkp@\fontfile  {SystemLabel.nnkp}|hyperpage}{90}
+\indexentry[idx]{File!SystemLabel.amn@\fontfile  {SystemLabel.amn}|hyperpage}{90}
+\indexentry[sfiles]{SystemLabel.amn@\fontfile  {SystemLabel.amn}|hyperpage}{90}
+\indexentry[sfdf]{Siesta2Wannier90.WriteEig|hyperpage}{90}
+\indexentry[idx]{File!SystemLabel.eigW@\fontfile  {SystemLabel.eigW}|hyperpage}{91}
+\indexentry[sfiles]{SystemLabel.eigW@\fontfile  {SystemLabel.eigW}|hyperpage}{91}
+\indexentry[sfdf]{Siesta2Wannier90.WriteUnk|hyperpage}{91}
+\indexentry[idx]{File!UNKXXXXX.Y@\fontfile  {UNKXXXXX.Y}|hyperpage}{91}
+\indexentry[sfiles]{UNKXXXXX.Y@\fontfile  {UNKXXXXX.Y}|hyperpage}{91}
+\indexentry[sfdf]{Siesta2Wannier90.UnkGrid1|hyperpage}{91}
+\indexentry[sfdf]{Siesta2Wannier90.UnkGrid2|hyperpage}{91}
+\indexentry[sfdf]{Siesta2Wannier90.UnkGrid3|hyperpage}{91}
+\indexentry[sfdf]{Siesta2Wannier90.UnkGridBinary|hyperpage}{91}
+\indexentry[sfdf]{Siesta2Wannier90.NumberOfBands|hyperpage}{91}
+\indexentry[sfdf]{Siesta2Wannier90.NumberOfBandsUp|hyperpage}{91}
+\indexentry[sfdf]{Siesta2Wannier90.NumberOfBands|hyperpage}{91}
+\indexentry[sfdf]{Siesta2Wannier90.NumberOfBandsDown|hyperpage}{91}
+\indexentry[sfdf]{Siesta2Wannier90.NumberOfBands|hyperpage}{91}
+\indexentry[sfdf]{NetCharge|hyperpage}{92}
+\indexentry{Charge of the system|hyperpage}{92}
+\indexentry{Doping|hyperpage}{92}
+\indexentry{SCF!Doping|hyperpage}{92}
+\indexentry[sfdf]{NetCharge|hyperpage}{92}
+\indexentry[sfdf]{NetCharge|hyperpage}{92}
+\indexentry[sfdf]{SimulateDoping|hyperpage}{92}
+\indexentry{Slabs with net charge|hyperpage}{92}
+\indexentry[sfdf]{ExternalElectricField|hyperpage}{92}
+\indexentry[sfdf]{SlabDipoleCorrection|hyperpage}{92}
+\indexentry[sfdf]{SlabDipoleCorrection|hyperpage}{92}
+\indexentry[sfdf]{SCF.Mix!First|hyperpage}{93}
+\indexentry{Slab dipole correction|hyperpage}{93}
+\indexentry[sfdf]{Geometry!Hartree|hyperpage}{93}
+\indexentry{SCF!Potential|hyperpage}{93}
+\indexentry{Gate|hyperpage}{93}
+\indexentry{Gate!infinite plane|hyperpage}{93}
+\indexentry{Gate!bounded plane|hyperpage}{93}
+\indexentry{Gate!box|hyperpage}{93}
+\indexentry{Gate!spheres|hyperpage}{93}
+\indexentry[sfdf]{Geometry!Charge|hyperpage}{94}
+\indexentry{SCF!Doping|hyperpage}{94}
+\indexentry{Doping|hyperpage}{94}
+\indexentry{Charge of the system|hyperpage}{94}
+\indexentry[sfdf]{Geometry!Hartree|hyperpage}{94}
+\indexentry[sfdf]{Geometry!Hartree|hyperpage}{94}
+\indexentry[sfdf]{NetCharge|hyperpage}{94}
+\indexentry[sfdf]{SaveRho|hyperpage}{95}
+\indexentry{output!charge density|hyperpage}{95}
+\indexentry[idx]{File!SystemLabel.RHO@\fontfile  {SystemLabel.RHO}|hyperpage}{95}
+\indexentry[sfiles]{SystemLabel.RHO@\fontfile  {SystemLabel.RHO}|hyperpage}{95}
+\indexentry[idx]{File!SystemLabel.RHO@\fontfile  {SystemLabel.RHO}|hyperpage}{95}
+\indexentry[sfiles]{SystemLabel.RHO@\fontfile  {SystemLabel.RHO}|hyperpage}{95}
+\indexentry[idx]{File!Rho.grid.nc@\fontfile  {Rho.grid.nc}|hyperpage}{95}
+\indexentry[sfiles]{Rho.grid.nc@\fontfile  {Rho.grid.nc}|hyperpage}{95}
+\indexentry[sfdf]{SaveDeltaRho|hyperpage}{95}
+\indexentry{output!$\delta \rho(\vec r)$|hyperpage}{95}
+\indexentry[idx]{File!SystemLabel.DRHO@\fontfile  {SystemLabel.DRHO}|hyperpage}{95}
+\indexentry[sfiles]{SystemLabel.DRHO@\fontfile  {SystemLabel.DRHO}|hyperpage}{95}
+\indexentry[idx]{File!SystemLabel.DRHO@\fontfile  {SystemLabel.DRHO}|hyperpage}{95}
+\indexentry[sfiles]{SystemLabel.DRHO@\fontfile  {SystemLabel.DRHO}|hyperpage}{95}
+\indexentry[idx]{File!DeltaRho.grid.nc@\fontfile  {DeltaRho.grid.nc}|hyperpage}{95}
+\indexentry[sfiles]{DeltaRho.grid.nc@\fontfile  {DeltaRho.grid.nc}|hyperpage}{95}
+\indexentry[sfdf]{SaveRhoXC|hyperpage}{95}
+\indexentry{output!charge density|hyperpage}{95}
+\indexentry[idx]{File!SystemLabel.RHOXC@\fontfile  {SystemLabel.RHOXC}|hyperpage}{95}
+\indexentry[sfiles]{SystemLabel.RHOXC@\fontfile  {SystemLabel.RHOXC}|hyperpage}{95}
+\indexentry[idx]{File!SystemLabel.RHOXC@\fontfile  {SystemLabel.RHOXC}|hyperpage}{95}
+\indexentry[sfiles]{SystemLabel.RHOXC@\fontfile  {SystemLabel.RHOXC}|hyperpage}{95}
+\indexentry[idx]{File!RhoXC.grid.nc@\fontfile  {RhoXC.grid.nc}|hyperpage}{95}
+\indexentry[sfiles]{RhoXC.grid.nc@\fontfile  {RhoXC.grid.nc}|hyperpage}{95}
+\indexentry[sfdf]{SaveElectrostaticPotential|hyperpage}{95}
+\indexentry{output!electrostatic potential|hyperpage}{95}
+\indexentry[idx]{File!SystemLabel.VH@\fontfile  {SystemLabel.VH}|hyperpage}{95}
+\indexentry[sfiles]{SystemLabel.VH@\fontfile  {SystemLabel.VH}|hyperpage}{95}
+\indexentry[idx]{File!SystemLabel.VH@\fontfile  {SystemLabel.VH}|hyperpage}{95}
+\indexentry[sfiles]{SystemLabel.VH@\fontfile  {SystemLabel.VH}|hyperpage}{95}
+\indexentry[idx]{File!ElectrostaticPotential.grid.nc@\fontfile  {ElectrostaticPotential.grid.nc}|hyperpage}{95}
+\indexentry[sfiles]{ElectrostaticPotential.grid.nc@\fontfile  {ElectrostaticPotential.grid.nc}|hyperpage}{95}
+\indexentry[sfdf]{SaveNeutralAtomPotential|hyperpage}{95}
+\indexentry{output!electrostatic potential|hyperpage}{95}
+\indexentry[idx]{File!SystemLabel.VNA@\fontfile  {SystemLabel.VNA}|hyperpage}{95}
+\indexentry[sfiles]{SystemLabel.VNA@\fontfile  {SystemLabel.VNA}|hyperpage}{95}
+\indexentry[idx]{File!SystemLabel.VNA@\fontfile  {SystemLabel.VNA}|hyperpage}{95}
+\indexentry[sfiles]{SystemLabel.VNA@\fontfile  {SystemLabel.VNA}|hyperpage}{95}
+\indexentry[idx]{File!Vna.grid.nc@\fontfile  {Vna.grid.nc}|hyperpage}{95}
+\indexentry[sfiles]{Vna.grid.nc@\fontfile  {Vna.grid.nc}|hyperpage}{95}
+\indexentry[sfdf]{SaveTotalPotential|hyperpage}{95}
+\indexentry{output!total potential|hyperpage}{95}
+\indexentry[idx]{File!SystemLabel.VT@\fontfile  {SystemLabel.VT}|hyperpage}{95}
+\indexentry[sfiles]{SystemLabel.VT@\fontfile  {SystemLabel.VT}|hyperpage}{95}
+\indexentry[idx]{File!SystemLabel.VT@\fontfile  {SystemLabel.VT}|hyperpage}{96}
+\indexentry[sfiles]{SystemLabel.VT@\fontfile  {SystemLabel.VT}|hyperpage}{96}
+\indexentry[idx]{File!TotalPotential.grid.nc@\fontfile  {TotalPotential.grid.nc}|hyperpage}{96}
+\indexentry[sfiles]{TotalPotential.grid.nc@\fontfile  {TotalPotential.grid.nc}|hyperpage}{96}
+\indexentry[sfdf]{SaveElectrostaticPotential|hyperpage}{96}
+\indexentry[sfdf]{SaveTotalPotential|hyperpage}{96}
+\indexentry[sfdf]{SaveIonicCharge|hyperpage}{96}
+\indexentry{output!ionic charge|hyperpage}{96}
+\indexentry[idx]{File!SystemLabel.IOCH@\fontfile  {SystemLabel.IOCH}|hyperpage}{96}
+\indexentry[sfiles]{SystemLabel.IOCH@\fontfile  {SystemLabel.IOCH}|hyperpage}{96}
+\indexentry[idx]{File!SystemLabel.IOCH@\fontfile  {SystemLabel.IOCH}|hyperpage}{96}
+\indexentry[sfiles]{SystemLabel.IOCH@\fontfile  {SystemLabel.IOCH}|hyperpage}{96}
+\indexentry[idx]{File!Chlocal.grid.nc@\fontfile  {Chlocal.grid.nc}|hyperpage}{96}
+\indexentry[sfiles]{Chlocal.grid.nc@\fontfile  {Chlocal.grid.nc}|hyperpage}{96}
+\indexentry[sfdf]{SaveTotalCharge|hyperpage}{96}
+\indexentry{output!total charge|hyperpage}{96}
+\indexentry[idx]{File!SystemLabel.TOCH@\fontfile  {SystemLabel.TOCH}|hyperpage}{96}
+\indexentry[sfiles]{SystemLabel.TOCH@\fontfile  {SystemLabel.TOCH}|hyperpage}{96}
+\indexentry[idx]{File!SystemLabel.TOCH@\fontfile  {SystemLabel.TOCH}|hyperpage}{96}
+\indexentry[sfiles]{SystemLabel.TOCH@\fontfile  {SystemLabel.TOCH}|hyperpage}{96}
+\indexentry[sfdf]{SaveBaderCharge|hyperpage}{96}
+\indexentry{output!Bader charge|hyperpage}{96}
+\indexentry[idx]{File!SystemLabel.BADER@\fontfile  {SystemLabel.BADER}|hyperpage}{96}
+\indexentry[sfiles]{SystemLabel.BADER@\fontfile  {SystemLabel.BADER}|hyperpage}{96}
+\indexentry[idx]{File!BaderCharge.grid.nc@\fontfile  {BaderCharge.grid.nc}|hyperpage}{97}
+\indexentry[sfiles]{BaderCharge.grid.nc@\fontfile  {BaderCharge.grid.nc}|hyperpage}{97}
+\indexentry[sfdf]{AnalyzeChargeDensityOnly|hyperpage}{97}
+\indexentry{output!charge density|hyperpage}{97}
+\indexentry[sfdf]{DM.UseSaveDM|hyperpage}{97}
+\indexentry[sfdf]{SaveInitialChargeDensity|hyperpage}{97}
+\indexentry{output!charge density|hyperpage}{97}
+\indexentry[idx]{File!SystemLabel.RHOINIT@\fontfile  {SystemLabel.RHOINIT}|hyperpage}{97}
+\indexentry[sfiles]{SystemLabel.RHOINIT@\fontfile  {SystemLabel.RHOINIT}|hyperpage}{97}
+\indexentry[idx]{File!RhoInit.grid.nc@\fontfile  {RhoInit.grid.nc}|hyperpage}{97}
+\indexentry[sfiles]{RhoInit.grid.nc@\fontfile  {RhoInit.grid.nc}|hyperpage}{97}
+\indexentry[sfdf]{AnalyzeChargeDensityOnly|hyperpage}{97}
+\indexentry[sfdf]{MM|hyperpage}{97}
+\indexentry[sfdf]{MM!Potentials|hyperpage}{97}
+\indexentry[sfdf]{MM!Grimme.D|hyperpage}{97}
+\indexentry[sfdf]{MM!Grimme.S6|hyperpage}{97}
+\indexentry[sfdf]{MM!Cutoff|hyperpage}{98}
+\indexentry[sfdf]{MM!UnitsEnergy|hyperpage}{98}
+\indexentry[sfdf]{MM!UnitsDistance|hyperpage}{98}
+\indexentry[sfdf]{MM!Grimme.D|hyperpage}{98}
+\indexentry[sfdf]{MM!Grimme.S6|hyperpage}{98}
+\indexentry[sfdf]{BlockSize|hyperpage}{98}
+\indexentry[sfdf]{BlockSize|hyperpage}{98}
+\indexentry[sfdf]{ProcessorY|hyperpage}{98}
+\indexentry[sfdf]{ProcessorY|hyperpage}{98}
+\indexentry[sfdf]{Diag!Memory|hyperpage}{98}
+\indexentry[sfdf]{Diag!Memory|hyperpage}{98}
+\indexentry[sfdf]{Diag!ParallelOverK|hyperpage}{99}
+\indexentry[sfdf]{BandLines|hyperpage}{99}
+\indexentry[sfdf]{BandPoints|hyperpage}{99}
+\indexentry[sfdf]{WaveFuncKPoints|hyperpage}{99}
+\indexentry[sfdf]{UseDomainDecomposition|hyperpage}{99}
+\indexentry[sfdf]{UseSpatialDecomposition|hyperpage}{99}
+\indexentry[sfdf]{RcSpatial|hyperpage}{99}
+\indexentry[sfdf]{RcSpatial|hyperpage}{99}
+\indexentry[sfdf]{RcSpatial|hyperpage}{99}
+\indexentry[sfdf]{DirectPhi|hyperpage}{100}
+\indexentry[sfdf]{AllocReportLevel|hyperpage}{100}
+\indexentry[idx]{File!SystemLabel.alloc@\fontfile  {SystemLabel.alloc}|hyperpage}{100}
+\indexentry[sfiles]{SystemLabel.alloc@\fontfile  {SystemLabel.alloc}|hyperpage}{100}
+\indexentry[sfdf]{AllocReportThreshold|hyperpage}{100}
+\indexentry[sfdf]{TimerReportThreshold|hyperpage}{100}
+\indexentry{compile!pre-processor!-DMPI\_TIMING|hyperpage}{100}
+\indexentry[idx]{File!SystemLabel.times@\fontfile  {SystemLabel.times}|hyperpage}{100}
+\indexentry[sfiles]{SystemLabel.times@\fontfile  {SystemLabel.times}|hyperpage}{100}
+\indexentry[sfdf]{UseTreeTimer|hyperpage}{100}
+\indexentry[sfdf]{UseParallelTimer|hyperpage}{100}
+\indexentry[sfdf]{MaxWalltime|hyperpage}{100}
+\indexentry[sfdf]{MaxWalltime!Slack|hyperpage}{101}
+\indexentry[sfdf]{MaxWalltime!Slack|hyperpage}{101}
+\indexentry{reading saved data|hyperpage}{101}
+\indexentry[sfdf]{UseSaveData|hyperpage}{101}
+\indexentry{reading saved data!all|hyperpage}{101}
+\indexentry[idx]{File!SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{101}
+\indexentry[sfiles]{SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{101}
+\indexentry[idx]{File!SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{101}
+\indexentry[sfiles]{SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{101}
+\indexentry[idx]{File!SystemLabel.LWF@\fontfile  {SystemLabel.LWF}|hyperpage}{101}
+\indexentry[sfiles]{SystemLabel.LWF@\fontfile  {SystemLabel.LWF}|hyperpage}{101}
+\indexentry{denchar|hyperpage}{101}
+\indexentry[sfdf]{Write!Denchar|hyperpage}{101}
+\indexentry{output!charge density and/or wfs for DENCHAR code|hyperpage}{101}
+\indexentry[idx]{File!SystemLabel.PLD@\fontfile  {SystemLabel.PLD}|hyperpage}{101}
+\indexentry[sfiles]{SystemLabel.PLD@\fontfile  {SystemLabel.PLD}|hyperpage}{101}
+\indexentry[idx]{File!SystemLabel.DIM@\fontfile  {SystemLabel.DIM}|hyperpage}{101}
+\indexentry[sfiles]{SystemLabel.DIM@\fontfile  {SystemLabel.DIM}|hyperpage}{101}
+\indexentry[idx]{File!SystemLabel.PLD@\fontfile  {SystemLabel.PLD}|hyperpage}{101}
+\indexentry[sfiles]{SystemLabel.PLD@\fontfile  {SystemLabel.PLD}|hyperpage}{101}
+\indexentry[idx]{File!SystemLabel.DIM@\fontfile  {SystemLabel.DIM}|hyperpage}{101}
+\indexentry[sfiles]{SystemLabel.DIM@\fontfile  {SystemLabel.DIM}|hyperpage}{101}
+\indexentry[idx]{File!SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{101}
+\indexentry[sfiles]{SystemLabel.WFSX@\fontfile  {SystemLabel.WFSX}|hyperpage}{101}
+\indexentry{compile!pre-processor!-DNCDF\_4|hyperpage}{101}
+\indexentry[sfdf]{SaveElectrostaticPotential|hyperpage}{101}
+\indexentry[sfdf]{CDF!Save|hyperpage}{101}
+\indexentry[idx]{File!SystemLabel.nc@\fontfile  {SystemLabel.nc}|hyperpage}{101}
+\indexentry[sfiles]{SystemLabel.nc@\fontfile  {SystemLabel.nc}|hyperpage}{101}
+\indexentry[sfdf]{CDF!Compress|hyperpage}{102}
+\indexentry[sfdf]{CDF!MPI|hyperpage}{102}
+\indexentry[sfdf]{CDF!MPI|hyperpage}{102}
+\indexentry[idx]{File!SystemLabel.nc@\fontfile  {SystemLabel.nc}|hyperpage}{102}
+\indexentry[sfiles]{SystemLabel.nc@\fontfile  {SystemLabel.nc}|hyperpage}{102}
+\indexentry[sfdf]{CDF!Grid.Precision|hyperpage}{102}
+\indexentry[sfdf]{MD.TypeOfRun!Lua|hyperpage}{102}
+\indexentry[sfdf]{MD.TypeOfRun!Master|hyperpage}{102}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{102}
+\indexentry[sfdf]{MD.TypeOfRun!CG|hyperpage}{102}
+\indexentry[sfdf]{MD.VariableCell|hyperpage}{102}
+\indexentry[sfdf]{MD.TypeOfRun!Broyden|hyperpage}{102}
+\indexentry[sfdf]{MD.VariableCell|hyperpage}{102}
+\indexentry[sfdf]{MD.TypeOfRun!FIRE|hyperpage}{102}
+\indexentry[sfdf]{MD.VariableCell|hyperpage}{102}
+\indexentry[sfdf]{MD.TypeOfRun!Verlet|hyperpage}{102}
+\indexentry[sfdf]{MD.TypeOfRun!Nose|hyperpage}{102}
+\indexentry[sfdf]{MD.TypeOfRun!ParrinelloRahman|hyperpage}{102}
+\indexentry[sfdf]{MD.TypeOfRun!NoseParrinelloRahman|hyperpage}{102}
+\indexentry[sfdf]{MD.TypeOfRun!Anneal|hyperpage}{103}
+\indexentry[sfdf]{MD.AnnealOption|hyperpage}{103}
+\indexentry[sfdf]{MD.TypeOfRun!FC|hyperpage}{103}
+\indexentry{Force Constants Matrix|hyperpage}{103}
+\indexentry[sfdf]{MD.TypeOfRun!Master|hyperpage}{103}
+\indexentry[sfdf]{MD.TypeOfRun!Forces|hyperpage}{103}
+\indexentry{Scripting|hyperpage}{103}
+\indexentry[sfdf]{MD.TypeOfRun!Lua|hyperpage}{103}
+\indexentry[sfdf]{MeshCutoff|hyperpage}{103}
+\indexentry[sfdf]{kgrid.MonkhorstPack|hyperpage}{103}
+\indexentry{flook|hyperpage}{103}
+\indexentry{External library!flook|hyperpage}{103}
+\indexentry[sfdf]{Compat!Pre-v4-Dynamics|hyperpage}{103}
+\indexentry{Backward compatibility|hyperpage}{104}
+\indexentry[sfdf]{SCF.DM!Converge|hyperpage}{104}
+\indexentry[sfdf]{SCF.H!Converge|hyperpage}{104}
+\indexentry[sfdf]{Compat!Pre-v4-Dynamics|hyperpage}{104}
+\indexentry[sfdf]{MD.VariableCell|hyperpage}{104}
+\indexentry{cell relaxation|hyperpage}{104}
+\indexentry[sfdf]{MD.MaxStressTol|hyperpage}{104}
+\indexentry[sfdf]{MD.TargetPressure|hyperpage}{104}
+\indexentry[sfdf]{MD.TargetStress|hyperpage}{104}
+\indexentry[sfdf]{MD.ConstantVolume|hyperpage}{104}
+\indexentry[sfdf]{MD.PreconditionVariableCell|hyperpage}{104}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{104}
+\indexentry[sfdf]{MD.ConstantVolume|hyperpage}{104}
+\indexentry{constant-volume cell relaxation|hyperpage}{104}
+\indexentry[sfdf]{MD.VariableCell|hyperpage}{104}
+\indexentry[sfdf]{MD.TargetStress|hyperpage}{104}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{104}
+\indexentry[sfdf]{MD.RelaxCellOnly|hyperpage}{104}
+\indexentry{relaxation of cell parameters only|hyperpage}{104}
+\indexentry[sfdf]{Zmatrix|hyperpage}{104}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{104}
+\indexentry[sfdf]{MD.MaxForceTol|hyperpage}{105}
+\indexentry[sfdf]{MD.MaxForceTol|hyperpage}{105}
+\indexentry[sfdf]{MD.MaxStressTol|hyperpage}{105}
+\indexentry[sfdf]{MD.MaxStressTol|hyperpage}{105}
+\indexentry[sfdf]{MD.MaxForceTol|hyperpage}{105}
+\indexentry[sfdf]{MD.MaxStressTol|hyperpage}{105}
+\indexentry[sfdf]{MD.NumCGsteps|hyperpage}{105}
+\indexentry[sfdf]{MD.MaxForceTol|hyperpage}{105}
+\indexentry[sfdf]{MD.MaxCGDispl|hyperpage}{105}
+\indexentry[sfdf]{MD.Broyden.Initial.Inverse.Jacobian|hyperpage}{105}
+\indexentry[sfdf]{MD.PreconditionVariableCell|hyperpage}{105}
+\indexentry[sfdf]{MD.MaxCGDispl|hyperpage}{105}
+\indexentry[sfdf]{ZM.ForceTolLength|hyperpage}{105}
+\indexentry[sfdf]{ZM.ForceTolAngle|hyperpage}{105}
+\indexentry[sfdf]{ZM.MaxDisplLength|hyperpage}{105}
+\indexentry[sfdf]{ZM.MaxDisplAngle|hyperpage}{105}
+\indexentry{Conjugate-gradient history information|hyperpage}{106}
+\indexentry[sfdf]{MD.UseSaveCG|hyperpage}{106}
+\indexentry{reading saved data!CG|hyperpage}{106}
+\indexentry[idx]{File!SystemLabel.CG@\fontfile  {SystemLabel.CG}|hyperpage}{106}
+\indexentry[sfiles]{SystemLabel.CG@\fontfile  {SystemLabel.CG}|hyperpage}{106}
+\indexentry[sfdf]{MD.UseSaveXV|hyperpage}{106}
+\indexentry[idx]{File!SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{106}
+\indexentry[sfiles]{SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{106}
+\indexentry[sfdf]{UseSaveData|hyperpage}{106}
+\indexentry[sfdf]{MD.Broyden!History.Steps|hyperpage}{106}
+\indexentry{Broyden optimization|hyperpage}{106}
+\indexentry[sfdf]{MD.Broyden!Cycle.On.Maxit|hyperpage}{106}
+\indexentry[sfdf]{MD.Broyden!Initial.Inverse.Jacobian|hyperpage}{106}
+\indexentry[sfdf]{MD.FireQuench|hyperpage}{106}
+\indexentry[sfdf]{MD.FIRE.TimeStep|hyperpage}{106}
+\indexentry[sfdf]{MD.LengthTimeStep|hyperpage}{106}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{106}
+\indexentry[sfdf]{MD.LengthTimeStep|hyperpage}{106}
+\indexentry[sfdf]{MD.TargetPressure|hyperpage}{107}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{107}
+\indexentry[sfdf]{MD.AnnealOption|hyperpage}{107}
+\indexentry[sfdf]{MD.TargetStress|hyperpage}{107}
+\indexentry[sfdf]{MD.TargetPressure|hyperpage}{107}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{107}
+\indexentry[sfdf]{MD.VariableCell|hyperpage}{107}
+\indexentry[sfdf]{MD.RemoveIntramolecularPressure|hyperpage}{107}
+\indexentry{removal of intramolecular pressure|hyperpage}{107}
+\indexentry[sfdf]{Zmatrix|hyperpage}{107}
+\indexentry[sfdf]{MD.InitialTimeStep|hyperpage}{107}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{107}
+\indexentry[sfdf]{MD.FinalTimeStep|hyperpage}{107}
+\indexentry[sfdf]{MD.LengthTimeStep|hyperpage}{108}
+\indexentry[sfdf]{MD.InitialTemperature|hyperpage}{108}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{108}
+\indexentry[sfdf]{MD.TargetTemperature|hyperpage}{108}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{108}
+\indexentry[sfdf]{MD.AnnealOption|hyperpage}{108}
+\indexentry[sfdf]{MD.NoseMass|hyperpage}{108}
+\indexentry[sfdf]{MD.ParrinelloRahmanMass|hyperpage}{108}
+\indexentry[sfdf]{MD.AnnealOption|hyperpage}{108}
+\indexentry[sfdf]{MD.TauRelax|hyperpage}{108}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{108}
+\indexentry[sfdf]{MD.TauRelax|hyperpage}{108}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{108}
+\indexentry[sfdf]{MD.BulkModulus|hyperpage}{108}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{109}
+\indexentry[sfdf]{MD.AnnealOption|hyperpage}{109}
+\indexentry[idx]{File!SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{109}
+\indexentry[sfiles]{SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{109}
+\indexentry[sfdf]{WriteCoorInitial|hyperpage}{109}
+\indexentry{output!atomic coordinates!initial|hyperpage}{109}
+\indexentry[sfdf]{LongOutput|hyperpage}{109}
+\indexentry[sfdf]{WriteCoorStep|hyperpage}{109}
+\indexentry{output!atomic coordinates!in a dynamics step|hyperpage}{109}
+\indexentry[idx]{File!SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{109}
+\indexentry[sfiles]{SystemLabel.XV@\fontfile  {SystemLabel.XV}|hyperpage}{109}
+\indexentry[idx]{File!SystemLabel.MD@\fontfile  {SystemLabel.MD}|hyperpage}{109}
+\indexentry[sfiles]{SystemLabel.MD@\fontfile  {SystemLabel.MD}|hyperpage}{109}
+\indexentry[idx]{File!SystemLabel.MDX@\fontfile  {SystemLabel.MDX}|hyperpage}{109}
+\indexentry[sfiles]{SystemLabel.MDX@\fontfile  {SystemLabel.MDX}|hyperpage}{109}
+\indexentry[sfdf]{WriteMDHistory|hyperpage}{109}
+\indexentry[sfdf]{WriteForces|hyperpage}{109}
+\indexentry{output!forces|hyperpage}{109}
+\indexentry[idx]{File!SystemLabel.FA@\fontfile  {SystemLabel.FA}|hyperpage}{109}
+\indexentry[sfiles]{SystemLabel.FA@\fontfile  {SystemLabel.FA}|hyperpage}{109}
+\indexentry[idx]{File!SystemLabel.FAC@\fontfile  {SystemLabel.FAC}|hyperpage}{109}
+\indexentry[sfiles]{SystemLabel.FAC@\fontfile  {SystemLabel.FAC}|hyperpage}{109}
+\indexentry[sfdf]{WriteMDHistory|hyperpage}{109}
+\indexentry{output!molecular dynamics!history|hyperpage}{109}
+\indexentry[idx]{File!SystemLabel.MD@\fontfile  {SystemLabel.MD}|hyperpage}{109}
+\indexentry[sfiles]{SystemLabel.MD@\fontfile  {SystemLabel.MD}|hyperpage}{109}
+\indexentry[idx]{File!SystemLabel.MDE@\fontfile  {SystemLabel.MDE}|hyperpage}{109}
+\indexentry[sfiles]{SystemLabel.MDE@\fontfile  {SystemLabel.MDE}|hyperpage}{109}
+\indexentry{output!molecular dynamics!history|hyperpage}{109}
+\indexentry[sfdf]{WriteMDHistory|hyperpage}{109}
+\indexentry[sfdf]{WriteMDXmol|hyperpage}{109}
+\indexentry[idx]{File!SystemLabel.MD@\fontfile  {SystemLabel.MD}|hyperpage}{110}
+\indexentry[sfiles]{SystemLabel.MD@\fontfile  {SystemLabel.MD}|hyperpage}{110}
+\indexentry[idx]{File!SystemLabel.MDX@\fontfile  {SystemLabel.MDX}|hyperpage}{110}
+\indexentry[sfiles]{SystemLabel.MDX@\fontfile  {SystemLabel.MDX}|hyperpage}{110}
+\indexentry[idx]{File!SystemLabel.MDC@\fontfile  {SystemLabel.MDC}|hyperpage}{110}
+\indexentry[sfiles]{SystemLabel.MDC@\fontfile  {SystemLabel.MDC}|hyperpage}{110}
+\indexentry[sfdf]{Geometry!Constraints|hyperpage}{110}
+\indexentry{constraints in relaxations|hyperpage}{110}
+\indexentry[sfdf]{AtomicCoordinatesAndAtomicSpecies|hyperpage}{110}
+\indexentry[sfdf]{ChemicalSpeciesLabel|hyperpage}{111}
+\indexentry[sfdf]{AtomicCoordinatesAndAtomicSpecies|hyperpage}{111}
+\indexentry[idx]{File!constr.f@\fontfile  {constr.f}|hyperpage}{112}
+\indexentry[sfiles]{constr.f@\fontfile  {constr.f}|hyperpage}{112}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{113}
+\indexentry{output!molecular dynamics!Force Constants Matrix|hyperpage}{113}
+\indexentry{VIBRA|hyperpage}{113}
+\indexentry[sfdf]{BornCharge|hyperpage}{113}
+\indexentry[sfdf]{MD.FCDispl|hyperpage}{113}
+\indexentry{Force Constants Matrix|hyperpage}{113}
+\indexentry[sfdf]{MD.FCFirst|hyperpage}{113}
+\indexentry{Force Constants Matrix|hyperpage}{113}
+\indexentry[sfdf]{MD.FCLast|hyperpage}{113}
+\indexentry[sfdf]{MD.FCFirst|hyperpage}{113}
+\indexentry{Force Constants Matrix|hyperpage}{113}
+\indexentry[idx]{File!SystemLabel.FC@\fontfile  {SystemLabel.FC}|hyperpage}{113}
+\indexentry[sfiles]{SystemLabel.FC@\fontfile  {SystemLabel.FC}|hyperpage}{113}
+\indexentry[idx]{File!SystemLabel.FCC@\fontfile  {SystemLabel.FCC}|hyperpage}{113}
+\indexentry[sfiles]{SystemLabel.FCC@\fontfile  {SystemLabel.FCC}|hyperpage}{113}
+\indexentry[sfdf]{LDAU.ProjectorGenerationMethod|hyperpage}{114}
+\indexentry[sfdf]{LDAU.EnergyShift|hyperpage}{114}
+\indexentry[sfdf]{LDAU.Proj|hyperpage}{114}
+\indexentry[sfdf]{PAO.Basis|hyperpage}{114}
+\indexentry[sfdf]{LDAU.CutoffNorm|hyperpage}{114}
+\indexentry[sfdf]{LDAU.Proj|hyperpage}{114}
+\indexentry[sfdf]{LDAU.EnergyShift|hyperpage}{114}
+\indexentry[sfdf]{PAO.EnergyShift|hyperpage}{114}
+\indexentry[sfdf]{LDAU.ProjectorGenerationMethod|hyperpage}{114}
+\indexentry[sfdf]{LDAU.CutoffNorm|hyperpage}{114}
+\indexentry[sfdf]{LDAU.CutoffNorm|hyperpage}{114}
+\indexentry[sfdf]{LDAU.ProjectorGenerationMethod|hyperpage}{114}
+\indexentry[sfdf]{LDAU.Proj|hyperpage}{114}
+\indexentry[sfdf]{LDAU.ProjectorGenerationMethod|hyperpage}{114}
+\indexentry[sfdf]{LDAU.ProjectorGenerationMethod|hyperpage}{115}
+\indexentry[sfdf]{LDAU.EnergyShift|hyperpage}{115}
+\indexentry[sfdf]{LDAU.CutoffNorm|hyperpage}{115}
+\indexentry[sfdf]{LDAU.FirstIteration|hyperpage}{115}
+\indexentry[sfdf]{LDAU.ThresholdTol|hyperpage}{115}
+\indexentry[sfdf]{LDAU.ThresholdTol|hyperpage}{115}
+\indexentry[sfdf]{LDAU.PopTol|hyperpage}{115}
+\indexentry[sfdf]{LDAU.PotentialShift|hyperpage}{115}
+\indexentry[sfdf]{MD.TypeOfRun|hyperpage}{116}
+\indexentry[sfdf]{Lua!Script|hyperpage}{116}
+\indexentry[sfdf]{MD!TypeOfRun|hyperpage}{117}
+\indexentry[sfdf]{MD.MaxCGDispl|hyperpage}{117}
+\indexentry[sfdf]{MD.MaxForceTol|hyperpage}{117}
+\indexentry[sfdf]{MeshCutoff|hyperpage}{117}
+\indexentry[sfdf]{Lua!Debug|hyperpage}{118}
+\indexentry[sfdf]{Lua!Debug.MPI|hyperpage}{118}
+\indexentry[idx]{File!SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{120}
+\indexentry[sfiles]{SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{120}
+\indexentry[sfdf]{SolutionMethod|hyperpage}{120}
+\indexentry[idx]{File!SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{120}
+\indexentry[sfiles]{SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{120}
+\indexentry[idx]{File!SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{120}
+\indexentry[sfiles]{SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{120}
+\indexentry[idx]{File!SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{120}
+\indexentry[sfiles]{SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{120}
+\indexentry[idx]{File!SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{120}
+\indexentry[sfiles]{SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{120}
+\indexentry[idx]{File!SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{120}
+\indexentry[sfiles]{SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{120}
+\indexentry[sfdf]{SystemLabel|hyperpage}{120}
+\indexentry[idx]{File!SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{120}
+\indexentry[sfiles]{SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{120}
+\indexentry[idx]{File!SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{121}
+\indexentry[sfiles]{SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{121}
+\indexentry[idx]{File!SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{121}
+\indexentry[sfiles]{SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{121}
+\indexentry[idx]{File!SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{121}
+\indexentry[sfiles]{SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{121}
+\indexentry[idx]{File!SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{121}
+\indexentry[sfiles]{SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{121}
+\indexentry[idx]{File!SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{121}
+\indexentry[sfiles]{SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{121}
+\indexentry[idx]{File!SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{121}
+\indexentry[sfiles]{SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{121}
+\indexentry[idx]{File!SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{121}
+\indexentry[sfiles]{SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{121}
+\indexentry[idx]{File!SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{121}
+\indexentry[sfiles]{SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{121}
+\indexentry[idx]{File!SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{121}
+\indexentry[sfiles]{SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{121}
+\indexentry{transiesta!electrode!principal layer|hyperpage}{122}
+\indexentry[sfdf]{TS!Elecs!Neglect.Principal|hyperpage}{122}
+\indexentry[sfdf]{TS!Analyze|hyperpage}{123}
+\indexentry[sfdf]{SolutionMethod|hyperpage}{123}
+\indexentry[sfdf]{TS!SolutionMethod|hyperpage}{123}
+\indexentry[sfdf]{TS!Voltage|hyperpage}{123}
+\indexentry[sfdf]{TS!Atoms.Buffer|hyperpage}{123}
+\indexentry[sfdf]{TS.BufferAtomsLeft|see TS!Atoms.Buffer}{123}
+\indexentry[sfdf]{TS.BufferAtomsRight|see TS!Atoms.Buffer}{123}
+\indexentry[sfdf]{Geometry!Constraints|hyperpage}{123}
+\indexentry[sfdf]{TS!ElectronicTemperature|hyperpage}{123}
+\indexentry[sfdf]{ElectronicTemperature|hyperpage}{123}
+\indexentry[sfdf]{TS!ChemPot.<>!ElectronicTemperature|hyperpage}{123}
+\indexentry[sfdf]{TS!SCF.Initialize|hyperpage}{123}
+\indexentry[sfdf]{TS!Elecs!DM.Init|hyperpage}{123}
+\indexentry[sfdf]{DM.Init.Bulk|hyperpage}{123}
+\indexentry[sfdf]{TS!Fermi.Initial|hyperpage}{123}
+\indexentry[sfdf]{TS!Fermi.Initial|hyperpage}{124}
+\indexentry[sfdf]{TS!Weight.Method|hyperpage}{124}
+\indexentry[sfdf]{TS!Weight.Method!orb-orb|hyperpage}{124}
+\indexentry[sfdf]{TS!Weight.Method!tr-atom-atom|hyperpage}{124}
+\indexentry[sfdf]{TS!Weight.Method!tr-atom-orb|hyperpage}{124}
+\indexentry[sfdf]{TS!Weight.Method!sum-atom-atom|hyperpage}{124}
+\indexentry[sfdf]{TS!Weight.Method!sum-atom-orb|hyperpage}{124}
+\indexentry[sfdf]{TS!Weight.Method!mean|hyperpage}{124}
+\indexentry[sfdf]{TS!Weight.k.Method|hyperpage}{124}
+\indexentry[sfdf]{TS!Forces|hyperpage}{125}
+\indexentry[sfdf]{TS!ChargeCorrection|hyperpage}{125}
+\indexentry[idx]{File!TS\_FERMI@\fontfile  {TS\_FERMI}|hyperpage}{125}
+\indexentry[sfiles]{TS\_FERMI@\fontfile  {TS\_FERMI}|hyperpage}{125}
+\indexentry[sfdf]{TS!ChargeCorrection!Factor|hyperpage}{125}
+\indexentry[sfdf]{TS!ChargeCorrection!Fermi.Tolerance|hyperpage}{125}
+\indexentry[sfdf]{TS!ChargeCorrection!Fermi.Max|hyperpage}{125}
+\indexentry[sfdf]{TS!HS.Save|hyperpage}{125}
+\indexentry[sfdf]{TS!DE.Save|hyperpage}{125}
+\indexentry[idx]{File!SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{125}
+\indexentry[sfiles]{SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{125}
+\indexentry[sfdf]{TS!S.Save|hyperpage}{125}
+\indexentry[sfdf]{TS!SIESTA.Only|hyperpage}{126}
+\indexentry[sfdf]{TS!Analyze|hyperpage}{126}
+\indexentry[sfdf]{TS!SolutionMethod|hyperpage}{126}
+\indexentry[sfdf]{TS!BTD!Pivot|hyperpage}{126}
+\indexentry[sfdf]{TS.SolutionMethod|hyperpage}{126}
+\indexentry[sfdf]{TS!BTD!Pivot|hyperpage}{126}
+\indexentry[sfdf]{TS!Analyze|hyperpage}{127}
+\indexentry[sfdf]{TS!Elecs|hyperpage}{127}
+\indexentry[sfdf]{TS!BTD!Optimize|hyperpage}{127}
+\indexentry[sfdf]{TS!BTD!Spectral|hyperpage}{127}
+\indexentry[sfdf]{TS!MUMPS!Ordering|hyperpage}{127}
+\indexentry[sfdf]{TS!MUMPS!Memory|hyperpage}{127}
+\indexentry[sfdf]{TS!MUMPS!BlockingFactor|hyperpage}{127}
+\indexentry[sfdf]{TS!Poisson|hyperpage}{128}
+\indexentry[sfdf]{TS!Hartree.Fix|hyperpage}{128}
+\indexentry[sfdf]{TS!Hartree.Fix!Frac|hyperpage}{128}
+\indexentry[sfdf]{TS!Elecs|hyperpage}{128}
+\indexentry[sfdf]{TS!Elec.<>|hyperpage}{128}
+\indexentry[sfdf]{TS!Elec.<>|hyperpage}{128}
+\indexentry[sfdf]{TS!Elec.<>!HS|hyperpage}{128}
+\indexentry[idx]{File!SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{128}
+\indexentry[sfiles]{SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{128}
+\indexentry[sfdf]{TS!Elec.<>!semi-inf-direction|hyperpage}{128}
+\indexentry[sfdf]{TS!Elec.<>!chemical-potential|hyperpage}{128}
+\indexentry[sfdf]{TS!ChemPots|hyperpage}{129}
+\indexentry[sfdf]{TS!Elec.<>!electrode-position|hyperpage}{129}
+\indexentry[sfdf]{TS!Elec.<>!used-atoms|hyperpage}{129}
+\indexentry[sfdf]{TS!Elec.<>!Bulk|hyperpage}{129}
+\indexentry[sfdf]{TS!Elec.<>!DM-Update|hyperpage}{129}
+\indexentry[sfdf]{TS!Elec.<>!Gf|hyperpage}{129}
+\indexentry[sfdf]{TS!Elec.<>!Gf-Reuse|hyperpage}{129}
+\indexentry[sfdf]{TS!Elec.<>!Eta|hyperpage}{129}
+\indexentry[sfdf]{TS!Elecs!Eta|hyperpage}{129}
+\indexentry[sfdf]{TS!Elec.<>!Accuracy|hyperpage}{129}
+\indexentry[sfdf]{TS!Elecs!Accuracy|hyperpage}{129}
+\indexentry[sfdf]{TS!Elec.<>!DE|hyperpage}{129}
+\indexentry[idx]{File!SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{129}
+\indexentry[sfiles]{SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{129}
+\indexentry[sfdf]{TS!Elec.<>!Bloch|hyperpage}{129}
+\indexentry[sfdf]{TS!Elec.<>!Bloch|hyperpage}{129}
+\indexentry[sfdf]{TS!Elec.<>!pre-expand|hyperpage}{129}
+\indexentry[sfdf]{TS!Elec.<>!Out-of-core|hyperpage}{130}
+\indexentry[sfdf]{TS.Elec.<>!check-kgrid|hyperpage}{130}
+\indexentry[sfdf]{TS!Elec.<>|hyperpage}{130}
+\indexentry[sfdf]{TS!Elecs!Bulk|hyperpage}{130}
+\indexentry[sfdf]{TS!Elec.<>!Bulk|hyperpage}{130}
+\indexentry[sfdf]{TS!Elecs!Eta|hyperpage}{130}
+\indexentry[sfdf]{TS!Elec.<>!Eta|hyperpage}{130}
+\indexentry[sfdf]{TS!Elecs!Accuracy|hyperpage}{130}
+\indexentry[sfdf]{TS!Elec.<>!Accuracy|hyperpage}{130}
+\indexentry[sfdf]{TS!Elecs!Neglect.Principal|hyperpage}{130}
+\indexentry[sfdf]{TS!Elecs!Gf.Reuse|hyperpage}{130}
+\indexentry[sfdf]{TS!Elec.<>!Gf-Reuse|hyperpage}{130}
+\indexentry[sfdf]{TS!Elecs!Out-of-core|hyperpage}{130}
+\indexentry[sfdf]{TS!Elec.<>!Out-of-core|hyperpage}{130}
+\indexentry[sfdf]{TS!Elecs!DM.Update|hyperpage}{130}
+\indexentry[sfdf]{TS!Elec.<>!DM-Update|hyperpage}{130}
+\indexentry[sfdf]{TS!Elecs!DM.Init|hyperpage}{130}
+\indexentry[sfdf]{TS!Elecs!Coord.EPS|hyperpage}{131}
+\indexentry[sfdf]{TS!Elecs|hyperpage}{131}
+\indexentry[sfdf]{TS!ChemPots|hyperpage}{131}
+\indexentry[sfdf]{TS!ChemPot.<>|hyperpage}{131}
+\indexentry[sfdf]{TS!ChemPot.<>|hyperpage}{131}
+\indexentry[sfdf]{TS!ChemPot.<>!chemical-shift|hyperpage}{131}
+\indexentry[sfdf]{TS!ChemPot.<>!mu|hyperpage}{131}
+\indexentry[sfdf]{TS!ChemPot.<>!contour.eq|hyperpage}{131}
+\indexentry[sfdf]{TS!ChemPot.<>!ElectronicTemperature|hyperpage}{131}
+\indexentry[sfdf]{TS!ChemPot.<>!Temp|hyperpage}{131}
+\indexentry[sfdf]{TS!ChemPot.<>!kT|hyperpage}{131}
+\indexentry[sfdf]{TS!ElectronicTemperature|hyperpage}{131}
+\indexentry[sfdf]{TS!ElectronicTemperature|hyperpage}{131}
+\indexentry[sfdf]{TS!ChemPot.<>!contour.eq.pole|hyperpage}{131}
+\indexentry[sfdf]{TS!ChemPot.<>!contour.eq.pole.N|hyperpage}{131}
+\indexentry[sfdf]{TS!ChemPot.<>!contour.eq.pole.N|hyperpage}{131}
+\indexentry[sfdf]{TS!ChemPot.<>!contour.eq.pole|hyperpage}{132}
+\indexentry[sfdf]{TS!Contours!Eq.Pole|hyperpage}{132}
+\indexentry[sfdf]{TS!Contours!Eq.Pole.N|hyperpage}{133}
+\indexentry[sfdf]{TS!Contours!Eq.Pole.N|hyperpage}{133}
+\indexentry[sfdf]{TS!Contours!Eq.Pole|hyperpage}{133}
+\indexentry[sfdf]{TS!Contour.<>|hyperpage}{133}
+\indexentry[sfdf]{TS!ChemPot.<>!contour.eq|hyperpage}{133}
+\indexentry[sfdf]{TS!Contour.<>!part|hyperpage}{133}
+\indexentry[sfdf]{TS!Contour.<>!from|hyperpage}{133}
+\indexentry[sfdf]{TS!Contour.<>!points|hyperpage}{133}
+\indexentry[sfdf]{TS!Contour.<>!delta|hyperpage}{133}
+\indexentry[sfdf]{TS!Contour.<>!method|hyperpage}{133}
+\indexentry[sfdf]{TS!Contour.<>!opt|hyperpage}{133}
+\indexentry[sfdf]{TS!Contours.nEq!Eta|hyperpage}{134}
+\indexentry[sfdf]{TS!Contours.nEq!Fermi.Cutoff|hyperpage}{134}
+\indexentry[sfdf]{TS!Contours.nEq|hyperpage}{134}
+\indexentry[sfdf]{TS!Contour.nEq.<>|hyperpage}{134}
+\indexentry[sfdf]{TS!Contour.nEq.<>|hyperpage}{135}
+\indexentry[sfdf]{TS!Contour.<>|hyperpage}{135}
+\indexentry[sfdf]{TS!ElectronicTemperature|hyperpage}{135}
+\indexentry[idx]{File!SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{136}
+\indexentry[sfiles]{SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{136}
+\indexentry[idx]{File!SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{136}
+\indexentry[sfiles]{SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{136}
+\indexentry[idx]{File!SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{136}
+\indexentry[sfiles]{SystemLabel.DM@\fontfile  {SystemLabel.DM}|hyperpage}{136}
+\indexentry[sfdf]{TS!Elec.<>!DM-Update|hyperpage}{136}
+\indexentry[idx]{File!SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{136}
+\indexentry[sfiles]{SystemLabel.TSHS@\fontfile  {SystemLabel.TSHS}|hyperpage}{136}
+\indexentry[idx]{File!SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{136}
+\indexentry[sfiles]{SystemLabel.TSDE@\fontfile  {SystemLabel.TSDE}|hyperpage}{136}
+\indexentry[idx]{File!SystemLabel.TSKP@\fontfile  {SystemLabel.TSKP}|hyperpage}{136}
+\indexentry[sfiles]{SystemLabel.TSKP@\fontfile  {SystemLabel.TSKP}|hyperpage}{136}
+\indexentry[idx]{File!SystemLabel.KP@\fontfile  {SystemLabel.KP}|hyperpage}{136}
+\indexentry[sfiles]{SystemLabel.KP@\fontfile  {SystemLabel.KP}|hyperpage}{136}
+\indexentry[idx]{File!SystemLabel.TSCCEQ*@\fontfile  {SystemLabel.TSCCEQ*}|hyperpage}{136}
+\indexentry[sfiles]{SystemLabel.TSCCEQ*@\fontfile  {SystemLabel.TSCCEQ*}|hyperpage}{136}
+\indexentry[idx]{File!SystemLabel.TSCCNEQ*@\fontfile  {SystemLabel.TSCCNEQ*}|hyperpage}{136}
+\indexentry[sfiles]{SystemLabel.TSCCNEQ*@\fontfile  {SystemLabel.TSCCNEQ*}|hyperpage}{136}
+\indexentry{tbtrans@\textbf{tbtrans}|hyperpage}{136}
+\indexentry{bug reports|hyperpage}{137}
+\indexentry{XML|hyperpage}{141}
+\indexentry{CML|hyperpage}{141}
+\indexentry[sfdf]{XML!Write|hyperpage}{141}
+\indexentry{Precision selection|hyperpage}{142}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{142}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{142}
+\indexentry{Grid precision|hyperpage}{142}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{142}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{142}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{142}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{142}
+\indexentry{Broyden       mixing|hyperpage}{142}
+\indexentry[idx]{File!arch.make@\fontfile  {arch.make}|hyperpage}{142}
+\indexentry[sfiles]{arch.make@\fontfile  {arch.make}|hyperpage}{142}
+\indexentry{Reference counting|hyperpage}{143}
+\indexentry{Data Structures|hyperpage}{143}

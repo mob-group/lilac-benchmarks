@@ -1,0 +1,2623 @@
+##############################################
+ Changes between v4.0 and v4.1-b3
+##############################################
+
+------------------------------------------------------------
+revno: 736
+tags: v4.1-b3
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-07-04 10:30:53 +0200
+message:
+  Updated copyright years in siesta manuals
+------------------------------------------------------------
+revno: 735
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-07-04 08:52:32 +0200
+message:
+  Updated Siesta tests
+  
+  Almost all tests are updated.
+  
+  I can't get the results of the FePt_zz/zy tests,
+  they run for more than 10 hours.
+  
+  TODO: Update tests to ensure they all converge (SCF convergence)
+  and that they run it a reasonable time (regardless of the result).
+------------------------------------------------------------
+revno: 734
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-07-03 13:28:45 +0200
+message:
+  Updated Transiesta-TBtrans tests
+------------------------------------------------------------
+revno: 733 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-07-03 13:16:01 +0200
+message:
+  Merged 4.0 r530
+  
+  Updated makefiles in Utils so that make clean works by cleaning
+  everything.
+  
+  This makes the script ./clean_all.sh work as it should.
+------------------------------------------------------------
+revno: 732 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-07-03 11:52:23 +0200
+message:
+  Merged 4.0 r529
+  
+  Updated makefile for tests, the tests for 4.1-b3 will be added
+  in the next commit.
+------------------------------------------------------------
+revno: 731
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Sun 2017-07-02 10:56:49 +0200
+message:
+  Updated lapack and blas to 3.7.1
+  
+  Now the shipped sources of LAPACK and BLAS are updated
+  with several bug-fixes.
+------------------------------------------------------------
+revno: 730 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Sun 2017-07-02 10:49:35 +0200
+message:
+  Merged 4.0 r527
+------------------------------------------------------------
+revno: 729 [merge]
+author: Nick Papior <nickpapior@gmail.com>
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Sat 2017-07-01 23:12:36 +0200
+message:
+  Merged 4.0 r526 (units for max-walltime; fdf_isphysical)
+------------------------------------------------------------
+revno: 728 [merge]
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Sat 2017-07-01 22:58:50 +0200
+message:
+  Merged 4.0 r525
+  
+  (More robust treatment of nspin=4 in GGA XC routines)
+  
+  Only Src/SiestaXC/ggaxc.f had to be changed.
+  Src/xc.f already contained the patch (save cosmetics)
+  
+  (Thanks to Ramon Cuadrado)
+------------------------------------------------------------
+revno: 727 [merge]
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Sat 2017-07-01 15:42:49 +0200
+message:
+  Merged 4.0 r523+524
+  
+  Update the STM programs in Util/STM)
+------------------------------------------------------------
+revno: 726 [merge]
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Sat 2017-07-01 15:23:38 +0200
+message:
+  Merged 4.0 r522
+  
+  (Extra logging and control features)
+------------------------------------------------------------
+revno: 725
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2017-06-29 21:35:41 +0200
+message:
+  Fixed a bug when TBT.Projs.Only was true
+  
+  This fix is only for tbtrans
+------------------------------------------------------------
+revno: 724
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-06-23 22:12:34 +0200
+message:
+  Added error when doing non-colinear or spin-orbit with LDA+U
+  
+  There are (@R. Robles) some terms missing in the LDA+U
+  implementation when non-colinear or spin-orbit coupling is used.
+  This has been added to the documentation as well.
+  
+  Secondly, the setup_hamiltonian now fully uses the spin type.
+------------------------------------------------------------
+revno: 723
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-06-23 21:49:18 +0200
+message:
+  Moved globalization of Eso energy into spinorb
+  
+  To make it easier to use the Eso globalization is
+  now performed in the spinorb routine.
+  
+  Also implemented the spin type in setup_H0
+------------------------------------------------------------
+revno: 722
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-06-23 21:41:12 +0200
+message:
+  Changed preprocessor NO_MRRR to MRRR, default not compiled in
+  
+  Now the MRRR routines are defaulted not to be compiled in.
+  If one wishes to use these faster methods one should use the
+  preprocessor flag:
+   -DSIESTA__MRRR
+  which enables the necessary routines.
+------------------------------------------------------------
+revno: 721
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-06-23 09:25:11 +0200
+message:
+  Updated the release notes for 4.1-b3
+------------------------------------------------------------
+revno: 720
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2017-06-22 11:26:17 +0200
+message:
+  Fixed EDM spin-orbit coupling <>.nc file
+  
+  The spin components for the EDM matrix vs. DM is not the
+  same for the spin-orbit case.
+  Hence a fix was required to make sure they could be obtained correctly.
+------------------------------------------------------------
+revno: 719
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-06-19 14:07:47 +0200
+message:
+  Fixed spin-orbit coupling <>.nc file
+  
+  The spin components for the matrices vs. the real-space grid are not the
+  same for the spin-orbit case.
+  Hence a fix was required to make sure they could be obtained correctly.
+------------------------------------------------------------
+revno: 718
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2017-06-15 21:05:36 +0200
+message:
+  Fixed flook commit where I erroneously deleted a use statement
+  
+  Also forced h_chain to not run with MPI
+------------------------------------------------------------
+revno: 717
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2017-06-15 12:14:56 +0200
+message:
+  Fixed LTO compilation of the fdict and ncdf libraries
+------------------------------------------------------------
+revno: 716
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2017-06-15 11:38:26 +0200
+message:
+  Updated manual for the tests runs in the Makefile
+------------------------------------------------------------
+revno: 715
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-06-13 21:08:33 +0200
+message:
+  Removed Examples/TranSiesta directory, fixed ts2ts, +doc
+  
+  Removed the Examples/TranSiesta directory, the example would
+  never work in the new TranSiesta because of a too small electrode.
+  
+  The ts2ts now also copies the old Neigen flag for tbtrans to the
+  new specification.
+  
+  Added more documentation about the Lua interface.
+------------------------------------------------------------
+revno: 714
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-06-13 07:40:38 +0200
+message:
+  Fixed print-out of orbital currents with TRS
+  
+  I.e. now it only prints if the option is wrong.
+------------------------------------------------------------
+revno: 713
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Sun 2017-06-11 12:48:33 +0200
+message:
+  Enabled Lua calls with the new mixing routines
+  
+  The Lua-interface to changing the mixing weight etc. was broken
+  because of the new mixing routines added.
+  This has now been re-enabled because it seems like a very useful feature.
+  
+  A couple of requirements were needed to be fulfilled:
+  
+  1. The fdict variable required an update to enable pointers
+     to character arrays (of len=1).
+  
+  2. The ncdf library then also required an update.
+  
+  3. The internals of the character retrieving functions needed adaption
+     of the new method in fdict.
+  
+  Now this is much better and easier to handle.
+  
+  Two examples are now for the "pure" lua interface (not flos):
+  
+  - lua_h2o
+    An adaptive change of the mixing weight per iteration.
+    This is in an MD environment and thus it resets it every
+    MD step.
+    
+  - lua_si111
+    A mixing method changer based on the convergence criteria.
+    This will change the mixer to more aggressive methods at
+    certain convergence levels.
+  
+  Added a example explanations in the documentation.
+------------------------------------------------------------
+revno: 712
+fixes bug: https://launchpad.net/bugs/1697142
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Sat 2017-06-10 11:48:05 +0200
+message:
+  Fixed double linker libraries in the shipped *.make files
+  
+  When using the COMB_LIBS files we should not add them to the LIBS
+  variable (they are added manually).
+  This has been fixed in gfortran.make and intel.make.
+------------------------------------------------------------
+revno: 711
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-05-23 00:06:14 +0200
+message:
+  Updated documentation with indices for MD.TypeOfRun
+------------------------------------------------------------
+revno: 710
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-05-19 21:29:35 +0200
+message:
+  Fixed Makefile for fdict and ncdf in tshs2tshs
+  
+  Changes to fdict and ncdf had not been propageted to this utility.
+  I have done a:
+    grep fdict Util/**/*
+  folder and it should now compile everything fine.
+------------------------------------------------------------
+revno: 709
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-05-19 15:38:14 +0200
+message:
+  TBT clarified projection output and updated manual for tbtrans
+  
+  Added more information in the output when projection regions error
+  out.
+  Also added names to the orbital regions in tbtrans.
+------------------------------------------------------------
+revno: 708
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-04-25 22:54:59 +0200
+message:
+  Fixed clean Makefile target when no compilation has been performed
+  
+  The makefile was performing a clean in a possibly non-existing
+  directory. It now checks correctly for it and only then proceeds.
+  
+  Updated all Makefiles
+------------------------------------------------------------
+revno: 707
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-04-21 23:10:18 +0200
+message:
+  Fixed an out-standing bug related to bond-currents and dH (TBT)
+  
+  The delta-H method in TBtrans has been revised and updated.
+  
+  Now dH adds e ^ { i k.R } phases for consistency. If people use it
+  for rescaling coupling elements this makes sense, if it is used
+  for more advanced uses (where the phases shouldn't be there) the
+  users should be familiar with this and add the opposite phases.
+  
+  Secondly, the bond-currents are now defaulting to adding the dH
+  elements to the bond-currents. I.e. the same equation for H
+  is now also applied with dH. This is controlled via the flag
+  
+    TBT.dH.Current.Orb
+  
+  which defaults to True when bond-currents are requested.
+  
+  The documentation has been updated to reflect the changes.
+------------------------------------------------------------
+revno: 706 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-04-21 22:15:22 +0200
+message:
+  Merged 4.0 r521
+------------------------------------------------------------
+revno: 705
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-04-04 21:14:36 +0200
+message:
+  Updated tbtrans makefile for ncdf compilation
+  
+  Same as r699 for tbtrans.
+------------------------------------------------------------
+revno: 704
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-04-04 17:26:16 +0200
+message:
+  Fixed ncdf compilation on non-gnu compilers
+------------------------------------------------------------
+revno: 703
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-04-03 21:10:18 +0200
+message:
+  Added remark of TBT.Projs.T requirement in tbtrans.tex
+------------------------------------------------------------
+revno: 702
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2017-03-30 14:24:04 +0200
+message:
+  Removed unnecessary stuff in Makefile
+  
+  Updated create_images.py script in flos_h2o_neb test.
+------------------------------------------------------------
+revno: 701
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-03-29 09:06:42 +0200
+message:
+  Updated flos-h2o-neb script and reference output with optimized flags
+------------------------------------------------------------
+revno: 700
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-03-29 08:33:08 +0200
+message:
+  Forgot to add the flos_h2o_neb reference output in r698
+------------------------------------------------------------
+revno: 699
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-03-29 08:26:02 +0200
+message:
+  Bugfix for compilation on weird shells, tabulator inserts are tricky
+  
+  Now we use printf instead of echo.
+------------------------------------------------------------
+revno: 698
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-03-29 08:22:45 +0200
+message:
+  Updated tests folder, added FLOS tests for LBFGS, FIRE and meshcutoff
+  
+  Added flos tests.
+  To run the flos tests it is required that:
+  1. SIESTA has been compiled with flook support
+  2. flos has been installed by adding the library to the LUA_PATH
+     environment variable.
+  
+  The new flos tests involve a:
+   LBFGS relaxation with the H2O molecule
+   FIRE relaxation with the H2O molecule
+   MeshCutofff convergence with the H2O molecule
+   NEB of rotation of H2O molecule in a two molecule setup (not enough vacuum
+   , but useful enough for testing).
+  
+  all 3 are very fast and shows how a Lua implementation could
+  be performed.
+  
+  This also required that the tests folder is updated.
+  Now the tests are subdivided into specific tasks:
+   tests_soc; all spin-orbit tests. These are typically
+   	   very loong tests and require a long time to run.
+   tests_flos; tests requiring flook and flos
+   tests; everything else
+  
+  Later these may be extended.
+------------------------------------------------------------
+revno: 697 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-03-27 08:43:38 +0200
+message:
+  Merged fdict-ncdf branch, contains memory leak fixes
+  
+  This merge updates the shipped fdict and ncdf sources such that
+  1. A pre-processor is not required
+  2. Many bug-fixes related to memory leaks have been fixed
+  3. Documentation updates.
+------------------------------------------------------------
+revno: 696 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-03-27 08:36:49 +0200
+message:
+  Merged install-scripts branch, contains installation scripts
+  
+  This merge enables easy installation of netcdf and flook for
+  use in SIESTA.
+------------------------------------------------------------
+revno: 695
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-03-22 09:41:26 +0100
+message:
+  Enabled reading TS.Atoms.Buffer using a direct list
+  
+  This is just slightly easier than using a full block if
+  the atoms are consecutive.
+  Also updated documentation to reflect this.
+------------------------------------------------------------
+revno: 694
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-03-22 08:39:33 +0100
+message:
+  Fixed fixed-spin calculations when writing to XML
+  
+  There was a bug in writing the Efs array to the XML output.
+  This has been fixed.
+------------------------------------------------------------
+revno: 693
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-03-15 22:04:04 +0100
+message:
+  Fixed running flook without a file
+  
+  Commit r692 introduced a bug. This is now fixed.
+------------------------------------------------------------
+revno: 692
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-03-15 21:38:29 +0100
+message:
+  Updated flook interaction with flos
+  
+  Now flos is easier to implement and the routines
+  for interaction has been changed from:
+    siesta_get/siesta_return
+  to
+    siesta.receive/siesta.send
+  to reflect their nature.
+  There were some problems with the return keyword.
+------------------------------------------------------------
+revno: 691
+fixes bug: https://launchpad.net/bugs/1672084
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Sat 2017-03-11 21:45:13 +0100
+message:
+  Fixed sorting bug in tbtrans introduced in 588
+  
+  It affected all calculated quantities if these flags
+  were true and the sparse pattern was not already sorted:
+  TBT.DOS.A
+  TBT.Current.Orb
+------------------------------------------------------------
+revno: 690
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-03-06 14:30:43 +0100
+message:
+  Fixed sequence of reading the TBT.k block/list now TBT.k is always preferred
+------------------------------------------------------------
+revno: 689
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2017-03-02 09:56:25 +0100
+message:
+  Removed unneeded pre-processor flag in tbt_tri_scat
+  
+  Now the orbital currents are always with - E * S for energy scaling.
+  (Note, they were also before this commit)
+------------------------------------------------------------
+revno: 688
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-03-01 08:44:09 +0100
+message:
+  Removed unused variables in tbtrans files, and in m_ts_sparse
+------------------------------------------------------------
+revno: 687
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-02-28 10:54:23 +0100
+message:
+  Bugfix in fdict string deletion
+  
+  Fixed a deletion of iso_var_str.
+------------------------------------------------------------
+revno: 686
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-02-27 15:20:52 +0100
+message:
+  Bugfix in documentation of tbtrans
+  
+  Nomenclature of projections was inconsistent.
+------------------------------------------------------------
+revno: 685 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-02-27 09:02:56 +0100
+message:
+  Merged 4.0 r520
+------------------------------------------------------------
+revno: 684 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-02-21 08:39:26 +0100
+message:
+  Merged 4.0 r519
+------------------------------------------------------------
+revno: 683 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-02-20 15:37:39 +0100
+message:
+  Merged 4.0 r518
+------------------------------------------------------------
+revno: 682
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-02-20 12:03:43 +0100
+message:
+  Added error-messages from lua
+  
+  Now lua-runs are fully compatible and will kill siesta if something
+  is wrong.
+------------------------------------------------------------
+revno: 681 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-02-20 10:02:08 +0100
+message:
+  Merged 4.0 r517
+------------------------------------------------------------
+revno: 680
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-02-20 10:01:29 +0100
+message:
+  Fixed memory leaks in parse.F90 and fdf.F90
+  
+  A memory leak when parsing lists, and one when reading in from
+  %include files were detected and fixed. (thanks valgrind)
+    valgrind --track-origins=yes --leak-check=full
+  is really helpful.
+------------------------------------------------------------
+revno: 679
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-02-20 09:46:20 +0100
+message:
+  Fixed memory leaks in fdict, and transiesta related routines
+  
+  Several memory leaks was detected using valgrind, nearly all
+  have been fixed.
+  
+  Currently, there is still a memory leak regarding the dictionary
+  when concatenating. However, it is 2 bytes. I will amend a fix for this
+  in a later revision (track fdict on github for when the fix will be
+  available).
+------------------------------------------------------------
+revno: 678
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-02-17 22:45:50 +0100
+message:
+  Added Lua-error messages
+  
+  Now siesta will die, if Lua has an error.
+  This prohibits running loose.
+------------------------------------------------------------
+revno: 677 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-02-17 14:28:06 +0100
+message:
+  Merged 4.0 r516
+------------------------------------------------------------
+revno: 676 [merge]
+fixes bug: https://launchpad.net/bugs/1656273
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Fri 2017-02-17 12:15:11 +0100
+message:
+  Merge 4.0-515 (Bader fix)
+------------------------------------------------------------
+revno: 675
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-02-14 09:24:03 +0100
+message:
+  Bugfix for 2-electrode calculations with transport along 2nd axis
+  
+  The Vha fix was wrongly calculated.
+  Also, added printout of unit for H tolerance in TS.
+------------------------------------------------------------
+revno: 674
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-02-08 20:44:28 +0100
+message:
+  Change of mix_scf_first based on DM input
+  
+  Based on a couple of cases where the DM would converge but would
+  have some memory of the initial (previous) DM, we have decided to
+  only allow mixing the first SCF step IFF the DM is filled with
+  atomic data, or if the read in DM has a different charge than it
+  is supposed to.
+  This should yield a better converged final DM and thus, forces.
+------------------------------------------------------------
+revno: 673
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2017-02-06 19:49:41 +0100
+message:
+  Added systemlabel to lua handles
+  
+  Sadly the string does not allow pass by reference, so
+  in case the dictionary is deleted it should nullify non-char
+  elements. Good thing for now is that the siesta-dicts
+  are static.
+------------------------------------------------------------
+revno: 672
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Sun 2017-02-05 21:15:55 +0100
+message:
+  Clarified mixing step when linear mixing is started
+  
+  The mixing algorithm behaved correctly when having a linear
+  mixer, however it erroneously ran the accumulation step even
+  if the # of saved steps was 0. This has now been fixed.
+------------------------------------------------------------
+revno: 671 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-02-03 11:38:11 +0100
+message:
+  Merged 4.0 r513-514
+------------------------------------------------------------
+revno: 670
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-02-03 10:47:57 +0100
+message:
+  Updated release.sh script in Docs
+  
+  Now there are more information on how to create a release.
+------------------------------------------------------------
+revno: 669
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-02-03 10:22:15 +0100
+message:
+  Fixed printout of suggested k-point sampling for electrode
+  
+  The suggested k-point sampling for electrodes was not enforcing
+  the high k-point sampling in the semi-infinite direction.
+------------------------------------------------------------
+revno: 668
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-02-03 09:48:49 +0100
+message:
+  Fixes propagation calculation of the T.Out quantity
+  
+  The calculation of Tr[G.Gamma] using the propagation method
+  was erroneous. This has been fixed (checked against the column
+  spectral calculation, yay for two methods).
+  
+  Allowed dipole corrections in 1-electrode calculations
+  because they will most likely be slabs and never an applied
+  field. Hence the dipole correction may be needed along the
+  semi-infinite direction.
+  
+  Updated tbtrans documentation to indicate what files are generated
+  from which options. Added explanation of the aggregate transmission
+  value.
+------------------------------------------------------------
+revno: 667
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2017-02-02 16:36:51 +0100
+message:
+  Added even more variables to the siesta_dictionaries
+  
+  This enables more communication with flos
+------------------------------------------------------------
+revno: 666
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-02-01 20:35:30 +0100
+message:
+  Changed default of WriteH to false
+  
+  Now siesta does not write out these files:
+    H_DMGEN/H_MIXED
+  They are mainly intended for testing use and not explicitly
+  usable for regular users.
+  
+  See discussion here:
+  https://code.launchpad.net/~nickpapior/siesta/siesta-forces-cleanup/+merge/315621
+  
+  Also updated documentation regarding these aspects.
+------------------------------------------------------------
+revno: 665
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-02-01 13:39:31 +0100
+message:
+  Almost finalized the flook interoperability
+  
+  Added documentation of the Lua scripting capability.
+  In the documentation I have added a link to the flos library
+  which already implements a few enhancements over the previous things.
+  
+  Added a new state in Lua, INIT_MD which is required to be able to
+  do MeshCutoff convergences, this required the mesh cut-off to be retrieved
+  from setup_H0.
+  
+  Added target attribute to the siesta-dictionary to ensure they are passed by
+  reference.
+  
+  Added Mesh.Cutoff.Minimum and Mesh.Cutoff.Used.
+  
+  Moved the SCF_LOOP state to be just after mixing has been performed.
+  
+  Added the new states to the h2o_lua example.
+------------------------------------------------------------
+revno: 664 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-01-31 09:43:09 +0100
+message:
+  Merged 4.0 r512
+------------------------------------------------------------
+revno: 663
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-01-31 09:39:47 +0100
+message:
+  Updated siesta_dicts options for interacting with mesh
+  
+  Now all Grid.* has been updated to Mesh.*. In additon
+  the MeshCutoff is now Mesh.Cutoff.
+  
+  Also added the k-point sampling to enables this in Lua
+  calls.
+------------------------------------------------------------
+revno: 662
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-01-27 19:03:40 +0100
+message:
+  Fixed siesta dictionary for the flook interaction
+  
+  Now the initial and final movements can be accessible
+  with:
+  
+     MD.Steps.First
+     MD.Steps.Last
+------------------------------------------------------------
+revno: 661
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2017-01-27 15:21:44 +0100
+message:
+  Fixed coordinate exchanges to LUA and added a bunch more
+  
+  In the LUA hook one now has access to the unit conversion
+  table:
+  
+    siesta.Units
+  
+  which contains all the unit conversions used internally in
+  siesta.
+  
+  Added all the tolerance variables to the siesta dictionaries
+  for communicating with lua
+  
+  A bug was found for communicating the coordinates from siesta
+  to lua. When a supercell calculation was performed the xa(:,1:na_s)
+  was sent, while it should only be xa(:,1:na_u). This has been fixed.
+  
+  Minor fixes in the usage of the options in siesta_options and read_options
+  The default variable was not really used, and has been removed.
+------------------------------------------------------------
+revno: 660
+fixes bug: https://launchpad.net/bugs/1646118
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2017-01-26 10:30:17 +0100
+message:
+  Made transiesta and tbtrans quit if the transfer matrix is 0
+  
+  If the user supplies an electrode where the transfer matrix is 0
+  transiesta and tbtrans will now die, regardless of whether the user
+  wants this.
+  In fact, we could allow this by treating it as a molecular end, however
+  it will then not be a reservoir.
+  This sanity check should prevent users from doing wrong calculations.
+  
+  Also fixed print-out of electrode names if options are inconsistent in
+  m_ts_electype.
+------------------------------------------------------------
+revno: 659
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2017-01-26 10:11:21 +0100
+message:
+  Updated documentation fixes lp:1646566
+  
+  Now it is clear how the initial spin-configuration is
+  applied.
+------------------------------------------------------------
+revno: 658
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2017-01-26 08:26:19 +0100
+message:
+  Added more energies to the siesta-dictionary
+  
+  They are now available in the LUA calls as well.
+------------------------------------------------------------
+revno: 657
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2017-01-26 08:07:35 +0100
+message:
+  In lua md we now allow cell relaxations
+  
+  When doing LUA MD these variables are now available:
+   MD.Relax.CellOnly
+   MD.Relax.Cell
+  which may be used to identify how the relaxation of the
+  cell is requested.
+  
+  If one sets the cell to 0 in the LUA code siesta will
+  now automatically calculate a new cell-size.
+  
+  Added write-out of the XV file in LUA-MD.
+------------------------------------------------------------
+revno: 656
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-01-25 22:30:25 +0100
+message:
+  Fixed displacement vector for elec-hartree plane
+  
+  When the electrode plane could not find any points inside
+  the unit-cell a displacement vector is printed to help
+  the user moving all atoms. The vector printed could in certain
+  cases be wrong.
+  This is now fixed.
+------------------------------------------------------------
+revno: 655 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-01-25 19:45:49 +0100
+message:
+  Merged 4.0 r511
+------------------------------------------------------------
+revno: 654
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-01-25 12:59:37 +0100
+message:
+  Fixed tbtrans calculation of polarized calculations without TBT.Spin
+  
+  I had mistakenly pointed to an empty pointer in case of the second spin
+  channel when doing polarized calculations.
+  Now this is fixed.
+------------------------------------------------------------
+revno: 653 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-01-25 11:42:39 +0100
+message:
+  Merged 4.0 r510
+  
+  This merge is a no-op, the fix was already applied (erronously
+  by me).
+------------------------------------------------------------
+revno: 652
+fixes bug: https://launchpad.net/bugs/1658518
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-01-25 10:50:50 +0100
+message:
+  Fixed bug related to PGI compiler
+  
+  A list of derived type was public, whereas the derived type was
+  private. This is not allowed.
+  
+  Fixes lp:1658518
+------------------------------------------------------------
+revno: 651
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-01-25 10:42:41 +0100
+message:
+  Fixed hartree plane with 1 electrode calculations
+  
+  Now transiesta allows hartree-plane for 1 electrode calculations
+------------------------------------------------------------
+revno: 650
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-01-25 09:35:39 +0100
+message:
+  Allowed tselecs.sh to create input for 1 electrode (never a bias)
+------------------------------------------------------------
+revno: 649
+fixes bug: https://launchpad.net/bugs/1658520
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-01-24 19:43:31 +0100
+message:
+  Fixed g95 compilation, fixes r632 and lp:1658520
+  
+  Apparently g95 does not allow intrinsic interfaces with
+  optional arguments named the same as the argument in the intrinsic
+  interface:
+     size(..., dim)
+  where dim is an optional argument in the calling routine is not 
+  allowed. Basic work-around is to do:
+     ldim = dim
+     size(..., ldim)
+  and it works.
+------------------------------------------------------------
+revno: 648
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2017-01-24 19:37:15 +0100
+message:
+  Updated dictionaries which may be passed to lua
+  
+  The flook dictionaries have been updated. Now one
+  can also pass back and forth the stress tensor.
+  TODO: fix the problem of changing the cell-vectors
+  such that one can do external cell-relaxations.
+------------------------------------------------------------
+revno: 647 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2017-01-19 07:45:43 +0100
+message:
+  Merged 4.0 r509
+------------------------------------------------------------
+revno: 646
+fixes bug: https://launchpad.net/bugs/1657484
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-01-18 17:02:57 +0100
+message:
+  Fixed OMP statement when transfering to F90
+  
+  Forgot an ampersand for contiunation line,
+  
+  fixes lp:1657484
+------------------------------------------------------------
+revno: 645
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-01-18 11:26:51 +0100
+message:
+  Moved normalize_DM.F to normalize_DM.F90
+  
+  Updated to fortran 90 for the normalize_DM code.
+------------------------------------------------------------
+revno: 644
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-01-18 11:18:19 +0100
+message:
+  Fixed a bug in normalize_DM
+  
+  Since the SO merge the normalize_DM has only normalized the
+  first 4 components. Since r632 it only normalized the
+  first 2.
+  
+  Now everything is normalized.
+------------------------------------------------------------
+revno: 643
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-01-18 09:18:31 +0100
+message:
+  Changed maxk to nkpnt and implemented spin-type in siesta_init
+  
+  The maxk variable was dubious and not consistent throughout the 
+  code. Now we have removed maxk to only rely on the kpoint_grid
+  nkpnt.
+------------------------------------------------------------
+revno: 642
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2017-01-18 08:39:04 +0100
+message:
+  Fixed initial spin printout
+  
+  The size of the DM matrix was not correctly estimated.
+  Now it loops over all orbitals as it should.
+------------------------------------------------------------
+revno: 641
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2016-12-29 16:45:19 +0100
+message:
+  Updated Makefile depedencies
+------------------------------------------------------------
+revno: 640
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2016-12-29 11:36:10 +0100
+message:
+  Updated citation for latest transiesta article
+------------------------------------------------------------
+revno: 639
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2016-12-29 11:12:45 +0100
+message:
+  Updated shipped blas and lapack to 3.7.0
+  
+  Fixed a few small bugs for compatibility in the script
+  that creates the lapack/blas sources.
+------------------------------------------------------------
+revno: 638
+fixes bug: https://launchpad.net/bugs/1652548
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-12-27 12:08:17 +0100
+message:
+  Bug in restructdSpData2D due to no interface
+  
+  In the recent merge r632 there was left out an interface for
+  the subroutine. This meant that the optional flag was never
+  really optional, but set to a non-initialized integer.
+  The fix is to wrap the routine in a module.
+  
+  Fixes: lp:1652548
+------------------------------------------------------------
+revno: 637
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2016-12-22 09:20:08 +0100
+message:
+  Added developer version of manual
+  
+  The developer version of the manual should only be build
+  by persons interested in further extending the siesta code
+  and wishes to understand the data-structures and internals
+  of siesta more intimately.
+  
+  Currently there are no additions to the developer version.
+------------------------------------------------------------
+revno: 636
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2016-12-21 12:21:28 +0100
+message:
+  Fixed bugs in custom settings for the mixer
+  
+  Fixed all known bugs in the mixer routines
+------------------------------------------------------------
+revno: 635
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-12-20 10:09:39 +0100
+message:
+  Fixed tbtrans documentation about hybrid parallel
+  
+  The mpirun command was wrong
+------------------------------------------------------------
+revno: 634
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2016-12-16 15:31:45 +0100
+message:
+  Merged tbtrans fixes and documentation update
+  
+  This fixes lp:1649774
+------------------------------------------------------------
+revno: 633 [merge]
+fixes bug: https://launchpad.net/bugs/1649774
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2016-12-14 11:20:15 +0100
+message:
+  Merged tbtrans fixes and documentation update
+  
+  This fixes lp:1649774
+------------------------------------------------------------
+revno: 632 [merge]
+fixes bug: https://launchpad.net/bugs/1645388
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-12-13 14:59:33 +0100
+message:
+  Merged new initialization routines for new_DM
+  
+  This clarifies the structure of the new_dm routine by
+  splitting the init_DM routine into a "read" and an
+  "atomic" init routine.
+  In case we read a DM siesta now allows reading a different
+  spin structure and does automatic extrapolation.
+  
+  This partially fixes lp:1645388
+------------------------------------------------------------
+revno: 631
+fixes bug: https://launchpad.net/bugs/1648053
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2016-12-07 19:48:14 +0100
+message:
+  Fixed bug when printing initial spin-difference
+  
+  This bug was introduced in r590.
+------------------------------------------------------------
+revno: 630 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2016-12-05 14:17:32 +0100
+message:
+  Merged 4.0-r508, reverted merge (no changes required)
+------------------------------------------------------------
+revno: 629
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2016-12-05 11:54:02 +0100
+message:
+  Fixed non-collinear and spin-orbit PDOS in serial
+  
+  Partially fixes lp:1645749.
+  
+  There was a factor of 2 mixing to print the magnetization,
+  this is now fixed both for PDOS output and XML output.
+------------------------------------------------------------
+revno: 628
+fixes bug: https://launchpad.net/bugs/1647073
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2016-12-05 09:10:22 +0100
+message:
+  Removed FoX format specifier when it can not be used
+  
+  Fixes lp:1647073.
+  
+  Also limited number of fields for single precision
+  numbers by default in the xml output routines.
+  A single precision number only has 7 significant
+  digits, so we limit the output to that amount,
+  instead of the previous 12 digits.
+------------------------------------------------------------
+revno: 627
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-11-29 09:43:56 +0100
+message:
+  Updated the way the date is printed in the manual
+  
+  Now the date tag is automaticly updated when the
+  release.sh script is runned. This makes it easier
+  to track.
+  Also, one should change the \date macro before
+  the begin{document} to change the date.
+------------------------------------------------------------
+revno: 626
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-11-29 09:31:35 +0100
+message:
+  Stepped the manual version for 4.1-b3
+------------------------------------------------------------
+revno: 625
+tags: v4.1-b2
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2016-11-28 10:01:28 +0100
+message:
+  Updated manual for tbtrans and transiesta
+  
+  Added more documentation regarding PDOS which is oftenly requested
+------------------------------------------------------------
+revno: 624 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Sun 2016-11-27 21:03:03 +0100
+message:
+  Merged 4.0 r507
+  
+  Added print-outs of the difference from the averaged forces
+  to figure out if it is really important or not.
+------------------------------------------------------------
+revno: 623 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2016-11-25 19:04:25 +0100
+message:
+  Merge LDA+U fix, fixes lp:1643589
+  
+  This fixes a problem with the LDA+U calculations
+  if using non-standard options.
+------------------------------------------------------------
+revno: 622
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Thu 2016-11-24 15:00:33 +0100
+message:
+  Add two more files to Denchar output in 3D mode
+  
+  For spin-polarized calculations, Denchar now outputs
+  two more files:
+  
+  SystemLabel.RHO.cube:         Total charge density (sum over spins)
+  SystemLabel.UPminusDOWN.cube: UP-DOWN spin difference
+------------------------------------------------------------
+revno: 621
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2016-11-24 11:06:28 +0100
+message:
+  Updated documentation of tbtrans
+  
+  Slight errors were in the tbtrans documentation and
+  more has been fixed.
+------------------------------------------------------------
+revno: 620
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-11-22 09:38:33 +0100
+message:
+  Forced the suffixes in the makefile
+  
+  - Having the SUFFIXES explicitly in the Makefile will make
+    it easier to create the arch.make files.
+    Essentially now they only need to define the compiler, 
+    compiler flags, and the compiler rules.
+------------------------------------------------------------
+revno: 619
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2016-11-17 08:10:22 +0100
+message:
+  The naming scheme for the tolerance parameters where illogical
+  
+  - They have now been updated and should be the new defaults.
+------------------------------------------------------------
+revno: 618
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2016-11-16 17:42:04 +0100
+message:
+  Fixed code from r616 where an s was missing in a variable
+  
+  - Updated makefiles
+------------------------------------------------------------
+revno: 617 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-11-15 11:17:18 +0100
+message:
+  Merge 4.0, r506 with VCA fixes
+------------------------------------------------------------
+revno: 616 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-11-15 11:05:33 +0100
+message:
+  Merge 4.1-fixes, fixes bugs in transiesta
+  
+  1) 1639779
+  2) 1639812
+  3) 1641573
+------------------------------------------------------------
+revno: 615
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-11-15 10:37:58 +0100
+message:
+  Added more documentation on using the manual
+  
+  - Enabled dependency list for easy dependency look-ups
+    in fdfentry blocks.
+  
+  - Added dependencies on the SCF.Tolerance.* flags.
+------------------------------------------------------------
+revno: 614
+fixes bug: https://launchpad.net/bugs/1640813
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2016-11-14 08:57:21 +0100
+message:
+  Fix tree-timer with TS lp:1640813
+  
+  - The tree-timer only allows timer-reports on
+    direct children of the current active section.
+    This is not possible with the TS section because
+    it is "hidden" under the IterSCF routine.
+    Thus for tree-timers we now simply print the
+    IterSCF tree which holds the TS section.
+------------------------------------------------------------
+revno: 613 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2016-11-11 15:23:03 +0100
+message:
+  Merge of MD-constraint fixes
+------------------------------------------------------------
+revno: 612
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2016-11-07 17:15:13 +0100
+message:
+  Error in r611, the referenced variable ts_tidx should be >0
+  
+  - Fixed the commit so that it correctly interprets the flags.
+------------------------------------------------------------
+revno: 611
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2016-11-07 15:38:55 +0100
+message:
+  Fixed transiesta documentation for the Poisson solution
+  
+  - The documentation was not documenting the input file
+    option for the poisson fix.
+  
+  - Removed redundant flag TS.Poisson.Position
+    which is now encapsulated in TS.Poisson.
+------------------------------------------------------------
+revno: 610
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2016-11-07 08:34:42 +0100
+message:
+  Fixed tbtrans documentation and the makefile
+  
+  - The tbtrans documentation had some inconsistencies for
+    certain flags.
+  
+  - The makefile for the documentation was missing one more
+    compilation step to update the index position.
+------------------------------------------------------------
+revno: 609 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2016-11-04 15:38:22 +0100
+message:
+  Merged fixes for tbtrans
+------------------------------------------------------------
+revno: 608 [merge]
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Fri 2016-11-04 15:26:44 +0100
+message:
+  Some optimizations in nlefsm
+  
+  Routine nlefsm stands out as a bottleneck for parallelization
+  efficiency, since the loop over KB projectors is "global", and a
+  substantial amount of work, proportional to the size of the system,
+  has to be done by all MPI processes.  The initial steps in nlefsm
+  optimization have reduced the cpu weight of that loop by:
+  
+  - Pre-computation (in hsparse) of the atoms really involved in KB
+    overlaps with the orbitals handled by the process.
+  - Early exit from the loop after simpler tests
+  - Other minor optimizations
+------------------------------------------------------------
+revno: 607
+fixes bug: https://launchpad.net/bugs/1638726
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2016-11-03 19:31:09 +0100
+message:
+  Fixed print-out chemical potentials and Volt, fixes lp:1638726
+  
+  - If the difference between the max and min of the
+    chemical potentials and the applied bias is
+    too large then the program (TS and TBT) will
+    die.
+    
+------------------------------------------------------------
+revno: 606 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2016-11-03 16:02:37 +0100
+message:
+  Merged manual fixes for a completely rewritten manual
+  
+  - Fixes T.Elecs.All => T.All
+    and other variations thereof
+------------------------------------------------------------
+revno: 605 [merge]
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Mon 2016-10-31 22:00:50 +0100
+message:
+  Include recent patchlogs from 4.0
+  
+  Some recent bugfixes and other changes were ported from 4.0 without a
+  proper inclusion of the relevant patchlogs. This made it appear (e.g.,
+  in 'bzr missing') as if the fixes had not been applied upstream.
+  
+  A merge followed by 'bzr revert .' includes the desired patchlogs without
+  any more changes in the working directory.
+  
+  - Declare all variables
+  - Fixes non-colinear band calculation, fixes lp:1636100
+  - Fix bug 1625725 in 'nodes' basis-generation option
+  - Did not allow user control of SlabDipoleCorrection, fixes lp:1630827
+------------------------------------------------------------
+revno: 604
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Mon 2016-10-31 14:43:46 +0100
+message:
+  Declare most variables
+  
+  Some variables were not properly declared. This can cause errors if a
+  compiler flag to catch implicit typing is used.
+  
+  Except in file fdict/iso_var_str.f90, all variables are now declared.
+------------------------------------------------------------
+revno: 603
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-10-25 12:36:33 +0200
+message:
+  Fixed cell constraints and the manual regarding this
+  
+  The cell constrainst for non-orthogonal cells is not
+  really working. I have added checks for this in the
+  code and now it will die if it cannot do what is requested.
+  Simultaneously the cell-angle constraints only allows
+  expansion of the spanning vectors. 
+------------------------------------------------------------
+revno: 602
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-10-25 09:05:36 +0200
+message:
+  Fix electrode plane determination if Bloch expansions are used
+  
+  In case Bloch expansion is used for only one electrode the Hartree
+  plane was more or less fixed at the non-Bloch electrode.
+  This has now been fixed.
+  This should have no effects in the calculation.
+------------------------------------------------------------
+revno: 601
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-10-25 07:58:07 +0200
+message:
+  Fixed documentation with XML changes
+------------------------------------------------------------
+revno: 600
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2016-10-24 11:49:33 +0200
+message:
+  Fixed defaults for tbtrans and chemical potentials
+  
+  Now the defaults for tbtrans are so that:
+   1. if there is no bias, there is no need to specify
+   the chemical potentials.
+   2. if there is a bias, the default is the transiesta
+   default.
+  
+  This enables easier input for tight-binding calculations.
+------------------------------------------------------------
+revno: 599
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2016-10-21 14:30:21 +0200
+message:
+  Updated obj_setup.sh to not mention the configure script
+  
+  We had forgotten to remove the configure reference in the 
+  obj_setup.sh file.
+------------------------------------------------------------
+revno: 598
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2016-10-21 13:59:25 +0200
+message:
+  Added gfortran.make and intel.make in Obj directory
+  
+  These are example arch.make files
+------------------------------------------------------------
+revno: 597
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2016-10-21 13:55:53 +0200
+message:
+  In FoX removal there was some changes that were not shipped to TS
+  
+  Bug fixes for compilation of TS using WXML only (no FoX)
+  Now siesta and transiesta have the same link-lines
+------------------------------------------------------------
+revno: 596 [merge]
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Fri 2016-10-21 11:59:30 +0200
+message:
+  Implement CML calls using an upgraded Src/wxml library
+  
+  The generation of the CML file with the most important data from a run
+  is now handled by an upgraded version of the existing code in Src/wxml
+  (part of xmlf90, based on earlier work by Jon Wakelin and Toby White).
+  
+  The new code is now also used in pdos.F (which still contains a
+  parallel xml thread to maintain compatibility with one of Andrei
+  Postnikov's tools).
+  
+  This matches FoX's wxml functionality with a much smaller footprint, so
+  the FoX code has been removed from the distribution.
+------------------------------------------------------------
+revno: 595
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2016-10-19 11:34:03 +0200
+message:
+  Enabled default chemical potentials if they are named equally
+  
+  This makes setting the default chemical potential more easy
+  if one names the chemical potentials and electrodes by the
+  same names.
+  
+  Furthermore, if there is only one chemical potential then
+  that is ALWAYS selected.
+------------------------------------------------------------
+revno: 594
+fixes bug: https://launchpad.net/bugs/1625725
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2016-10-19 09:39:07 +0200
+message:
+  Bug fix for PAO.BasisType node lp:1625725
+------------------------------------------------------------
+revno: 593
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2016-10-19 09:31:41 +0200
+message:
+  Removed all references to paste function (also utils)
+  
+  There was no need to have this function, trim is the equivalent
+  function.
+  
+  All utilities have also been updated.
+------------------------------------------------------------
+revno: 592
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-10-18 18:07:59 +0200
+message:
+  Enabled list setting of the k-point sampling for tbtrans
+  
+  Also updated manual for tbtrans to reflect the TBT.Symmetry.TimeReversal
+  flag which is needed for TBT.Current.Orb and k-point sampling.
+------------------------------------------------------------
+revno: 591
+author: Ramon Cuadrado <ramon.cuadrado@cin2.es>
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2016-10-14 14:38:43 +0200
+message:
+  Updated manual with spin-orbit information
+------------------------------------------------------------
+revno: 590
+fixes bugs: https://launchpad.net/bugs/1623415 https://launchpad.net/bugs/1623420
+author: Ramon Cuadrado <ramon.cuadrado@cin2.es>
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2016-10-14 14:27:57 +0200
+message:
+  Fixes the spin-printout and calculation (NC and SO)
+  
+  - The sign in the initialization of the fourth component of the 
+    Density Matrix when the Spin-Orbit term is included in the calculation
+    has been changed to be consistent with the DM.InitDM in the fdf file. 
+    The corresponding sobroutine is fill_dscf_from_atom_info within the 
+    module m_new_dm. In addition, at the end of fill_dscf_from_atom_info 
+    subroutine is called print_initial_spin() that currently prints out 
+    the initial spin polarization. This has been changed and on whether 
+    spin polarized or non-collinear/spin-orbit calculation is performed, 
+    the output will be Q(1)-Q(2) in the first case and M_x, M_y and M_z 
+    in the second.    
+    
+  - The calculation of the angles of the magnetization vector as a function 
+    of q(1:4) in the subroutine spnvec by Mulliken population has been 
+    reviewed when the number of spin components is four(non-collinear/spin-orbit). 
+------------------------------------------------------------
+revno: 589
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-10-11 21:38:17 +0200
+message:
+  Bug discovered when running linear-kick and MD 
+  
+  - The itteration counter for the mixing routines was never
+    reset which meant that depending on the number of SCF siesta would
+    crash in the next MD step.
+    
+    Thanks to R. Robles for the bug-report
+  
+  - Added print-out when resetting the history, and fixed
+    debug read for the mixers.
+------------------------------------------------------------
+revno: 588
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2016-10-10 15:00:00 +0200
+message:
+  Enabled supercell bond-currents
+  
+  - The previous orbital currents were stored only in the unit-cell
+    However, we now enable the full calculation of the supercell interactions.
+    This is a minor change and results in a slightly larger sparse matrix.
+    The sisl package has been updated to handle this as well.
+  
+  - Added Sp_sort in m_sparsity_handling which ensures that a sparse matrix
+    is sorted.
+  
+  - Possibly fix for spin-transport calculations in tbtrans.
+    The abstraction of only calculating one spin-component made the logic
+    erroneous.
+------------------------------------------------------------
+revno: 587
+fixes bug: https://launchpad.net/bugs/1630849
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2016-10-06 14:41:05 +0200
+message:
+  MD methods other than CG did not allow re-use of DM, fixes lp:1630849
+  
+  Now it defaults to at least 1 extrapolation.
+------------------------------------------------------------
+revno: 586
+fixes bug: https://launchpad.net/bugs/1630827
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2016-10-06 09:26:34 +0200
+message:
+  Did not allow user control of SlabDipoleCorrection, fixes lp:1630827
+  
+  For backwards compatibility it is nice to be able to turn off the 
+  SlabDipolecorrection such that one can compare against older versions.
+  This was a mistake.
+------------------------------------------------------------
+revno: 585
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2016-10-05 09:25:53 +0200
+message:
+  Forgot to actually delete the configure files and other obsoleted files
+  
+  This commit should have gone together with r582
+------------------------------------------------------------
+revno: 584
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-10-04 11:39:32 +0200
+message:
+  Updated manual to reflect changes of configure
+------------------------------------------------------------
+revno: 583
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-10-04 11:31:12 +0200
+message:
+  Fixed m_mpi_utils for globalization of integer
+  
+  There was a missing transfer if MPI wasn't defined.
+  Also added the missing arguments of `Comm`
+------------------------------------------------------------
+revno: 582
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-10-04 11:22:48 +0200
+message:
+  Removed unnecessary configure/arch-make stuff
+  
+  Removed all configure related stuff. This is now "obsoleted"
+  until an expert tells us what to do.
+  
+  Moved sample arch.make files to the Obj directory. In this way
+  the basic examples and documentations are where people will
+  initially search for them.
+  
+  Removed deprecated lapack/blas sources. Now one should use the full
+  sources in case the optimized libraries does not contain the needed
+  functionality.
+  
+  Cleaned up Makefile.
+  Specifically the rule for the sockets.c file was unnecessary as
+  it was (almost) equal to the implicit rule of C-compilation.
+  
+  Removed folders:
+    Src/Sys
+    Src/Conf
+    Src/m4
+------------------------------------------------------------
+revno: 581
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-10-04 08:45:36 +0200
+message:
+  Added citation for transiesta and pexsi
+------------------------------------------------------------
+revno: 580
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2016-09-28 21:20:28 +0200
+message:
+  Fixed print-out in m_region (nothing computational)
+  
+  - The last items was missing a comma-separation
+------------------------------------------------------------
+revno: 579
+fixes bug: https://launchpad.net/bugs/1627041
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2016-09-28 09:23:17 +0200
+message:
+  Updated blas.f, lapack.f the documentation and Makefile, fixes 1627041
+  
+  - blas.f and lapack.f where updated to the latest LAPACK sources.
+    There were some minor bugs.
+  
+  - The documentation of tbtrans was missing the pivot flag description.
+  
+  - The Makefile was not forwarding the INCFLAGS to FFLAGS in libfdict and
+    libncdf which is necessary.
+    This fixes: lp:1627041
+------------------------------------------------------------
+revno: 578
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Tue 2016-09-27 12:13:48 +0200
+message:
+  Write LDA+U projector information to .ldau_proj files
+  
+  For LDA+U calculations, the projector information was written to the
+  .ion files in a form that made them unusable. Now, that information is
+  written to files with names 'SpLabel'.ldau_proj, where 'Splabel' is
+  the species label.
+------------------------------------------------------------
+revno: 577
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Tue 2016-09-27 11:31:30 +0200
+message:
+  Add third argument to reclat call in two routines
+------------------------------------------------------------
+revno: 576
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Fri 2016-09-16 14:25:04 +0200
+message:
+  Fix double import in mpi_siesta
+------------------------------------------------------------
+revno: 575 [merge]
+fixes bug: https://launchpad.net/bugs/1619437
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Wed 2016-09-14 18:19:23 +0200
+message:
+  Changes to further standards compliance (merges 4.0--501)
+  
+  Brought about by the use of extra compiler checks, notably by g95 and
+  the '-std=f2003 -fall-intrinsics' setting in gfortran.
+  
+  Apart from syntax and visibility issues, F2008 extensions
+  ('contiguous' keyword), and non-standard declarations (such as
+  "real*8") have been removed. Bounds specification in pointer
+  assignment is in principle permitted by F2003, but are not yet
+  implemented by all compilers.
+  
+  Also, the building of the MPI interfaces has been updated to properly
+  include 8-byte integers.
+  
+  (Declarations in the code in Util are not fully updated yet)
+------------------------------------------------------------
+revno: 574
+fixes bug: https://launchpad.net/bugs/1622526
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: 4.1
+timestamp: Mon 2016-09-12 11:19:56 +0200
+message:
+  Fix bug in switch-off option for MRRR
+------------------------------------------------------------
+revno: 573
+tags: v4.1-b1
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Wed 2016-08-31 07:52:35 +0200
+message:
+  Removed __FILE__ reference in class_Distribution
+  
+  - In some cases will this preprocessor fail.
+    Besides, it was only used in one place.
+  
+  - Fixed release.sh (dublicate path)
+    and removed it self from the release tarball
+------------------------------------------------------------
+revno: 572
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-08-30 16:02:33 +0200
+message:
+  Removed default constants in read_options
+  
+  - There was no need to have elsewhere defined
+    defaults in read_options. Now they are
+    hard-coded which makes it easier to
+    track and change.
+  
+  - Updated all makefiles.
+------------------------------------------------------------
+revno: 571
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-08-30 15:46:54 +0200
+message:
+  Updated to new manual format
+------------------------------------------------------------
+revno: 570
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-08-30 11:41:02 +0200
+message:
+  Added Gate-tests
+  
+  - Added gate_G_{charge,hartree} for charge and Hartree gates
+------------------------------------------------------------
+revno: 569
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-08-30 11:32:08 +0200
+message:
+  Forced mulliken printout during SCF to false in certain cases
+  
+  - If the user does not request a specific type of mulliken population
+    AND request mulliken per SCF, then it is automatically turned off.
+------------------------------------------------------------
+revno: 568
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-08-30 10:31:55 +0200
+message:
+  Updated manual and removed obsolete appendices
+  
+  - Also minor fixes across the full manual.
+    References, spelling mistakes etc.
+  
+  - Highlighted that the release is a beta release
+------------------------------------------------------------
+revno: 567
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-08-30 08:35:45 +0200
+message:
+  Updated tbtrans manual for the next release
+------------------------------------------------------------
+revno: 566
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-08-30 08:07:55 +0200
+message:
+  Moved release notes, changed SIESTA__MRRR to SIESTA__NO_MRRR
+------------------------------------------------------------
+revno: 565 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-08-30 07:43:37 +0200
+message:
+  Merged AG changes for 4.1 release
+  
+  Introduction of SIESTA__MRRR and several forgotten
+  variables in certain modules.
+------------------------------------------------------------
+revno: 564
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Mon 2016-08-29 08:36:23 +0200
+message:
+  Enabled compilation of link-time optimizations
+  
+  - Link-time optimizations are required to have the compiled
+    libraries made with the same flags.
+    This commit introduces small fixes to a few Makefiles
+    FoX and SiestaXC which now allows link-time optimizations.
+  
+    Using LTO for GCC 6.1.0 the final executable decreases
+    by a staggering 33%
+------------------------------------------------------------
+revno: 563
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Fri 2016-08-26 08:32:41 +0200
+message:
+  Added documentation of NetCDF-4 file, changed file to slabel
+  
+  - Added documentation for the generic SIESTA NetCDF file
+  
+  - Ensured that the NetCDF-4 file is named <slabel>.nc
+------------------------------------------------------------
+revno: 562
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Thu 2016-08-25 13:44:59 +0200
+message:
+  Fixed documentation and added flook and tbtrans
+  
+  - Defining the 4.1 in the documentation was incorrect.
+  
+  - Added how to enable flook
+  
+  - Added missing flag for tbtrans calculations which
+    ensures a correct DOS on the device atoms.
+------------------------------------------------------------
+revno: 561
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: 4.1
+timestamp: Tue 2016-08-23 21:29:36 +0200
+message:
+  Prepared release branch for 4.1
+------------------------------------------------------------
+revno: 560
+tags: s4.1
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Tue 2016-08-23 21:22:56 +0200
+message:
+  Removed entroy print outs from pexsi defs
+  
+  Simple removal of output which where debugging statements
+  for the PEXSI method.
+------------------------------------------------------------
+revno: 559
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Tue 2016-08-23 07:02:49 +0200
+message:
+  Made older shipped libraries issue a warning on compilation
+  
+  - The linalg.a libraries (etc.) are now deprecated in favor
+    of libsiestaBLAS.a and/or libsiestaLAPACK.a
+  
+    Trying to use the previous libraries in COMP_LIBS
+    results in a warning message and quits.
+------------------------------------------------------------
+revno: 558
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Fri 2016-08-19 07:32:11 +0200
+message:
+  Updated transiesta-tbtrans tests with the new settings
+  
+  - Everything seems in order. In fact some of the
+    convergence properties are now better due to the
+    constraint on the Hamiltonian.
+  
+  - Fixed the print-out of error on the energy density
+    matrix to print in eV.
+  
+  - Fixed scripts for TS tests to only compile tbtrans
+    if it isn't already compiled.
+  
+  - Removed mentions of old flags in the TS test.
+    Also corrected those which have farther than principal
+    cell connections.
+    In these situations I have added a remark for the flag
+    so it should be clear its use is highly discouraged.
+------------------------------------------------------------
+revno: 557
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Thu 2016-08-18 12:36:36 +0200
+message:
+  Enabled EDM convergence criteria, controls the forces
+  
+  - The convergence criteria now enables converging the
+    energy density matrix.
+  
+    This is a simple addition which does not introduce
+    any complexity to the code.
+    I expect it may be used to control the fineness of
+    the force calculations.
+    It does, however, not seem too much different than
+    the Hamiltonian convergence.
+------------------------------------------------------------
+revno: 556
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Thu 2016-08-18 11:02:14 +0200
+message:
+  Re-runned all tests and updated the reference tests
+  
+  - I have re-runned all tests with the new defaults (mix hamiltonian
+    and H converge as well.)
+  
+    A couple of the tests showed changes (see r554) which could
+    be explained by a not fully converged system in the mix DM case.
+  
+    As such it seems these new defaults exhibit superior convergence
+    and, hopefully, more consistent results as both the Hamiltonian and
+    DM are converged.
+  
+    It would perhaps be interesting to also converge EDM?
+  
+  - A couple of the tests was not added in the previous reference frame
+    and they are now there.
+    I haven't compared these against the old version.
+    These tests are:
+      anneal-cont.out
+      carbon_nanoscroll.out
+      dipole_correction.out
+      fe_cohp.out
+      fe_noncol_kp.out
+      fen.out
+      force_constants.out
+      ge111.out
+      h2o-rhog-mixing.out
+      h2o_2.out
+      pb_bulk.out
+      si001.out
+      sinw.out
+      sinw_2.out
+      
+------------------------------------------------------------
+revno: 555
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Thu 2016-08-18 09:24:34 +0200
+message:
+  Updated documentation, PAO and AtomicCoordinates in new format
+  
+  - Updated all PAO and AtomicCoordinates entries to the new format.
+------------------------------------------------------------
+revno: 554
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Thu 2016-08-18 07:56:45 +0200
+message:
+  Run all tests, solved merge problems and updated convergence criteria
+  
+  - Re-run all tests.
+  
+    This showed a couple of interesting things.
+  
+    1. There was a mistake in the compute_dm code after
+    the PEXSI merge when spin-orbit coupling was introduced
+    2. I have removed Hprev as it essentially is the same as
+    Hold. Either way it shouldn't produce a huge difference
+    in the tracking of the dEbs, etc. (after all they are
+    not physically used other than for convergence criteria)
+    3. The change to SCF.Mix Hamiltonian resulted in a huge
+    number of changes in the output. This is because the first
+    step prints out the energies at INIT. However, the Hamiltonian
+    is different because it is initialized after the compute_dm step.
+  
+  - Changed the logic in convergence criteria.
+    Now the convergence criterias are additive and may be fully controlled.
+    However, at least one convergence criteria must be used.
+  
+    Now the default convergence criteria is both the Hamiltonian and the density
+    matrix.
+  
+    This is updated in the manual and the compatibility note.
+  
+  - Initially I thought the above differences in the energies was
+    due to inconsistencies after r538. Hence I have created some
+    simple routines in the m_energies.f90 code which updates a selected
+    few of the energies.
+    I think this should be adopted in the future to ensure that all
+    calls to update energies are consistent.
+    This will make changes to energy calculations less error-prone.
+  
+  - Implemented the spin-type in the following routines:
+     compute_dm
+     final_H_f_stress
+     state_init
+  
+  - Changed the m_compute_max_diff to an interface code with appropriate
+    size calculations. There was no reason for explicitly using the
+    sparse pattern.
+  
+  - Fixed a bug in the molecularmechanics code (introduced by Nick r542)
+  
+  - Added a cyclediffs.sh script which loops on OUT.diffs files and
+    it lets one easily cycle the diffs, simply do:
+  
+    cd Tests
+    make check
+    ./cyclediffs.sh
+  
+    and answer all the questions. Basically it makes deletes OUT.diffs
+    which you have agreed isn't really a change.
+  
+  - The tests may now be runned via:
+  
+     make MPI="mpirun -np 4"
+     
+    which then uses the default SIESTA location.
+  
+    Currently the script checks whether mpirun/mpiexec
+    is in SIESTA variable, and if so, does not use MPI variable.
+    This makes it easier to decide on the number of cores without
+    writing the full path.
+------------------------------------------------------------
+revno: 553
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Tue 2016-08-16 08:21:30 +0200
+message:
+  Updated SCF print-outs
+  
+  - Now dDmax and dHmax are both printed (always)
+  
+  - Added more digits to the output so that non-collinear
+    and spin-orbit etc. have the same format.
+  
+  - After the final step the fermi energy is now also printed
+    in the list of Final energies
+------------------------------------------------------------
+revno: 552
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Sat 2016-08-13 16:00:08 +0200
+message:
+  Fixed none orbital pivoting ('none' should be equivalent to orb+none)
+  
+  - If a transiesta users requests Pivot 'none' there
+    was a bug related to defaulting the atomic pivoting
+    table.
+    This has been fixed now.
+    
+------------------------------------------------------------
+revno: 551
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Sat 2016-08-13 12:06:00 +0200
+message:
+  Enabled BLAS and LAPACK sources shipped with siesta fixes lp:1593706
+  
+  - Updated blas.f and lapack.f to encompass all required
+    routines to succesfully compile siesta without having the
+    blas and lapack libraries.
+  
+    We still do not recommend this as performance libraries
+    (especially BLAS) will drastically improve performance.
+  
+    The current sources (without comments) are taken from
+    the lapack svn repository at revision 1776 (v3.6.1)
+  
+  - To make it easier to update the scripts in future
+    commits a create.sh script and linalg2file.py script
+    are added which enables to retrieve the correct sources
+    from the basic lapack/blas sources.
+  
+  - Updated documentation which describes libsiestaBLAS/LAPACK.a
+  
+  - Enabled libsiestaBLAS/LAPACK.a in tbtrans
+  
+    
+------------------------------------------------------------
+revno: 550
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Fri 2016-08-12 08:34:43 +0200
+message:
+  Updated documentation and explained more on TS.Analyze
+------------------------------------------------------------
+revno: 549
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Fri 2016-08-12 07:59:02 +0200
+message:
+  Made transiesta analyzation start sooner
+  
+  - Moving the analyzation step more up uses less
+    memory and allows extremely large systems to be
+    analyzed on small laptops (execution time may be
+    long).
+  
+  - Introducing a pivoting table for looking up the
+    min/max columns improved rgn2tri algorithm by orders
+    of magnitude.
+  
+  - Moved a couple of the integers to long for large
+    scale calculations.
+  
+  - Removed METIS from rgn2tri analyzis
+------------------------------------------------------------
+revno: 548
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Thu 2016-08-11 21:47:18 +0200
+message:
+  Fixed command line options for siesta
+  
+  - The PEXSI branch introduced command line-options.
+    However, that was also introduced in transiesta branch
+    Now they are merged in a standard form.
+  
+  - Updated manual to reflect these changes.
+  
+  - Also fixed bug for piping AND using command line options
+------------------------------------------------------------
+revno: 547
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Thu 2016-08-11 18:51:04 +0200
+message:
+  Updated compatibility notes, MixH -> default
+  
+  - Updated compatibility notes for specifics regarding the 4.1
+    release
+  
+  - Made MixHamiltonian the default mixing option.
+  
+  - Updated documentation for siesta by moving a couple of the
+    basic entries to the new format.
+------------------------------------------------------------
+revno: 546
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Wed 2016-08-10 13:29:54 +0200
+message:
+  Removed superfluous print-outs
+  
+  - The memory print-outs was more than likely related
+    to PEXSI for checking that the splitting of the workers
+    and PEXSI-nodes
+  
+  - The entropy print-out is now only performed in PEXSI compilations
+  
+  - The defaults for the timers are now reverted in case of non-PEXSI
+    runs.
+  
+  - Updated the manual for a couple of entries related to timings.
+------------------------------------------------------------
+revno: 545
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Wed 2016-08-10 13:00:11 +0200
+message:
+  Fixed PEXSI compilation and deferred the Nodes count
+  
+  - A couple of define flags for PEXSI was not up to date,
+    possibly lost during the merge(?). Well...
+  
+  - Updated print-out of computational method in read_options.
+  
+  - Moved printing of number of nodes to one line
+------------------------------------------------------------
+revno: 544
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Wed 2016-08-10 09:53:46 +0200
+message:
+  Finalized the NOTES.documentation about the tags.
+------------------------------------------------------------
+revno: 543
+fixes bug: https://launchpad.net/bugs/1611265
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Wed 2016-08-10 09:29:39 +0200
+message:
+  Small fixes in m_mixing according to lp:1611265
+  
+  - Fixed OpenMP statement
+  
+  - Fixed double naming of constants and routines
+  
+  - Fixed history_init calls in transiesta
+------------------------------------------------------------
+revno: 542 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Mon 2016-08-08 15:09:40 +0200
+message:
+  Merged documentation, see Docs/branch-changes/NOTES.documentation
+  
+  This merge introduces a new documentation scheme for LaTeX.
+  It intrinsically introduces clickable fdf-flags and creates 3
+  relevant indices, 1) regular index, 2) fdf-flag (only!) index
+  and a files index.
+  
+  Test-suite ran. No problems (some of them, however, needs to be 
+  updated such that problems shouldn't occur)
+------------------------------------------------------------
+revno: 541
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Fri 2016-08-05 14:19:32 +0200
+message:
+  Temporary work-around for supercell changes
+  
+  The TS branch introduced a kill of siesta when the supercell
+  was changed during an MD. This may not always be the case if the
+  supercell structure is correct, but the connected supercells are
+  changing. In that case will it be acceptable to continue. However,
+  there may be cases where this is not applicable.
+  This will be fully fixed in future cases where the supercell information
+  is retained in restart files.
+------------------------------------------------------------
+revno: 540
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Thu 2016-08-04 15:17:48 +0200
+message:
+  Moved many of the CHANGES files to the branch-changes
+  
+  Their use will probably be discouraged to be used.
+  
+  The one main use for future CHANGES would provide a complete (single)
+  detailed description of the branch changes.
+------------------------------------------------------------
+revno: 539 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Thu 2016-08-04 14:19:02 +0200
+message:
+  Merged transiesta
+  
+  Added die routine for non-complete principal connections
+  and precision control of the SE convergence.
+  
+  Changed the { to [ for list construction in FDF.
+  
+  Added fdf_bphysical to read 'VN' (value name)
+------------------------------------------------------------
+revno: 538 [merge]
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: trunk
+timestamp: Thu 2016-08-04 11:27:45 +0200
+message:
+  Merged PEXSI-solver interface code
+  
+  Please see the manual for the new options related to the PEXSI
+  solver. Keep in mind that this solver is competitive only for very
+  large calculations.
+  
+  Alberto Garcia thanks Lin Lin, Chao Yang, Georg Huhs, and Nick Papior
+  for their help with the design and coding of the interface.
+  
+  Developer note: Please see the "Notes for PEXSI operation" in
+  Src/siesta.F for a brief overview of the basic coding changes
+  that need to be kept into account for further development work.
+------------------------------------------------------------
+revno: 537
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Fri 2016-07-29 15:30:24 +0200
+message:
+  Fixed utility build and exact library names
+  
+  Changing the libvardict is now complete. There
+  where several problems in utilities.
+  
+  Fixed all references for fdf_global_get.
+------------------------------------------------------------
+revno: 536
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Fri 2016-07-29 14:34:18 +0200
+message:
+  Removed fdf_global module
+  
+  - The fdf library inherently handles parallel access.
+    Thus the fdf_global module was unnecessary.
+    It has been removed and all calls changed.
+------------------------------------------------------------
+revno: 535
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Fri 2016-07-29 13:41:50 +0200
+message:
+  Fixes compilation of Nick libraries
+  
+  - libvardict.a has changed name to libfdict.a
+    to make it easier to grasp.
+  
+  - In both NCDF and fdict libs the PP processor
+    command has changed name to CPP (PP is non-standard).
+  
+    Further the default CPP command is now $(FC) -E -P -x c
+    which may be overwritten using CPP in arch.make
+------------------------------------------------------------
+revno: 534
+fixes bug: https://launchpad.net/bugs/1605689
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Wed 2016-07-27 21:53:42 +0200
+message:
+  Fixes lp:1605689, bands for NC
+  
+  - Interface call for diag2k in bands was erroneous
+------------------------------------------------------------
+revno: 533 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Mon 2016-07-25 15:12:49 +0200
+message:
+  Merged elpa+MRRR
+  
+  - The ELPA library is now enabled through:
+      Diag.ELPA T
+    it relies on intrinicly added ELPA library.
+  
+    Later it may be externally linked.
+  
+    In addition to the elpa+MRR branch we have:
+    defaulted the kernels.
+    This is necessary in case the user does not pre-define
+    the kernels.
+  
+  - The MRRR library is now enabled through:
+      Diag.MRRR T
+    it requires the ScaLAPACK library to have the MRRR routines.
+  
+    Currently there is no handling if the ScaLAPACK library does
+    not have these routines.
+------------------------------------------------------------
+revno: 532
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Mon 2016-07-25 07:26:03 +0200
+message:
+  Added -o to gnubands, made new.gnubands -> gnubands
+  
+  - Updated gnubands utility
+  
+  - Added -o option for gnubands.
+  
+    It now allows direct writing to a file without
+    piping.
+  
+  - Re-formatted eigfat2plot (no code change)
+------------------------------------------------------------
+revno: 531
+fixes bug: https://launchpad.net/bugs/1605304
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Thu 2016-07-21 20:10:36 +0200
+message:
+  Fixed geometry constrainst and wrap-arounds fixes lp:1605304
+  
+  - Allow negative ranges of atoms without specifying the step
+    number
+------------------------------------------------------------
+revno: 530
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Wed 2016-07-13 11:20:56 +0200
+message:
+  Removed all references to "contiguous" attribute
+  
+  - Further the atom_graph and m_supercell now have
+    restricted their module use to be privatized.
+  
+  - All source files have their contiguous attribute
+    removed.
+  
+    We should add this as a preprocessor flag in case
+    the compiler supports it.
+  
+    Several older compilers does not support this :(
+------------------------------------------------------------
+revno: 529
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Tue 2016-07-05 12:44:45 +0200
+message:
+  Added si111-spinpol reference test
+  
+  - The spin polarized Si111 test had never been 
+    added to the reference.
+------------------------------------------------------------
+revno: 528 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Tue 2016-07-05 11:04:07 +0200
+message:
+  Merged spin type
+  
+  - The spin data-type has been added.
+    This encompass a simple derived data type
+    to contain all relevant information regarding
+    the dimensionality of different parts of the
+    physical quantities.
+  
+    I.e. it knows how big the Hamiltonian, Density matrix,
+    Energy density matrix, Grids, etc. are dependent on the
+    system setup.
+  
+    All future use of the spin variables should pass the
+      type(tSpin) :: spin
+    and use its components.
+  
+  - To see an example (correct use), see vmat.F90
+------------------------------------------------------------
+revno: 527
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Tue 2016-06-28 14:42:55 +0200
+message:
+  Fixes dH read in tbtrans
+  
+  - The dH read is now consistent with sisl.
+  
+    In a future commit we will delete the Util/TS/TB
+    folder as that has been fully superseeded with sisl.
+  
+  - Updated option print-out of dH options
+  
+  - Fixed reading the netcdf data with not all levels
+    existing
+  
+  - Fixed reading from dH with multiple spin indices
+------------------------------------------------------------
+revno: 526 [merge]
+committer: Nick Papior <nickpapior@gmail.com>
+branch nick: trunk
+timestamp: Tue 2016-06-28 07:57:03 +0200
+message:
+  Fixes LDA+U implementation by also allowing non-GGA-PBE XC
+  
+  - Also explicitly adds several broadcast calls of the
+    LDA+U internals. Some are redundant, but for clarity
+    they are added
+------------------------------------------------------------
+revno: 525 [merge]
+committer: Alberto Garcia <albertog@icmab.es>
+branch nick: trunk
+timestamp: Thu 2016-06-23 14:27:35 +0200
+message:
+  Merged 4.0-500
+  
+  * Update list of contributors.
+  * Electric-field/slab-dipole-correction fix.
+  * Fix to avoid ps reparametrization in bessel case
+  * Remove Util/pseudo-xml
+  * Other minor changes in README files
+------------------------------------------------------------
+Use --include-merged or -n0 to see merged revisions.
