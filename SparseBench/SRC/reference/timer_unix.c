@@ -4,9 +4,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#define CPS (PentiumCPS*1E6)
 #ifndef CPS
-   #define CPS (150*1E6)
+   #define CPS (3200*1E6)
 #endif
 
 
