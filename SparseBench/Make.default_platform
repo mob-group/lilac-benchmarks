@@ -6,9 +6,9 @@
 	$(CC) -c $(CFLAGS) $<
 
 # please change compiler options only by editing the {C,F}_OPT_FLAGS
-F_OPT_FLAGS = -O
+F_OPT_FLAGS = -O -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl
 F_EXTRA_FLAGS =
-C_OPT_FLAGS = -O
+C_OPT_FLAGS = -O -DWALL
 
 FFLAGS = $(F_OPT_FLAGS) $(DUMP_FLAGS) $(F_EXTRA_FLAGS)
 CFLAGS = $(C_OPT_FLAGS)

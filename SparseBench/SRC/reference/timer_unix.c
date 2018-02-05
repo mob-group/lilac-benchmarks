@@ -46,7 +46,7 @@ double time00(void)
 {
 #ifdef WALL
    struct timeval tp;
-   gettimeofday(&tp, NULL);
+   gettimeofday(&tp, 0);
    return( (double) (tp.tv_sec + tp.tv_usec/1000000.0) ); /* wall clock time */
 #else
 #ifdef UseTimes

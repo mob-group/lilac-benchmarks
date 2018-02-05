@@ -15,7 +15,7 @@ C----------------------------------------------------------------
 C Our own memory management
       integer rsize,isize,rptr,iptr,rptr_save,iptr_save
       data rptr,iptr/1,1/
-      parameter (rsize=5500000,isize=2000000)
+      parameter (rsize=110000000,isize=40000000)
       real*8 rmemory(rsize)
       integer imemory(isize)
 C Problem parameters
