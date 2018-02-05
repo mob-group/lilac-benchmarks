@@ -1,0 +1,7 @@
+out
+*.swp
+
+.DS_Store
+build/
+hpcg*
+HPCG*
