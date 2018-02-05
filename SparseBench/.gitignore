@@ -1,0 +1,10 @@
+1
+Out/
+SRC/reference/atocha/
+bench_gen
+bench_sym
+crs_gen
+crs_sym
+matgen.log
+reg_gen
+reg_sym
