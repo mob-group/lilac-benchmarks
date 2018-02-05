@@ -1,0 +1,58 @@
+#!/bin/sh
+
+MACH=default_machine
+PLAT=`Scripts/arch`
+OPT=reference
+SIZES="10 20"
+while [ $OPTIND -le $# ] ; do \
+  getopts m:o:s:p:hr opt; \
+  if [ $opt = "o" ] ; then OPT=$OPTARG; \
+  elif [ $opt = "p" ] ; then PLAT=$OPTARG; \
+  elif [ $opt = "m" ] ; then MACH=$OPTARG; \
+  elif [ $opt = "s" ] ; then SIZES="$OPTARG"; \
+  elif [ $opt = "h" ] ; then \
+    echo Usage: Validate [-m machine ] [-p platform] [-o opt] [-s sizes] ; exit ; \
+  elif [ $opt != "r" ] ; then \
+    echo Incomprehensible option. Type: Validate -h. ; exit ; \
+  fi ; \
+done
+
+echo Validating with PLAT=$PLAT, OPT=$OPT, SIZES=$SIZES
+echo
+
+/bin/rm -f validation_results validation.log
+
+TDIR=Out/$MACH/$OPT
+for sym in s u ; do
+  for stor in 1 2 ; do
+    if  [ $stor = "1" ] ; then PRECS="0 2 3" ; else PRECS="0 2" ; fi
+    for size in $SIZES; do
+      if [ "$size" = "-r" ] ; then continue ; fi
+      for prec in $PRECS ; do
+        NAME=`case $sym in s ) echo cg ;; u ) echo gmres ;; esac`-`case $stor in 1 ) echo reg ;; 2 ) echo crs ;; esac`-`case $prec in 0 ) echo none ;; 1 ) echo jac ;; 2 ) echo ilu ;; 3 ) echo bjac ;; esac`
+        ( echo $stor,$size,$prec,$sym ; \
+          cat $TDIR/$NAME-$size.out ) \
+        | sed 's/  / /g' | sed 's/  / /g' \
+        | perl \
+          -e '$_=<STDIN>; chomp; ($stor,$siz,$prec,$sym) = split(/,/);' \
+          -e 'while (<STDIN>) {' \
+          -e '   if (/Final/) {' \
+	  -e '         chop;' \
+          -e '         ($a,$b,$c,$d)=split(/ /);' \
+	  -e '         if ($d>1.e-12) {$i=$c; $v=$d;}' \
+	  -e '   }' \
+          -e '} print "$sym $siz $stor $prec $i $v\n";' \
+          - \
+        >> validation_results
+      done
+    done
+  done
+done
+
+if [ "$1" = "-r" ] ; then exit ; fi
+
+if [ -f $TDIR/validation_results ] ; then 
+  /bin/rm -f $TDIR/validation_results ; fi
+mv validation_results $TDIR
+cat $TDIR/validation_results | perl Scripts/validate.pl
+echo

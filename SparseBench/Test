@@ -1,0 +1,103 @@
+#!/bin/sh
+
+OPT=reference
+MACH=default_machine
+PLAT=`Scripts/arch`
+SIZES="12 14 16 18 20 24 28 32 36 38"
+TARGET=nil
+DELETE=1
+RUN=3
+while [ $OPTIND -le $# ] ; do
+  getopts r:dm:o:s:p:t:h opt
+  case $opt in
+   "o" ) OPT=$OPTARG ;;
+   "d" ) DELETE=0 ;;
+   "p" ) PLAT=$OPTARG ;;
+   "m" ) MACH=$OPTARG ;;
+   "r" ) RUN=$OPTARG ;;
+   "s" ) SIZES=$OPTARG ;;
+   "t" ) TARGET=$OPTARG ;;
+   "h" ) 
+    echo "Usage: Test [-m machine] [-p platform] [-o opt] [-s sizes] [-d]"
+    echo "            [-r runs]"
+    exit ;;
+   * ) echo Incomprehensible option. Type: Test -h. ; exit
+  esac
+done
+
+TDIR=Out/$MACH/$OPT
+if [ ! -d Out/$MACH ] ; then mkdir Out/$MACH ; fi
+if [ ! -d Out/$MACH/$OPT ] ; then mkdir Out/$MACH/$OPT ; fi
+# a hack to accomodate version 0.9.4 which stored the result
+# files one level lower
+if [ `ls Out/$MACH/*.out 2>/dev/null | wc -l | awk '{print $1}'` -gt 0 ] ; then
+  echo ".. moving files from Out/$MACH to Out/$MACH/$OPT as compatibility"
+  echo ".. upgrade 0.9.4 -> 0.9.5" ; echo
+  for file in Out/$MACH/* ; do
+    if [ -f $file ] ; then mv $file Out/$MACH/$OPT ; fi
+  done
+fi
+
+echo 
+echo Testing with PLAT=$PLAT MACH=$MACH, OPT=$OPT, SIZES=$SIZES
+echo .. results will be left in $TDIR
+echo
+
+#
+# install software 
+# 
+./Install "$@"
+
+#
+# test of symmetric CG and nonsymmetric GMRES
+#
+RUNS="`awk 'BEGIN {for (i=1; i<='$RUN'; i++) print i}' < /dev/null`"
+/bin/rm -f $TDIR/test.log
+
+for size in $SIZES ; do
+  # generate test matrices
+  Scripts/generate $size
+for sym in 1 0 ; do
+  if [ $sym -eq 1 ] ; then echo "CG tests"; code=sym;
+    else echo "GMRES tests"; code=gen; fi
+  echo
+  for stor in 1 2 ; do
+    if [ $stor -eq 1 ] ; then PRECS="0 2 3" ; else PRECS="0 2"; fi
+    for prec in $PRECS ; do
+      MSG="Running with parameters storage=$stor, preconditioner=$prec"
+      DONE=0 
+      NAME=`case $sym in 1 ) echo cg ;; 0 ) echo gmres ;; esac`-`case $stor in 1 ) echo reg ;; 2 ) echo crs ;; esac`-`case $prec in 0 ) echo none ;; 1 ) echo jac ;; 2 ) echo ilu ;; 3 ) echo bjac ;; esac`
+      for run in $RUNS ; do
+        OUT_FILE=$TDIR/$NAME-$size.out ; TMP_FILE=$TDIR/$NAME-$size.tmp
+        if [ $TARGET != "nil" -a $TARGET != $NAME-$size ]
+          then continue ; fi
+	if [ $DONE -eq 0 ] ; then echo $MSG ; DONE=1 ; fi
+        if [ -f $OUT_FILE ]
+          then OLD=`awk '/Mflop/ {v=$3} END {print v}' $OUT_FILE \
+                    | sed 's/\..*$//' \
+                    | awk '/\*/ {print 0} /[0-9]/ {print $0}'`
+               if [ "$OLD" = "" ] ; then OLD=0 ; fi
+          else OLD=0 ; fi
+        ( echo $size ; echo $stor ; echo $prec ; echo 2 ) | ./bench_$code \
+        | tee -a $TDIR/test.log \
+        | awk -f Scripts/test.awk \
+        > $TMP_FILE
+	NEW=`awk '/Mflop/ {v=$3} END {print v}' $TMP_FILE \
+		    | sed 's/\..*$//' \
+		    | awk '/\*/ {print 0} /[0-9]/ {print $0}'`
+	if [ "$NEW" = "" ] ; then NEW=0 ; fi
+	echo "run $run: $NEW Mflop"
+        if [ $NEW -gt $OLD -o $OLD -eq 0 ]
+           then
+             /bin/rm -f $OUT_FILE
+             mv $TMP_FILE $OUT_FILE
+           else /bin/rm -f $TMP_FILE
+           fi
+        done
+      done
+    done
+    echo
+  done
+  if [ $DELETE -eq 1 ] ; then /bin/rm -f regmat*$size* crsmat*$size* ; fi
+done
+touch $TDIR/test_stamp

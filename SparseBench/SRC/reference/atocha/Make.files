@@ -1,0 +1,9 @@
+FSRC_FILES = main.f iter.f regular.f vec.f memory.f
+FSRC_FILES_SYMM = ${FSRC_FILES:.f=_symm.f}
+FSRC_FILES_GEN = mataux.f pde.f
+CSRC_FILES = cmatprod.c timer.c timer_unix.c qs.c
+UTIL_FILES = gen_crs.f gen_reg.f random.f
+UTIL_FILES_SYMM = ${UTIL_FILES:.f=_symm.f}
+UTIL_FILES_GEN = random_gen.f
+UTIL_MAINS = main_crs.f main_reg.f
+UTIL_MAINS_SYMM = ${UTIL_MAINS:.f=_symm.f} 

@@ -1,0 +1,38 @@
+ Domain size? (matrix size will be cube of this)
+ dump to matlab too?
+ .. dumping to file regmat016u
+  
+ Domain size? (matrix size will be cube of this)
+ dump to matlab too?
+ .. dumping to file regmat016s
+  
+ Domain size? (matrix size will be cube of this)
+ .. size=        4096
+ Order as 1=RecBis 2=CuthMck 3=MultiCol?
+ Dump? (1=yes, 0=no, -1=statistics)
+ Dump to matlab too?
+ Emulating dimension    3.0000000000000000     
+ Cross-boundary    2.0000000000000000     
+ Decay   0.10000000000000001     
+ Cutoff   0.80000000000000004     
+ .. number of elements=       41530
+ .. converting to crs
+ .. permuting to ordering            2
+           1           1   1.6240379539603631                2           2  0.75868878650144467                3           3  0.36175397480690918              111           4 -0.50355745821723730     
+ .. dumping to file crsmat016u
+  
+ Domain size? (matrix size will be cube of this)
+ .. size=        4096
+ Order as 1=RecBis 2=CuthMck 3=MultiCol?
+ Dump? (1=yes, 0=no, -1=statistics)
+ Dump to matlab too?
+ Emulating dimension    3.0000000000000000     
+ Cross-boundary    2.0000000000000000     
+ Decay   0.10000000000000001     
+ Cutoff   0.80000000000000004     
+ .. number of elements=       22813
+ .. converting to crs
+ .. permuting to ordering            2
+           1           1   1.6240379539603631                2           2  0.75868878650144467                3           3  0.36175397480690918             4006           4 -0.50355745821723730     
+ .. dumping to file crsmat016s
+  

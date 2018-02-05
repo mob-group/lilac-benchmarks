@@ -1,0 +1,27 @@
+SHELL=/bin/sh
+CLEAN_DIR = .
+local_clean ::
+	@/bin/rm -f $(CLEAN_DIR)/*~ $(CLEAN_DIR)/*.o $(CLEAN_DIR)/a.out \
+	  $(CLEAN_DIR)/core $(CLEAN_DIR)/PI* $(CLEAN_DIR)/Makefile.VE \
+	  $(CLEAN_DIR)/texput.* $(CLEAN_DIR)/fort.* $(CLEAN_DIR)/octave-core \
+	  comment.cut*
+total_clean ::
+	@for dir in * ; do \
+	  if [ -d $$dir ] ; then \
+	    if [ -f $$dir/Makefile.clean ] ; \
+	    then cd $$dir ; echo .. make $@ in `pwd` ; $(MAKE) $@ ; cd .. ; \
+	    else $(MAKE) CLEAN_DIR=$$dir local_clean ; \
+	    fi ; \
+	  fi ; \
+	done
+	make local_clean
+clean ::
+	@for dir in * ; do \
+	  if [ -d $$dir ] ; then \
+	    if [ -f "$$dir/Makefile" -o -f "$$dir/makefile" ] ; \
+	    then cd $$dir ; echo .. make $@ in `pwd` ; $(MAKE) $@ ; cd .. ; \
+	    else $(MAKE) CLEAN_DIR=$$dir local_clean ; \
+	    fi ; \
+	  fi ; \
+	done
+	make local_clean

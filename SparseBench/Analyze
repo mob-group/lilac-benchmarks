@@ -1,0 +1,93 @@
+#!/bin/sh
+
+MACH=default_machine
+OPT=reference
+PLAT=`Scripts/arch`
+COMPONENT=
+DRAW=0
+VECTOR=0
+TRACE=0
+while [ $OPTIND -le $# ] ; do
+  getopts c:m:o:p:davht opt
+  case $opt in
+   "m" ) MACH=$OPTARG ;;
+   "o" ) OPT=$OPTARG ;;
+   "p" ) PLAT=$OPTARG ;;
+   "c" ) COMPONENT=$OPTARG ;;
+   "d" ) DRAW=1 ;;
+   "t" ) TRACE=1 ;;
+   "v" ) VECTOR=1 ;;
+   "h" )
+    echo Usage: Analyze [-m machine] [-c component] [-p platform] [-d] [-a]
+    echo "-d : use gnuplot to draw, instead of ascii text"
+    echo "-a : when plotting, draw the asymptotic value"
+    exit ;;
+   ".*" ) echo Incomprehensible option. Type: Analyze -h. ; exit
+  esac
+done
+
+#
+# Who do you call?
+#
+TDIR=Out/$MACH/$OPT
+BDIR="../../.."
+echo
+if [ -d "Out/$MACH/$OPT" ] ; then 
+  echo "Analyzing results for \"$MACH\", variant \"$OPT\"" ; echo
+else
+  echo "Subdirectory <Out/$MACH/$OPT> does not exist;"
+  echo "first run \"Test -m $MACH -o $OPT\" (OPT=reference by default)"
+  echo
+  exit 1
+fi
+
+#
+# Get the individual results into graph data files
+#
+make MACH=$MACH OPT=$OPT plot_data
+
+#
+# Maybe pop up ghostview plots
+#
+cd Out/$MACH/$OPT
+SCRIPTDIR="../../../Scripts"
+if [ $DRAW -gt 0 ] ; then
+  if [ "$COMPONENT" = "" ] ; then FILES="*.plot" ;
+    else FILES=`ls *.plot | grep $COMPONENT`; fi
+  for file in $FILES ; do
+    outfile=`echo $file | sed -e s/plot/ps/`
+    gnuplot $file > $outfile ; ghostview $outfile &
+  done
+else
+  #
+  # get all matching data files
+  #
+  if [ "$COMPONENT" = "" ] ; then
+    FILES="*.grf" ; SUMMARY="summary" ;
+  else
+    FILES=`ls *.grf | grep $COMPONENT`; SUMMARY="summary.$COMPONENT" ;
+  fi
+  (cd $SCRIPTDIR ; \
+   if [ -f Make.$PLAT ] ; then make PLAT=$PLAT install ; \
+   else make PLAT=default_platform install ; fi ) > /dev/null
+  #
+  # in case of tracing, dump intermediates to screen
+  #
+  if [ $TRACE -eq 1 ] ; then
+    SUMM="> summ.tmp ; cat summ.tmp ; cat summ.tmp | $SCRIPTDIR/summarise.pl; /bin/rm -f summ.tmp;" ;
+  else
+    SUMM="| $SCRIPTDIR/summarise.pl" ; fi
+  #
+  # pump files through the least-squares program, and post-process
+  #
+  # we need to eval the whole loop to expand SUMM after it
+  eval " \
+  (echo \$MACH ; echo \$OPT ; \
+   for file in \$FILES ; do \
+     (wc -l \$file ; echo \$VECTOR ; cat \$file ) \
+     | $SCRIPTDIR/lsq \
+     | sed -e 's/^/'\$file' /' -e 's/.grf//' ; \
+   done \
+  ) $SUMM | grep -v "\\\(\\\)" | tee \$SUMMARY \
+  "
+fi

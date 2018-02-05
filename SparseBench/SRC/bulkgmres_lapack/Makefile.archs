@@ -1,0 +1,58 @@
+info:
+	@ echo "make install, make clean"
+
+include Make.$(PLAT)
+include Make.files
+include Make.copy_up
+
+install : 
+	@ echo "$(F_OPT_FLAGS)" > options ; echo "$(C_OPT_FLAGS)" >> options
+	@ echo "..installing as PLAT=$(PLAT)"
+	@make bench_gen bench_sym crs_gen crs_sym reg_gen reg_sym
+
+PURIFY = 
+
+bench_gen : $(FSRC_FILES:.f=.o) $(FSRC_FILES_GEN:.f=.o) $(CSRC_FILES:.c=.o) \
+		$(UTIL_FILES:.f=.o) $(UTIL_FILES_GEN:.f=.o)
+	$(PURIFY) $(FC) -o bench_gen \
+	 $(FSRC_FILES:.f=.o) $(FSRC_FILES_GEN:.f=.o) \
+	  $(UTIL_FILES:.f=.o) $(UTIL_FILES_GEN:.f=.o) \
+	   $(CSRC_FILES:.c=.o) $(LAPACK_LIB_LINK) $(BLAS_LIB_LINK)
+	@ echo
+	@ echo "You can now run the executable 'bench_gen'"
+	@ echo
+bench_sym : $(FSRC_FILES_SYMM:.f=.o) $(FSRC_FILES_GEN:.f=.o) \
+		$(CSRC_FILES:.c=.o) gen_crs.o \
+		$(UTIL_FILES_SYMM:.f=.o) $(UTIL_FILES_GEN:.f=.o)
+	$(PURIFY) $(FC) -o bench_sym \
+	 $(FSRC_FILES_SYMM:.f=.o) $(FSRC_FILES_GEN:.f=.o) \
+	  $(UTIL_FILES_SYMM:.f=.o) $(UTIL_FILES_GEN:.f=.o) \
+	   $(CSRC_FILES:.c=.o) $(LAPACK_LIB_LINK) $(BLAS_LIB_LINK)
+	@ echo
+	@ echo "You can now run the executable 'bench_sym'"
+	@ echo
+crs_gen : main_crs.o gen_crs.o mataux.o random.o random_gen.o qs.o
+	$(PURIFY) $(FC) -o crs_gen main_crs.o gen_crs.o \
+		mataux.o random_gen.o qs.o
+	@ echo ; echo ".. utility program <crs_gen>" ; echo
+crs_gen_chek : 
+	ftnchek -array=no-dimensions -truncation=no-promotion -usage=no-arg-array-alias main_crs.f gen_crs.f mataux.f random_gen.f | less
+crs_sym : main_crs_symm.o gen_crs_symm.o mataux.o random_symm.o \
+		random_gen.o qs.o
+	$(PURIFY) $(FC) -o crs_sym main_crs_symm.o gen_crs_symm.o \
+		mataux.o random_gen.o qs.o
+	@ echo ; echo ".. utility program <crs_sym>" ; echo
+reg_gen : main_reg.o gen_reg.o random_gen.o
+	$(PURIFY) $(FC) -o reg_gen main_reg.o gen_reg.o \
+		random_gen.o
+	@ echo ; echo ".. utility program <reg_gen>" ; echo
+reg_sym : main_reg_symm.o gen_reg_symm.o random_gen.o
+	$(PURIFY) $(FC) -o reg_sym main_reg_symm.o gen_reg_symm.o \
+		random_gen.o
+	@ echo ; echo ".. utility program <reg_sym>" ; echo
+qs.o : qs.h
+
+clean ::
+	@/bin/rm -f bench* crs_* reg_* matdump* crsmat* regmat* vecdump.m out
+
+include ../Makefile.clean

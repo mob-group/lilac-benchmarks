@@ -1,0 +1,36 @@
+#!/bin/sh
+
+ARCH=`Scripts/arch`
+echo Detected architecture $ARCH
+
+if [ "$ARCH" = "ALPHA" ] ; then OS=`uname` ; fi
+if [ "$ARCH" = "ALPHA" -a "$OS" = "OSF1" ] ; then \
+  echo .. replacing /bin/sh by /bin/ksh in scripts ; \
+  (echo 1 ; echo s/\\\/sh/\\\/ksh/ ; echo w ; echo q ) \
+    | ed Analyze >/dev/null 2>1 ; \
+  (echo 1 ; echo s/\\\/sh/\\\/ksh/ ; echo w ; echo q ) \
+    | ed Compare >/dev/null 2>1 ; \
+  (echo 1 ; echo s/\\\/sh/\\\/ksh/ ; echo w ; echo q ) \
+    | ed Install >/dev/null 2>1 ; \
+  (echo 1 ; echo s/\\\/sh/\\\/ksh/ ; echo w ; echo q ) \
+    | ed Report >/dev/null 2>1 ; \
+  (echo 1 ; echo s/\\\/sh/\\\/ksh/ ; echo w ; echo q ) \
+    | ed Test >/dev/null 2>1 ; \
+  (echo 1 ; echo s/\\\/sh/\\\/ksh/ ; echo w ; echo q ) \
+    | ed Validate >/dev/null 2>1 ; \
+else \
+  (echo 1 ; echo s/\\\/ksh/\\\/sh/ ; echo w ; echo q ) \
+    | ed Analyze >/dev/null 2>1 ; \
+  (echo 1 ; echo s/\\\/ksh/\\\/sh/ ; echo w ; echo q ) \
+    | ed Compare >/dev/null 2>1 ; \
+  (echo 1 ; echo s/\\\/ksh/\\\/sh/ ; echo w ; echo q ) \
+    | ed Install >/dev/null 2>1 ; \
+  (echo 1 ; echo s/\\\/ksh/\\\/sh/ ; echo w ; echo q ) \
+    | ed Report >/dev/null 2>1 ; \
+  (echo 1 ; echo s/\\\/ksh/\\\/sh/ ; echo w ; echo q ) \
+    | ed Test >/dev/null 2>1 ; \
+  (echo 1 ; echo s/\\\/ksh/\\\/sh/ ; echo w ; echo q ) \
+    | ed Validate >/dev/null 2>1 ; \
+fi
+
+#./configure.more

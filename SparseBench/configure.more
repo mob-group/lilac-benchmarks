@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ "`which perl 2>/dev/null`" != "" ] ; then \
+  perl -v | awk '{split($5,versionn,"."); if (versionn[1]<5) ; then echo Please use perl version 5 ; exit 1 ; fi}'
+else \
+  echo Make sure perl is in your path ; \
+  echo \(needed for postprocessing only\) ; \
+fi

@@ -1,0 +1,187 @@
+#!/bin/sh
+
+#
+# Options processing:
+# -m <machine> is mandatory,
+# -o <code variant> -p <platform> and -c <component> optional
+#
+OPT=reference
+MACH=default_machine
+PLAT=`Scripts/arch`
+COMPONENT=
+DRAW=0
+MAIL=1
+while [ $OPTIND -le $# ] ; do
+  getopts nc:m:o:p:h opt
+  if [ $opt = "m" ] ; then MACH=$OPTARG
+  elif [ $opt = "o" ] ; then OPT=$OPTARG
+  elif [ $opt = "p" ] ; then PLAT=$OPTARG
+  elif [ $opt = "c" ] ; then COMPONENT=$OPTARG
+  elif [ $opt = "n" ] ; then MAIL=0
+  elif [ $opt = "h" ] ; then
+    echo Usage: Report -m machine [-o variant] [-p platform] [-c component] [-n]
+    echo "-m : name of the machine for which you tested"
+    echo "-o : code variant used"
+    echo "-p : platform type; only to be used if nonstandard"
+    echo "-c : subset (such as \"gmres\" or \"ilu\") to be reported"
+    echo "-n : do not mail the reports file"
+    exit
+  else echo Incomprehensible option. Type: Test -h. ; exit
+  fi
+done
+#
+# get the list of output files
+#
+TDIR=Out/$MACH/$OPT
+XDIR=SRC/$OPT/$MACH
+BDIR="../../.."
+
+#
+# Oops. Errors.
+#
+echo
+if [ -d "$TDIR" ] ; then 
+  echo Reporting results for $MACH, code variant $OPT, platform=$PLAT ; echo
+else
+  #
+  # a hack to accomodate version 0.9.4 which stored the result
+  # files one level lower
+  #
+  OLD_TDIR=Out/$MACH
+  OLD_BDIR="../.."
+  cd $OLD_TDIR
+  OLD_FILES=`ls *${COMPONENT}*.out 2>/dev/null | awk '/out/ {print}'`
+  if [ `ls *.out 2>/dev/null | wc -l | awk '{print $1}'` -gt 0 ] ; then
+    echo ".. moving files from $OLD_TDIR to $TDIR as compatibility"
+    echo ".. upgrade 0.9.4 -> 0.9.5" ; echo
+    cd $OLD_BDIR; mkdir Out/$OPT ; mkdir $TDIR
+    mv $OLD_TDIR/* $TDIR ; /bin/rm -f $OLD_TDIR
+  else
+    echo "Subdirectory <Out/$OPT/$MACH> does not exist: first run <Test -m $MACH>" ; \
+    echo ; exit 1
+  fi
+fi
+cd $TDIR
+FILES=`ls *${COMPONENT}*.out 2>/dev/null | awk '/out/ {print}'`
+if [ `ls $FILES | wc -l | awk '{print $1}'` -eq 0 ] ; then
+  echo "I could not find any output files in $TDIR"
+  echo "Please do \"Test\", or rather \"Test -m <machine name>\""
+  echo
+  exit 1
+fi
+cd $BDIR
+
+#
+# Helpful hints to the user
+#
+if [ $MACH = default_machine ] ; then
+  echo "It would be more helpful for me if you would give your machine a name:"
+  echo "run tests with \"Test -m <machine name>\","
+  echo "and report to me with \"Report -m <machine name>\"."
+  echo
+fi 
+
+#
+# Generate header for the mail file
+#
+echo Sparse Benchmark version 0.9.7 results > Results.$MACH
+echo "machine name = $MACH" >> Results.$MACH
+echo "platform     = $PLAT" >> Results.$MACH
+echo "variant      = $OPT"  >> Results.$MACH
+# include machine specifications
+if [ ! -f $TDIR/machine ] ; then
+  echo "I need a short description of this machine; I will store"
+  echo "your answers in $TDIR/machine for future use."
+  echo 
+  echo "What is the type of processor (or model name) of your machine:"
+  read REPLY
+  echo "Processor/model: $REPLY" > $TDIR/machine
+  echo 
+  echo "Give further identification, such as"
+  echo "  the brand and model of your machine, Mhz rating, Bus Speed, Cache size:"
+  read REPLY
+  echo "Platform info: $REPLY" >> $TDIR/machine
+  echo 
+  echo Give the name of your institution or your own name:
+  read REPLY
+  echo "Installed at: $REPLY" >> $TDIR/machine
+  echo 
+fi
+if [ -f $TDIR/machine ] ; then
+  echo "I found the following description of your machine:" ; echo
+  cat $TDIR/machine ; echo
+  echo "I will include this in the report. If you want to alter the"
+  echo "description, Control-C now, and edit \"$TDIR/machine\"."
+  echo
+  echo "Specifications:" >> Results.$MACH
+  cat $TDIR/machine >> Results.$MACH
+fi
+# include compiler options
+VALID_OPTIONS=0
+if [ -f $XDIR/options ] ; then
+  if [ `wc -l $XDIR/options | awk '{print $1}'` -gt 0 ] ; then VALID_OPTIONS=1 ; fi ; fi
+if [ $VALID_OPTIONS -eq 1 ] ; then
+  echo "Options: `awk 'NR==1 {print}' $XDIR/options`" >> Results.$MACH
+else
+  echo "I could not find your compiler options. Have you been"
+  echo "creative in installing the software? Please do "
+  echo "  \"Install -m <name>\" with the same options you used"
+  echo " for the \"Test\" command."
+  exit 1
+fi
+# what tests were run?
+echo "More info:" >> Results.$MACH
+if [ "$COMPONENT" = "" ] ; then \
+  echo Reporting all tests >> Results.$MACH; \
+else \
+  echo Reporting only tests for component $COMPONENT >> Results.$MACH ; \
+fi
+echo "Was the code compiled (answer 1, 2, 3, or 4):"
+OPT1="straight out of the box, with at most compiler options changed"
+echo "(1) $OPT1"
+OPT2="with compiler directives in the code"
+echo "(2) $OPT2"
+OPT3="with manual code transformations"
+echo "(3) $OPT3"
+OPT4="with replacement of algorithms"
+echo "(4) $OPT4"
+read REPLY
+if [ $REPLY -lt 1 -o $REPLY -gt 4 ] ; then
+  echo "Invalid reply; answer 1, 2, 3, or 4."
+  exit
+fi
+eval echo "Code compiled: \$OPT$REPLY" >> Results.$MACH
+echo >> Results.$MACH
+echo 
+
+#
+# Include validation results
+#
+if [ ! -f $TDIR/validation_results ] ; then
+  echo ".. need to generate validation results for inclusion"
+  echo ".. this will just be a minute"
+  echo
+  ./Validate -m $MACH
+fi
+(echo Validation ; cat $TDIR/validation_results ) >> Results.$MACH
+echo >> Results.$MACH
+
+#
+# Include every results file
+#
+cd $TDIR
+for file in $FILES ; do \
+  echo File: $file ; cat $file ; \
+done >> $BDIR/Results.$MACH
+cd $BDIR
+
+#
+# And mail the bunch to Victor
+#
+if [ $MAIL -eq 1 ] ; then
+  mail sparsebench@cs.utk.edu < Results.$MACH
+else
+  echo "The report file is \"Results.$MACH\";"
+  echo "please get it to sparsebench@cs.utk.edu somehow."
+  echo 
+fi

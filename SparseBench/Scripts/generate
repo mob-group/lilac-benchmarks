@@ -1,0 +1,29 @@
+#!/bin/sh
+
+/bin/rm -f matgen.log
+for size in $* ; do \
+  if [ "$size" != "-r" ] ; then \
+    echo Generating test matrices for size $size ; \
+    if [ ! -f "regmat0"$size"u" ] ; \
+    then \
+      echo ".. regular unsymmetric, size" $size ; \
+      (echo $size ; echo 0 ) | ./reg_gen >> matgen.log ; \
+    fi ; \
+    if [ ! -f "regmat0"$size"s" ] ; \
+    then \
+      echo ".. regular symmetric, size" $size ; \
+      (echo $size ; echo 0 ) | ./reg_sym >> matgen.log ; \
+    fi ; \
+    if [ ! -f "crsmat0"$size"u" ] ; \
+    then \
+      echo ".. crs unsymmetric, size" $size ; \
+      (echo $size ; echo 2 ; echo 1 ; echo 0 ) | ./crs_gen >> matgen.log ; \
+    fi ; \
+    if [ ! -f "crsmat0"$size"s" ] ; \
+    then \
+      echo ".. crs symmetric, size" $size ; \
+      (echo $size ; echo 2 ; echo 1 ; echo 0 ) | ./crs_sym >> matgen.log ; \
+    fi ; \
+  fi ; \
+done
+echo

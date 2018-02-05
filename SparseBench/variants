@@ -1,0 +1,8 @@
+naive_ilu : naive coding of regular ilu solve, with bound checking tests inside the inner loop.
+wave_ilu : wavefront coding of regular ilu solve.
+long_vector : contiguous storage of diagonals in regular storage.
+bulkgmres : implementation of gmres using QR after building Krylov space.
+bulkgmres_lapack : as above, but using lapack routines where possible.
+classical_gs : implementation of gmres using classical Gram-Schmidt.
+cprod : matrix-vector product in C.
+reference : the reference code.

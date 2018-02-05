@@ -1,0 +1,56 @@
+main_reg.f : ../main_reg.f
+	@ cp -f ../main_reg.f main_reg.f
+main_crs.f : ../main_crs.f
+	@ cp -f ../main_crs.f main_crs.f
+random.f : ../random.f
+	@ cp -f ../random.f random.f
+gen_reg.f : ../gen_reg.f
+	@ cp -f ../gen_reg.f gen_reg.f
+gen_crs.f : ../gen_crs.f
+	@ cp -f ../gen_crs.f gen_crs.f
+memory.f : ../memory.f
+	@ cp -f ../memory.f memory.f
+vec.f : ../vec.f
+	@ cp -f ../vec.f vec.f
+regular.f : ../regular.f
+	@ cp -f ../regular.f regular.f
+iter.f : ../iter.f
+	@ cp -f ../iter.f iter.f
+main.f : ../main.f
+	@ cp -f ../main.f main.f
+main_reg_symm.f : ../main_reg_symm.f
+	@ cp -f ../main_reg_symm.f main_reg_symm.f
+main_crs_symm.f : ../main_crs_symm.f
+	@ cp -f ../main_crs_symm.f main_crs_symm.f
+random_symm.f : ../random_symm.f
+	@ cp -f ../random_symm.f random_symm.f
+gen_reg_symm.f : ../gen_reg_symm.f
+	@ cp -f ../gen_reg_symm.f gen_reg_symm.f
+gen_crs_symm.f : ../gen_crs_symm.f
+	@ cp -f ../gen_crs_symm.f gen_crs_symm.f
+memory_symm.f : ../memory_symm.f
+	@ cp -f ../memory_symm.f memory_symm.f
+vec_symm.f : ../vec_symm.f
+	@ cp -f ../vec_symm.f vec_symm.f
+regular_symm.f : ../regular_symm.f
+	@ cp -f ../regular_symm.f regular_symm.f
+iter_symm.f : ../iter_symm.f
+	@ cp -f ../iter_symm.f iter_symm.f
+main_symm.f : ../main_symm.f
+	@ cp -f ../main_symm.f main_symm.f
+qs.h : ../qs.h
+	@ cp -f ../qs.h qs.h
+random_gen.f : ../random_gen.f
+	@ cp -f ../random_gen.f random_gen.f
+pde.f : ../pde.f
+	@ cp -f ../pde.f pde.f
+mataux.f : ../mataux.f
+	@ cp -f ../mataux.f mataux.f
+qs.c : ../qs.c
+	@ cp -f ../qs.c qs.c
+timer_unix.c : ../timer_unix.c
+	@ cp -f ../timer_unix.c timer_unix.c
+timer.c : ../timer.c
+	@ cp -f ../timer.c timer.c
+cmatprod.c : ../cmatprod.c
+	@ cp -f ../cmatprod.c cmatprod.c

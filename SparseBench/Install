@@ -1,0 +1,36 @@
+#!/bin/sh
+
+OPT=reference
+MACH=default_machine
+PLAT=`Scripts/arch`
+SIZES="12 14 16 18 20 24 28 32 36 38"
+TARGET=nil
+COMPILER_OPT=
+while [ $OPTIND -le $# ] ; do
+  getopts dm:o:r:s:p:t:h opt
+  case $opt in 
+   "o" ) OPT=$OPTARG ;;
+   "p" ) PLAT=$OPTARG ;;
+   "m" ) MACH=$OPTARG ;;
+   "r" ) ;;
+   "s" ) SIZES=$OPTARG ;;
+   "t" ) TARGET=$OPTARG ;;
+   "c" ) COMPILER_OPT=$OPTARG ;;
+   "d" ) ;;
+   "h" ) 
+    echo ; echo Usage: Install [-m machine] [-p platform] [-o opt] [-c copt]; 
+    if [ -f variants ] ; then 
+        echo ; echo "Available opt variants:" ; cat variants ; fi ; 
+    exit ;;
+    * ) echo Incomprehensible option. Type: Install -h. ; exit ;;
+  esac 
+done
+
+TDIR=Out/$MACH
+
+echo Installing software for PLAT=$PLAT MACH=$MACH, OPT=$OPT
+echo 
+
+if [ ! -d "$TDIR" ] ; then mkdir $TDIR ; fi
+
+make MACH=$MACH PLAT=$PLAT OPT=$OPT $COMPILER_OPT install

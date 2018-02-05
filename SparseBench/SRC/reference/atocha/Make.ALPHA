@@ -1,0 +1,13 @@
+.SUFFIXES:
+.SUFFIXES: .f .c .o
+.f.o :
+	$(FC) -c $(FFLAGS) $<
+.c.o :
+	$(CC) -c $(CFLAGS) $<
+
+# please change compiler options only by editing the {C,F}_OPT_FLAGS
+F_OPT_FLAGS = -O5
+C_OPT_FLAGS = -O
+
+FFLAGS = $(F_OPT_FLAGS) $(DUMP_FLAGS) $(F_EXTRA_FLAGS)
+CFLAGS = $(C_OPT_FLAGS)

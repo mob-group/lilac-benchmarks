@@ -1,0 +1,145 @@
+#!/bin/sh
+
+#
+# oh boy you've done it you looked at the source of this
+# script i'm so sorry your life will never be the same
+# and i promise I will rewrite it in perl on of these days.
+#
+
+OUT=t
+OPT=reference
+while [ $OPTIND -le $# ] ; do
+  getopts tlwh opt;
+  if [ $opt = "t" ] ; then OUT="t" ;
+  elif [ $opt = "l" ] ; then OUT="l" ;
+  elif [ $opt = "w" ] ; then OUT="w" ;
+  elif [ $opt = "h" ] ; then
+    echo Usage: Compare [-t] [-l] [-w] ;
+    echo where
+    echo -t : text output
+    echo -l : latex output
+    echo -w : html output
+    echo Output goes to stdout, so catch it while you can
+    exit
+  else echo Incomprehensible option. Type: Compare -h. ; exit
+  fi
+done
+
+#
+# First make sure the data summaries have been built
+#
+( \
+for mach in Out/* ; do \
+  MACH=`echo $mach | sed s/Out.//` ; \
+  Analyze -m $MACH ; \
+done \
+) > /dev/null
+
+#
+# Generate the tables
+#
+if [ "$OUT" = "l" ] ; then
+  TABLE_LINE_HEAD="\\begin{table}[htp]\\hbox to \\hsize{%"
+  TABLE_HEAD=" \\vbox{\\offinterlineskip\\halign{\\vrule height10pt depth2pt\\enskip#\\hfil\\enskip&\\vrule\\enskip\\hfil#\\enskip\\vrule\\cr\\noalign{\\hrule}"
+  TABLE_HEAD3="\\vbox{\\offinterlineskip\\halign{\\vrule height10pt depth2pt\\enskip#\\hfil\\enskip\\vrule&&\\enskip#\\hfil\\enskip\vrule\\cr\\noalign{\\hrule}"
+  TABLE_FOOT="\\noalign{\\hrule}}}\quad"
+  TABLE_LINE_FOOT="\\end{table}"
+  LINE=ltxline
+elif [ "$OUT" = "w" ] ; then
+  TABLE_LINE_HEAD="<TABLE><TR>"
+  TABLE_LINE_FOOT="</TR></TABLE>"
+  TABLE_HEAD="<TD><TABLE BORDER>"
+  TABLE_HEAD3="<TD><TABLE BORDER>"
+  TABLE_FOOT="</TABLE>"
+  LINE=webline
+elif [ "$OUT" = "t" ] ; then
+  TABLE_LINE_HEAD=
+  TABLE_LINE_FOOT=
+  TABLE_HEAD="================================================================"
+  TABLE_HEAD3="================================================================"
+  TABLE_FOOT="================================================================"
+  LINE=txtline
+fi
+
+#    cat Out/$MACH/$OPT/machine | sed 's/^.*: //' | awk 'NR==1 {print}'
+
+CAPTION="Highest attained performance"
+echo $TABLE_LINE_HEAD
+echo $TABLE_HEAD
+if [ "$OUT" = "t" ] ; then
+  echo $CAPTION
+elif [ "$OUT" = "w" ] ; then 
+  echo "<TH COLSPAN=2>$CAPTION</TH>"
+fi
+for mach in Out/* ; do
+  MACH=`echo $mach | sed 's/Out.//'`
+  eval PROC_$MACH=\"`cat Out/$MACH/machine | sed 's/^.*: //' | awk 'NR==1 {print}'`\"
+done
+
+     echo "Machine & Mflop/s\\cr"
+     echo "\\noalign{\\hrule}"
+
+for mach in Out/* ; do \
+  MACH=`echo $mach | sed 's/Out.//'` ; \
+  ( cat Out/$MACH/$OPT/summary | awk '/Maximum speed/ {print $8}' \
+    | sed 's/\..*$//' ; \
+    eval echo \$PROC_$MACH ; \
+  ) \
+  | awk 'NR==1 {v1=$1} NR==2 {v2=$0} END {print v1 FS v2}' ; \
+done \
+| sort -k 1 -g -r \
+| awk -f Scripts/$LINE ;
+echo $TABLE_FOOT
+if [ "$OUT" = "l" ] ; then 
+  echo "}\\caption{$CAPTION}\label{tab:top}"
+  echo $TABLE_LINE_FOOT ; echo 
+else echo
+fi
+
+
+#
+# Now that the introductions are out of the way, tabulate the
+# individual components
+#
+N=1
+for type in "Regular mvp" "Symm-crs mvp" "Full-crs mvp" "Regular ilu" "Symm-crs ilu" "Full-crs ilu" "Vectors ops general" "Block jacobi" ; do
+  echo $TABLE_LINE_HEAD
+  if [ "$OUT" = "w" ] ; then echo "<TD>" ; fi
+    case $N in
+    1 ) echo "\caption{Asymptotic performance of Diagonal storage Matrix-vector product}";;
+    2 ) echo "\caption{Asymptotic performance of Symmetrically stored CRS Matrix-vector produc}";;
+    3 ) echo "\caption{Asymptotic performance of CRS Matrix-vector product}";;
+    4 ) echo "\caption{Asymptotic performance of Diagonal storage ILU solve}";;
+    5 ) echo "\caption{Asymptotic performance of Symmetrically stored CRS ILU solve}" ;;
+    6 ) echo "\caption{Asymptotic performance of CRS ILU solve}";;
+    7 ) echo "\caption{Asymptotic performance of Vector operations in CG}";;
+    8 ) echo "\caption{Asymptotic performance of Diagonal storage Block Jacobi solve}";;
+  esac
+  N=`expr $N + 1`
+  echo $TABLE_HEAD
+  if [ "$OUT" = "t" ] ; then echo $CAPTION
+  elif [ "$OUT" = "w" ] ; then echo "<TH COLSPAN=2>$CAPTION</TH>"
+  elif [ "$OUT" = "l" ] ; then
+#    echo "\\omit\\span\\omit\\vrule height10pt depth2pt\\enskip\\it $type\\hfil\\vrule height10pt depth2pt\\cr"
+     echo "Machine & Mflop/s\\cr"
+     echo "% $type"
+     echo "\\noalign{\\hrule}"
+  fi
+  for mach in Out/* ; do \
+    MACH=`echo $mach | sed 's/Out.//'` ; \
+    ( grep "$type" Out/$MACH/$OPT/summary | awk '{print $8}' \
+      | sed 's/\..* / /' ; \
+      eval echo \$PROC_$MACH ; \
+    ) \
+    | awk 'NR==1 {v1=$0} NR==2 {v2=$0} END {print v1 FS v2}' ; \
+  done \
+    | sort -k 1 -g -r \
+    | awk -f Scripts/$LINE
+  echo $TABLE_FOOT
+  if [ "$OUT" = "l" ] ; then
+    echo "}"
+    echo "\caption{$CAPTION}"
+  fi
+  echo $TABLE_LINE_FOOT
+  echo
+done

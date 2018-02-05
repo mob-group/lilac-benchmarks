@@ -1,0 +1,53 @@
+Sparse benchmark, version 0.9.7, released 17 Nov 2000.
+Jack Dongarra, Victor Eijkhout, Henk van der Vorst
+copyright 2000
+
+This is a benchmark of Conjugate Gradient methods,
+using sparse data storage.
+
+For questions and comments, mail sparsebench@cs.utk.edu.
+
+==== Executive summary ====
+Issue the following command:
+    configure
+
+Then: 
+    Test -m <machine name>
+to generate test matrices and run the benchmark on them. After this, you can 
+get a performance summary by
+    Analyze -m <machine name>
+If you are happy with your results, mail them off to UT by
+    Report -m <machine name>
+
+==== More options ====
+If you have gnuplot and ghostview installed, try, for instance,
+    Analyze -m <machine name> -d -c crs
+for a plot of the performance of the various crs-storage methods.
+This may give you an indication that you are running completely
+'in cache', in which case you can run larger problems with
+    Test -m <machine name> -s "<bunch of larger sizes>"
+
+You can test more than one machine and store all results by using
+    Test -m <name>
+    Analyze -m <name>
+    Report -m <name>
+(don't forget to issue 'configure' for each machine).
+If you've tested several machines, compare them with
+    Compare
+Remark. Every time you run the benchmark, the test matrices 
+are generated, which takes time. This amount of time can not be helped.
+By default, the matrices are deleted after use.
+If you use `Test -d', the test matrices are saved to disk after use.
+This saves considerable time if you rerun the benchmark, but it will
+cost you a few hundred megabyte.
+
+==== Further reading ====
+For more information about running the benchmark codes,
+see the file install.ps.
+For more information about the concepts behind the benchmark
+and a list of published results, see the file bench.ps.
+
+==== Change History ====
+0.9.4 : first version put out on netlib
+0.9.5 : minor changes in README, Test, Analyze,
+        call to 'configure.more' removed.
