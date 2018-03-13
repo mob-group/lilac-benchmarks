@@ -3,13 +3,13 @@
 C Data
 c     splits
       integer max_levels,max_blocks,max_var
-      parameter (max_levels=20,max_blocks=300000,max_var=5500000/3)
+      parameter (max_levels=20,max_blocks=3000000,max_var=50000000/3)
       integer splits(4,max_blocks),b_per_level(max_levels+1),
      >     ordering(max_var),inv_order(max_var)
       integer dsize,nsize,ord,dump,matlab
 c     actual matrix
       integer max_elements
-      parameter (max_elements=5500000/8)
+      parameter (max_elements=50000000/8)
       integer dia(max_elements),
      >     ptr(max_elements),idx(max_elements),
      >     ptr_f(max_elements),idx_f(max_elements)
