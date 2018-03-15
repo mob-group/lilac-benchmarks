@@ -2,7 +2,6 @@
 
 import csv
 import math
-import matplotlib.pyplot as plt
 import statistics
 import sys
 
@@ -16,10 +15,8 @@ def row_to_stats(row):
     return new_row
 
 if __name__ == "__main__":
-    in_file = sys.argv[1]
-    with open(in_file, "r") as csvfile:
-        reader = csv.reader(csvfile)
-        writer = csv.writer(sys.stdout)
-        writer.writerow(['threads', 'samples', 'time', 'stdev'])
-        for row in reader:
-            writer.writerow(row_to_stats(row))
+    reader = csv.reader(sys.stdin)
+    writer = csv.writer(sys.stdout)
+    writer.writerow(['threads', 'samples', 'time', 'stdev'])
+    for row in reader:
+        writer.writerow(row_to_stats(row))

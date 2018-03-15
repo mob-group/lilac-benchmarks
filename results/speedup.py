@@ -15,13 +15,11 @@ def speedup(r, s_r, t, s_t):
     return (r / t, math.sqrt(t1 + t2))
 
 if __name__ == "__main__":
-    in_file = sys.argv[1]
     rows = []
-    with open(in_file, "r") as csvfile:
-        reader = csv.reader(csvfile)
-        reader.__next__()
-        for row in reader:
-            rows.append(row)
+    reader = csv.reader(sys.stdin)
+    reader.__next__()
+    for row in reader:
+        rows.append(row)
     writer = csv.writer(sys.stdout)
     writer.writerow(['threads', 'samples', 'speedup', 'stdev'])
     raw_time, raw_stdev = rows[-1][2:4]
