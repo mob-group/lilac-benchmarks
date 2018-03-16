@@ -6,7 +6,8 @@ import sys
 
 def label(fn):
     return {
-        "npb" : "NAS-CG"
+        "npb" : "NAS-CG",
+        "pfold" : "Wales-PFold",
     }[fn.split("_")[0]]
 
 def plot_data(filename, ax):
