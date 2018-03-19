@@ -16,8 +16,9 @@ def label(fn):
 def plot_data(filename, ax):
     s = slice(0,None,1)
     frame = pd.read_csv(filename)
-    ax.errorbar(frame['threads'][s], frame['speedup'][s],
-            yerr=frame['stdev'][s], capsize=2, linewidth=1, ls=':')
+    # ax.errorbar(frame['threads'][s], frame['speedup'][s],
+    #         yerr=frame['stdev'][s], capsize=2, linewidth=1, ls=':')
+    ax.plot(frame['threads'][s], frame['speedup'][s], linewidth=1, ls='-')
     ax.set_xticks(frame['threads'][s])
 
 if __name__ == "__main__":
@@ -28,7 +29,8 @@ if __name__ == "__main__":
     for f in files:
         plot_data(f, ax)
         legend.append(label(f))
+    ax.legend(legend)
+    ax.axhline(y=1,lw=1,ls=':')
     ax.set_xlabel("No. of MKL Threads")
     ax.set_ylabel("Speedup")
-    ax.legend(legend)
     plt.show()
