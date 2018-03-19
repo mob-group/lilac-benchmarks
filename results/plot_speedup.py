@@ -9,10 +9,11 @@ def label(fn):
         "npb" : "NAS-CG",
         "pfold" : "Wales-PFold",
         "sparsebench" : "Netlib-CRS",
+        "ngt" : "Wales-NGT"
     }[fn.split("_")[0]]
 
 def plot_data(filename, ax):
-    s = slice(1,None,1)
+    s = slice(0,None,1)
     frame = pd.read_csv(filename)
     ax.errorbar(frame['threads'][s], frame['speedup'][s],
             yerr=frame['stdev'][s], capsize=2, linewidth=1, ls=':')
