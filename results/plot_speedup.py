@@ -8,7 +8,8 @@ def label(fn):
     return {
         "npb" : "NAS-CG",
         "pfold" : "Wales-PFold",
-        "sparsebench" : "Netlib-CRS",
+        "netlib" : "Netlib-CRS",
+        "cnetlib" : "Netlib-C-CRS",
         "ngt" : "Wales-NGT"
     }[fn.split("_")[0]]
 
