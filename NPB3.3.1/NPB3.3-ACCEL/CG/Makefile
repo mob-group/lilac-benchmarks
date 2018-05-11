@@ -13,10 +13,10 @@ ${PROGRAM}: config ${OBJS}
 	${FLINK} -g ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} ${F_LIB} ${C_LIB} -L. -l:spmv.so
 
 cg.o:		cg.f  globals.h npbparams.h
-	${FCOMPILE} -g cg.f
+	${FCOMPILE} cg.f
 
-mkl:	mkl.c
-	${CC} -g ${CFLAGS} ${C_INC} -fPIC -shared $< -o spmv.so
+%:	%.c
+	${CC} ${CFLAGS} ${C_INC} -fPIC -shared $< -o spmv.so
 
 clean:
 	- rm -f *.o *~ *.so
