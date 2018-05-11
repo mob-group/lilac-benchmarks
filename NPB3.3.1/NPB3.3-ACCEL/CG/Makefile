@@ -15,7 +15,7 @@ ${PROGRAM}: config ${OBJS}
 cg.o:		cg.f  globals.h npbparams.h
 	${FCOMPILE} -g cg.f
 
-mkl:	spmv.c
+mkl:	mkl.c
 	${CC} -g ${CFLAGS} ${C_INC} -fPIC -shared $< -o spmv.so
 
 clean:
