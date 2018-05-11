@@ -16,7 +16,7 @@ cg.o:		cg.f  globals.h npbparams.h
 	${FCOMPILE} cg.f
 
 %:	%.c
-	${CC} ${CFLAGS} ${C_INC} -fPIC -shared $< -o spmv.so
+	${CC} ${CFLAGS} ${C_INC} ${C_LIB} -fPIC -shared $< -o spmv.so
 
 clean:
 	- rm -f *.o *~ *.so

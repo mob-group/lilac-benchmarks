@@ -88,12 +88,12 @@ CLINK	= $(CC)
 #---------------------------------------------------------------------------
 # These macros are passed to the linker 
 #---------------------------------------------------------------------------
-C_LIB  = -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl
+C_LIB  = -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl -L${CUDA_ROOT}/lib64 -lcublas -lcusparse -lcudart
 
 #---------------------------------------------------------------------------
 # These macros are passed to the compiler 
 #---------------------------------------------------------------------------
-C_INC = -I${MKLROOT}/include
+C_INC = -I${MKLROOT}/include -I${CUDA_ROOT}/include
 
 #---------------------------------------------------------------------------
 # Global *compile time* flags for C programs
@@ -110,7 +110,7 @@ C_INC = -I${MKLROOT}/include
 # _LARGEFILE64_SOURCE - are standard compiler flags which allow to work with 
 # files larger than 2GB.
 #---------------------------------------------------------------------------
-CFLAGS	= -m64 -O3 -std=c99 -D_GNU_SOURCE
+CFLAGS	= -m64 -O3 -std=c99 -D_GNU_SOURCE -fopenmp
 
 #---------------------------------------------------------------------------
 # Global *link time* flags. Flags for increasing maximum executable 
