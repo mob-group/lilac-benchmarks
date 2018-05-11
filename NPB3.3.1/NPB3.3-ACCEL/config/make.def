@@ -110,7 +110,7 @@ C_INC = -I${MKLROOT}/include
 # _LARGEFILE64_SOURCE - are standard compiler flags which allow to work with 
 # files larger than 2GB.
 #---------------------------------------------------------------------------
-CFLAGS	= -m64 -O3
+CFLAGS	= -m64 -O3 -std=c99 -D_GNU_SOURCE
 
 #---------------------------------------------------------------------------
 # Global *link time* flags. Flags for increasing maximum executable 
