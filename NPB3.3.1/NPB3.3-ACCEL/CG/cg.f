@@ -530,17 +530,7 @@ C
          ! explicitly by a function performing the same operation.
          ! Assuming an suitably good compiler, this should be equivalent
          ! in performance to the original serial version.
-         if(version == "MKL") then
-           call mkl_spmv(rowstr, a, p, colidx, q)
-         else
-           do j=1,lastrow-firstrow+1
-              sum = 0.d0
-              do k=rowstr(j),rowstr(j+1)-1
-                 sum = sum + a(k)*p(colidx(k))
-              enddo
-              q(j) = sum
-           enddo
-         endif
+           call spmv_harness(q, a, p, rowstr, colidx, lastrow-firstrow)
 
 CC          do j=1,lastrow-firstrow+1
 CC             i = rowstr(j) 
@@ -636,20 +626,7 @@ c  Compute residual norm explicitly:  ||r|| = ||x - A.z||
 c  First, form A.z
 c  The partition submatrix-vector multiply
 c---------------------------------------------------------------------
-      ! Same here - the SPMV code has been replaced by a call to my
-      ! interface function.
-      if(version == "MKL") then
-        call mkl_spmv(rowstr, a, z, colidx, r)
-      else
-        do j=1,lastrow-firstrow+1
-           d = 0.d0
-           do k=rowstr(j),rowstr(j+1)-1
-              d = d + a(k)*z(colidx(k))
-           enddo
-           r(j) = d
-        enddo
-      endif
-
+      call spmv_harness(r, a, z, rowstr, colidx, lastrow-firstrow)
 
 c---------------------------------------------------------------------
 c  At this point, r contains A.z

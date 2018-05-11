@@ -1,49 +1,75 @@
 #include <mkl.h>
+#include <unistd.h>
+#include <signal.h>
+#include <sys/mman.h>
 
-#include <stdint.h>
-#include <stdio.h>
+struct sigaction old_sigaction;
+static void* data_begin    = 0;
+static void* data_end      = 0;
+static void* aligned_begin = 0;
+static void* aligned_end   = 0;
 
-struct {
-  int32_t naa;
-  int32_t nzz;
-  int32_t firstrow;
-  int32_t lastrow;
-  int32_t firstcol;
-  int32_t lastcol;
-} common;
-
-void c_spmv_(
-    int *restrict rowstr,
-    double *restrict a,
-    double *restrict vec,
-    int *restrict colidx,
-    double *restrict outmat)
+static void handler(int sig, siginfo_t *si, void *unused)
 {
-  int upper = common.lastrow - common.firstrow + 1;
-  for(int j = 0; j < upper; ++j) {
-    double sum = 0.0;
-    for(int k = rowstr[j] - 1; k < rowstr[j+1] - 1; ++k) {
-      sum += a[k] * vec[colidx[k] - 1];
+    if(si->si_addr >= aligned_begin && si->si_addr < aligned_end)
+    {
+        mprotect(aligned_begin, aligned_end-aligned_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
+        data_begin = 0;
     }
-    outmat[j] = sum;
-  }
+    else if(old_sigaction.sa_sigaction)
+    {
+        old_sigaction.sa_sigaction(sig, si, unused);
+    }
 }
 
-static long long int *ia;
-static long long int *ja;
-
-void mkl_spmv_(
-    int *restrict rowstr,     // ia
-    double *restrict a,       // a
-    double *restrict vec,     // x
-    int *restrict colidx,     // ja
-    double *restrict outmat)  // y
+void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx, int* rows)
 {
-  MKL_INT n_rows = common.lastrow - common.firstrow + 1;
+    static int cols = 0;
 
-  mkl_dcsrgemv(
-    "n", &n_rows,
-    a, rowstr, colidx, 
-    vec, outmat
-  );
+    if(data_begin != 0 && data_begin != colidx)
+    {
+        mprotect(aligned_begin, aligned_end-aligned_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
+        data_begin = 0;
+    }
+    if(data_begin == 0)
+    {
+        cols = 0;
+        for(int i = rowstr[0]; i < rowstr[*rows]; i++)
+            if(colidx[i] >= cols) cols = colidx[i]+1;
+        data_begin = colidx;
+        data_end   = colidx + rowstr[*rows];
+
+        struct sigaction sa;
+        sa.sa_flags = SA_SIGINFO;
+        sigemptyset(&sa.sa_mask);
+        sa.sa_sigaction = handler;
+
+        sigaction(SIGSEGV, &sa, &old_sigaction);
+
+        aligned_begin = data_begin;
+        aligned_end   = data_end + sysconf(_SC_PAGE_SIZE) - 1;
+        aligned_begin -= (size_t)aligned_begin % sysconf(_SC_PAGE_SIZE);
+        aligned_end   -= (size_t)aligned_end   % sysconf(_SC_PAGE_SIZE);
+
+        mprotect(aligned_begin, aligned_end-aligned_begin, PROT_READ | PROT_EXEC);
+    }
+
+    sparse_matrix_t A;
+    mkl_sparse_d_create_csr(&A, SPARSE_INDEX_BASE_ONE, *rows+1, cols-1, rowstr, rowstr+1, colidx, a);
+
+    struct matrix_descr dscr;
+    dscr.type = SPARSE_MATRIX_TYPE_GENERAL;
+    dscr.mode = SPARSE_FILL_MODE_LOWER;
+    dscr.diag = SPARSE_DIAG_NON_UNIT;
+
+    mkl_sparse_d_mv(SPARSE_OPERATION_NON_TRANSPOSE, 1.0, A, dscr, iv, 0.0, ov);
+    /* int i, j; */
+    /* for(i = 0; i < *rows + 1; i++) */
+    /* { */
+    /*     double value = 0.0; */
+    /*     for(j = rowstr[i] - 1; j < rowstr[i+1] - 1; j++) */
+    /*         value += a[j] * iv[colidx[j] - 1]; */
+    /*     ov[i] = value; */
+    /* } */
+    return 0;
 }
