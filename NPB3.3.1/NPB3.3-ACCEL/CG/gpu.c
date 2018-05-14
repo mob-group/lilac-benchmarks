@@ -4,8 +4,18 @@
 
 #include <assert.h>
 
+void setup(void)
+{
+  static bool ready = false;
+  if(!ready) {
+    ready = true;
+  }
+}
+
 void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx, int* rows)
 {
+  setup();
+
   cublasHandle_t cublasH = NULL;
   cusparseHandle_t cusparseH = NULL;
   cudaStream_t stream = NULL;
