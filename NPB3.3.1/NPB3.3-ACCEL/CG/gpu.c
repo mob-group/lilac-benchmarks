@@ -30,9 +30,9 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
   double h_zero = 0.0;
 
   int n = *rows + 1;
-  int nnzA = rowstr[*rows];
+  int nnzA = rowstr[n] - rowstr[0];
 
-  /* Set up CUDA libraries */
+  // Set up CUDA libraries
   cudaStat1 = cudaStreamCreateWithFlags(&stream, cudaStreamNonBlocking);
   assert(cudaSuccess == cudaStat1);
 
@@ -48,14 +48,14 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
   cusparseStat = cusparseSetStream(cusparseH, stream);
   assert(CUSPARSE_STATUS_SUCCESS == cusparseStat);
 
-  /* Set up matrix */
+  // Set up matrix
   cusparseStat = cusparseCreateMatDescr(&descrA);
   assert(CUSPARSE_STATUS_SUCCESS == cusparseStat);
 
   cusparseSetMatIndexBase(descrA,CUSPARSE_INDEX_BASE_ONE);
   cusparseSetMatType(descrA, CUSPARSE_MATRIX_TYPE_GENERAL );
 
-  /* Do device copy */ 
+  // Do device copy
   cudaStat1 = cudaMalloc ((void**)&d_csrRowPtrA, sizeof(int) * (n+1) );
   cudaStat2 = cudaMalloc ((void**)&d_csrColIndA, sizeof(int) * nnzA );
   cudaStat3 = cudaMalloc ((void**)&d_csrValA   , sizeof(double) * nnzA );
@@ -77,7 +77,7 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
   cudaStat1 = cudaMemcpy(d_x, iv, sizeof(double) * n, cudaMemcpyHostToDevice);
   assert(cudaSuccess == cudaStat1);
 
-  /* Do the SPMV */
+  // Do the SPMV
   cusparseStat = cusparseDcsrmv_mp(cusparseH,
                                    CUSPARSE_OPERATION_NON_TRANSPOSE,
                                    n,
