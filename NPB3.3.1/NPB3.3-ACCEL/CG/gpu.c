@@ -81,18 +81,28 @@ void setup(int n, int nnzA)
 
 void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx, int* rows)
 {
+  static double *last_a = NULL;
+  static int *last_rowstr = NULL;
+  static int *last_colidx = NULL;
+
   int n = *rows + 1;
   int nnzA = rowstr[n] - rowstr[0];
 
   setup(n, nnzA);
 
   // Do device copy
-  cudaStat1 = cudaMemcpy(d_csrRowPtrA, rowstr, sizeof(int) * (n+1)   , cudaMemcpyHostToDevice);
-  cudaStat2 = cudaMemcpy(d_csrColIndA, colidx, sizeof(int) * nnzA    , cudaMemcpyHostToDevice);
-  cudaStat3 = cudaMemcpy(d_csrValA   , a   , sizeof(double) * nnzA , cudaMemcpyHostToDevice);
-  assert(cudaSuccess == cudaStat1);
-  assert(cudaSuccess == cudaStat2);
-  assert(cudaSuccess == cudaStat3);
+  if(a != last_a || rowstr != last_rowstr || colidx != last_colidx) {
+    cudaStat1 = cudaMemcpy(d_csrRowPtrA, rowstr, sizeof(int) * (n+1)   , cudaMemcpyHostToDevice);
+    cudaStat2 = cudaMemcpy(d_csrColIndA, colidx, sizeof(int) * nnzA    , cudaMemcpyHostToDevice);
+    cudaStat3 = cudaMemcpy(d_csrValA   , a   , sizeof(double) * nnzA , cudaMemcpyHostToDevice);
+    assert(cudaSuccess == cudaStat1);
+    assert(cudaSuccess == cudaStat2);
+    assert(cudaSuccess == cudaStat3);
+
+    last_a = a;
+    last_rowstr = rowstr;
+    last_colidx = colidx;
+  }
   
   cudaStat1 = cudaMemcpy(d_x, iv, sizeof(double) * n, cudaMemcpyHostToDevice);
   assert(cudaSuccess == cudaStat1);
