@@ -49,13 +49,13 @@ F_INC =
 #---------------------------------------------------------------------------
 # Global *compile time* flags for Fortran programs
 #---------------------------------------------------------------------------
-FFLAGS	= -O3
+FFLAGS	= -O3 -mcmodel=medium
 
 #---------------------------------------------------------------------------
 # Global *link time* flags. Flags for increasing maximum executable 
 # size usually go here. 
 #---------------------------------------------------------------------------
-FLINKFLAGS = -O3
+FLINKFLAGS = -O3 -mcmodel=medium
 
 
 #---------------------------------------------------------------------------
@@ -108,7 +108,7 @@ C_INC = -I${MKLROOT}/include -I${CUDA_ROOT}/include
 #
 # _FILE_OFFSET_BITS=64 
 # _LARGEFILE64_SOURCE - are standard compiler flags which allow to work with 
-# files larger than 2GB.
+# files mediumr than 2GB.
 #---------------------------------------------------------------------------
 CFLAGS	= -m64 -O3 -std=c99 -D_GNU_SOURCE -fopenmp
 

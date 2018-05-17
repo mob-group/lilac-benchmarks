@@ -482,9 +482,6 @@ c---------------------------------------------------------------------
       double precision   d, sum, rho, rho0, alpha, beta, rnorm
 
       data      cgitmax / 25 /
-      
-      character(len=8) :: version
-      call getenv("SPMV_VERSION", version)
 
       rho = 0.0d0
 
