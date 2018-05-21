@@ -23,6 +23,8 @@ static cudaError_t cudaStat3 = cudaSuccess;
 static cudaError_t cudaStat4 = cudaSuccess;
 static cudaError_t cudaStat5 = cudaSuccess;
 
+static int *d_csrRowPtrA = NULL;
+static int *d_csrColIndA = NULL;
 static double *d_csrValA = NULL;
 static double *d_x = NULL;
 static double *d_y = NULL;
@@ -60,18 +62,17 @@ void setup(int n, int nnzA)
   static int last_n = -1;
   static int last_nnzA = -1;
   if(n != last_n || nnzA != last_nnzA) {
-    cudaStat1 = cudaMalloc ((void**)&d_index_ptr , sizeof(int) * (n + 1 + nnzA));
-    h_index_ptr = malloc(sizeof(int) * (n + 1 + nnzA));
-
-    cudaStat2 = cudaMalloc ((void**)&d_data_ptr, sizeof(double) * (nnzA + n));
-    h_data_ptr = malloc(sizeof(double) * (nnzA + n));
-
-    cudaStat3 = cudaMalloc ((void**)&d_y, sizeof(double) * n);
+    cudaStat1 = cudaMalloc ((void**)&d_csrRowPtrA, sizeof(int) * (n+1) );
+    cudaStat2 = cudaMalloc ((void**)&d_csrColIndA, sizeof(int) * nnzA );
+    cudaStat3 = cudaMalloc ((void**)&d_csrValA   , sizeof(double) * nnzA );
+    cudaStat4 = cudaMalloc ((void**)&d_x         , sizeof(double) * n );
+    cudaStat5 = cudaMalloc ((void**)&d_y         , sizeof(double) * n );
 
     assert(cudaSuccess == cudaStat1);
     assert(cudaSuccess == cudaStat2);
     assert(cudaSuccess == cudaStat3);
-    assert(h_index_ptr && h_data_ptr);
+    assert(cudaSuccess == cudaStat4);
+    assert(cudaSuccess == cudaStat5);
 
     last_n = n;
     last_nnzA = nnzA;
