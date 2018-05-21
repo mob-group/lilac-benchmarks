@@ -10,13 +10,10 @@ OBJS = cg.o ${COMMON}/print_results.o  \
 include ../sys/make.common
 
 ${PROGRAM}: config ${OBJS}
-	${FLINK} -g ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} ${F_LIB} ${C_LIB} -L. -l:spmv.so
+	${FLINK} -g ${FLINKFLAGS} -o ${PROGRAM} ${OBJS} ${F_LIB} ${C_LIB} -Wl,-rpath,. -L. -l:spmv.so
 
 cg.o:		cg.f  globals.h npbparams.h
 	${FCOMPILE} cg.f
-
-%:	%.c
-	${CC} ${CFLAGS} ${C_INC} ${C_LIB} -fPIC -shared $< -o spmv.so
 
 clean:
 	- rm -f *.o *~ *.so

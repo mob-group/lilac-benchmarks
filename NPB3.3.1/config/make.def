@@ -93,7 +93,7 @@ C_LIB  = -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_
 #---------------------------------------------------------------------------
 # These macros are passed to the compiler 
 #---------------------------------------------------------------------------
-C_INC = -I${MKLROOT}/include -I${CUDA_ROOT}/include
+C_INC =
 
 #---------------------------------------------------------------------------
 # Global *compile time* flags for C programs
