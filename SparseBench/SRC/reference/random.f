@@ -69,15 +69,16 @@ C Local
          y(row) = 0.d0
       end do
 
-      if (version == "MKL") then
-        call mkl_dcsrgemv("N", size, val, ptr, idx, x, y)
-      else
-        do row=1,size
-           do col=ptr(row),ptr(row+1)-1
-              y(idx(col)) = y(idx(col)) + val(col)*x(row)
-           end do
-        end do
-      end if
+      call spmv_harness(y, val, x, ptr, idx, size)
+      !if (version == "MKL") then
+      !  call mkl_dcsrgemv("N", size, val, ptr, idx, x, y)
+      !else
+      !  do row=1,size
+      !     do col=ptr(row),ptr(row+1)-1
+      !        y(idx(col)) = y(idx(col)) + val(col)*x(row)
+      !     end do
+      !  end do
+      !end if
 
       call add_mult_flops(2*(ptr(size+1)-1))
       t = stoptimer()-t

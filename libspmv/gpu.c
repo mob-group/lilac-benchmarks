@@ -128,7 +128,7 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
 {
   static int cols = 0;
 
-  int n = *rows + 1;
+  int n = *rows;
   int nnzA = rowstr[n] - rowstr[0];
   if(cols == 0) {
     for(int i = rowstr[0]; i < rowstr[n]; ++i) {

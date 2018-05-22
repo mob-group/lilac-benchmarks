@@ -55,7 +55,7 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
     }
 
     sparse_matrix_t A;
-    mkl_sparse_d_create_csr(&A, SPARSE_INDEX_BASE_ONE, *rows+1, cols-1, rowstr, rowstr+1, colidx, a);
+    mkl_sparse_d_create_csr(&A, SPARSE_INDEX_BASE_ONE, *rows, cols-1, rowstr, rowstr+1, colidx, a);
 
     struct matrix_descr dscr;
     dscr.type = SPARSE_MATRIX_TYPE_GENERAL;
