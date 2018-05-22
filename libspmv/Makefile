@@ -14,5 +14,10 @@ mkl.so:	mkl.c
 gpu.so:	gpu.c
 	${CC} ${CFLAGS} -I${CUDA_ROOT}/include -Wl,-rpath,${CUDA_ROOT}/lib64 -fPIC -shared $< -o $@
 
+install: all
+	cp mkl.so ${SPMV_INSTALL_PREFIX}/lib/libmkl-spmv.so
+	cp gpu.so ${SPMV_INSTALL_PREFIX}/lib/libgpu-spmv.so
+	cp native.so ${SPMV_INSTALL_PREFIX}/lib/libnative-spmv.so
+
 clean:
 	rm *.so

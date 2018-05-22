@@ -50,11 +50,11 @@ def read_crs(filename):
     return n, nnz, row_ptr, a, col_ind
 
 def write_crs(f, n, nnz, row_ptr, a, col_ind):
-    print("{:12}{:12}".format(n, nnz))
+    print("{:12}{:12}".format(n, nnz), file=f)
     for ptr in row_ptr:
-        print("{:12}".format(ptr))
+        print("{:12}".format(ptr), file=f)
     for ind, val in zip(col_ind, a):
-        print("{:12} {:20.17f}".format(ind, val))
+        print("{:12} {:20.17f}".format(ind, val), file=f)
 
 def random_crs(size):
     n = size**3

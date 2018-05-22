@@ -27,22 +27,18 @@ C Local
       real*8 sum
       real*8 t
 
-      character(len=3) version
-      call getenv("SPMV_VERSION", version)
-
       t = starttimer()
 
-      if (version == "MKL") then
-        call mkl_dcsrgemv("N", size, val, ptr, idx, x, y)
-      else
-        do row=1,size
-           sum = 0.d0
-           do col=ptr(row),ptr(row+1)-1
-              sum = sum + val(col)*x(idx(col))
-           end do
-           y(row) = sum
-        end do
-      end if
+      call spmv_harness(y, val, x, ptr, idx, size)
+        !call mkl_dcsrgemv("N", size, val, ptr, idx, x, y)
+        !do row=1,size
+!           sum = 0.d0
+!          do col=ptr(row),ptr(row+1)-1
+!              sum = sum + val(col)*x(idx(col))
+!           end do
+!           y(row) = sum
+!        end do
+!      end if
 
       call add_mult_flops(2*(ptr(size+1)-1))
       t = stoptimer()-t
