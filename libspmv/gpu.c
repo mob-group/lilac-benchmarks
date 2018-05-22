@@ -29,7 +29,7 @@ static double *d_csrValA = NULL;
 static double *d_x = NULL;
 static double *d_y = NULL;
 
-void setup(int n, int nnzA)
+void setup(int rows, int cols, int nnzA)
 {
   static bool ready = false;
   if(!ready) {
@@ -59,14 +59,15 @@ void setup(int n, int nnzA)
     ready = true;
   }
 
-  static int last_n = -1;
+  static int last_rows = -1;
+  static int last_cols = -1;
   static int last_nnzA = -1;
-  if(n != last_n || nnzA != last_nnzA) {
-    cudaStat1 = cudaMalloc ((void**)&d_csrRowPtrA, sizeof(int) * (n+1) );
+  if(cols != last_cols || rows != last_rows || nnzA != last_nnzA) {
+    cudaStat1 = cudaMalloc ((void**)&d_csrRowPtrA, sizeof(int) * (rows+1) );
     cudaStat2 = cudaMalloc ((void**)&d_csrColIndA, sizeof(int) * nnzA );
     cudaStat3 = cudaMalloc ((void**)&d_csrValA   , sizeof(double) * nnzA );
-    cudaStat4 = cudaMalloc ((void**)&d_x         , sizeof(double) * n );
-    cudaStat5 = cudaMalloc ((void**)&d_y         , sizeof(double) * n );
+    cudaStat4 = cudaMalloc ((void**)&d_x         , sizeof(double) * cols );
+    cudaStat5 = cudaMalloc ((void**)&d_y         , sizeof(double) * rows );
 
     assert(cudaSuccess == cudaStat1);
     assert(cudaSuccess == cudaStat2);
@@ -74,7 +75,8 @@ void setup(int n, int nnzA)
     assert(cudaSuccess == cudaStat4);
     assert(cudaSuccess == cudaStat5);
 
-    last_n = n;
+    last_rows = rows;
+    last_cols = cols;
     last_nnzA = nnzA;
   }
 }
@@ -84,25 +86,28 @@ struct sigaction old_sigaction;
 static double *a_begin = NULL;
 static double *a_end = NULL;
 static void *aligned_a_begin = NULL;
+static void *aligned_a_end = NULL;
 
 static int *rowstr_begin = NULL;
 static int *rowstr_end = NULL;
 static void *aligned_rowstr_begin = NULL;
+static void *aligned_rowstr_end = NULL;
 
 static int *colidx_begin = NULL;
 static int *colidx_end = NULL;
 static void *aligned_colidx_begin = NULL;
+static void *aligned_colidx_end = NULL;
 
 static void handler(int sig, siginfo_t *si, void *unused)
 {
   void *addr = si->si_addr;
-  if((addr >= aligned_a_begin && addr < (void*)a_end) ||
-     (addr >= aligned_rowstr_begin && addr < (void*)rowstr_end) ||
-     (addr >= aligned_colidx_begin && addr < (void*)colidx_end)) 
+  if((addr >= aligned_a_begin && addr < aligned_a_end) ||
+     (addr >= aligned_rowstr_begin && addr < aligned_rowstr_end) ||
+     (addr >= aligned_colidx_begin && addr < aligned_colidx_end)) 
   {
-    mprotect(aligned_a_begin, (void*)a_end - aligned_a_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
-    mprotect(aligned_rowstr_begin, (void*)rowstr_end - aligned_rowstr_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
-    mprotect(aligned_colidx_begin, (void*)colidx_end - aligned_colidx_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
+    mprotect(aligned_a_begin, aligned_a_end - aligned_a_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
+    mprotect(aligned_rowstr_begin, aligned_rowstr_end - aligned_rowstr_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
+    mprotect(aligned_colidx_begin, aligned_colidx_end - aligned_colidx_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
     
     a_begin = NULL;
     rowstr_begin = NULL;
@@ -115,7 +120,9 @@ static void handler(int sig, siginfo_t *si, void *unused)
 #define ALIGN(name) \
   aligned_##name##_begin = name##_begin; \
   aligned_##name##_begin -= (size_t)aligned_##name##_begin % sysconf(_SC_PAGE_SIZE); \
-  mprotect(aligned_##name##_begin, (void*)name##_end - aligned_##name##_begin, PROT_READ | PROT_EXEC);
+  aligned_##name##_end = name##_end + sysconf(_SC_PAGE_SIZE) - 1; \
+  aligned_##name##_end -= (size_t)aligned_##name##_end % sysconf(_SC_PAGE_SIZE); \
+  mprotect(aligned_##name##_begin, aligned_##name##_end - aligned_##name##_begin, PROT_READ | PROT_EXEC);
 
 void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx, int* rows)
 {
@@ -131,7 +138,7 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
     }
   }
 
-  setup(cols, nnzA);
+  setup(n, cols, nnzA);
 
   if((a_begin != NULL && a_begin != a) ||
      (rowstr_begin != NULL && rowstr_begin != rowstr) ||
@@ -143,13 +150,6 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
   }
 
   if(a_begin == NULL || rowstr_begin == NULL || colidx_begin == NULL) {
-    cols = 0;
-    for(int i = rowstr[0]; i < rowstr[n]; ++i) {
-      if(colidx[i] >= cols) {
-        cols = colidx[i];
-      }
-    }
-
     // Do device copy
     cudaStat1 = cudaMemcpy(d_csrRowPtrA, rowstr, sizeof(int) * (n+1), cudaMemcpyHostToDevice);
     cudaStat2 = cudaMemcpy(d_csrColIndA, colidx, sizeof(int) * nnzA, cudaMemcpyHostToDevice);

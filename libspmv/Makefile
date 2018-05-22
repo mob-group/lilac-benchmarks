@@ -1,4 +1,4 @@
-CFLAGS=-std=c99 -D_GNU_SOURCE
+CFLAGS=-std=c99 -D_GNU_SOURCE -g
 
 all: \
 	native.so \

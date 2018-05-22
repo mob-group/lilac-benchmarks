@@ -59,7 +59,9 @@ message("CMAKE_Fortran_COMPILER = ${CMAKE_Fortran_COMPILER}")
 set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/modules)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/modules)
 
-set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -pg -no-pie -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl")
+set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -g -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl -L$ENV{CUDA_ROOT}/lib64 -lcublas -lcusparse -lcudart -Wl,-rpath,${CMAKE_CURRENT_BINARY_DIR} -L${CMAKE_CURRENT_BINARY_DIR} -l:spmv.so")
+message(STATUS "${CMAKE_Fortran_FLAGS}")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -D_GNU_SOURCE")
 
 include_directories(${CMAKE_SOURCE_DIR})
 
