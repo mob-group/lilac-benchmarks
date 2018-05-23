@@ -1,6 +1,5 @@
 void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx, int* rows)
 {
-  
   int i, j;
   for(i = 0; i < *rows; i++)
   {

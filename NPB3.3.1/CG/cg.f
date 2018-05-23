@@ -471,6 +471,7 @@ c---------------------------------------------------------------------
      >                   z(*),
      >                   a(nzz)
       integer            colidx(nzz), rowstr(naa+1)
+      integer rows
 
       double precision   p(*),
      >                   q(*),
@@ -527,7 +528,8 @@ C
          ! explicitly by a function performing the same operation.
          ! Assuming an suitably good compiler, this should be equivalent
          ! in performance to the original serial version.
-           call spmv_harness(q, a, p, rowstr, colidx, lastrow-firstrow)
+           rows = lastrow - firstrow + 1
+           call spmv_harness(q, a, p, rowstr, colidx, rows)
 
 CC          do j=1,lastrow-firstrow+1
 CC             i = rowstr(j) 
@@ -623,7 +625,7 @@ c  Compute residual norm explicitly:  ||r|| = ||x - A.z||
 c  First, form A.z
 c  The partition submatrix-vector multiply
 c---------------------------------------------------------------------
-      call spmv_harness(r, a, z, rowstr, colidx, lastrow-firstrow)
+      call spmv_harness(r, a, z, rowstr, colidx, rows)
 
 c---------------------------------------------------------------------
 c  At this point, r contains A.z

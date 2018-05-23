@@ -88,7 +88,7 @@ CLINK	= $(CC)
 #---------------------------------------------------------------------------
 # These macros are passed to the linker 
 #---------------------------------------------------------------------------
-C_LIB  = -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl -L${CUDA_ROOT}/lib64 -lcublas -lcusparse -lcudart
+C_LIB  = -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl -L${CUDA_ROOT}/lib64 -lcublas -lcusparse -lcudart -L${SPMV_ROOT}/lib -lgpu-spmv
 
 #---------------------------------------------------------------------------
 # These macros are passed to the compiler 
