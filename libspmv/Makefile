@@ -12,7 +12,7 @@ native.so:	native.c
 	${CC} ${CFLAGS} -fPIC -shared $< -o $@
 
 mkl.so:	mkl.c
-	${CC} ${CFLAGS} -I${MKLROOT}/include -Wl,-rpath,${MKLROOT}/lib/intel64 -fPIC -shared $< -o $@
+	${CC} ${CFLAGS} -m64 -I${MKLROOT}/include -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_rt -lpthread -lm -ldl -fPIC -shared $< -o $@
 
 gpu.so:	gpu.c
 	${CC} ${CFLAGS} -I${CUDA_ROOT}/include -Wl,-rpath,${CUDA_ROOT}/lib64 -fPIC -shared $< -o $@

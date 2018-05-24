@@ -39,9 +39,10 @@ int main(int argc, char **argv)
   usage(argc, argv);
   auto path = lib_path(argv[1]);
 
-  void *lib = dlopen(path.c_str(), RTLD_LAZY);
+  void *lib = dlopen(path.c_str(), RTLD_NOW);
   if(!lib) {
     std::cerr << "Couldn't load " << path << '\n';
+    std::cerr << dlerror() << '\n';
     std::exit(2);
   }
 
