@@ -1,5 +1,5 @@
 CFLAGS=-std=c99 -D_GNU_SOURCE -g
-CXXFLAGS=
+CXXFLAGS=-std=c++11
 LDFLAGS=-ldl
 
 all: \
