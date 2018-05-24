@@ -55,5 +55,9 @@ int main(int argc, char **argv)
   }
 
   auto harness = reinterpret_cast<harness_t *>(sym);
-  return !test(harness);
+  if(!test(harness)) {
+    std::cerr << "failure\n";
+  } else {
+    std::cerr << "success!\n";
+  }
 }
