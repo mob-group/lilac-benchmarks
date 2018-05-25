@@ -35,7 +35,7 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
     {
         cols = 0;
         for(int i = rowstr[0]; i < rowstr[*rows]; i++)
-            if(colidx[i] >= cols) cols = colidx[i]+1;
+            if(colidx[i] >= cols) cols = colidx[i];
         data_begin = colidx;
         data_end   = colidx + rowstr[*rows];
 
