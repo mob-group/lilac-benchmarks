@@ -5,6 +5,7 @@ import re
 import statistics
 
 from enum import Enum, auto
+from matplotlib.colors import hsv_to_rgb
 from typing import Dict, List
 
 plt.style.use('seaborn')
@@ -29,8 +30,10 @@ class ResultSet:
 
     def chart_data(self):
         return self.name, {
-            'GPU' : self.speedup('Native', 'GPU'),
+            'CUDA' : self.speedup('Native', 'CUDA'),
             'MKL' : self.speedup('Native', 'MKL'),
+            'OpenCL-iGPU' : self.speedup('AMD-Native', 'OpenCL-iGPU'),
+            'OpenCL-GPU' : self.speedup('AMD-Native', 'OpenCL-GPU'),
         }
 
 def read_results(results_file):
@@ -61,24 +64,33 @@ def autolabel(ax, rects):
             text_height = 1.007 * height
         ax.text(rect.get_x() + rect.get_width()/2., 1.0*text_height,
                 '{:.2f}×'.format(height),
-                ha='center', va='bottom')
+                ha='center', va='bottom', fontsize=9)
 
 def plot(data):
-    bar_width = 0.3
+    bar_width = 0.15
     fig, axes = plt.subplots(1, len(data), figsize=(10,2))
     for (ax, d) in zip(axes, data):
         # ax.set_axisbelow(True)
         # ax.yaxis.grid(color='gray', linestyle='dotted')
         # ax.xaxis.grid(color='gray', linestyle='dotted')
 
-        rs1 = ax.bar(-bar_width/2, d[1]['GPU'], bar_width*0.9, edgecolor='black')
-        rs2 = ax.bar(bar_width/2, d[1]['MKL'], bar_width*0.9, edgecolor='black')
+        rs1 = ax.bar(-3*bar_width/2, d[1]['CUDA'], bar_width*0.9,
+                edgecolor='black', color=hsv_to_rgb((0.6, 1, 0.8)))
+        rs2 = ax.bar(-bar_width/2, d[1]['MKL'], bar_width*0.9,
+                edgecolor='black', color=hsv_to_rgb((0.6, 0.4, 0.8)))
+        rs3 = ax.bar(bar_width/2, d[1]['OpenCL-iGPU'], bar_width*0.9,
+                edgecolor='black', color=hsv_to_rgb((0., 1, 0.8)))
+        rs4 = ax.bar(3*bar_width/2, d[1]['OpenCL-GPU'], bar_width*0.9,
+                edgecolor='black', color=hsv_to_rgb((0., 0.4, 0.8)))
         autolabel(ax, rs1)
         autolabel(ax, rs2)
+        autolabel(ax, rs3)
+        autolabel(ax, rs4)
 
         ax.axhline(1, color='black')
-        ax.set_xticks([-bar_width/2, bar_width/2])
-        ax.set_xticklabels(['GPU', 'MKL'])
+        ax.tick_params(axis='x', rotation=-45)
+        ax.set_xticks([-3*bar_width/2, -bar_width/2, bar_width/2, 3*bar_width/2])
+        ax.set_xticklabels(['CUDA', 'MKL', 'iGPU', 'GPU'])
         ax.set_xlabel(d[0])
     plt.tight_layout()
     return fig
