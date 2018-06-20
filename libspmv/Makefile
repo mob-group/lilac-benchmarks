@@ -1,5 +1,5 @@
-CFLAGS=-std=c99 -D_GNU_SOURCE -g
-CXXFLAGS=-std=c++11
+CFLAGS=-std=c99 -D_GNU_SOURCE -O3
+CXXFLAGS=-I${CL_ROOT}/include -L${CL_ROOT}/lib -L${CL_ROOT}/lib64 -std=c++11 -O3
 LDFLAGS=-ldl
 
 all: \
@@ -17,13 +17,17 @@ mkl.so:	mkl.c
 gpu.so:	gpu.c
 	${CC} ${CFLAGS} -I${CUDA_ROOT}/include -Wl,-rpath,${CUDA_ROOT}/lib64 -fPIC -shared $< -o $@
 
+opencl.so: opencl.cpp
+	${CXX} ${CXXFLAGS} -fPIC -shared $< -lOpenCL -lclSPARSE -lclsparseTimer -o $@
+
+clgpu.so: clgpu.cpp
+	${CXX} ${CXXFLAGS} -fPIC -shared $< -lOpenCL -lclSPARSE -lclsparseTimer -o $@
+
 test: test.cpp
 	${CXX} ${CXXFLAGS} $< -o $@ ${LDFLAGS}
 
-install: all
-	cp mkl.so ${SPMV_INSTALL_PREFIX}/lib/libmkl-spmv.so
-	cp gpu.so ${SPMV_INSTALL_PREFIX}/lib/libgpu-spmv.so
-	cp native.so ${SPMV_INSTALL_PREFIX}/lib/libnative-spmv.so
+install: $(platform).so
+	cp $< ${SPMV_INSTALL_PREFIX}/lib/lib$(platform)-spmv.so
 
 clean:
 	rm -f *.so
