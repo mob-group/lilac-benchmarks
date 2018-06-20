@@ -3,36 +3,30 @@
 import os
 import sys
 
-class Result:
-    def __init__(self, line):
-        items = line.split(' ')
-        self.path = items[0]
-        self.time = float(items[1])
-        self.rows = int(items[2])
-        self.cols = int(items[3])
-        self.nnz = int(items[4])
-        self.iters = int(items[5])
+def all_times(path):
+    with open(path) as f:
+        all_times = {}
+        for line in f:
+            fields = line.split(' ')
+            name = fields[0]
+            times = {
+                'base' : float(fields[1]),
+                'integrated': float(fields[2]),
+                'gpu': float(fields[3])
+            }
+            all_times[name] = times
+        return all_times
 
-    def __repr__(self):
-        return "Result({}, {}, {}, {}, {})".format(self.path, self.time,
-                self.rows, self.cols, self.nnz, self.iters)
-
-def file_results(path):
-    with open(path, 'r') as f:
-        return [Result(line) for line in f]
-
-def matrix_name(result):
-    return os.path.basename(result.path).split('.')[0]
+def speedups(all_times):
+    speedups = {}
+    for matrix in all_times:
+        base_time = all_times[matrix]['base']
+        speedups[matrix] = {
+            x : base_time / all_times[matrix][x] for x in all_times[matrix]
+        }
+    return speedups
 
 if __name__ == "__main__":
-    baseline = sys.argv[1]
-    variants = sys.argv[2:]
-    b_results = file_results(baseline)
-    by_name = {}
-    for r in b_results:
-        by_name[matrix_name(r)] = [r]
-    
-    for var in variants:
-        v_results = file_results(var)
-        for r in v_results:
-            by_name[matrix_name(r)].append(r)
+    ats = all_times(sys.argv[1])
+    speeds = speedups(ats)
+    print(speeds)
