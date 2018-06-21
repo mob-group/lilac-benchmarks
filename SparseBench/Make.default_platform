@@ -5,7 +5,21 @@
 .c.o :
 	$(CC) -c $(CFLAGS) $<
 
-LIB_FLAGS = -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl -L${CUDA_ROOT}/lib64 -lcusparse -lcublas -lcudart -L${SPMV_ROOT}/lib -lgpu-spmv -Wl,-rpath,${SPMV_ROOT}/lib:${CUDA_ROOT}/lib64:${MKLROOT}/lib
+ifeq ($(SPMV_VERSION),mkl)
+  LIB_FLAGS  = -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl -lmkl-spmv
+else ifeq ($(SPMV_VERSION),gpu)
+  LIB_FLAGS = -L${CUDA_ROOT}/lib64 -lcublas -lcusparse -lcudart -lgpu-spmv
+else ifeq ($(SPMV_VERSION),opencl)
+  LIB_FLAGS = -lopencl-spmv
+else ifeq ($(SPMV_VERSION),clgpu)
+  LIB_FLAGS = -lclgpu-spmv
+else
+  LIB_FLAGS = -lnative-spmv
+endif
+
+LIB_FLAGS := -L$(SPMV_ROOT)/lib $(LIB_FLAGS)
+
+# LIB_FLAGS = -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl -L${CUDA_ROOT}/lib64 -lcusparse -lcublas -lcudart -L${SPMV_ROOT}/lib -lgpu-spmv -Wl,-rpath,${SPMV_ROOT}/lib:${CUDA_ROOT}/lib64:${MKLROOT}/lib
 
 # please change compiler options only by editing the {C,F}_OPT_FLAGS
 F_OPT_FLAGS = -O $(LIB_FLAGS)
