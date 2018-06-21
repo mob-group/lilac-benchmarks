@@ -2,13 +2,9 @@ CFLAGS=-std=c99 -D_GNU_SOURCE -O3
 CXXFLAGS=-I${CL_ROOT}/include -L${CL_ROOT}/lib -L${CL_ROOT}/lib64 -std=c++11 -O3
 LDFLAGS=-ldl
 
-all: \
-	native.so \
-	mkl.so \
-	gpu.so \
-	test
+all: test
 
-native.so:	native.c
+native.so: native.c
 	${CC} ${CFLAGS} -fPIC -shared $< -o $@
 
 mkl.so:	mkl.c
