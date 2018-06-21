@@ -23,7 +23,7 @@ test: test.cpp
 	${CXX} ${CXXFLAGS} $< -o $@ ${LDFLAGS}
 
 install: $(platform).so
-	cp $< ${SPMV_INSTALL_PREFIX}/lib/lib$(platform)-spmv.so
+	cp $< ${SPMV_ROOT}/lib/lib$(platform)-spmv.so
 
 clean:
 	rm -f *.so
