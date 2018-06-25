@@ -243,7 +243,7 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
                                      one_based + A.num_nonzeros,
                                      0, nullptr, nullptr);
 
-    clsparseCsrMetaCreate(&A, control);
+    //clsparseCsrMetaCreate(&A, control);
 
     delete[] one_based;
 
