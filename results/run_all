@@ -1,0 +1,34 @@
+#!/bin/bash
+
+url_file=$1
+shift
+
+exe=$1
+shift
+
+libs=(
+  /home/s1306752/sparsity/libspmv/native.so
+  /home/s1306752/sparsity/libspmv/opencl.so
+  /home/s1306752/sparsity/libspmv/clgpu.so
+)
+
+labels=(
+  native opencl clgpu
+)
+
+while read url; do
+  curl -O $url
+  file=$(echo $url | rev | cut -d'/' -f1 | rev)
+
+  dir_name=$(tar tzf $file | head -1 | cut -d"/" -f1)
+  tar xvf $file
+
+  for i in $(seq 0 2); do
+    lib=${libs[i]}
+    label=${labels[i]}
+    $exe $lib $label $dir_name/* >> out.txt
+  done
+
+  rm $file
+  rm -r $dir_name
+done < $url_file
