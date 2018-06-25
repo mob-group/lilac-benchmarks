@@ -1,5 +1,4 @@
 name,group,kind,nnz,rows,cols,link
-None,None,None,None,None,None,None
 1138_bus,HB,Power Network Problem,4054,1138,1138,https://sparse.tamu.edu/MM/HB/1138_bus.tar.gz
 494_bus,HB,Power Network Problem,1666,494,494,https://sparse.tamu.edu/MM/HB/494_bus.tar.gz
 662_bus,HB,Power Network Problem,2474,662,662,https://sparse.tamu.edu/MM/HB/662_bus.tar.gz
