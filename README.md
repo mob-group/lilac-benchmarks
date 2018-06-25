@@ -15,6 +15,10 @@ git clone https://github.com/Baltoli/sparsity.git
 cd sparsity
 ```
 
+`LD_LIBRARY_PATH` needs to be able to find the installed `libspmv` libraries
+(see below), as well as any required by the different platforms, both at compile
+and run time.
+
 ## `libspmv`
 
 To build the shared library linear algebra implementations:
@@ -43,7 +47,7 @@ dependencies are:
 To install a built shared library:
 
 ```
-SPMV_INSTALL_PREFIX=prefix make platform={native,mkl,gpu,opencl,clgpu} install
+SPMV_ROOT=prefix make platform={native,mkl,gpu,opencl,clgpu} install
 ```
 
 The installed library will be named `libplatform-spmv.so`.
@@ -55,4 +59,20 @@ and run it:
 
 ```
 cd NPB3.3.1
+mkdir bin
+make SPMV_VERSION=platform F77=gfortran CLASS=C CG
+./bin/cg.C.x
+```
+
+The relevant benchmark results are the MOp/s and seconds taken to run. `F77` can
+be set to whatever fortran compiler is most appropriate.
+
+## SparseBench
+
+This application implements sparse matrix benchmarks for various different
+conjugate gradient variants. We use the general, unsymmetric version.
+
+The first step is to generate suitably large matrices:
+```
+./big_gen.py --filename crsmat170u --size 170 write
 ```
