@@ -59,8 +59,25 @@ message("CMAKE_Fortran_COMPILER = ${CMAKE_Fortran_COMPILER}")
 set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/modules)
 include_directories(${CMAKE_CURRENT_BINARY_DIR}/modules)
 
-set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -g -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl -L$ENV{CUDA_ROOT}/lib64 -lcublas -lcusparse -lcudart -Wl,-rpath,${CMAKE_CURRENT_BINARY_DIR} -L${CMAKE_CURRENT_BINARY_DIR} -L$ENV{SPMV_ROOT}/lib -lgpu-spmv")
+if(DEFINED ENV{SPMV_VERSION})
+  if("$ENV{SPMV_VERSION}" STREQUAL "mkl")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -L$ENV{MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl -lmkl-spmv")
+  elseif("$ENV{SPMV_VERSION}" STREQUAL "gpu")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -L$ENV{CUDA_ROOT}/lib64 -lcublas -lcusparse -lcudart -lgpu-spmv")
+  elseif("$ENV{SPMV_VERSION}" STREQUAL "opencl")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -lopencl-spmv")
+  elseif("$ENV{SPMV_VERSION}" STREQUAL "clgpu")
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -lclgpu-spmv")
+  else()
+    set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -lnative-spmv")
+  endif()
+else()
+  set(CMAKE_Fortran_FLAGS "${CMAKE_Fortran_FLAGS} -lnative-spmv")
+endif()
+
+set(CMAKE_Fortran_FLAGS "-L$ENV{SPMV_ROOT}/lib ${CMAKE_Fortran_FLAGS}")
 message(STATUS "${CMAKE_Fortran_FLAGS}")
+
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=c99 -D_GNU_SOURCE")
 
 include_directories(${CMAKE_SOURCE_DIR})
@@ -78,7 +95,7 @@ endif (NOT (NOT_PATHSAMPLE_SOURCES STREQUAL ""))
 
 
 # ---- add generated source files 
-set(PATHSAMPLE_SOURCES ${PATHSAMPLE_SOURCES} porfuncs.f90 spmv.c)
+set(PATHSAMPLE_SOURCES ${PATHSAMPLE_SOURCES} porfuncs.f90)
 
 # ---- porfuncs.f90 TODO: shuold it build every time?
 #message("compiler switch ${COMPILER_SWITCH}")
