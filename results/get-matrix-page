@@ -1,0 +1,2 @@
+#!/bin/sh
+curl 'https://sparse.tamu.edu/?per_page=All' > out.html
