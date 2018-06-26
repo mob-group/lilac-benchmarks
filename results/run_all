@@ -1,10 +1,22 @@
 #!/bin/bash
 
+usage() {
+  echo "Usage:" $0 "url executable out_file"
+  exit 1
+}
+
 url_file=$1
 shift
 
 exe=$1
 shift
+
+out_file=$1
+shift
+
+if [ -z "$url_file" -o -z "$exe" -o -z "$out_file" ]; then
+  usage
+fi
 
 libs=(
   /home/s1306752/sparsity/libspmv/native.so
@@ -16,19 +28,45 @@ labels=(
   native opencl clgpu
 )
 
+if [ -e "$out_file" ]; then
+  echo "Output file" "'$out_file'" "already exists"
+  exit 1
+fi
+
+lines=$(wc -l < $url_file)
+done=1
+
 while read url; do
-  curl -O $url
+  prefix="[$done/$lines]"
+
+  echo $prefix Downloading $url
+
+  curl -s -O $url
   file=$(echo $url | rev | cut -d'/' -f1 | rev)
 
   dir_name=$(tar tzf $file | head -1 | cut -d"/" -f1)
-  tar xvf $file
+
+  tput cuu1
+  tput el
+  echo $prefix Extracting $dir_name
+
+  tar xf $file
 
   for i in $(seq 0 2); do
     lib=${libs[i]}
     label=${labels[i]}
-    $exe $lib $label $dir_name/* >> out.txt
+  
+    tput cuu1
+    tput el
+    echo $prefix Benchmarking $dir_name "($label)"
+
+    $exe $lib $label $dir_name/* >> "$out_file"
   done
 
   rm $file
   rm -r $dir_name
+
+  tput cuu1
+  tput el
+  done=$((done + 1))
 done < $url_file
