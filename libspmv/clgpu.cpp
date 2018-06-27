@@ -208,8 +208,11 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
 {
   int n_rows = *rows;
   int n_cols = 0;
-  for(int i = rowstr[0]; i < rowstr[n_rows]; i++)
-      if(colidx[i] >= n_cols) n_cols = colidx[i];
+  for(int i = rowstr[0] - 1; i < rowstr[n_rows] - 1; i++) {
+      if(colidx[i] >= n_cols) {
+        n_cols = colidx[i];
+      }
+  }
   int nnzA = rowstr[n_rows] - rowstr[0];
 
   setup(n_rows, n_cols, nnzA);
@@ -273,7 +276,6 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
   cl_status = clEnqueueWriteBuffer(queue(), x.values, true, 0,
                                    sizeof(double) * x.num_values, iv,
                                    0, nullptr, nullptr);
-
 
   status = clsparseDcsrmv(&alpha, &A, &x, &beta, &y, control);
   if(status != clsparseSuccess) {
