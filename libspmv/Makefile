@@ -11,7 +11,7 @@ mkl.so:	mkl.c
 	${CC} ${CFLAGS} -m64 -I${MKLROOT}/include -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_rt -lpthread -lm -ldl -fPIC -shared $< -o $@
 
 gpu.so:	gpu.c
-	${CC} ${CFLAGS} -I${CUDA_ROOT}/include -Wl,-rpath,${CUDA_ROOT}/lib64 -fPIC -shared $< -o $@
+	${CC} ${CFLAGS} -L${CUDA_ROOT}/lib64 -I${CUDA_ROOT}/include -lcublas -lcusparse -lcudart -fPIC -shared $< -o $@
 
 opencl.so: opencl.cpp
 	${CXX} ${CXXFLAGS} -fPIC -shared $< -lOpenCL -lclSPARSE -lclsparseTimer -o $@
