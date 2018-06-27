@@ -14,6 +14,12 @@ shift
 out_file=$1
 shift
 
+resume_from=$1
+shift
+if [ -z "$resume_from" ]; then
+  resume_from=1
+fi
+
 if [ -z "$url_file" -o -z "$exe" -o -z "$out_file" ]; then
   usage
 fi
@@ -29,14 +35,21 @@ labels=(
 )
 
 if [ -e "$out_file" ]; then
-  echo "Output file" "'$out_file'" "already exists"
-  exit 1
+  if [ "$resume_from" -eq 1 ]; then
+    echo "Output file" "'$out_file'" "already exists"
+    exit 1
+  fi
 fi
 
 lines=$(wc -l < $url_file)
 done=1
 
 while read url; do
+  if [ "$done" -lt "$resume_from" ]; then
+    done=$((done + 1))
+    continue
+  fi
+
   prefix="[$done/$lines]"
 
   echo $prefix Downloading $url
@@ -60,7 +73,7 @@ while read url; do
     tput el
     echo $prefix Benchmarking $dir_name "($label)"
 
-    $exe $lib $label $dir_name/* >> "$out_file"
+    $exe $lib $label $dir_name/$dir_name.mtx >> "$out_file"
   done
 
   rm $file
