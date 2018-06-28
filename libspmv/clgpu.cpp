@@ -2,6 +2,9 @@
 #define CL_HPP_MINIMUM_OPENCL_VERSION BUILD_CLVERSION
 #define CL_HPP_TARGET_OPENCL_VERSION BUILD_CLVERSION
 
+#include "clgpu-model.h"
+#include "native-impl.h"
+
 #include <CL/cl.hpp>
 #include <clSPARSE.h>
 #include <clSPARSE-error.h>
@@ -207,82 +210,88 @@ extern "C" {
 void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx, int* rows)
 {
   int n_rows = *rows;
-  int n_cols = 0;
-  for(int i = rowstr[0] - 1; i < rowstr[n_rows] - 1; i++) {
-      if(colidx[i] >= n_cols) {
-        n_cols = colidx[i];
-      }
-  }
   int nnzA = rowstr[n_rows] - rowstr[0];
 
-  setup(n_rows, n_cols, nnzA);
+  auto impl = predict(n_rows, nnzA);
+  if(impl == CL_NATIVE_IMPL) {
+    native_spmv(ov, a, iv, rowstr, colidx, rows);
+  } else if(impl == CL_GPU_IMPL) {
+    int n_cols = 0;
+    for(int i = rowstr[0] - 1; i < rowstr[n_rows] - 1; i++) {
+        if(colidx[i] >= n_cols) {
+          n_cols = colidx[i];
+        }
+    }
 
-  if((a_begin != nullptr && a_begin != a) ||
-     (rowstr_begin != nullptr && rowstr_begin != rowstr) ||
-     (colidx_begin != nullptr && colidx_begin != colidx))
-  {
-    a_begin = nullptr;
-    rowstr_begin = nullptr;
-    colidx_begin = nullptr;
+    setup(n_rows, n_cols, nnzA);
+
+    if((a_begin != nullptr && a_begin != a) ||
+       (rowstr_begin != nullptr && rowstr_begin != rowstr) ||
+       (colidx_begin != nullptr && colidx_begin != colidx))
+    {
+      a_begin = nullptr;
+      rowstr_begin = nullptr;
+      colidx_begin = nullptr;
+    }
+
+    if(a_begin == nullptr || rowstr_begin == nullptr || colidx_begin == nullptr) {
+      cl_status = clEnqueueWriteBuffer(queue(), A.values, true, 0, 
+                                       sizeof(double) * A.num_nonzeros, a, 
+                                       0, nullptr, nullptr);
+
+      auto one_based = new int[A.num_nonzeros + A.num_rows + 1];
+      const auto sub_one = [](int v) { return v - 1; };
+
+      auto it = std::transform(colidx, colidx + A.num_nonzeros, one_based, sub_one);
+      std::transform(rowstr, rowstr + A.num_rows + 1, it, sub_one);
+
+      cl_status = clEnqueueWriteBuffer(queue(), A.col_indices, true, 0,
+                                       sizeof(int) * A.num_nonzeros, one_based,
+                                       0, nullptr, nullptr);
+
+      cl_status = clEnqueueWriteBuffer(queue(), A.row_pointer, true, 0,
+                                       sizeof(int) * (A.num_rows + 1), 
+                                       one_based + A.num_nonzeros,
+                                       0, nullptr, nullptr);
+
+      clsparseCsrMetaCreate(&A, control);
+
+      delete[] one_based;
+
+      cl_status = clEnqueueWriteBuffer(queue(), y.values, true, 0,
+                                       sizeof(double) * y.num_values, ov,
+                                       0, nullptr, nullptr);
+
+      struct sigaction sa;
+      sa.sa_flags = SA_SIGINFO;
+      sigemptyset(&sa.sa_mask);
+      sa.sa_sigaction = handler;
+      sigaction(SIGSEGV, &sa, &old_sigaction);
+
+      a_begin = a;
+      a_end = a_begin + nnzA;
+      ALIGN(a);
+
+      rowstr_begin = rowstr;
+      rowstr_end = rowstr_begin + n_rows + 1;
+      ALIGN(rowstr);
+
+      colidx_begin = colidx;
+      colidx_end = colidx_begin + nnzA;
+      ALIGN(colidx);
+    }
+
+    cl_status = clEnqueueWriteBuffer(queue(), x.values, true, 0,
+                                     sizeof(double) * x.num_values, iv,
+                                     0, nullptr, nullptr);
+
+    status = clsparseDcsrmv(&alpha, &A, &x, &beta, &y, control);
+    if(status != clsparseSuccess) {
+      std::cout << "Problem performing SPMV!\n";
+    }
+
+    cl_status = clEnqueueReadBuffer(queue(), y.values, true, 0, sizeof(double) * y.num_values, ov, 0, nullptr, nullptr);
   }
-
-  if(a_begin == nullptr || rowstr_begin == nullptr || colidx_begin == nullptr) {
-    cl_status = clEnqueueWriteBuffer(queue(), A.values, true, 0, 
-                                     sizeof(double) * A.num_nonzeros, a, 
-                                     0, nullptr, nullptr);
-
-    auto one_based = new int[A.num_nonzeros + A.num_rows + 1];
-    const auto sub_one = [](int v) { return v - 1; };
-
-    auto it = std::transform(colidx, colidx + A.num_nonzeros, one_based, sub_one);
-    std::transform(rowstr, rowstr + A.num_rows + 1, it, sub_one);
-
-    cl_status = clEnqueueWriteBuffer(queue(), A.col_indices, true, 0,
-                                     sizeof(int) * A.num_nonzeros, one_based,
-                                     0, nullptr, nullptr);
-
-    cl_status = clEnqueueWriteBuffer(queue(), A.row_pointer, true, 0,
-                                     sizeof(int) * (A.num_rows + 1), 
-                                     one_based + A.num_nonzeros,
-                                     0, nullptr, nullptr);
-
-    clsparseCsrMetaCreate(&A, control);
-
-    delete[] one_based;
-
-    cl_status = clEnqueueWriteBuffer(queue(), y.values, true, 0,
-                                     sizeof(double) * y.num_values, ov,
-                                     0, nullptr, nullptr);
-
-    struct sigaction sa;
-    sa.sa_flags = SA_SIGINFO;
-    sigemptyset(&sa.sa_mask);
-    sa.sa_sigaction = handler;
-    sigaction(SIGSEGV, &sa, &old_sigaction);
-
-    a_begin = a;
-    a_end = a_begin + nnzA;
-    ALIGN(a);
-
-    rowstr_begin = rowstr;
-    rowstr_end = rowstr_begin + n_rows + 1;
-    ALIGN(rowstr);
-
-    colidx_begin = colidx;
-    colidx_end = colidx_begin + nnzA;
-    ALIGN(colidx);
-  }
-
-  cl_status = clEnqueueWriteBuffer(queue(), x.values, true, 0,
-                                   sizeof(double) * x.num_values, iv,
-                                   0, nullptr, nullptr);
-
-  status = clsparseDcsrmv(&alpha, &A, &x, &beta, &y, control);
-  if(status != clsparseSuccess) {
-    std::cout << "Problem performing SPMV!\n";
-  }
-
-  cl_status = clEnqueueReadBuffer(queue(), y.values, true, 0, sizeof(double) * y.num_values, ov, 0, nullptr, nullptr);
 }
 
 }
