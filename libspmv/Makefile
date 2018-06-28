@@ -4,8 +4,8 @@ LDFLAGS=-ldl
 
 all: test
 
-native.so: native.c
-	${CC} ${CFLAGS} -fPIC -shared $< -o $@
+native.so: native.c native-impl.c
+	${CC} ${CFLAGS} -fPIC -shared $^ -o $@
 
 mkl.so:	mkl.c
 	${CC} ${CFLAGS} -m64 -I${MKLROOT}/include -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_rt -lpthread -lm -ldl -fPIC -shared $< -o $@
