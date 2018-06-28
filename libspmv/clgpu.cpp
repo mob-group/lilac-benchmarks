@@ -2,6 +2,8 @@
 #define CL_HPP_MINIMUM_OPENCL_VERSION BUILD_CLVERSION
 #define CL_HPP_TARGET_OPENCL_VERSION BUILD_CLVERSION
 
+#include "clgpu-model.h"
+
 #include <CL/cl.hpp>
 #include <clSPARSE.h>
 #include <clSPARSE-error.h>
@@ -85,6 +87,9 @@ void init_alpha_beta()
 
 void setup(int rows, int cols, int nnz)
 {
+  auto impl = predict(rows, nnz);
+  std::cerr << impl << '\n';
+
   static bool ready = false;
   if(!ready) {
     set_platform_device(0, 0);
