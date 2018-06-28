@@ -16,7 +16,7 @@ gpu.so:	gpu.c
 opencl.so: opencl.cpp
 	${CXX} ${CXXFLAGS} -fPIC -shared $< -lOpenCL -lclSPARSE -lclsparseTimer -o $@
 
-clgpu.so: clgpu.cpp clgpu-model.c
+clgpu.so: clgpu.cpp clgpu-model.c native-impl.c
 	${CXX} ${CXXFLAGS} -fPIC -shared $^ -lOpenCL -lclSPARSE -lclsparseTimer -o $@
 
 test: test.cpp
