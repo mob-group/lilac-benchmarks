@@ -152,5 +152,10 @@ int predict_impl(double features[]) {
 
 int predict(int rows, int nnz) {
   double data[2] = { (double)rows, (double)nnz };
-  return predict_impl(data);
+
+  if(nnz < 500) {
+    return CL_NATIVE_IMPL;
+  } else {
+    return predict_impl(data);
+  }
 }
