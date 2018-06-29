@@ -4,8 +4,8 @@ LDFLAGS=-ldl
 
 all: test
 
-native.so: native.c
-	${CC} ${CFLAGS} -fPIC -shared $< -o $@
+native.so: native.c native-impl.c
+	${CC} ${CFLAGS} -fPIC -shared $^ -o $@
 
 mkl.so:	mkl.c
 	${CC} ${CFLAGS} -m64 -I${MKLROOT}/include -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_rt -lpthread -lm -ldl -fPIC -shared $< -o $@
@@ -16,8 +16,8 @@ gpu.so:	gpu.c
 opencl.so: opencl.cpp
 	${CXX} ${CXXFLAGS} -fPIC -shared $< -lOpenCL -lclSPARSE -lclsparseTimer -o $@
 
-clgpu.so: clgpu.cpp
-	${CXX} ${CXXFLAGS} -fPIC -shared $< -lOpenCL -lclSPARSE -lclsparseTimer -o $@
+clgpu.so: clgpu.cpp clgpu-model.c native-impl.c
+	${CXX} ${CXXFLAGS} -fPIC -shared $^ -lOpenCL -lclSPARSE -lclsparseTimer -o $@
 
 test: test.cpp
 	${CXX} ${CXXFLAGS} $< -o $@ ${LDFLAGS}

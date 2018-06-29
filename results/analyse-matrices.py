@@ -4,7 +4,7 @@ import pandas as pd
 import sys
 
 if __name__ == "__main__":
-    frame = pd.read_csv(sys.argv[1])
+    frame = pd.read_csv(sys.argv[1], sep=' ')
     links = frame[frame.nnz < 10000000].link
     for row in links:
         print(row)
