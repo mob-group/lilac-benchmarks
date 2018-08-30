@@ -23,7 +23,7 @@ C Problem parameters
      >     restart,
      >     structure,method,preconditioner,hbw,lodi,
      >     side,xside,yside,zside,vecsize,maxit
-      data maxit/10/
+      data maxit/100/
 C Externals
       external starttimer,stoptimer
       real*8 starttimer,stoptimer
@@ -212,7 +212,7 @@ C
       endif
 
       call test_memi(imemory)
-      call test_memr(rmemory)
+C     call test_memr(rmemory)
 
 C Flops initialisation for factorisation
       call facflops_init
@@ -320,7 +320,7 @@ C
      >     vecsize,rptr,rsize,'rhs')
 
       call test_memi(imemory)
-      call test_memr(rmemory)
+C call test_memr(rmemory)
 
 C
 C Iterative method
@@ -402,7 +402,7 @@ C allocate temps, and call method
       call report_mem_usage(rptr,iptr)
 
       call test_memi(imemory)
-      call test_memr(rmemory)
+C call test_memr(rmemory)
 
       write(6,*) ' '
 c      call factor_flops()

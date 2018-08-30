@@ -386,7 +386,7 @@ C Matrix flop counting
       integer mult_inst,prec_inst
       real*8 mult_time,prec_time
       integer max_inst
-      parameter (max_inst=2*10+3)
+      parameter (max_inst=2*100+3)
       dimension mult_flops(max_inst),prec_flops(max_inst),
      >    mult_time(max_inst),prec_time(max_inst)
       common /matinst/mult_inst,prec_inst
@@ -411,7 +411,7 @@ C Matrix flop counting
       integer mult_inst,prec_inst
       real*8 mult_time,prec_time
       integer max_inst
-      parameter (max_inst=2*10+3)
+      parameter (max_inst=2*100+3)
       dimension mult_flops(max_inst),prec_flops(max_inst),
      >    mult_time(max_inst),prec_time(max_inst)
       common /matinst/mult_inst,prec_inst
@@ -438,7 +438,7 @@ C Matrix flop counting
       integer mult_inst,prec_inst
       real*8 mult_time,prec_time
       integer max_inst
-      parameter (max_inst=2*10+3)
+      parameter (max_inst=2*100+3)
       dimension mult_flops(max_inst),prec_flops(max_inst),
      >    mult_time(max_inst),prec_time(max_inst)
       common /matinst/mult_inst,prec_inst
@@ -463,7 +463,7 @@ C Matrix flop counting
       integer mult_inst,prec_inst
       real*8 mult_time,prec_time
       integer max_inst
-      parameter (max_inst=2*10+3)
+      parameter (max_inst=2*100+3)
       dimension mult_flops(max_inst),prec_flops(max_inst),
      >    mult_time(max_inst),prec_time(max_inst)
       common /matinst/mult_inst,prec_inst
@@ -488,7 +488,7 @@ C Matrix flop counting
       integer mult_inst,prec_inst
       real*8 mult_time,prec_time
       integer max_inst
-      parameter (max_inst=2*10+3)
+      parameter (max_inst=2*100+3)
       dimension mult_flops(max_inst),prec_flops(max_inst),
      >    mult_time(max_inst),prec_time(max_inst)
       common /matinst/mult_inst,prec_inst
@@ -513,7 +513,7 @@ C Matrix flop counting
       integer mult_inst,prec_inst
       real*8 mult_time,prec_time
       integer max_inst
-      parameter (max_inst=2*10+3)
+      parameter (max_inst=2*100+3)
       dimension mult_flops(max_inst),prec_flops(max_inst),
      >    mult_time(max_inst),prec_time(max_inst)
       common /matinst/mult_inst,prec_inst
@@ -538,7 +538,7 @@ C Matrix flop counting
       integer mult_inst,prec_inst
       real*8 mult_time,prec_time
       integer max_inst
-      parameter (max_inst=2*10+3)
+      parameter (max_inst=2*100+3)
       dimension mult_flops(max_inst),prec_flops(max_inst),
      >    mult_time(max_inst),prec_time(max_inst)
       common /matinst/mult_inst,prec_inst
@@ -610,7 +610,7 @@ C Matrix flop counting
       integer mult_inst,prec_inst
       real*8 mult_time,prec_time
       integer max_inst
-      parameter (max_inst=2*10+3)
+      parameter (max_inst=2*100+3)
       dimension mult_flops(max_inst),prec_flops(max_inst),
      >    mult_time(max_inst),prec_time(max_inst)
       common /matinst/mult_inst,prec_inst
