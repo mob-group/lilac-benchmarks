@@ -1,5 +1,3 @@
-#include <mkl.h>
-
 #include <stdlib.h>
 #include <string.h>
 
