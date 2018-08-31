@@ -15,7 +15,8 @@ NAMES = {
 }
 
 HATCHES = [
-    '////', 'xxxx', '\\\\\\\\', '....'
+    '////', '....',
+    '////', '....'
 ]
 
 def colors(n):
@@ -35,11 +36,14 @@ def title_for(data):
 def make_bars(data, ax):
     cs = colors(4)
     vals = (data.mklspeed, data.gpuspeed, data.clspeed, data.clgpuspeed)
+    bars = []
     for i, val in enumerate(vals):
-        ax.bar(i, val, color=cs[i], edgecolor='black', hatch=HATCHES[i])
+        bars.append(ax.bar(i, val, color=cs[3 - (i < 2)*3], edgecolor='black',
+            hatch=HATCHES[i]))
     ax.axhline(1, linestyle=':', color='black')
     ax.set_title(title_for(data))
     ax.set_xticks([])
+    return bars
 
 if __name__ == "__main__":
     frame = load_data('cgo_data.csv')
@@ -48,7 +52,10 @@ if __name__ == "__main__":
     fig.set_figwidth(7)
     for group, row in zip(frame.groupby('benchmark'), axes):
         for (_, data), ax in zip(group[1].iterrows(), row):
-            make_bars(data, ax)
+            bars = make_bars(data, ax)
     fig.tight_layout()
-    plt.show()
+    fig.subplots_adjust(top=0.9, left=0.1, right=0.9, bottom=0.15)
+    axes[2][2].legend(bars, ['CUDA', 'MKL', 'OpenCL CPU', 'OpenCL GPU'], loc='upper center',
+            bbox_to_anchor=(1.5, -0.2), ncol=4)
     # plt.savefig('draft.pdf', dpi=120)
+    plt.show()
