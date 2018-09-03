@@ -13,7 +13,7 @@ endif
 C_LIB := -L$(SPMV_ROOT)/lib $(C_LIB)
 
 pagerank: pagerank.cc library.cc
-	$(CXX) -o $@ $^ -O0 -g $(C_LIB) -lm
+	$(CXX) -std=c++11 -o $@ $^ -O0 -g $(C_LIB) -lm
 
 clean:
 	rm -f pagerank
