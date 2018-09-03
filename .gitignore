@@ -2,3 +2,5 @@ gmon.out
 *.so
 *.swp
 *.pdf
+
+compile_commands.json
