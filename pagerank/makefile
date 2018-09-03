@@ -1,3 +1,2 @@
-
-pagerank: pagerank.cc library.cc spmv_naive.cc
-	$(CXX) -o $@ $^ -O2 -lm
+pagerank: pagerank.cc library.cc
+	$(CXX) -o $@ $^ -O2 -L$(SPMV_ROOT)/lib -lm -lnative-spmv

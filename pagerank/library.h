@@ -3,8 +3,12 @@
 #include <iostream>
 #include <vector>
 
-void spmv_harness(double* ov, const double* a, const double* iv,
-                  const int* rowstr, const int* colidx, int rows);
+extern "C" {
+
+void spmv_harness_(double* ov, double* a, double* iv,
+                  int* rowstr, int* colidx, int* rows);
+
+}
 
 class CSRMatrix
 {

@@ -250,8 +250,12 @@ Vector operator*(const CSRMatrix& m, const Vector& v)
 {
     Vector out(m.rows);
 
-    spmv_harness(&out.values[0], &m.values[0], &v.values[0],
-                 &m.rowstr[0], &m.colidx[0], m.rows);
+    spmv_harness_(&out.values[0], 
+                  const_cast<double *>(&m.values[0]), 
+                  const_cast<double *>(&v.values[0]),
+                  const_cast<int *>(&m.rowstr[0]), 
+                  const_cast<int *>(&m.colidx[0]), 
+                  const_cast<int *>(&m.rows));
 
     return out;
 }
