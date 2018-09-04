@@ -1,0 +1,19 @@
+name,speedup
+NAS-CG S,0.97
+NAS-CG W,4.55
+NAS-CG A,5.96
+NAS-CG B,5.22
+NAS-CG C,5.97
+NAS-CG D,7.75
+Netlib 60,5.11
+Netlib 80,4.17
+Netlib 100,4.26
+Netlib 120,3.67
+Netlib 140,3.95
+Netlib-C 160,4.06
+Netlib-C 60,5.73
+Netlib-C 80,4.32
+Netlib-C 100,4.54
+Netlib-C 120,3.91
+Netlib-C 140,4.04
+Netlib-C 160,4.18
