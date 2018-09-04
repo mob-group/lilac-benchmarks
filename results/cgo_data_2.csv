@@ -1,19 +1,37 @@
-name,speedup
-NAS-CG S,0.97
-NAS-CG W,4.55
-NAS-CG A,5.96
-NAS-CG B,5.22
-NAS-CG C,5.97
-NAS-CG D,7.75
-Netlib 60,5.11
-Netlib 80,4.17
-Netlib 100,4.26
-Netlib 120,3.67
-Netlib 140,3.95
-Netlib-C 160,4.06
-Netlib-C 60,5.73
-Netlib-C 80,4.32
-Netlib-C 100,4.54
-Netlib-C 120,3.91
-Netlib-C 140,4.04
-Netlib-C 160,4.18
+platform,name,speedup
+Intel,NAS-CG S,0.97
+Intel,NAS-CG W,4.55
+Intel,NAS-CG A,5.96
+Intel,NAS-CG B,5.22
+Intel,NAS-CG C,5.97
+Intel,NAS-CG D,7.75
+Intel,Netlib 60,5.11
+Intel,Netlib 80,4.17
+Intel,Netlib 100,4.26
+Intel,Netlib 120,3.67
+Intel,Netlib 140,3.95
+Intel,Netlib-C 160,4.06
+Intel,Netlib-C 60,5.73
+Intel,Netlib-C 80,4.32
+Intel,Netlib-C 100,4.54
+Intel,Netlib-C 120,3.91
+Intel,Netlib-C 140,4.04
+Intel,Netlib-C 160,4.18
+AMD,NAS-CG,1.00x
+AMD,NAS-CG,2.71x
+AMD,NAS-CG,3.19x
+AMD,NAS-CG,2.43x
+AMD,NAS-CG,2.92x
+AMD,NAS-CG,12.47x
+AMD,Netlib,8.02x
+AMD,Netlib,15.31x
+AMD,Netlib,17.85x
+AMD,Netlib,18.01x
+AMD,Netlib,18.31x
+AMD,Netlib,18.17x
+AMD,Netlib-C,8.29x
+AMD,Netlib-C,16.71x
+AMD,Netlib-C,19.62x
+AMD,Netlib-C,20.18x
+AMD,Netlib-C,20.32x
+AMD,Netlib-C,20.55x
