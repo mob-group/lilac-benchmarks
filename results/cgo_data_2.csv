@@ -17,21 +17,21 @@ Intel,Netlib-C 100,4.54
 Intel,Netlib-C 120,3.91
 Intel,Netlib-C 140,4.04
 Intel,Netlib-C 160,4.18
-AMD,NAS-CG,1.00
-AMD,NAS-CG,2.71
-AMD,NAS-CG,3.19
-AMD,NAS-CG,2.43
-AMD,NAS-CG,2.92
-AMD,NAS-CG,12.47
-AMD,Netlib,8.02
-AMD,Netlib,15.31
-AMD,Netlib,17.85
-AMD,Netlib,18.01
-AMD,Netlib,18.31
-AMD,Netlib,18.17
-AMD,Netlib-C,8.29
-AMD,Netlib-C,16.71
-AMD,Netlib-C,19.62
-AMD,Netlib-C,20.18
-AMD,Netlib-C,20.32
-AMD,Netlib-C,20.55
+AMD,NAS-CG S,1.00
+AMD,NAS-CG W,2.71
+AMD,NAS-CG A,3.19
+AMD,NAS-CG B,2.43
+AMD,NAS-CG C,2.92
+AMD,NAS-CG D,12.47
+AMD,Netlib 60,8.02
+AMD,Netlib 80,15.31
+AMD,Netlib 100,17.85
+AMD,Netlib 120,18.01
+AMD,Netlib 140,18.31
+AMD,Netlib 160,18.17
+AMD,Netlib-C 60,8.29
+AMD,Netlib-C 80,16.71
+AMD,Netlib-C 100,19.62
+AMD,Netlib-C 120,20.18
+AMD,Netlib-C 140,20.32
+AMD,Netlib-C 160,20.55
