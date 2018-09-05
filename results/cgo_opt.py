@@ -4,22 +4,10 @@ import csv
 import matplotlib.pyplot as plt
 import sys
 
-# Merge data by benchmark, then for each pair plot a pair of bars with opposing
-# styles
-# add label below
-
-def merged_data(data):
-    ret = {}
-    for row in data:
-        if row['name'] not in ret:
-            ret[row['name']] = {}
-        ret[row['name']][row['platform']] = float(row['speedup'])
-    return ret
-
 def plot(data):
-    fig, ax = plt.subplots(figsize=(3,2))
+    fig, ax = plt.subplots(figsize=(3,1.5))
     bar_style = {
-        'width': 0.4,
+        'width': 0.8,
         'edgecolor': 'black',
         'align': 'edge'
     }
@@ -29,17 +17,15 @@ def plot(data):
     ax.tick_params(axis=u'both', which=u'both',length=0)
 
     for i, bench in enumerate(data):
-        ax.bar(i + 0.1, data[bench].get('Intel', 0), color='grey', **bar_style)
-        ax.bar(i + 0.5, data[bench].get('AMD', 0), color='lightgrey', **bar_style)
+        ax.bar(i, float(bench['speedup']), color='grey', **bar_style)
 
-    ticks, labels = zip(*[(i + 0.75, bench) for i, bench in enumerate(data)])
+    ticks, labels = zip(*[(i + 0.75, d['name']) for i, d in enumerate(data)])
     ax.set_xticks(ticks)
     ls = ax.set_xticklabels(labels, rotation=-60, fontsize=6)
     # ax.invert_yaxis()
-    ax.legend(('Intel', 'AMD'))
     ax.axhline(1, color='black', lw=1)
     ax.set_ylabel('Speedup')
-    ax.set_yticks([0, 1, 2, 3])
+    ax.set_yticks([0, 2, 4, 6])
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.spines['bottom'].set_visible(False)
@@ -49,7 +35,7 @@ def plot(data):
 if __name__ == "__main__":
     with open(sys.argv[1]) as csvfile:
         reader = csv.DictReader(csvfile)
-        data = merged_data(reader)
+        data = list(reader)
     plot(data)
-    plt.savefig('wales_bench.pdf')
+    plt.savefig('opt.pdf')
     # plt.show()
