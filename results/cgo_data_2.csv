@@ -10,7 +10,7 @@ Intel,Netlib 80,4.17
 Intel,Netlib 100,4.26
 Intel,Netlib 120,3.67
 Intel,Netlib 140,3.95
-Intel,Netlib-C 160,4.06
+Intel,Netlib 160,4.06
 Intel,Netlib-C 60,5.73
 Intel,Netlib-C 80,4.32
 Intel,Netlib-C 100,4.54
