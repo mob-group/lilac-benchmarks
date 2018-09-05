@@ -17,7 +17,7 @@ def merged_data(data):
     return ret
 
 def plot(data):
-    fig, ax = plt.subplots(figsize=(7,3))
+    fig, ax = plt.subplots(figsize=(7,2))
     bar_style = {
         'width': 0.4,
         'edgecolor': 'black',
@@ -25,7 +25,8 @@ def plot(data):
     }
 
     ax.set_axisbelow(True)
-    ax.yaxis.grid(True)
+    ax.yaxis.grid(True, ls=':')
+    ax.tick_params(axis=u'both', which=u'both',length=0)
 
     for i, bench in enumerate(data):
         ax.bar(i + 0.1, data[bench].get('Intel', 0), color='grey', **bar_style)
@@ -36,9 +37,13 @@ def plot(data):
     ls = ax.set_xticklabels(labels, rotation=-60, fontsize=6)
     # ax.invert_yaxis()
     ax.legend(('Intel', 'AMD'))
-    ax.axhline(1, color='black', ls=':')
+    ax.axhline(1, color='black', lw=1)
     ax.set_ylabel('Speedup')
-    ax.set_xlabel('Benchmark')
+    ax.set_yticks([0, 5, 10, 15, 20])
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['bottom'].set_visible(False)
+    ax.spines['left'].set_visible(False)
     fig.tight_layout()
 
 if __name__ == "__main__":
