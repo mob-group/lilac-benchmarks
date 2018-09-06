@@ -178,6 +178,25 @@ static void handler(int sig, siginfo_t *si, void *unused)
   }
 }
 
+static void f_handler(int sig, siginfo_t *si, void *unused)
+{
+  void *addr = si->si_addr;
+  if((addr >= aligned_af_begin && addr < aligned_af_end) ||
+     (addr >= aligned_rowstr_begin && addr < aligned_rowstr_end) ||
+     (addr >= aligned_colidx_begin && addr < aligned_colidx_end)) 
+  {
+    mprotect(aligned_af_begin, aligned_af_end - aligned_af_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
+    mprotect(aligned_rowstr_begin, aligned_rowstr_end - aligned_rowstr_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
+    mprotect(aligned_colidx_begin, aligned_colidx_end - aligned_colidx_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
+    
+    af_begin = NULL;
+    rowstr_begin = NULL;
+    colidx_begin = NULL;
+  } else if(old_sigaction.sa_sigaction) {
+    old_sigaction.sa_sigaction(sig, si, unused);
+  }
+}
+
 #define ALIGN(name) \
   aligned_##name##_begin = name##_begin; \
   aligned_##name##_begin -= (size_t)aligned_##name##_begin % sysconf(_SC_PAGE_SIZE); \
@@ -302,7 +321,7 @@ void* f_spmv_harness_(float* ov, float* a, float* iv, int* rowstr, int* colidx, 
     struct sigaction sa;
     sa.sa_flags = SA_SIGINFO;
     sigemptyset(&sa.sa_mask);
-    sa.sa_sigaction = handler;
+    sa.sa_sigaction = f_handler;
     sigaction(SIGSEGV, &sa, &old_sigaction);
 
     af_begin = a;
