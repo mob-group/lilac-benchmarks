@@ -1,0 +1,13 @@
+platform,name,speedup
+Intel,Kronecker,1.84
+Intel,EU Web,2.39
+Intel,Twitter,2.83
+Intel,India Web,2.06
+Intel,USA Road,1.16
+Intel,Erdos,1.15
+AMD,Kronecker,1.52
+AMD,EU Web,1.54
+AMD,Twitter,2.88
+AMD,India Web,1.29
+AMD,USA Road,1.09
+AMD,Erdos,1.00
