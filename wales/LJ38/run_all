@@ -1,0 +1,48 @@
+#!/bin/bash
+
+platform="$1"
+shift
+
+function run_one() {
+  file="$1"
+  cp "$file" pathdata
+  \time -p ../PATHSAMPLE/build/PATHSAMPLE 2>&1 | tail -3 | head -1 | cut -d' ' -f2
+}
+
+function run_many() {
+  n="$1"
+  shift
+
+  file="$1"
+  shift
+
+  for((i=0; i < n; i++)); do
+    t=$(run_one "$file")
+    echo -n "$t"
+    if ((i < n-1)); then
+      echo -n ','
+    fi
+  done
+  echo
+}
+
+impls=(unsafe)
+benches=(pfold ngt)
+prunes=(0 2 4)
+sizes=(small large)
+
+for impl in ${impls[@]}; do
+  rm -rf ../PATHSAMPLE/build/*
+  cd ../PATHSAMPLE/build/
+  SPMV_VERSION="$impl" cmake ../source 2>/dev/null > /dev/null
+  make -j20 2>/dev/null > /dev/null
+  cd - > /dev/null
+  for bench in ${benches[@]}; do
+    for size in ${sizes[@]}; do
+      for prune in ${prunes[@]}; do
+        echo -ne "$platform,$impl,$bench,$prune,$size\t"
+        run_many 2 "pathdata.$bench.$prune.$size"
+      done
+    done
+  done
+done
