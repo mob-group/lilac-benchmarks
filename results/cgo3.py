@@ -8,6 +8,12 @@ import sys
 # styles
 # add label below
 
+def rgb(*args):
+    return tuple(v/255.0 for v in args)
+
+LILAC = rgb(200,162,200)
+DARK_LILAC = rgb(116,83,117)
+
 def merged_data(data):
     ret = {}
     for row in data:
@@ -29,8 +35,8 @@ def plot(data):
     ax.tick_params(axis=u'both', which=u'both',length=0)
 
     for i, bench in enumerate(data):
-        ax.bar(i + 0.1, data[bench].get('Intel', 0), color='grey', **bar_style)
-        ax.bar(i + 0.5, data[bench].get('AMD', 0), color='lightgrey', **bar_style)
+        ax.bar(i + 0.1, data[bench].get('Intel', 0), color=LILAC, **bar_style)
+        ax.bar(i + 0.5, data[bench].get('AMD', 0), color=DARK_LILAC, **bar_style)
 
     ticks, labels = zip(*[(i + 0.75, bench) for i, bench in enumerate(data)])
     ax.set_xticks(ticks)
@@ -51,5 +57,7 @@ if __name__ == "__main__":
         reader = csv.DictReader(csvfile)
         data = merged_data(reader)
     plot(data)
-    plt.savefig('wales_bench.pdf')
-    # plt.show()
+    if len(sys.argv) > 2:
+        plt.savefig(sys.argv[2])
+    else:
+        plt.show()

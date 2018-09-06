@@ -4,6 +4,12 @@ import csv
 import matplotlib.pyplot as plt
 import sys
 
+def rgb(*args):
+    return tuple(v/255.0 for v in args)
+
+LILAC = rgb(200,162,200)
+DARK_LILAC = rgb(116,83,117)
+
 def plot(data):
     fig, ax = plt.subplots(figsize=(3,1.5))
     bar_style = {
@@ -17,7 +23,7 @@ def plot(data):
     ax.tick_params(axis=u'both', which=u'both',length=0)
 
     for i, bench in enumerate(data):
-        ax.bar(i, float(bench['speedup']), color='grey', **bar_style)
+        ax.bar(i, float(bench['speedup']), color=LILAC, **bar_style)
 
     ticks, labels = zip(*[(i + 0.75, d['name']) for i, d in enumerate(data)])
     ax.set_xticks(ticks)
