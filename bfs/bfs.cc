@@ -92,7 +92,7 @@ int main(int args, char** argv)
     auto end = std::chrono::system_clock::now();
     std::chrono::duration<double> time = end - start;
 
-    std::cout<<"time passed: "<< time.count() <<"s\n";
+    std::cout << time.count() <<"\n";
 /*
     std::cout<<"Page rank result:\n";
 
