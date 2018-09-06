@@ -13,7 +13,7 @@
 #include "file.h"
 #include "convert_dataset.h"
 
-void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx, int* rows);
+void* f_spmv_harness_(float* ov, float* a, float* iv, int* rowstr, int* colidx, int* rows);
 
 int main(int argc, char** argv) {
 	struct pb_TimerSet timers;
@@ -92,14 +92,14 @@ int main(int argc, char** argv) {
 	//main execution - spmv 50 times in loop?
 	for(int p=0;p<50;p++)
 	{
-          spmv_harness_(h_Ax_vector, A, h_x_vector, rowstr, colidx, &rows);
+          f_spmv_harness_(h_Ax_vector, A, h_x_vector, rowstr, colidx, &rows);
           /* for(int i = 0; i < rows; ++i) { */
           /*   float sum = 0.0; */
           /*   for(int j = rowstr[i]; j < rowstr[i+1]; ++j) { */
           /*     sum += A[j] * h_x_vector[colidx[j]]; */
           /*   } */
           /*   h_Ax_vector[i] = sum; */
-          }
+          /* } */
 		/* for (i = 0; i < dim; i++) { */
 		/*   float sum = 0.0f; */
 		/*   //int  bound = h_nzcnt[i / 32]; */

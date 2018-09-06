@@ -4,3 +4,4 @@ gmon.out
 *.pdf
 
 compile_commands.json
+*.o
