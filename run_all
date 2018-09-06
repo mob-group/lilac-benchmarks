@@ -1,0 +1,12 @@
+#!/bin/bash
+
+root=$(pwd)
+
+cd $root/wales/LJ38
+./run_all intel
+
+cd $root/parboil
+./run_all
+
+cd $root/bfs
+./run_all

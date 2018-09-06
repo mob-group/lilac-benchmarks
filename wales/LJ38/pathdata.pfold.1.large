@@ -10,7 +10,7 @@ EXEC           /home/bruce/code/sparse/wales/bin/OPTIM
 
 CYCLES 0
 CPUS 1
-NCONNMIN 4
+NCONNMIN 1
 PFOLD 100000 1 1.0
 ! NGT 1 F 0.5
 

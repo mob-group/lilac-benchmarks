@@ -1,0 +1,50 @@
+#!/bin/bash
+
+function remake() {
+  version="$1"
+  shift
+
+  make clean 2>&1 >/dev/null
+  SPMV_VERSION="$version" make 2>&1 >/dev/null
+}
+
+function run_one() {
+  matrix="$1"
+  shift
+
+  ./bfs < ~/datasets/bfs/"$matrix".mtx
+}
+
+function run_many() {
+  impl="$1"
+  shift
+
+  n="$1"
+  shift
+
+  matrix="$1"
+  shift
+
+  echo -n "$impl,$matrix"
+  for ((i=0; i < n; i++)); do
+    t=$(run_one "$matrix")
+    echo -n ",$t"
+  done
+  echo
+}
+
+function run_bench() {
+  impl="$1"
+  shift
+
+  remake "$impl"
+
+  matrices=("erdos" "eu-2005" "higgs-twitter" "kron" "USA-road-d.E" "in-2004")
+  for matrix in ${matrices[@]}; do
+    run_many "$impl" 5 "$matrix"
+  done
+}
+
+run_bench native
+run_bench gpu
+run_bench mkl

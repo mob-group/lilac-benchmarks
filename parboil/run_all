@@ -1,0 +1,50 @@
+#!/bin/bash
+
+function remake() {
+  version="$1"
+  shift
+
+  rm -f benchmarks/spmv/build/cpu_default/spmv
+  SPMV_VERSION="$version" ./parboil compile spmv cpu 2>&1 >/dev/null
+}
+
+function run_one() {
+  size="$1"
+  shift
+
+  ./parboil run spmv cpu "$size" | tail -5 | head -1 | cut -d' ' -f5
+}
+
+function run_many() {
+  impl="$1"
+  shift
+
+  n="$1"
+  shift
+
+  size="$1"
+  shift
+
+  echo -n "$impl,$size"
+  for ((i=0; i < n; i++)); do
+    t=$(run_one "$size")
+    echo -n ",$t"
+  done
+  echo
+}
+
+function run_bench() {
+  impl="$1"
+  shift
+
+  remake "$impl"
+
+  matrices=(small medium large)
+  for matrix in ${matrices[@]}; do
+    run_many "$impl" 5 "$matrix"
+  done
+}
+
+run_bench native
+run_bench gpu
+run_bench mkl
