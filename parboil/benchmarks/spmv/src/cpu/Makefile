@@ -12,9 +12,11 @@ else
   C_LIB = -lnative-spmv
 endif
 
+C_LIB := -L$(SPMV_ROOT)/lib $(C_LIB)
+
 LANGUAGE=c
 TOOLS_SRC=common_src/convert-dataset
 SRCDIR_OBJS=main.o file.o 
-APP_CFLAGS=-I$(TOOLS_SRC) $(C_LIB)
+APP_CFLAGS=-std=c99 -I$(TOOLS_SRC) $(C_LIB) -D_POSIX_C_SOURCE=200809L
 
 include $(TOOLS_SRC)/commontools.mk

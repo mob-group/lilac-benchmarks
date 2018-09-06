@@ -13,5 +13,5 @@ CXX = g++
 PLATFORM_CXXFLAGS = 
   
 LINKER = g++
-PLATFORM_LDFLAGS = -lm -lpthread
+PLATFORM_LDFLAGS = -lm -lpthread $(C_LIB)
 

@@ -135,10 +135,10 @@ int coo_to_csr(char *mtx_filename,
     size_t colidx_idx = 0;
     size_t A_idx = 0;
 
-    (*rowstr)[rowstr_idx++] = 0;
+    (*rowstr)[rowstr_idx++] = 1;
 
     size_t current_row = 0;
-    size_t running_total = 0;
+    size_t running_total = (*rowstr)[0];
 
     for(int i = 0; i < nz; ++i) {
       for( ; current_row < entries[i].row; ++current_row) {
@@ -146,7 +146,7 @@ int coo_to_csr(char *mtx_filename,
       }
 
       running_total++;
-      (*colidx)[colidx_idx++] = entries[i].col;
+      (*colidx)[colidx_idx++] = entries[i].col + 1;
       (*A)[A_idx++] = entries[i].val;
     }
 
