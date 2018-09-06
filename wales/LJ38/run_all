@@ -28,7 +28,7 @@ function run_many() {
 
 impls=(unsafe)
 benches=(pfold ngt)
-prunes=(0 2 4)
+prunes=(0 1 2)
 sizes=(small large)
 
 for impl in ${impls[@]}; do

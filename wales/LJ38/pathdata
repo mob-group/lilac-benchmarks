@@ -10,9 +10,9 @@ EXEC           /home/bruce/code/sparse/wales/bin/OPTIM
 
 CYCLES 0
 CPUS 1
-NCONNMIN 4
+NCONNMIN 0
 PFOLD 1000 1 1.0
-NGT 1 F 0.5
+! NGT 1 F 0.5
 
 TEMPERATURE 0.01
 DIRECTION BA
