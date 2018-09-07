@@ -1,4 +1,4 @@
-#include "llvm/IDL/harness.hpp"
+#include "harness.hpp"
 #include <cuda_runtime.h>
 #include "cublas_v2.h"
 
@@ -58,24 +58,24 @@ struct Functor
     }
 
     cublasHandle_t handle;
-    CudaRead<double,double*> shadow_d_A;
-    CudaRead<double,double*> shadow_d_B;
-    CudaWrite<double,double*> shadow_d_C;
+    CudaRead<float,float*> shadow_d_A;
+    CudaRead<float,float*> shadow_d_B;
+    CudaWrite<float,float*> shadow_d_C;
 
-    void operator()(double* output, double* left, double* right, int N, int M, int K) {
-        auto d_A = shadow_d_A(left, N*K);
-        auto d_B = shadow_d_B(right, K*M);
-        auto d_C = shadow_d_C(output, N*M);
-        double alpha = 1.0;
-        double beta  = 0.0;
-        cublasDgemm_v2(handle, CUBLAS_OP_N, CUBLAS_OP_N,
-                       M, N, K, &alpha, d_A, K, d_B, N, &beta, d_C, N);
+    void operator()(float* output, float* left, float* right, int N, int M, int K) {
+        auto d_A = shadow_d_A(left, M*K);
+        auto d_B = shadow_d_B(right, K*N);
+        auto d_C = shadow_d_C(output, M*N);
+        float alpha = 1.0;
+        float beta  = 0.0;
+        cublasSgemm_v2(handle, CUBLAS_OP_N, CUBLAS_OP_T,
+                       M, N, K, &alpha, d_A, M, d_B, N, &beta, d_C, M);
     }
 };
 }
 
 extern "C"
-void mm_harness(double* output, double* left, double* right, int N, int M, int K) {
+void mm_harness(float* output, float* left, float* right, int N, int M, int K) {
     static Functor functor;
     functor(output, left, right, N, M, K);
 }
