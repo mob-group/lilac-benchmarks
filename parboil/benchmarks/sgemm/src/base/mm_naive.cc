@@ -8,12 +8,11 @@ struct Functor
       int ldb = N;
       int ldc = M;
 
+      for(int i = 0; i < K; i++) {
         for(int nn = 0; nn < N; nn++) {
           for(int mm = 0; mm < M; mm++) {
-            float value = 0.0;
-            for(int i = 0; i < K; i++)
-              value += left[mm + i * lda] * right[nn + i * ldb];
-            output[nn*ldc+mm] = value;
+              output[nn*ldc + mm] += left[mm + i * lda] * right[nn + i * ldb];
+            }
           }
         }
     }
