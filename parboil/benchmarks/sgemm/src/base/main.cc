@@ -65,10 +65,21 @@ main (int argc, char *argv[]) {
   // allocate space for C
   std::vector<float> matC(matArow*matBcol);
 
+  float *matA_data = (float *)malloc(sizeof(float) * matA.size());
+  memcpy(matA_data, matA.data(), sizeof(float) * matA.size());
+
+  float *matBT_data = (float *)malloc(sizeof(float) * matBT.size());
+  memcpy(matBT_data, matBT.data(), sizeof(float) * matBT.size());
+
+  float *matC_data = (float *)malloc(sizeof(float) * matC.size());
+  memcpy(matC_data, matC.data(), sizeof(float) * matC.size());
+
   // Use standard sgemm interface
   basicSgemm('N', 'T', matArow, matBcol, matAcol, 1.0f,
-      &matA.front(), matArow, &matBT.front(), matBcol, 0.0f, &matC.front(),
+      matA_data, matArow, matBT_data, matBcol, 0.0f, matC_data,
       matArow);
+
+  memcpy(matC.data(), matC_data, sizeof(float) * matC.size());
 
   if (params->outFile) {
     /* Write C to file */
