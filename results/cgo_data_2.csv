@@ -1,4 +1,10 @@
 platform,name,speedup
+Intel,Parboil Small,0.93
+Intel,Parboil Medium,1.00
+Intel,Parboil Large,3.90
+AMD,Parboil Small,0.86
+AMD,Parboil Medium,1.00
+AMD,Parboil Large,1.98
 Intel,NAS-CG S,0.97
 Intel,NAS-CG W,4.55
 Intel,NAS-CG A,5.96

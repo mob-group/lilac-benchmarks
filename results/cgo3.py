@@ -19,11 +19,11 @@ def merged_data(data):
     for row in data:
         if row['name'] not in ret:
             ret[row['name']] = {}
-        ret[row['name']][row['platform']] = float(row['speedup'])
+        ret[row['name']][row['platform']] = max(float(row['speedup']), 1.0)
     return ret
 
 def plot(data):
-    fig, ax = plt.subplots(figsize=(3,2))
+    fig, ax = plt.subplots(figsize=(7,2))
     bar_style = {
         'width': 0.4,
         'edgecolor': 'black',
@@ -35,8 +35,17 @@ def plot(data):
     ax.tick_params(axis=u'both', which=u'both',length=0)
 
     for i, bench in enumerate(data):
-        ax.bar(i + 0.1, data[bench].get('Intel', 0), color=LILAC, **bar_style)
-        ax.bar(i + 0.5, data[bench].get('AMD', 0), color=DARK_LILAC, **bar_style)
+        intel = data[bench].get('Intel', 0)
+        amd = data[bench].get('AMD', 0)
+
+        ibar = ax.bar(i + 0.1, intel, color=LILAC, **bar_style)
+        abar = ax.bar(i + 0.5, amd, color=DARK_LILAC, **bar_style)
+
+        if amd > 12:
+            ax.text(i + 0.7, 12.25, str(amd), ha='center', fontsize=6)
+
+        if intel > 12:
+            ax.text(i + 0.3, 12.25, str(intel), ha='center', fontsize=6)
 
     ticks, labels = zip(*[(i + 0.75, bench) for i, bench in enumerate(data)])
     ax.set_xticks(ticks)
@@ -45,7 +54,8 @@ def plot(data):
     ax.legend(('Intel', 'AMD'))
     ax.axhline(1, color='black', lw=1)
     ax.set_ylabel('Speedup')
-    ax.set_yticks([0, 1, 2, 3])
+    ax.set_ylim((0, 12))
+    ax.set_yticks([0, 2.5, 5, 7.5, 10])
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.spines['bottom'].set_visible(False)
