@@ -41,7 +41,7 @@ AMD,Netlib-F 100,17.85
 AMD,Netlib-F 120,18.01
 AMD,Netlib-F 140,18.31
 AMD,Netlib-F 160,18.17
-Intel,Parboil Dense S,31.92
-Intel,Parboil Dense M,590.99
-AMD,Parboil Dense S,4.11
-AMD,Parboil Dense M,1050.83
+Intel,Parboil Dense S,45.91
+Intel,Parboil Dense M,315.37
+AMD,Parboil Dense S,6.08
+AMD,Parboil Dense M,159.16
