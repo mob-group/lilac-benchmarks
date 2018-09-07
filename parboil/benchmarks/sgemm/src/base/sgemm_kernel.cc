@@ -11,7 +11,7 @@
  */
 
 extern "C"
-void mm_harness(double* output, double* left, double* right, int N, int M, int K);
+void mm_harness(float* output, const float* left, const float* right, int N, int M, int K);
 
 void basicSgemm( char transa, char transb, int m, int n, int k, float alpha, const float *A, int lda, const float *B, int ldb, float beta, float *C, int ldc )
 {
