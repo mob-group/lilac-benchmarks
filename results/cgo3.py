@@ -41,11 +41,13 @@ def plot(data):
         ibar = ax.bar(i + 0.1, intel, color=LILAC, **bar_style)
         abar = ax.bar(i + 0.5, amd, color=DARK_LILAC, **bar_style)
 
-        if amd > 12:
-            ax.text(i + 0.7, 12.25, str(amd), ha='center', fontsize=6)
+        if amd > 22:
+            t = '{:.1f}'.format(amd)
+            ax.text(i + 0.7, 24.25, t, ha='center', fontsize=6)
 
-        if intel > 12:
-            ax.text(i + 0.3, 12.25, str(intel), ha='center', fontsize=6)
+        if intel > 22:
+            t = '{:.1f}'.format(intel)
+            ax.text(i + 0.3, 22.25, t, ha='center', fontsize=6)
 
     ticks, labels = zip(*[(i + 0.75, bench) for i, bench in enumerate(data)])
     ax.set_xticks(ticks)
@@ -54,13 +56,14 @@ def plot(data):
     ax.legend(('Intel', 'AMD'))
     ax.axhline(1, color='black', lw=1)
     ax.set_ylabel('Speedup')
-    ax.set_ylim((0, 12))
-    ax.set_yticks([0, 2.5, 5, 7.5, 10])
+    ax.set_ylim((0, 22))
+    ax.set_yticks([0, 5, 10, 15, 20])
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.spines['bottom'].set_visible(False)
     ax.spines['left'].set_visible(False)
     fig.tight_layout()
+    fig.subplots_adjust(top=0.9)
 
 if __name__ == "__main__":
     with open(sys.argv[1]) as csvfile:
