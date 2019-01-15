@@ -1,25 +1,25 @@
 platform,name,speedup
-Intel,PR Erdos,1.15
-Intel,PR USA Road,1.16
-Intel,PR Kronecker,1.84
 Intel,PR EU Web,2.39
 Intel,PR India Web,2.06
 Intel,PR Twitter,2.83
-AMD,PR Erdos,1.00
-AMD,PR USA Road,1.09
-AMD,PR Kronecker,1.52
+Intel,PR Kronecker,1.84
+Intel,PR Erdos,1.15
+Intel,PR USA Road,1.16
 AMD,PR EU Web,1.54
 AMD,PR India Web,1.29
 AMD,PR Twitter,2.88
-Intel,BFS Erdos,2.20
-Intel,BFS USA Road,1.02
-Intel,BFS Kronecker,1.37
+AMD,PR Kronecker,1.52
+AMD,PR Erdos,1.00
+AMD,PR USA Road,1.09
 Intel,BFS EU Web,0.87
 Intel,BFS India Web,1.03
 Intel,BFS Twitter,1.00
-AMD,BFS Erdos,60.28
-AMD,BFS USA Road,94.8
-AMD,BFS Kronecker,5.47
+Intel,BFS Kronecker,1.37
+Intel,BFS Erdos,2.20
+Intel,BFS USA Road,1.02
 AMD,BFS EU Web,0.55
 AMD,BFS India Web,0.52
 AMD,BFS Twitter,0.61
+AMD,BFS Kronecker,5.47
+AMD,BFS Erdos,60.28
+AMD,BFS USA Road,94.8

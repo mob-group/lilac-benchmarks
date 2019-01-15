@@ -23,7 +23,7 @@ def merged_data(data):
     return ret
 
 def plot(data):
-    fig, ax = plt.subplots(figsize=(7,2))
+    fig, ax = plt.subplots(figsize=(3,2))
     bar_style = {
         'width': 0.4,
         'edgecolor': 'black',
@@ -43,11 +43,11 @@ def plot(data):
 
         if amd > 22:
             t = '{:.1f}'.format(amd)
-            ax.text(i + 0.7, 24.25, t, ha='center', fontsize=6)
+            ax.text(i + 0.7, 22, t, ha='center', fontsize=6)
 
         if intel > 22:
             t = '{:.1f}'.format(intel)
-            ax.text(i + 0.3, 22.25, t, ha='center', fontsize=6)
+            ax.text(i + 0.3, 20.25, t, ha='center', fontsize=6)
 
     ticks, labels = zip(*[(i + 0.75, bench) for i, bench in enumerate(data)])
     ax.set_xticks(ticks)
@@ -56,8 +56,8 @@ def plot(data):
     ax.legend(('Intel', 'AMD'))
     ax.axhline(1, color='black', lw=1)
     ax.set_ylabel('Speedup')
-    ax.set_ylim((0, 22))
-    ax.set_yticks([0, 5, 10, 15, 20])
+    ax.set_ylim((0, 3))
+    ax.set_yticks([0, 1, 2, 3])
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     ax.spines['bottom'].set_visible(False)
@@ -71,6 +71,6 @@ if __name__ == "__main__":
         data = merged_data(reader)
     plot(data)
     if len(sys.argv) > 2:
-        plt.savefig(sys.argv[2])
+        plt.savefig(sys.argv[2], dpi=320)
     else:
         plt.show()
