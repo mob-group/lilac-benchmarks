@@ -33,6 +33,7 @@ test: test.cpp
 	${CXX} ${CXXFLAGS} $< -o $@ ${LDFLAGS}
 
 install: $(platform).so
+	mkdir -p $(SPMV_ROOT)/lib
 	cp $< ${SPMV_ROOT}/lib/lib$(platform)-spmv.so
 
 clean:
