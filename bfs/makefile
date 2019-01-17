@@ -6,6 +6,8 @@ else ifeq ($(SPMV_VERSION),opencl)
   C_LIB = -lopencl-spmv
 else ifeq ($(SPMV_VERSION),clgpu)
   C_LIB = -lclgpu-spmv
+else ifeq ($(SPMV_VERSION),sparsex)
+  C_LIB = -lsparsex-spmv
 else
   C_LIB = -lnative-spmv
 endif
@@ -14,7 +16,7 @@ C_LIB := -L$(SPMV_ROOT)/lib $(C_LIB)
 CXXFLAGS := -std=c++11
 
 bfs: bfs.cc library.cc
-	$(CXX) $(CXXFLAGS) $(C_LIB) -o $@ $^ -O2 -lm
+	$(CXX) $(CXXFLAGS) -o $@ $^ -O2 -lm $(C_LIB) 
 
 clean:
 	rm -f bfs pagerank
