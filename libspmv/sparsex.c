@@ -30,6 +30,7 @@ void setup(void)
   static bool setup = false;
   if(!setup) {
     spx_init();
+    spx_option_set("spx.rt.nr_threads", "4");
     setup = true;
   }
 }
@@ -39,6 +40,8 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
   static int cols = 0;
   static spx_matrix_t *mat = NULL;
   static spx_partition_t *parts = NULL;
+
+  setup();
 
   if(data_begin != 0 && data_begin != colidx)
   {
@@ -76,7 +79,7 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
   spx_vector_t *y = spx_vec_create_from_buff(ov, NULL, *rows, parts, SPX_VEC_AS_IS);
 
   spx_matvec_mult(1.0, mat, x, y);
-  
+
   return NULL;
 }
 

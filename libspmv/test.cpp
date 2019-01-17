@@ -63,6 +63,7 @@ int main(int argc, char **argv)
   auto f_harness = reinterpret_cast<f_harness_t *>(f_sym);
 
   //if(!test<double, harness_t>(harness) || !test<float, f_harness_t>(f_harness)) {
+  test<double, harness_t>(harness);
   if(!test<double, harness_t>(harness)) {
     std::cerr << "failure\n";
   } else {
