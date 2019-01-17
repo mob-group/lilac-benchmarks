@@ -1,6 +1,6 @@
 CFLAGS=-std=c99 -D_GNU_SOURCE -O3
 CXXFLAGS=-I${CL_ROOT}/include -L${CL_ROOT}/lib -L${CL_ROOT}/lib64 -std=c++11 -O3
-LDFLAGS=-ldl
+LDFLAGS=-ldl -lpthread
 
 SPARSEX_LLVM_LIBDIR=$(shell $(LLVM_CONFIG) --libdir)
 SPARSEX_CFLAGS=$(shell $(SPARSEX_CONFIG) --cppflags)
