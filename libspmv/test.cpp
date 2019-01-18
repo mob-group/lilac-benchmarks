@@ -2,7 +2,23 @@
 
 #include <iostream>
 #include <tuple>
+#include <type_traits>
 #include <vector>
+
+template <typename...> struct first_arg;
+
+template <typename R, typename A, typename... Args>
+struct first_arg<R(A, Args...)>
+{
+  using type = A;
+};
+
+template <typename F>
+using first_arg_t = typename std::remove_pointer<
+                      typename first_arg<
+                        typename std::remove_pointer<F>::type
+                      >::type
+                    >::type;
 
 using harness_t = void(double *ov, double *a, double *iv, int *rowstr, int *colidx, int *rows);
 using f_harness_t = void(float *ov, float *a, float *iv, int *rowstr, int *colidx, int *rows);
@@ -20,9 +36,11 @@ std::string lib_path(const std::string& name)
   return "./" + name + ".so";
 }
 
-template <typename Floating, typename Harness>
+template <typename Harness>
 bool test(Harness impl)
 {
+  using Floating = first_arg_t<Harness>;
+
   auto A = std::vector<Floating>{5.0, 8.0, 3.0, 6.0};
   auto rowstr = std::vector<int>{1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 4, 4, 5};
   auto colidx = std::vector<int>{1, 4, 2, 12};
@@ -62,9 +80,7 @@ int main(int argc, char **argv)
   auto harness = reinterpret_cast<harness_t *>(sym);
   auto f_harness = reinterpret_cast<f_harness_t *>(f_sym);
 
-  //if(!test<double, harness_t>(harness) || !test<float, f_harness_t>(f_harness)) {
-  test<double, harness_t>(harness);
-  if(!test<double, harness_t>(harness)) {
+  if(!test(f_harness)) {
     std::cerr << "failure\n";
   } else {
     std::cerr << "success!\n";
