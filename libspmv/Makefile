@@ -21,10 +21,10 @@ unsafe.so: gpu-unsafe.c
 	${CC} ${CFLAGS} -L${CUDA_ROOT}/lib64 -I${CUDA_ROOT}/include -lcublas -lcusparse -lcudart -fPIC -shared $< -o $@
 
 opencl.so: opencl.cpp
-	${CXX} ${CXXFLAGS} -fPIC -shared $< -lOpenCL -lclSPARSE -lclsparseTimer -o $@
+	${CXX} ${CXXFLAGS} -fPIC -shared $< -lclSPARSE -lOpenCL -lclsparseTimer -o $@
 
 clgpu.so: clgpu.cpp clgpu-model.c native-impl.c
-	${CXX} ${CXXFLAGS} -fPIC -shared $^ -lOpenCL -lclSPARSE -lclsparseTimer -o $@
+	${CXX} ${CXXFLAGS} -fPIC -shared $^ -lclSPARSE -lOpenCL -lclsparseTimer -o $@
 
 sparsex.so: sparsex.c
 	$(CC) $(CFLAGS) -fPIC -shared $(SPARSEX_CFLAGS) $^ -o $@ $(SPARSEX_LDFLAGS) -L$(SPARSEX_LLVM_LIBDIR)

@@ -93,9 +93,9 @@ ifeq ($(SPMV_VERSION),mkl)
 else ifeq ($(SPMV_VERSION),gpu)
   C_LIB = -L${CUDA_ROOT}/lib64 -lcublas -lcusparse -lcudart -lgpu-spmv
 else ifeq ($(SPMV_VERSION),opencl)
-  C_LIB = -lopencl-spmv
+  C_LIB = -L$(CL_ROOT)/lib64 -lclSPARSE -lOpenCL -lclsparseTimer -lopencl-spmv
 else ifeq ($(SPMV_VERSION),clgpu)
-  C_LIB = -lclgpu-spmv
+  C_LIB = -L$(CL_ROOT)/lib64 -lclSPARSE -lOpenCL -lclsparseTimer -lopencl-spmv
 else ifeq ($(SPMV_VERSION),sparsex)
   C_LIB = -lsparsex-spmv
 else
