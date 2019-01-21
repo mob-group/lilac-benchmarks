@@ -1,0 +1,83 @@
+#!/bin/bash
+
+sizes=(40 60 80 100 120 140 160)
+
+function mat_name() {
+  local size="$1"
+  shift
+
+  printf 'crsmat%03du' "$size"
+}
+
+function make_inputs() {
+  for size in ${sizes[@]}; do
+    local name=$(mat_name $size)
+    if [ ! -f "$name" ]; then
+      ./big_gen.py --filename "$name" --size "$size" write
+    fi
+  done
+}
+
+function remake() {
+  local impl="$1"
+  shift
+  
+  make clean 2>&1 > /dev/null
+  make FC=gfortran OPT=reference SPMV_VERSION="$impl" install 2>&1 > /dev/null
+  mv bench_gen f_bench_gen
+
+  make clean 2>&1 > /dev/null
+  make FC=gfortran OPT=cprod SPMV_VERSION="$impl" install 2>&1 > /dev/null
+  mv bench_gen c_bench_gen
+}
+
+
+function run_one() {
+  local exe="$1"
+  shift
+  
+  local size="$1"
+  shift
+
+  echo -ne "$size\n2\n0\n1\n" | "$exe" | tail -13 | head -1 | tr -s " " | cut -d' ' -f3
+}
+
+function run_impl() {
+  local platform="$1"
+  shift
+
+  local impl="$1"
+  shift
+
+  local n="$1"
+  shift
+
+  remake "$impl" 2>&1 > /dev/null
+
+  for sz in ${sizes[@]}; do
+    echo -n "$platform,Netlib-C,$impl,$sz"
+    for ((i=0; i < n; i++)); do
+      t=$(run_one ./c_bench_gen "$sz")
+      echo -n ",$t"
+    done
+    echo
+  done
+
+  for sz in ${sizes[@]}; do
+    echo -n "$platform,Netlib-F,$impl,$sz"
+    for ((i=0; i < n; i++)); do
+      t=$(run_one ./f_bench_gen "$sz")
+      echo -n ",$t"
+    done
+    echo
+  done
+}
+
+make_inputs
+
+platform="$1"
+shift
+
+for impl in "$@"; do
+  run_impl "$platform" "$impl" 5
+done
