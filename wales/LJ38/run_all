@@ -1,8 +1,5 @@
 #!/bin/bash
 
-platform="$1"
-shift
-
 function run_one() {
   file="$1"
   cp "$file" pathdata
@@ -18,30 +15,29 @@ function run_many() {
 
   for((i=0; i < n; i++)); do
     t=$(run_one "$file")
-    echo -n "$t"
-    if ((i < n-1)); then
-      echo -n ','
-    fi
+    echo -n ",$t"
   done
   echo
 }
 
-impls=(native mkl unsafe)
 benches=(pfold ngt)
 prunes=(0 1 2)
 sizes=(small large)
 
-for impl in ${impls[@]}; do
+platform="$1"
+shift
+
+for impl in "$@"; do
   rm -rf ../PATHSAMPLE/build/*
   cd ../PATHSAMPLE/build/
   SPMV_VERSION="$impl" cmake ../source 2>/dev/null > /dev/null
-  make -j20 2>/dev/null > /dev/null
+  make -j$(nproc) 2>/dev/null > /dev/null
   cd - > /dev/null
   for bench in ${benches[@]}; do
     for size in ${sizes[@]}; do
       for prune in ${prunes[@]}; do
-        echo -ne "$platform,$impl,$bench,$prune,$size\t"
-        run_many 2 "pathdata.$bench.$prune.$size"
+        echo -ne "$platform,PATHSAMPLE,$impl,$bench.$prune.$size"
+        run_many 5 "pathdata.$bench.$prune.$size"
       done
     done
   done
