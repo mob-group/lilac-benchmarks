@@ -1,0 +1,50 @@
+#!/bin/bash
+
+sizes=(S W A B C D)
+
+function remake() {
+  version="$1"
+  shift
+
+  mkdir -p bin
+  rm -f bin/*
+  
+  for size in ${sizes[@]}; do
+    make F77=gfortran SPMV_VERSION="$version" CLASS="$size" CG 2>&1 > /dev/null
+  done
+}
+
+function run_one() {
+  size="$1"
+  shift
+
+  "./bin/cg.${size}.x" | tail -23 | head -1 | tr -s " " | cut -d" " -f6
+}
+
+function run_impl() {
+  platform="$1"
+  shift
+
+  impl="$1"
+  shift
+
+  n="$1"
+  shift
+
+  remake "$impl"
+  for sz in ${sizes[@]}; do
+    echo -n "$platform NPB $impl $sz"
+    for ((i=0; i < n; i++)); do
+      t=$(run_one "$sz")
+      echo -n " $t"
+    done
+    echo
+  done
+}
+
+platform="$1"
+shift
+
+for impl in "$@"; do
+  run_impl "$platform" "$impl" 5
+done
