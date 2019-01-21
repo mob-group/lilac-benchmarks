@@ -16,6 +16,9 @@ function run_one() {
 }
 
 function run_many() {
+  platform="$1"
+  shift
+
   impl="$1"
   shift
 
@@ -25,7 +28,7 @@ function run_many() {
   size="$1"
   shift
 
-  echo -n "$impl,$size"
+  echo -n "$platform,parboil-spmv,$impl,$size"
   for ((i=0; i < n; i++)); do
     t=$(run_one "$size")
     echo -n ",$t"
@@ -34,6 +37,9 @@ function run_many() {
 }
 
 function run_bench() {
+  platform="$1"
+  shift
+
   impl="$1"
   shift
 
@@ -41,10 +47,13 @@ function run_bench() {
 
   matrices=(small medium large)
   for matrix in ${matrices[@]}; do
-    run_many "$impl" 5 "$matrix"
+    run_many "$platform" "$impl" 5 "$matrix"
   done
 }
 
-run_bench native
-run_bench gpu
-run_bench mkl
+platform="$1"
+shift
+
+for impl in "$@"; do
+  run_bench "$platform" "$impl"
+done
