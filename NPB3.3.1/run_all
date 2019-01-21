@@ -33,10 +33,10 @@ function run_impl() {
 
   remake "$impl"
   for sz in ${sizes[@]}; do
-    echo -n "$platform NPB $impl $sz"
+    echo -n "$platform,NPB,$impl,$sz"
     for ((i=0; i < n; i++)); do
       t=$(run_one "$sz")
-      echo -n " $t"
+      echo -n ",$t"
     done
     echo
   done
