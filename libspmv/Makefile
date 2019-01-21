@@ -5,6 +5,8 @@ LDFLAGS=-ldl -lpthread
 SPARSEX_LLVM_LIBDIR=$(shell $(LLVM_CONFIG) --libdir)
 SPARSEX_CFLAGS=$(shell $(SPARSEX_CONFIG) --cppflags)
 SPARSEX_LDFLAGS=$(shell $(SPARSEX_CONFIG) --ldflags)
+F_SPARSEX_CFLAGS=$(shell $(F_SPARSEX_CONFIG) --cppflags)
+F_SPARSEX_LDFLAGS=$(shell $(F_SPARSEX_CONFIG) --ldflags)
 
 all: test
 
@@ -28,6 +30,9 @@ clgpu.so: clgpu.cpp clgpu-model.c native-impl.c
 
 sparsex.so: sparsex.c
 	$(CC) $(CFLAGS) -fPIC -shared $(SPARSEX_CFLAGS) $^ -o $@ $(SPARSEX_LDFLAGS) -L$(SPARSEX_LLVM_LIBDIR)
+
+fsparsex.so: fsparsex.c
+	$(CC) $(CFLAGS) -fPIC -shared $(F_SPARSEX_CFLAGS) $^ -o $@ $(F_SPARSEX_LDFLAGS) -L$(SPARSEX_LLVM_LIBDIR)
 
 test: test.cpp
 	${CXX} ${CXXFLAGS} $< -o $@ ${LDFLAGS}
