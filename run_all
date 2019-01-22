@@ -8,7 +8,10 @@ export SPARSEX_CONFIG=$BM_ROOT/local/bin/sparsex-config
 export F_SPARSEX_CONFIG=$BM_ROOT/local/bin/sparsex-float-config
 export LLVM_CONFIG=$BM_ROOT/local/bin/llvm-config
 
-source $BM_ROOT/local/compilers_and_libraries_2019/linux/bin/compilervars.sh intel64
+mkl="$BM_ROOT/local/compilers_and_libraries_2019/linux/bin/compilervars.sh"
+if [ -f "$mkl" ]; then
+  source "$mkl" intel64
+fi
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$BM_ROOT/local/lib:$BM_ROOT/local/lib64
 
 root=$(pwd)
