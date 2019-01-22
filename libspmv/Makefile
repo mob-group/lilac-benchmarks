@@ -47,3 +47,4 @@ install: $(platform).so
 clean:
 	rm -f *.so
 	rm -f test
+	rm -f cl-probe
