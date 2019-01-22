@@ -28,6 +28,10 @@ platform="$1"
 shift
 
 for impl in "$@"; do
+  if [ "$impl" = "sparsex" ]; then
+    continue
+  fi
+
   rm -rf ../PATHSAMPLE/build/*
   cd ../PATHSAMPLE/build/
   SPMV_VERSION="$impl" cmake ../source 2>/dev/null > /dev/null

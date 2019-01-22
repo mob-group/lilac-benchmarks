@@ -49,6 +49,10 @@ function run_impl() {
   local impl="$1"
   shift
 
+  if [ "$impl" = "sparsex" ]; then
+    return
+  fi
+
   local n="$1"
   shift
 
