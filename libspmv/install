@@ -1,0 +1,5 @@
+#!/bin/bash
+
+for impl in "$@"; do
+	make platform="$impl" install
+done
