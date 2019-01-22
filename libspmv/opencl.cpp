@@ -35,6 +35,8 @@ namespace {
   clsparseCsrMatrix A;
 }
 
+std::pair<int, int> get_pd_pair();
+
 void set_platform_device(int p, int d)
 {
   cl_status = cl::Platform::get(&platforms);
@@ -46,7 +48,7 @@ void set_platform_device(int p, int d)
 
   platform = &platforms[p];
 
-  cl_status = platform->getDevices(CL_DEVICE_TYPE_GPU, &devices);
+  cl_status = platform->getDevices(CL_DEVICE_TYPE_ALL, &devices);
   if(cl_status != CL_SUCCESS) {
     std::cout << "Problem getting devices from platform"
               << platform->getInfo<CL_PLATFORM_NAME>()
@@ -54,6 +56,9 @@ void set_platform_device(int p, int d)
   }
 
   device = &devices[d];
+  
+  /* std::cout << platform->getInfo<CL_PLATFORM_NAME>() << "\n" */
+  /*           << device->getInfo<CL_DEVICE_NAME>() << "\n"; */
 }
 
 void init_alpha_beta()
@@ -114,7 +119,8 @@ void setup(int rows, int cols, int nnz)
 {
   static bool ready = false;
   if(!ready) {
-    set_platform_device(1, 0);
+    auto pair = get_pd_pair();
+    set_platform_device(pair.first, pair.second);
 
     context = cl::Context(*device);
     queue = cl::CommandQueue(context, *device);
@@ -187,7 +193,8 @@ void f_setup(int rows, int cols, int nnz)
 {
   static bool ready = false;
   if(!ready) {
-    set_platform_device(1, 0);
+    auto pair = get_pd_pair();
+    set_platform_device(pair.first, pair.second);
 
     context = cl::Context(*device);
     queue = cl::CommandQueue(context, *device);

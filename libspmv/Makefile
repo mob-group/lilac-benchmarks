@@ -25,11 +25,17 @@ unsafe.so: gpu-unsafe.c
 cl-probe: cl-probe.cpp
 	$(CXX) $(CXXFLAGS) $< -lOpenCL -o $@
 
-opencl.so: opencl.cpp
-	${CXX} ${CXXFLAGS} -fPIC -shared $< -lclSPARSE -lOpenCL -lclsparseTimer -o $@
+opencl00.so: opencl.cpp cl_00.cpp
+	$(CXX) $(CXXFLAGS) -fPIC -shared $^ -lclSPARSE -lOpenCL -lclsparseTimer -o $@
 
-clgpu.so: clgpu.cpp clgpu-model.c native-impl.c
-	${CXX} ${CXXFLAGS} -fPIC -shared $^ -lclSPARSE -lOpenCL -lclsparseTimer -o $@
+opencl01.so: opencl.cpp cl_01.cpp
+	$(CXX) $(CXXFLAGS) -fPIC -shared $^ -lclSPARSE -lOpenCL -lclsparseTimer -o $@
+
+opencl10.so: opencl.cpp cl_10.cpp
+	$(CXX) $(CXXFLAGS) -fPIC -shared $^ -lclSPARSE -lOpenCL -lclsparseTimer -o $@
+
+opencl11.so: opencl.cpp cl_11.cpp
+	$(CXX) $(CXXFLAGS) -fPIC -shared $^ -lclSPARSE -lOpenCL -lclsparseTimer -o $@
 
 sparsex.so: sparsex.c
 	$(CC) $(CFLAGS) -fPIC -shared $(SPARSEX_CFLAGS) $^ -o $@ $(SPARSEX_LDFLAGS) -L$(SPARSEX_LLVM_LIBDIR)

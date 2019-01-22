@@ -80,7 +80,7 @@ int main(int argc, char **argv)
   auto harness = reinterpret_cast<harness_t *>(sym);
   auto f_harness = reinterpret_cast<f_harness_t *>(f_sym);
 
-  if(!test(f_harness)) {
+  if(!test(harness)) {
     std::cerr << "failure\n";
   } else {
     std::cerr << "success!\n";
