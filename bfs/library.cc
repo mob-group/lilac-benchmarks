@@ -60,23 +60,23 @@ CSRMatrix COOMatrix::convert()
     CSRMatrix result;
     result.rows = rows;
     result.columns = columns;
-    result.rowstr.push_back(0);
+    result.rowstr.push_back(1);
 
     size_t current_row = 0;
     size_t running_total = 0;
 
     for(auto i = 0u; i < values.size(); ++i) {
       for( ; current_row < values.at(i).x; ++current_row) {
-        result.rowstr.push_back(running_total);
+        result.rowstr.push_back(running_total + 1);
       }
 
       running_total++;
-      result.colidx.push_back(values.at(i).y);
+      result.colidx.push_back(values.at(i).y + 1);
       result.values.push_back(1.0);
     }
 
     for( ; current_row < rows; ++current_row) {
-      result.rowstr.push_back(running_total);
+      result.rowstr.push_back(running_total + 1);
     }
 
     /*

@@ -30,7 +30,7 @@ void setup(void)
   static bool setup = false;
   if(!setup) {
     spx_init();
-    spx_option_set("spx.rt.nr_threads", "4");
+    spx_option_set("spx.rt.nr_threads", "24");
     setup = true;
   }
 }
@@ -51,8 +51,11 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
   if(data_begin == 0)
   {
       cols = 0;
-      for(int i = rowstr[0] - 1; i < rowstr[*rows] - 1; i++)
-          if(colidx[i] >= cols) cols = colidx[i];
+      for(int i = rowstr[0] - 1; i < rowstr[*rows] - 1; i++) {
+          if(colidx[i] >= cols) {
+            cols = colidx[i];
+          }
+      }
       data_begin = colidx;
       data_end   = colidx + rowstr[*rows];
 
