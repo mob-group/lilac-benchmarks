@@ -4,9 +4,13 @@
 
 #include <algorithm>
 #include <chrono>
+#include <filesystem>
 #include <iostream>
 #include <random>
 #include <string>
+#include <vector>
+
+namespace fs = std::filesystem;
 
 class dynamic_library {
 public:
@@ -42,9 +46,23 @@ private:
   void *lib_;
 };
 
+std::string extract_implementation(std::string library)
+{
+  auto path = fs::path(library);
+  std::string lib_name = path.stem();
+  auto lib_pos = lib_name.find("lib");
+  auto dash_pos = lib_name.find("-");
+  return lib_name.substr(lib_pos+3, dash_pos - (lib_pos + 3));
+}
+
+std::string extract_matrix(std::string path)
+{
+  return fs::path(path).stem();
+}
+
 struct benchmark_stats {
   std::string path;
-  double time;
+  std::vector<double> times;
   size_t rows;
   size_t cols;
   size_t nnz;
@@ -53,12 +71,10 @@ struct benchmark_stats {
 
 std::ostream& operator<<(std::ostream& os, benchmark_stats const& stats)
 {
-  os << stats.path << " "
-     << stats.time << " "
-     << stats.rows << " "
-     << stats.cols << " "
-     << stats.nnz << " "
-     << stats.iters;
+  os << "," << extract_matrix(stats.path);
+  for(auto time : stats.times) {
+    os << "," << time;
+  }
 
   return os;
 }
@@ -99,39 +115,46 @@ benchmark_stats run_benchmark(Func&& harness, std::string const& path)
 
   auto raw = mm::csr(csr);
 
-  auto start = std::chrono::system_clock::now();
-
   volatile double error;
   std::vector<double> last_vector;
 
-  auto iters = 1024u;
-  for(auto i = 0; i < iters; ++i) {
-    error = 0.0;
+  auto iters = 1u;
+  auto runs = 5;
+  auto times = std::vector<double>{};
+  
+  for(auto run = 0; run < runs; ++run) {
+    auto start = std::chrono::system_clock::now();
 
-    last_vector = x;
+    for(auto i = 0; i < iters; ++i) {
+      error = 0.0;
 
-    auto mean = std::accumulate(x.begin(), x.end(), 0.0) / x.size();
-    auto add_term = (1 - d) * mean;
+      last_vector = x;
 
-    /* v = (d * M) * v + ((1 - d)) * v.average(); */
-    /* error = (v - last_v).l2norm(); */
-    harness(y.data(), raw.a, x.data(), raw.rowstr, raw.colidx, raw.rows);
+      auto mean = std::accumulate(x.begin(), x.end(), 0.0) / x.size();
+      auto add_term = (1 - d) * mean;
 
-    std::for_each(y.begin(), y.end(), [add_term] (auto& out) {
-      out += add_term;
-    });
+      /* v = (d * M) * v + ((1 - d)) * v.average(); */
+      /* error = (v - last_v).l2norm(); */
+      harness(y.data(), raw.a, x.data(), raw.rowstr, raw.colidx, raw.rows);
 
-    x = y;
-    for(auto i = 0; i < csr.rows(); ++i) {
-      error += std::pow(x.at(i) - last_vector.at(i), 2);
+      std::for_each(y.begin(), y.end(), [add_term] (auto& out) {
+        out += add_term;
+      });
+
+      x = y;
+      for(auto i = 0; i < csr.rows(); ++i) {
+        error += std::pow(x.at(i) - last_vector.at(i), 2);
+      }
+      error = std::sqrt(error);
     }
-    error = std::sqrt(error);
+
+    auto end = std::chrono::system_clock::now();
+    std::chrono::duration<double> time = end - start;
+
+    times.push_back(time.count());
   }
 
-  auto end = std::chrono::system_clock::now();
-  std::chrono::duration<double> time = end - start;
-
-  return { path, time.count(), csr.rows(), csr.cols(), csr.nnz(), iters };
+  return { path, times, csr.rows(), csr.cols(), csr.nnz(), iters };
 }
 
 using harness_t = void (double *, const double *, const double *, const int *, const int *, const int *);
@@ -158,6 +181,8 @@ int main(int argc, char **argv)
   for(int i = 3; i < argc; ++i) {
     auto path = std::string(argv[i]);
     auto stats = run_benchmark(harness, path);
-    std::cout << stats << " " << argv[2] << '\n';
+    std::cout << argv[2] << ",PageRank," 
+              << extract_implementation(argv[1]) 
+              << /* matrix */ stats << '\n';
   }
 }
