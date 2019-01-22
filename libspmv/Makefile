@@ -22,6 +22,9 @@ gpu.so:	gpu.c
 unsafe.so: gpu-unsafe.c
 	${CC} ${CFLAGS} -L${CUDA_ROOT}/lib64 -I${CUDA_ROOT}/include -lcublas -lcusparse -lcudart -fPIC -shared $< -o $@
 
+cl-probe: cl-probe.cpp
+	$(CXX) $(CXXFLAGS) $< -lOpenCL -o $@
+
 opencl.so: opencl.cpp
 	${CXX} ${CXXFLAGS} -fPIC -shared $< -lclSPARSE -lOpenCL -lclsparseTimer -o $@
 
