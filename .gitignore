@@ -6,3 +6,11 @@ gmon.out
 compile_commands.json
 *.o
 *.pyc
+
+*.out
+pathdata
+
+c_bench_gen
+f_bench_gen
+
+*.tmp*
