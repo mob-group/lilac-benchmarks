@@ -1,5 +1,7 @@
 #!/bin/bash
 
+matrices=("roadNet-CA" "kron" "in-2004" "ljournal-2008" "USA-road-d.E" "higgs-twitter" "Si5H12" "com-Youtube" "erdos" "eu-2005")
+
 function remake() {
   version="$1"
   shift
@@ -12,7 +14,7 @@ function run_one() {
   matrix="$1"
   shift
 
-  ./bfs < ~/datasets/bfs/"$matrix".mtx
+  ./bfs < "$BM_ROOT"/datasets/bfs/"$matrix".mtx
 }
 
 function run_many() {
@@ -45,7 +47,6 @@ function run_bench() {
 
   remake "$impl"
 
-  matrices=("erdos" "eu-2005" "higgs-twitter" "kron" "USA-road-d.E" "in-2004")
   for matrix in ${matrices[@]}; do
     run_many "$platform" "$impl" 5 "$matrix"
   done
