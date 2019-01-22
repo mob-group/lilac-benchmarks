@@ -1,7 +1,17 @@
 #!/bin/bash
 
-root=$(pwd)
+export BM_ROOT=$HOME/benchmarking
+export CUDA_ROOT=$BM_ROOT/local
+export CL_ROOT=$BM_ROOT/local
+export SPMV_ROOT=$BM_ROOT/local
+export SPARSEX_CONFIG=$BM_ROOT/local/bin/sparsex-config
+export F_SPARSEX_CONFIG=$BM_ROOT/local/bin/sparsex-float-config
+export LLVM_CONFIG=$BM_ROOT/local/bin/llvm-config
 
+source $BM_ROOT/local/compilers_and_libraries_2019/linux/bin/compilervars.sh intel64
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$BM_ROOT/local/lib:$BM_ROOT/local/lib64
+
+root=$(pwd)
 benches=("bfs" "NPB3.3.1" "pagerank" "parboil" "SparseBench" "wales/LJ38")
 
 for bench in "${benches[@]}"; do
