@@ -1,0 +1,22 @@
+#!/bin/bash
+
+function remake() {
+}
+
+function run_one() {
+}
+
+function run_impl() {
+  local platform="$1"
+  local impl="$2"
+  local n="$3"
+
+  echo "$platform,PageRank,$impl,SIZE"
+}
+
+platform="$1"
+shift 
+
+for impl in "$@"; do
+  run_impl "$platform" "$impl" 5
+done
