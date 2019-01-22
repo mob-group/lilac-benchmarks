@@ -13,6 +13,8 @@ else ifeq ($(SPMV_VERSION),opencl)
   LIB_FLAGS = -lopencl-spmv
 else ifeq ($(SPMV_VERSION),clgpu)
   LIB_FLAGS = -lclgpu-spmv
+else ifeq ($(SPMV_VERSION),sparsex)
+  LIB_FLAGS = -lsparsex-spmv
 else
   LIB_FLAGS = -lnative-spmv
 endif

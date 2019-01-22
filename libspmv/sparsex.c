@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include <sys/mman.h>
+#include <sys/sysinfo.h>
 #include <unistd.h>
 
 #include <sparsex/sparsex.h>
@@ -29,9 +30,14 @@ void setup(void)
 {
   static bool setup = false;
   if(!setup) {
+    char *cores;
+    asprintf(&cores, "%d", get_nprocs());
+
     spx_init();
-    spx_option_set("spx.rt.nr_threads", "24");
+    spx_option_set("spx.rt.nr_threads", cores);
     setup = true;
+
+    free(cores);
   }
 }
 
