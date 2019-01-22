@@ -118,7 +118,7 @@ benchmark_stats run_benchmark(Func&& harness, std::string const& path)
   volatile double error;
   std::vector<double> last_vector;
 
-  auto iters = 1u;
+  auto iters = 1024u;
   auto runs = 5;
   auto times = std::vector<double>{};
   

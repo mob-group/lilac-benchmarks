@@ -1,9 +1,14 @@
 #!/bin/bash
 
+matrices=("erdos" "eu-2005" "higgs-twitter" "kron" "USA-road-d.E" "in-2004")
+
 function remake() {
+  make clean > /dev/null 2>&1
+  make > /dev/null 2>&1
 }
 
 function run_one() {
+  echo
 }
 
 function run_impl() {
@@ -11,8 +16,12 @@ function run_impl() {
   local impl="$2"
   local n="$3"
 
-  echo "$platform,PageRank,$impl,SIZE"
+  for mat in "${matrices[@]}"; do
+    ./pagerank "$BM_ROOT/local/lib/lib${impl}-spmv.so" "$platform" "$HOME/datasets/pr/${mat}.mtx"
+  done
 }
+
+remake
 
 platform="$1"
 shift 
