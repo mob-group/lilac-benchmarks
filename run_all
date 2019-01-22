@@ -17,15 +17,18 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$BM_ROOT/local/lib:$BM_ROOT/local/lib64
 root=$(pwd)
 benches=("bfs" "NPB3.3.1" "pagerank" "parboil" "SparseBench" "wales/LJ38")
 
+platform="$1"
+shift
+
 cd "$root/libspmv"
 for impl in "$@"; do
-  ./install "$impl"
+  ./install "$impl" >/dev/null 2>&1
   if [ "$impl" = "sparsex" ]; then
-    ./install fsparsex
+    ./install fsparsex >/dev/null 2>&1
   fi
 done
 
 for bench in "${benches[@]}"; do
   cd "$root/$bench"
-  ./run_all "$@"
+  ./run_all "$platform" "$@"
 done
