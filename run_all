@@ -2,11 +2,9 @@
 
 root=$(pwd)
 
-cd $root/wales/LJ38
-./run_all intel
+benches=("bfs" "NPB3.3.1" "pagerank" "parboil" "SparseBench" "wales/LJ38")
 
-cd $root/parboil
-./run_all
-
-cd $root/bfs
-./run_all
+for bench in "${benches[@]}"; do
+  cd "$root/$bench"
+  ./run_all "$@"
+done
