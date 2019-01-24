@@ -8,7 +8,8 @@ MACHINES = {
     'michel'    : 0.4,
     'avus'      : 1.3,
     'bob'       : 0.6, 
-    'spa'       : 1.4
+    'spa'       : 1.4,
+    'firuza'    : 1.6
 }
 
 IMPLS = {
@@ -17,6 +18,7 @@ IMPLS = {
     'avus'      : ['native', 'mkl', 'gpu', 'opencl10', 'sparsex'],
     'bob'       : ['native', 'opencl00', 'sparsex'],
     'spa'       : ['native', 'mkl', 'gpu', 'opencl00', 'sparsex'],
+    'firuza'    : ['native', 'mkl', 'gpu', 'opencl00', 'sparsex'],
 }
 
 SPEEDUPS = {
