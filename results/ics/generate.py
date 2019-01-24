@@ -60,7 +60,7 @@ BENCHES = {
 
 def random_times(mach, impl, bench, name):
     base_time = 10.0
-    perf_time = base_time * MACHINES[mach] * SPEEDUPS[impl]
+    perf_time = base_time * MACHINES[mach] / SPEEDUPS[impl]
     difficulty_factor = BENCHES[bench].index(name) ** 1.3
     mean_time = perf_time * difficulty_factor
     return np.abs(normal(loc=mean_time, size=5))
