@@ -53,7 +53,7 @@ monaco,NPB,native,W,9.10,9.19,9.21,8.65,10.24
 monaco,NPB,native,A,25.08,24.96,24.42,24.32,24.64
 monaco,NPB,native,B,42.36,43.03,39.73,42.24,40.97
 monaco,NPB,native,C,63.59,60.83,59.77,61.91,60.28
-monaco,NPB,native,D,79.36,81.89,82.33,81.47,81.16
+monaco,NPB,native,D,79.36,81.89
 monaco,NPB,mkl,S,1.10,1.56,0.18,1.07,0.92
 monaco,NPB,mkl,W,5.18,5.51,4.44,4.53,4.05
 monaco,NPB,mkl,A,10.02,10.42,9.77,10.24,9.87

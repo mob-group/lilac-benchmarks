@@ -14,7 +14,7 @@ def tidy(filename):
         3: 'name',
         'value': 'time'
     })
-    return df
+    return df.dropna()
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Data tidying script for ICS results.')
