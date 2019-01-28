@@ -19,7 +19,7 @@ def tidy(filename):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Data tidying script for ICS results.')
     parser.add_argument('data', type=str, help='Data file to tidy')
-    parser.add_argument('--output', type=str, help='Output file to write')
+    parser.add_argument('-o', '--output', type=str, help='Output file to write')
     args = parser.parse_args()
 
     tidied = tidy(args.data)
