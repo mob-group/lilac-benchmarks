@@ -17,10 +17,10 @@ mkl.so:	mkl.c mkl-model.c native-impl.c
 	${CC} ${CFLAGS} -m64 -I${MKLROOT}/include -L${MKLROOT}/lib/intel64 -Wl,--no-as-needed -lmkl_rt -lpthread -lm -ldl -fPIC -shared $^ -o $@
 
 gpu.so:	gpu.c
-	${CC} ${CFLAGS} -L${CUDA_ROOT}/lib64 -I${CUDA_ROOT}/include -lcublas -lcusparse -lcudart -fPIC -shared $< -o $@
+	${CC} ${CFLAGS} -L${CUDA_ROOT}/lib64 -I${CUDA_ROOT}/include -fPIC -shared $< -o $@ -lcublas -lcusparse -lcudart
 
 unsafe.so: gpu-unsafe.c
-	${CC} ${CFLAGS} -L${CUDA_ROOT}/lib64 -I${CUDA_ROOT}/include -lcublas -lcusparse -lcudart -fPIC -shared $< -o $@
+	${CC} ${CFLAGS} -L${CUDA_ROOT}/lib64 -I${CUDA_ROOT}/include -fPIC -shared $< -o $@ -lcublas -lcusparse -lcudart
 
 cl-probe: cl-probe.cpp
 	$(CXX) $(CXXFLAGS) $< -lOpenCL -o $@

@@ -14,10 +14,10 @@ PURIFY =
 
 bench_gen : $(FSRC_FILES:.f=.o) $(FSRC_FILES_GEN:.f=.o) $(CSRC_FILES:.c=.o) \
 		$(UTIL_FILES:.f=.o) $(UTIL_FILES_GEN:.f=.o)
-	$(PURIFY) $(FC) $(F_OPT_FLAGS) -o bench_gen \
+	$(PURIFY) $(FC) -o bench_gen \
 	 $(FSRC_FILES:.f=.o) $(FSRC_FILES_GEN:.f=.o) \
 	  $(UTIL_FILES:.f=.o) $(UTIL_FILES_GEN:.f=.o) \
-	   $(CSRC_FILES:.c=.o) 
+	   $(CSRC_FILES:.c=.o) $(F_OPT_FLAGS)
 	@ echo
 	@ echo "You can now run the executable 'bench_gen'"
 	@ echo
