@@ -25,6 +25,6 @@ if __name__ == "__main__":
     tidied = tidy(args.data)
 
     if args.output is None:
-        print(tidied.to_csv(), index=False)
+        print(tidied.to_csv(index=False))
     else:
         tidied.to_csv(args.output, index=False)
