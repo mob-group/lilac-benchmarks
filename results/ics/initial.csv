@@ -695,3 +695,11 @@ monaco,PageRank,gpu,Si5H12,1.87538,1.03424,1.03274,1.03467,1.03284
 monaco,PageRank,gpu,com-Youtube,23.1007,22.388,22.3866,22.3906,22.3821
 monaco,PageRank,gpu,erdos,12.1866,11.3106,11.303,11.3067,11.3086
 monaco,PageRank,gpu,eu-2005,22.3034,21.3338,21.3418,21.3373,21.3332
+firuza,PageRank,gpu,in-2004,12.1873,11.7983,11.7705,11.7975,11.7955	
+firuza,PageRank,gpu,ljournal-2008,54.9133,54.3481,54.4554,54.3888,54.4065	
+firuza,PageRank,gpu,USA-road-d.E,28.1322,27.84,27.7548,27.765,27.7603	
+firuza,PageRank,gpu,higgs-twitter,5.31656,4.93267,4.92668,4.91977,4.94032	
+firuza,PageRank,gpu,Si5H12,2.36087,2.03695,2.03337,2.0364,2.03651	
+firuza,PageRank,gpu,com-Youtube,9.89212,9.55819,9.54829,9.54299,9.50755	
+firuza,PageRank,gpu,erdos,5.04043,4.73263,4.74703,4.71282,4.72381	
+firuza,PageRank,gpu,eu-2005,8.55488,8.10187,8.12457,8.16701,8.1382	
