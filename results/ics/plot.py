@@ -105,8 +105,40 @@ def baseline(df):
     sns.despine(fig)
     return fig
 
+def marshall(df):
+    # TODO: fake plot for now, but adapt
+    fig, axes = plt.subplots(1, 4, figsize=fig_size(2.1, 0.67))
+    # end fake plotting
+
+    fig.tight_layout()
+    sns.despine(fig)
+    return fig
+
+def expert(df):
+    comparisons = [
+    ]
+    fig, axes = plt.subplots(2, 1, figsize=fig_size(0.9, 1.8))
+
+    # TODO fake plot for now, but adapt
+    npb = axes[0]
+    par = axes[1]
+
+    npb.set_title('NPB')
+    par.set_title('Parboil')
+
+    for b in [npb, par]:
+        b.set_ylabel('LiLAC Performance (×)')
+        b.set_yticks([0, 0.5, 1])
+    # end fake plot
+
+    fig.tight_layout()
+    sns.despine(fig)
+    return fig
+
 plot_choices = { p.__name__ : p for p in [
-    baseline
+    baseline,
+    expert,
+    marshall
 ]}
 
 if __name__ == "__main__":
