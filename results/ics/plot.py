@@ -49,7 +49,8 @@ def platform_map(platform):
 def get_data(infile):
     return pd.read_csv(infile)
 
-def plot(df, benches):
+def baseline(df):
+    benches = ['pfold', 'ngt', 'PageRank', 'bfs']
     platforms = df.platform.unique()
 
     fig, axes = plt.subplots(1, len(benches), sharey=True, figsize=fig_size(2.1, 0.67))
@@ -102,12 +103,50 @@ def plot(df, benches):
     plt.subplots_adjust(wspace=0.2)
 
     sns.despine(fig)
+    return fig
+
+def marshall(df):
+    # TODO: fake plot for now, but adapt
+    fig, axes = plt.subplots(1, 4, figsize=fig_size(2.1, 0.67))
+    # end fake plotting
+
+    fig.tight_layout()
+    sns.despine(fig)
+    return fig
+
+def expert(df):
+    comparisons = [
+    ]
+    fig, axes = plt.subplots(2, 1, figsize=fig_size(0.9, 1.8))
+
+    # TODO fake plot for now, but adapt
+    npb = axes[0]
+    par = axes[1]
+
+    npb.set_title('NPB')
+    par.set_title('Parboil')
+
+    for b in [npb, par]:
+        b.set_ylabel('LiLAC Performance (×)')
+        b.set_yticks([0, 0.5, 1])
+    # end fake plot
+
+    fig.tight_layout()
+    sns.despine(fig)
+    return fig
+
+plot_choices = { p.__name__ : p for p in [
+    baseline,
+    expert,
+    marshall
+]}
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Baseline comparison plots for ICS')
+    parser.add_argument('plot', choices=plot_choices)
     parser.add_argument('data', type=str, help='Data file to tidy')
-    #parser.add_argument('-o', '--output', type=str, help='Output file to write')
     args = parser.parse_args()
 
-    plot(get_data(args.data), ['pfold', 'ngt', 'PageRank', 'bfs'])
-    plt.savefig('out.pdf')
+    plot_f = plot_choices[args.plot]
+    fig = plot_f(get_data(args.data))
+    fig.savefig('{}.pdf'.format(args.plot))
