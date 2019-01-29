@@ -170,9 +170,13 @@ static void handler(int sig, siginfo_t *si, void *unused)
     mprotect(aligned_rowstr_begin, aligned_rowstr_end - aligned_rowstr_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
     mprotect(aligned_colidx_begin, aligned_colidx_end - aligned_colidx_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
     
-    a_begin = NULL;
-    rowstr_begin = NULL;
-    colidx_begin = NULL;
+    if((addr >= a_begin && addr < a_end) ||
+       (addr >= rowstr_begin && addr < rowstr_end) ||
+       (addr >= colidx_begin && addr < colidx_end)) {
+      a_begin = NULL;
+      rowstr_begin = NULL;
+      colidx_begin = NULL;
+    }
   } else if(old_sigaction.sa_sigaction) {
     old_sigaction.sa_sigaction(sig, si, unused);
   }
