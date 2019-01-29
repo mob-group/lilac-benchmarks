@@ -49,7 +49,8 @@ def platform_map(platform):
 def get_data(infile):
     return pd.read_csv(infile)
 
-def plot(df, benches):
+def baseline(df):
+    benches = ['pfold', 'ngt', 'PageRank', 'bfs']
     platforms = df.platform.unique()
 
     fig, axes = plt.subplots(1, len(benches), sharey=True, figsize=fig_size(2.1, 0.67))
@@ -102,12 +103,18 @@ def plot(df, benches):
     plt.subplots_adjust(wspace=0.2)
 
     sns.despine(fig)
+    return fig
+
+plot_choices = { p.__name__ : p for p in [
+    baseline
+]}
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Baseline comparison plots for ICS')
+    parser.add_argument('plot', choices=plot_choices)
     parser.add_argument('data', type=str, help='Data file to tidy')
-    #parser.add_argument('-o', '--output', type=str, help='Output file to write')
     args = parser.parse_args()
 
-    plot(get_data(args.data), ['pfold', 'ngt', 'PageRank', 'bfs'])
-    plt.savefig('out.pdf')
+    plot_f = plot_choices[args.plot]
+    fig = plot_f(get_data(args.data))
+    fig.savefig('{}.pdf'.format(args.plot))
