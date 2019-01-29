@@ -32,8 +32,8 @@ def impl_map(platform, impl):
 # Similarly, pretty-print the name of each benchmark / application
 def bench_map(bench):
     return {
-        'pfold': 'Wales PFold',
-        'ngt': 'Wales NGT',
+        'pfold': 'PFold',
+        'ngt': 'NGT',
         'PageRank': 'PageRank',
         'bfs': 'BFS'
     }[bench]
@@ -69,7 +69,6 @@ def plot(df, benches):
         
         rows = [r for r in results.iterrows()]
         rows.sort(key=lambda r: platform_map(r[1].platform))
-        rows.reverse()
 
         for row in rows:
             y_val = row[1].speedup
