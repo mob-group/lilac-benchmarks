@@ -169,3 +169,6 @@ pip-selfcheck.json
 # End of https://www.gitignore.io/api/vim,linux,python,virtualenv
 
 Scratch.ipynb
+
+*.tidy.csv
+*.plot.csv
