@@ -106,10 +106,57 @@ def baseline(df):
     return fig
 
 def marshall(df):
-    # TODO: fake plot for now, but adapt
-    fig, axes = plt.subplots(1, 4, figsize=fig_size(2.1, 0.67))
-    # end fake plotting
+    def plot_bar(x, bench, platform, impl, ax):
+        row = df.query('benchmark==@bench and platform==@platform').head(1)[impl]
+        return ax.bar(x, row, width=0.95)
 
+    fig, (pfold, ngt, pr, bfs) = plt.subplots(1, 4, figsize=fig_size(2.1, 0.67), sharey=True)
+        
+    pfold.set_title('PFold')
+    ngt.set_title('NGT')
+    pr.set_title('PageRank')
+    bfs.set_title('BFS')
+    
+    groups = {
+        pfold: ('pfold', [
+            ('michel', 'opencl10-slow'),
+            ('monaco', 'mkl-slow'),
+            ('firuza', 'mkl-slow')
+        ]),
+        ngt: ('ngt', [
+            ('michel', 'opencl10-slow'),
+            ('monaco', 'mkl-slow'),
+            ('firuza', 'mkl-slow')
+        ]),
+        pr: ('PageRank', [
+            ('michel', 'gpu-slow'),
+            ('monaco', 'mkl-slow'),
+            ('firuza', 'opencl00-slow')
+        ]),
+        bfs: ('bfs', [
+            ('michel', 'sparsex-slow'),
+            ('monaco', 'mkl-slow'),
+            ('firuza', 'mkl-slow')
+        ])
+    }
+    
+    for ax in groups:
+        ax.set_ylim(0.8, 4.0)
+        ax.set_xlim(-0.6, 2.6)
+        
+        ax.set_xticks([])
+        ax.set_xticklabels([])
+        
+        name, bars = groups[ax]
+        bar_list = []
+        for i, bar in enumerate(bars):
+            bar_list.append(plot_bar(i, name, *bar, ax))
+
+        ax.axhline(y=1, color='white', linestyle=':')
+
+    # add legend when all bars in place
+    ax.legend(bar_list, '', bbox_to_anchor=(1.5,0.5), loc='center')
+    
     fig.tight_layout()
     sns.despine(fig)
     return fig

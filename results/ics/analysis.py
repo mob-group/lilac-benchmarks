@@ -47,18 +47,13 @@ def speedup_for_impl(impl, group):
     return float('nan')
 
 # Get the performance ratio
-def speedup_pairs(g):
-    targets = [
-        ('gpu', 'opencl-expert'),
-        ('mkl', 'openmp-expert')
-    ]
-
+def speedup_pairs(g, targets):
     return pd.Series(
         [speedup_for_impl(t[0], g) / speedup_for_impl(t[1], g) for t in targets],
         index=[t[1] for t in targets]
     )
 
-def best_vs_expert(speedups):
+def compare_speedups(speedups, targets, sparse=False):
     mean_speedups = (
         speedups.groupby(['benchmark', 'platform', 'implementation'])['speedup']
                 .apply(mstats.gmean)
@@ -66,14 +61,34 @@ def best_vs_expert(speedups):
 
     return (
         mean_speedups.groupby(['benchmark', 'platform'])
-                     .apply(lambda g: speedup_pairs(g))
-                     .dropna()
+                     .apply(lambda g: speedup_pairs(g, targets))
+                     .dropna(how='all' if sparse else 'any')
                      .reset_index()
     )
 
+def best_vs_expert(speedups):
+    targets = [
+        ('gpu', 'opencl-expert'),
+        ('mkl', 'openmp-expert')
+    ]
+
+    return compare_speedups(speedups, targets)
+
+def vs_marshalled(speedups):
+    targets = [
+        ('mkl', 'mkl-slow'),
+        ('opencl10', 'opencl10-slow'),
+        ('opencl00', 'opencl00-slow'),
+        ('gpu', 'gpu-slow'),
+        ('sparsex', 'sparsex-slow'),
+    ]
+
+    return compare_speedups(speedups, targets, sparse=True)
+
 modes = {
     'baseline' : best_per_benchmark,
-    'expert' : best_vs_expert
+    'expert' : best_vs_expert,
+    'marshall' : vs_marshalled
 }
 
 def print_results(df, out=None):
