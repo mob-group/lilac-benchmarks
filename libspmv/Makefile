@@ -43,6 +43,18 @@ opencl10.so: opencl.cpp cl_10.cpp
 opencl11.so: opencl.cpp cl_11.cpp
 	$(CXX) $(CXXFLAGS) -fPIC -shared $^ -lclSPARSE -lOpenCL -lclsparseTimer -o $@
 
+opencl00-slow.so: opencl-slow.cpp cl_00.cpp
+	$(CXX) $(CXXFLAGS) -fPIC -shared $^ -lclSPARSE -lOpenCL -lclsparseTimer -o $@
+
+opencl01-slow.so: opencl-slow.cpp cl_01.cpp
+	$(CXX) $(CXXFLAGS) -fPIC -shared $^ -lclSPARSE -lOpenCL -lclsparseTimer -o $@
+
+opencl10-slow.so: opencl-slow.cpp cl_10.cpp
+	$(CXX) $(CXXFLAGS) -fPIC -shared $^ -lclSPARSE -lOpenCL -lclsparseTimer -o $@
+
+opencl11-slow.so: opencl-slow.cpp cl_11.cpp
+	$(CXX) $(CXXFLAGS) -fPIC -shared $^ -lclSPARSE -lOpenCL -lclsparseTimer -o $@
+
 sparsex.so: sparsex.c
 	$(CC) $(CFLAGS) -fPIC -shared $(SPARSEX_CFLAGS) $^ -o $@ $(SPARSEX_LDFLAGS) -L$(SPARSEX_LLVM_LIBDIR)
 
