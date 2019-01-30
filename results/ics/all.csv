@@ -739,3 +739,15 @@ firuza,PageRank,gpu,Si5H12,2.36087,2.03695,2.03337,2.0364,2.03651
 firuza,PageRank,gpu,com-Youtube,9.89212,9.55819,9.54829,9.54299,9.50755	
 firuza,PageRank,gpu,erdos,5.04043,4.73263,4.74703,4.71282,4.72381	
 firuza,PageRank,gpu,eu-2005,8.55488,8.10187,8.12457,8.16701,8.1382	
+firuza,PATHSAMPLE,mkl-slow,pfold.0.small,7.01,7.22,7.05,7.00,7.05
+firuza,PATHSAMPLE,mkl-slow,pfold.1.small,6.66,6.47,6.47,6.84,6.44
+firuza,PATHSAMPLE,mkl-slow,pfold.2.small,5.75,5.80,5.68,5.72,5.66
+firuza,PATHSAMPLE,mkl-slow,pfold.0.large,30.63,30.68,30.70,30.69,30.69
+firuza,PATHSAMPLE,mkl-slow,pfold.1.large,26.30,26.31,26.28,26.28,26.30
+firuza,PATHSAMPLE,mkl-slow,pfold.2.large,19.20,19.24,19.19,19.23,19.21
+firuza,PATHSAMPLE,mkl-slow,ngt.0.small,62.79,61.71,60.33,60.86,66.47
+firuza,PATHSAMPLE,mkl-slow,ngt.1.small,60.10,60.06,60.95,60.00,59.99
+firuza,PATHSAMPLE,mkl-slow,ngt.2.small,61.12,60.24,60.29,60.79,60.51
+firuza,PATHSAMPLE,mkl-slow,ngt.0.large,73.76,72.49,72.19,72.32,72.30
+firuza,PATHSAMPLE,mkl-slow,ngt.1.large,72.17,72.48,72.53,72.46,73.38
+firuza,PATHSAMPLE,mkl-slow,ngt.2.large,72.19,72.77,73.05,72.91,76.31
