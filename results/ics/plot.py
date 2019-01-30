@@ -115,17 +115,28 @@ def marshall(df):
     return fig
 
 def expert(df):
-    comparisons = [
-    ]
+    sns.set_palette(sns.cubehelix_palette(2, rot=60/360, dark=0.2, light=0.7-(0.5/2)))
+
     fig, ax = plt.subplots(1, 1, figsize=fig_size(0.9, 0.9))
+    
+    b1 = ax.bar(0, df.loc[1]['openmp-expert'], width=0.95)
+    b2 = ax.bar(1, df.loc[0]['openmp-expert'], width=0.95)
+    
+    ax.bar(2.5, df.loc[1]['opencl-expert'], width=0.95)
+    ax.bar(3.5, df.loc[0]['opencl-expert'], width=0.95)
 
-    # TODO fake plot for now, but adapt
+    ax.bar(5, df.loc[3]['opencl-expert'], width=0.95)
+    ax.bar(6, df.loc[2]['opencl-expert'], width=0.95)
 
-    ax.set_title('Performance vs. Expert')
-    ax.set_ylabel('LiLAC Performance (×)')
+    ax.set_xticks([0.5, 3, 5.5])
+    ax.set_xticklabels(['NPB\nOpenMP', 'NPB\nOpenCL', 'Parboil\nOpenCL'])
+    
     ax.set_yticks([0, 0.5, 1])
-    # end fake plot
-
+    ax.set_ylabel('LiLAC Performance (×)')
+    
+    ax.set_title('LiLAC vs. Expert')
+    ax.legend(['Intel-0', 'Intel-1'], loc='upper right')
+    
     fig.tight_layout()
     sns.despine(fig)
     return fig
