@@ -117,18 +117,13 @@ def marshall(df):
 def expert(df):
     comparisons = [
     ]
-    fig, axes = plt.subplots(2, 1, figsize=fig_size(0.9, 1.8))
+    fig, ax = plt.subplots(1, 1, figsize=fig_size(0.9, 0.9))
 
     # TODO fake plot for now, but adapt
-    npb = axes[0]
-    par = axes[1]
 
-    npb.set_title('NPB')
-    par.set_title('Parboil')
-
-    for b in [npb, par]:
-        b.set_ylabel('LiLAC Performance (×)')
-        b.set_yticks([0, 0.5, 1])
+    ax.set_title('Performance vs. Expert')
+    ax.set_ylabel('LiLAC Performance (×)')
+    ax.set_yticks([0, 0.5, 1])
     # end fake plot
 
     fig.tight_layout()
