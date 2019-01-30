@@ -263,79 +263,6 @@ void f_setup(int rows, int cols, int nnz)
   }
 }
 
-struct sigaction old_sigaction;
-
-static double *a_begin = NULL;
-static double *a_end = NULL;
-static double *aligned_a_begin = NULL;
-static double *aligned_a_end = NULL;
-
-static float *af_begin = NULL;
-static float *af_end = NULL;
-static float *aligned_af_begin = NULL;
-static float *aligned_af_end = NULL;
-
-static int *rowstr_begin = NULL;
-static int *rowstr_end = NULL;
-static int *aligned_rowstr_begin = NULL;
-static int *aligned_rowstr_end = NULL;
-
-static int *colidx_begin = NULL;
-static int *colidx_end = NULL;
-static int *aligned_colidx_begin = NULL;
-static int *aligned_colidx_end = NULL;
-
-static void handler(int sig, siginfo_t *si, void *unused)
-{
-  void *addr = si->si_addr;
-  if((addr >= aligned_a_begin && addr < aligned_a_end) ||
-     (addr >= aligned_rowstr_begin && addr < aligned_rowstr_end) ||
-     (addr >= aligned_colidx_begin && addr < aligned_colidx_end)) 
-  {
-    mprotect(aligned_a_begin, aligned_a_end - aligned_a_begin, 
-             PROT_READ | PROT_WRITE | PROT_EXEC);
-    mprotect(aligned_rowstr_begin, aligned_rowstr_end - aligned_rowstr_begin, 
-             PROT_READ | PROT_WRITE | PROT_EXEC);
-    mprotect(aligned_colidx_begin, aligned_colidx_end - aligned_colidx_begin, 
-             PROT_READ | PROT_WRITE | PROT_EXEC);
-    
-    a_begin = NULL;
-    rowstr_begin = NULL;
-    colidx_begin = NULL;
-  } else if(old_sigaction.sa_sigaction) {
-    old_sigaction.sa_sigaction(sig, si, unused);
-  }
-}
-
-static void f_handler(int sig, siginfo_t *si, void *unused)
-{
-  void *addr = si->si_addr;
-  if((addr >= aligned_af_begin && addr < aligned_af_end) ||
-     (addr >= aligned_rowstr_begin && addr < aligned_rowstr_end) ||
-     (addr >= aligned_colidx_begin && addr < aligned_colidx_end)) 
-  {
-    mprotect(aligned_af_begin, aligned_af_end - aligned_af_begin, 
-             PROT_READ | PROT_WRITE | PROT_EXEC);
-    mprotect(aligned_rowstr_begin, aligned_rowstr_end - aligned_rowstr_begin, 
-             PROT_READ | PROT_WRITE | PROT_EXEC);
-    mprotect(aligned_colidx_begin, aligned_colidx_end - aligned_colidx_begin, 
-             PROT_READ | PROT_WRITE | PROT_EXEC);
-    
-    af_begin = NULL;
-    rowstr_begin = NULL;
-    colidx_begin = NULL;
-  } else if(old_sigaction.sa_sigaction) {
-    old_sigaction.sa_sigaction(sig, si, unused);
-  }
-}
-
-#define ALIGN(name) \
-  aligned_##name##_begin = name##_begin; \
-  aligned_##name##_begin -= (size_t)aligned_##name##_begin % sysconf(_SC_PAGE_SIZE); \
-  aligned_##name##_end = name##_end + sysconf(_SC_PAGE_SIZE) - 1; \
-  aligned_##name##_end -= (size_t)aligned_##name##_end % sysconf(_SC_PAGE_SIZE); \
-  mprotect(aligned_##name##_begin, aligned_##name##_end - aligned_##name##_begin, PROT_READ | PROT_EXEC);
-
 extern "C" {
 
 void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx, int* rows)
@@ -348,66 +275,36 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
 
   setup(n_rows, n_cols, nnzA);
 
-  if((a_begin != nullptr && a_begin != a) ||
-     (rowstr_begin != nullptr && rowstr_begin != rowstr) ||
-     (colidx_begin != nullptr && colidx_begin != colidx))
-  {
-    a_begin = nullptr;
-    rowstr_begin = nullptr;
-    colidx_begin = nullptr;
-  }
-
-  if(a_begin == nullptr || rowstr_begin == nullptr || colidx_begin == nullptr) {
-    cl_status = clEnqueueWriteBuffer(queue(), A.values, true, 0, 
-                                     sizeof(double) * A.num_nonzeros, a, 
-                                     0, nullptr, nullptr);
-
-    auto one_based = new int[A.num_nonzeros + A.num_rows + 1];
-    const auto sub_one = [](int v) { return v - 1; };
-
-    auto it = std::transform(colidx, colidx + A.num_nonzeros, one_based, sub_one);
-    std::transform(rowstr, rowstr + A.num_rows + 1, it, sub_one);
-
-    cl_status = clEnqueueWriteBuffer(queue(), A.col_indices, true, 0,
-                                     sizeof(int) * A.num_nonzeros, one_based,
-                                     0, nullptr, nullptr);
-
-    cl_status = clEnqueueWriteBuffer(queue(), A.row_pointer, true, 0,
-                                     sizeof(int) * (A.num_rows + 1), 
-                                     one_based + A.num_nonzeros,
-                                     0, nullptr, nullptr);
-
-    //clsparseCsrMetaCreate(&A, control);
-
-    delete[] one_based;
-
-    cl_status = clEnqueueWriteBuffer(queue(), y.values, true, 0,
-                                     sizeof(double) * y.num_values, ov,
-                                     0, nullptr, nullptr);
-
-    struct sigaction sa;
-    sa.sa_flags = SA_SIGINFO;
-    sigemptyset(&sa.sa_mask);
-    sa.sa_sigaction = handler;
-    sigaction(SIGSEGV, &sa, &old_sigaction);
-
-    a_begin = a;
-    a_end = a_begin + nnzA;
-    ALIGN(a);
-
-    rowstr_begin = rowstr;
-    rowstr_end = rowstr_begin + n_rows + 1;
-    ALIGN(rowstr);
-
-    colidx_begin = colidx;
-    colidx_end = colidx_begin + nnzA;
-    ALIGN(colidx);
-  }
-
-  cl_status = clEnqueueWriteBuffer(queue(), x.values, true, 0,
-                                   sizeof(double) * x.num_values, iv,
+  cl_status = clEnqueueWriteBuffer(queue(), A.values, true, 0, 
+                                   sizeof(double) * A.num_nonzeros, a, 
                                    0, nullptr, nullptr);
 
+  auto one_based = new int[A.num_nonzeros + A.num_rows + 1];
+  const auto sub_one = [](int v) { return v - 1; };
+
+  auto it = std::transform(colidx, colidx + A.num_nonzeros, one_based, sub_one);
+  std::transform(rowstr, rowstr + A.num_rows + 1, it, sub_one);
+
+  cl_status = clEnqueueWriteBuffer(queue(), A.col_indices, true, 0,
+                                   sizeof(int) * A.num_nonzeros, one_based,
+                                   0, nullptr, nullptr);
+
+  cl_status = clEnqueueWriteBuffer(queue(), A.row_pointer, true, 0,
+                                   sizeof(int) * (A.num_rows + 1), 
+                                   one_based + A.num_nonzeros,
+                                   0, nullptr, nullptr);
+
+  //clsparseCsrMetaCreate(&A, control);
+
+  delete[] one_based;
+
+  cl_status = clEnqueueWriteBuffer(queue(), y.values, true, 0,
+                                   sizeof(double) * y.num_values, ov,
+                                   0, nullptr, nullptr);
+
+  cl_status = clEnqueueWriteBuffer(queue(), x.values, true, 0,
+                                 sizeof(double) * x.num_values, iv,
+                                 0, nullptr, nullptr);
 
   status = clsparseDcsrmv(&alpha, &A, &x, &beta, &y, control);
   if(status != clsparseSuccess) {
@@ -427,61 +324,32 @@ void* f_spmv_harness_(float* ov, float* a, float* iv, int* rowstr, int* colidx, 
 
   f_setup(n_rows, n_cols, nnzA);
 
-  if((af_begin != nullptr && af_begin != a) ||
-     (rowstr_begin != nullptr && rowstr_begin != rowstr) ||
-     (colidx_begin != nullptr && colidx_begin != colidx))
-  {
-    af_begin = nullptr;
-    rowstr_begin = nullptr;
-    colidx_begin = nullptr;
-  }
+  cl_status = clEnqueueWriteBuffer(queue(), A.values, true, 0, 
+                                   sizeof(float) * A.num_nonzeros, a, 
+                                   0, nullptr, nullptr);
 
-  if(af_begin == nullptr || rowstr_begin == nullptr || colidx_begin == nullptr) {
-    cl_status = clEnqueueWriteBuffer(queue(), A.values, true, 0, 
-                                     sizeof(float) * A.num_nonzeros, a, 
-                                     0, nullptr, nullptr);
+  auto one_based = new int[A.num_nonzeros + A.num_rows + 1];
+  const auto sub_one = [](int v) { return v - 1; };
 
-    auto one_based = new int[A.num_nonzeros + A.num_rows + 1];
-    const auto sub_one = [](int v) { return v - 1; };
+  auto it = std::transform(colidx, colidx + A.num_nonzeros, one_based, sub_one);
+  std::transform(rowstr, rowstr + A.num_rows + 1, it, sub_one);
 
-    auto it = std::transform(colidx, colidx + A.num_nonzeros, one_based, sub_one);
-    std::transform(rowstr, rowstr + A.num_rows + 1, it, sub_one);
+  cl_status = clEnqueueWriteBuffer(queue(), A.col_indices, true, 0,
+                                   sizeof(int) * A.num_nonzeros, one_based,
+                                   0, nullptr, nullptr);
 
-    cl_status = clEnqueueWriteBuffer(queue(), A.col_indices, true, 0,
-                                     sizeof(int) * A.num_nonzeros, one_based,
-                                     0, nullptr, nullptr);
+  cl_status = clEnqueueWriteBuffer(queue(), A.row_pointer, true, 0,
+                                   sizeof(int) * (A.num_rows + 1), 
+                                   one_based + A.num_nonzeros,
+                                   0, nullptr, nullptr);
 
-    cl_status = clEnqueueWriteBuffer(queue(), A.row_pointer, true, 0,
-                                     sizeof(int) * (A.num_rows + 1), 
-                                     one_based + A.num_nonzeros,
-                                     0, nullptr, nullptr);
+  //clsparseCsrMetaCreate(&A, control);
 
-    //clsparseCsrMetaCreate(&A, control);
+  delete[] one_based;
 
-    delete[] one_based;
-
-    cl_status = clEnqueueWriteBuffer(queue(), y.values, true, 0,
-                                     sizeof(float) * y.num_values, ov,
-                                     0, nullptr, nullptr);
-
-    struct sigaction sa;
-    sa.sa_flags = SA_SIGINFO;
-    sigemptyset(&sa.sa_mask);
-    sa.sa_sigaction = f_handler;
-    sigaction(SIGSEGV, &sa, &old_sigaction);
-
-    af_begin = a;
-    af_end = af_begin + nnzA;
-    ALIGN(af);
-
-    rowstr_begin = rowstr;
-    rowstr_end = rowstr_begin + n_rows + 1;
-    ALIGN(rowstr);
-
-    colidx_begin = colidx;
-    colidx_end = colidx_begin + nnzA;
-    ALIGN(colidx);
-  }
+  cl_status = clEnqueueWriteBuffer(queue(), y.values, true, 0,
+                                   sizeof(float) * y.num_values, ov,
+                                   0, nullptr, nullptr);
 
   cl_status = clEnqueueWriteBuffer(queue(), x.values, true, 0,
                                    sizeof(float) * x.num_values, iv,
