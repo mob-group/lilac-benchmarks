@@ -137,129 +137,27 @@ void f_setup(int rows, int cols, int nnzA)
   }
 }
 
-struct sigaction old_sigaction;
-
-static double *a_begin = NULL;
-static double *a_end = NULL;
-static void *aligned_a_begin = NULL;
-static void *aligned_a_end = NULL;
-
-static float *af_begin = NULL;
-static float *af_end = NULL;
-static void *aligned_af_begin = NULL;
-static void *aligned_af_end = NULL;
-
-static int *rowstr_begin = NULL;
-static int *rowstr_end = NULL;
-static void *aligned_rowstr_begin = NULL;
-static void *aligned_rowstr_end = NULL;
-
-static int *colidx_begin = NULL;
-static int *colidx_end = NULL;
-static void *aligned_colidx_begin = NULL;
-static void *aligned_colidx_end = NULL;
-
-static void handler(int sig, siginfo_t *si, void *unused)
-{
-  void *addr = si->si_addr;
-  if((addr >= aligned_a_begin && addr < aligned_a_end) ||
-     (addr >= aligned_rowstr_begin && addr < aligned_rowstr_end) ||
-     (addr >= aligned_colidx_begin && addr < aligned_colidx_end)) 
-  {
-    mprotect(aligned_a_begin, aligned_a_end - aligned_a_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
-    mprotect(aligned_rowstr_begin, aligned_rowstr_end - aligned_rowstr_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
-    mprotect(aligned_colidx_begin, aligned_colidx_end - aligned_colidx_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
-    
-    if((addr >= a_begin && addr < a_end) ||
-       (addr >= rowstr_begin && addr < rowstr_end) ||
-       (addr >= colidx_begin && addr < colidx_end)) {
-      a_begin = NULL;
-      rowstr_begin = NULL;
-      colidx_begin = NULL;
-    }
-  } else if(old_sigaction.sa_sigaction) {
-    old_sigaction.sa_sigaction(sig, si, unused);
-  }
-}
-
-static void f_handler(int sig, siginfo_t *si, void *unused)
-{
-  void *addr = si->si_addr;
-  if((addr >= aligned_af_begin && addr < aligned_af_end) ||
-     (addr >= aligned_rowstr_begin && addr < aligned_rowstr_end) ||
-     (addr >= aligned_colidx_begin && addr < aligned_colidx_end)) 
-  {
-    mprotect(aligned_af_begin, aligned_af_end - aligned_af_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
-    mprotect(aligned_rowstr_begin, aligned_rowstr_end - aligned_rowstr_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
-    mprotect(aligned_colidx_begin, aligned_colidx_end - aligned_colidx_begin, PROT_READ | PROT_WRITE | PROT_EXEC);
-    
-    af_begin = NULL;
-    rowstr_begin = NULL;
-    colidx_begin = NULL;
-  } else if(old_sigaction.sa_sigaction) {
-    old_sigaction.sa_sigaction(sig, si, unused);
-  }
-}
-
-#define ALIGN(name) \
-  aligned_##name##_begin = name##_begin; \
-  aligned_##name##_begin -= (size_t)aligned_##name##_begin % sysconf(_SC_PAGE_SIZE); \
-  aligned_##name##_end = name##_end + sysconf(_SC_PAGE_SIZE) - 1; \
-  aligned_##name##_end -= (size_t)aligned_##name##_end % sysconf(_SC_PAGE_SIZE); \
-  mprotect(aligned_##name##_begin, aligned_##name##_end - aligned_##name##_begin, PROT_READ | PROT_EXEC);
-
 void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx, int* rows)
 {
-  static int cols = 0;
+  int cols = 0;
 
   int n = *rows;
   int nnzA = rowstr[n] - rowstr[0];
-  if(cols == 0) {
-    for(int i = rowstr[0]; i < rowstr[n]; ++i) {
-      if(colidx[i] >= cols) {
-        cols = colidx[i];
-      }
+
+  for(int i = rowstr[0]; i < rowstr[n]; ++i) {
+    if(colidx[i] >= cols) {
+      cols = colidx[i];
     }
   }
 
   setup(n, cols, nnzA);
 
-  if((a_begin != NULL && a_begin != a) ||
-     (rowstr_begin != NULL && rowstr_begin != rowstr) ||
-     (colidx_begin != NULL && colidx_begin != colidx))
-  {
-    a_begin = NULL;
-    rowstr_begin = NULL;
-    colidx_begin = NULL;
-  }
-
-  if(a_begin == NULL || rowstr_begin == NULL || colidx_begin == NULL) {
-    // Do device copy
-    cudaStat1 = cudaMemcpy(d_csrRowPtrA, rowstr, sizeof(int) * (n+1), cudaMemcpyHostToDevice);
-    cudaStat2 = cudaMemcpy(d_csrColIndA, colidx, sizeof(int) * nnzA, cudaMemcpyHostToDevice);
-    cudaStat3 = cudaMemcpy(d_csrValA, a, sizeof(double) * nnzA, cudaMemcpyHostToDevice);
-    assert(cudaSuccess == cudaStat1);
-    assert(cudaSuccess == cudaStat2);
-    assert(cudaSuccess == cudaStat3);
-
-    struct sigaction sa;
-    sa.sa_flags = SA_SIGINFO;
-    sigemptyset(&sa.sa_mask);
-    sa.sa_sigaction = handler;
-    sigaction(SIGSEGV, &sa, &old_sigaction);
-
-    a_begin = a;
-    a_end = a_begin + nnzA;
-    ALIGN(a);
-
-    rowstr_begin = rowstr;
-    rowstr_end = rowstr_begin + n + 1;
-    ALIGN(rowstr);
-
-    colidx_begin = colidx;
-    colidx_end = colidx_begin + nnzA;
-    ALIGN(colidx);
-  }
+  cudaStat1 = cudaMemcpy(d_csrRowPtrA, rowstr, sizeof(int) * (n+1), cudaMemcpyHostToDevice);
+  cudaStat2 = cudaMemcpy(d_csrColIndA, colidx, sizeof(int) * nnzA, cudaMemcpyHostToDevice);
+  cudaStat3 = cudaMemcpy(d_csrValA, a, sizeof(double) * nnzA, cudaMemcpyHostToDevice);
+  assert(cudaSuccess == cudaStat1);
+  assert(cudaSuccess == cudaStat2);
+  assert(cudaSuccess == cudaStat3);
 
   cudaStat1 = cudaMemcpy(d_x, iv, sizeof(double) * cols, cudaMemcpyHostToDevice);
   assert(cudaSuccess == cudaStat1);
@@ -290,56 +188,24 @@ void* spmv_harness_(double* ov, double* a, double* iv, int* rowstr, int* colidx,
 
 void* f_spmv_harness_(float* ov, float* a, float* iv, int* rowstr, int* colidx, int* rows)
 {
-  static int cols = 0;
-
+  int cols = 0;
   int n = *rows;
   int nnzA = rowstr[n] - rowstr[0];
-  if(cols == 0) {
-    for(int i = rowstr[0]; i < rowstr[n]; ++i) {
-      if(colidx[i] >= cols) {
-        cols = colidx[i];
-      }
+
+  for(int i = rowstr[0]; i < rowstr[n]; ++i) {
+    if(colidx[i] >= cols) {
+      cols = colidx[i];
     }
   }
 
   f_setup(n, cols, nnzA);
 
-  if((af_begin != NULL && af_begin != a) ||
-     (rowstr_begin != NULL && rowstr_begin != rowstr) ||
-     (colidx_begin != NULL && colidx_begin != colidx))
-  {
-    af_begin = NULL;
-    rowstr_begin = NULL;
-    colidx_begin = NULL;
-  }
-
-  if(af_begin == NULL || rowstr_begin == NULL || colidx_begin == NULL) {
-    // Do device copy
-    cudaStat1 = cudaMemcpy(d_csrRowPtrA, rowstr, sizeof(int) * (n+1), cudaMemcpyHostToDevice);
-    cudaStat2 = cudaMemcpy(d_csrColIndA, colidx, sizeof(int) * nnzA, cudaMemcpyHostToDevice);
-    cudaStat3 = cudaMemcpy(df_csrValA, a, sizeof(float) * nnzA, cudaMemcpyHostToDevice);
-    assert(cudaSuccess == cudaStat1);
-    assert(cudaSuccess == cudaStat2);
-    assert(cudaSuccess == cudaStat3);
-
-    struct sigaction sa;
-    sa.sa_flags = SA_SIGINFO;
-    sigemptyset(&sa.sa_mask);
-    sa.sa_sigaction = f_handler;
-    sigaction(SIGSEGV, &sa, &old_sigaction);
-
-    af_begin = a;
-    af_end = af_begin + nnzA;
-    ALIGN(af);
-
-    rowstr_begin = rowstr;
-    rowstr_end = rowstr_begin + n + 1;
-    ALIGN(rowstr);
-
-    colidx_begin = colidx;
-    colidx_end = colidx_begin + nnzA;
-    ALIGN(colidx);
-  }
+  cudaStat1 = cudaMemcpy(d_csrRowPtrA, rowstr, sizeof(int) * (n+1), cudaMemcpyHostToDevice);
+  cudaStat2 = cudaMemcpy(d_csrColIndA, colidx, sizeof(int) * nnzA, cudaMemcpyHostToDevice);
+  cudaStat3 = cudaMemcpy(df_csrValA, a, sizeof(float) * nnzA, cudaMemcpyHostToDevice);
+  assert(cudaSuccess == cudaStat1);
+  assert(cudaSuccess == cudaStat2);
+  assert(cudaSuccess == cudaStat3);
 
   cudaStat1 = cudaMemcpy(df_x, iv, sizeof(float) * cols, cudaMemcpyHostToDevice);
   assert(cudaSuccess == cudaStat1);
