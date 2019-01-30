@@ -40,7 +40,13 @@ opencl%-slow.so: opencl-slow.cpp cl_%.cpp
 sparsex.so: sparsex.c
 	$(CC) $(CFLAGS) -fPIC -shared $(SPARSEX_CFLAGS) $^ -o $@ $(SPARSEX_LDFLAGS) -L$(SPARSEX_LLVM_LIBDIR)
 
+sparsex-slow.so: sparsex-slow.c
+	$(CC) $(CFLAGS) -fPIC -shared $(SPARSEX_CFLAGS) $^ -o $@ $(SPARSEX_LDFLAGS) -L$(SPARSEX_LLVM_LIBDIR)
+
 fsparsex.so: fsparsex.c
+	$(CC) $(CFLAGS) -fPIC -shared $(F_SPARSEX_CFLAGS) $^ -o $@ $(F_SPARSEX_LDFLAGS) -L$(SPARSEX_LLVM_LIBDIR)
+
+fsparsex-slow.so: fsparsex-slow.c
 	$(CC) $(CFLAGS) -fPIC -shared $(F_SPARSEX_CFLAGS) $^ -o $@ $(F_SPARSEX_LDFLAGS) -L$(SPARSEX_LLVM_LIBDIR)
 
 test: test.cpp
