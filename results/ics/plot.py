@@ -35,7 +35,11 @@ def bench_map(bench):
         'pfold': 'PFold',
         'ngt': 'NGT',
         'PageRank': 'PageRank',
-        'bfs': 'BFS'
+        'bfs': 'BFS',
+        'NPB': 'NPB',
+        'parboil-spmv': 'Parboil SPMV',
+        'Netlib-C': 'Netlib C',
+        'Netlib-F': 'Netlib Fortran'
     }[bench]
 
 # ... and the platform
@@ -50,12 +54,14 @@ def get_data(infile):
     return pd.read_csv(infile)
 
 def baseline(df):
-    benches = ['pfold', 'ngt', 'PageRank', 'bfs']
+    benches = ['pfold', 'ngt', 'PageRank', 'bfs', 'NPB', 'parboil-spmv',
+    'Netlib-C', 'Netlib-F']
     platforms = df.platform.unique()
 
-    fig, axes = plt.subplots(1, len(benches), sharey=True, figsize=fig_size(2.1, 0.67))
+    fig, axes = plt.subplots(2, len(benches)//2, sharey='row',
+            figsize=fig_size(2.1, 0.67*2))
 
-    for plot_num, (bench, ax) in enumerate(zip(benches, axes)):
+    for plot_num, (bench, ax) in enumerate(zip(benches, axes.flatten())):
         i = 0
         
         if plot_num == 0:
@@ -70,6 +76,13 @@ def baseline(df):
         
         rows = [r for r in results.iterrows()]
         rows.sort(key=lambda r: platform_map(r[1].platform))
+
+        ax.set_xlim(-0.6, 2.6)
+
+        if plot_num < 4:
+            ax.set_ylim(0.8, 3.0)
+        else:
+            ax.set_ylim(0.8, 12.5)
 
         for row in rows:
             y_val = row[1].speedup
@@ -89,9 +102,6 @@ def baseline(df):
         ax.set_xticks([])
         ax.set_xticklabels([])
         ax.xaxis.set_tick_params(rotation=-45)
-
-        ax.set_ylim(0.8, 3.0)
-        ax.set_xlim(-0.6, 2.6)
         
         ax.axhline(y=1, color='white', linestyle=':')
         
