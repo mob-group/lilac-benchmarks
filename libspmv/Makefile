@@ -22,6 +22,9 @@ mkl-slow.so: mkl-slow.c
 gpu.so:	gpu.c
 	${CC} ${CFLAGS} -L${CUDA_ROOT}/lib64 -I${CUDA_ROOT}/include -fPIC -shared $< -o $@ -lcublas -lcusparse -lcudart
 
+gpu-slow.so: gpu-slow.c
+	${CC} ${CFLAGS} -L${CUDA_ROOT}/lib64 -I${CUDA_ROOT}/include -fPIC -shared $< -o $@ -lcublas -lcusparse -lcudart
+
 unsafe.so: gpu-unsafe.c
 	${CC} ${CFLAGS} -L${CUDA_ROOT}/lib64 -I${CUDA_ROOT}/include -fPIC -shared $< -o $@ -lcublas -lcusparse -lcudart
 
