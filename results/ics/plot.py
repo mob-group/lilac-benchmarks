@@ -19,6 +19,8 @@ def fig_size(w, h):
 # Turn an internal representation of an implementation name into a friendly
 # printable one.
 def impl_map(platform, impl):
+    impl = impl.replace('-slow', '')
+
     if platform == 'michel' and impl == 'opencl10':
         return 'clSPARSE (eGPU)'
     elif platform == 'firuza' and impl == 'opencl00':
@@ -129,6 +131,21 @@ def baseline_bench(df):
 def marshall(df):
     def plot_bar(x, bench, platform, impl, ax):
         row = df.query('benchmark==@bench and platform==@platform').head(1)[impl]
+        orig = row.item()
+        row = min(row.item(), 4.0)
+
+        threshold = 0.85 * 4.0
+        valign = 'top' if row > threshold else 'bottom'
+        offset = -4.0/30 if row > threshold else 4.0/30
+        color = 'white' if row > threshold else 'black'
+
+        text = impl_map(platform, impl)
+        ax.text(i, row + offset, text, rotation=90, verticalalignment=valign,
+            horizontalalignment='center', color=color, fontsize=8)
+
+        if orig > row:
+            ax.text(i, row + 0.02, "{:.1f}×".format(orig), ha='center',
+                    va='bottom', fontsize=6)
         return ax.bar(x, row, width=0.95)
 
     fig, (pfold, ngt, pr, bfs) = plt.subplots(1, 4, figsize=fig_size(2.1, 0.67), sharey=True)
@@ -137,6 +154,8 @@ def marshall(df):
     ngt.set_title('NGT')
     pr.set_title('PageRank')
     bfs.set_title('BFS')
+
+    pfold.set_ylabel('Speedup (×)')
     
     groups = {
         pfold: ('pfold', [
@@ -170,13 +189,14 @@ def marshall(df):
         
         name, bars = groups[ax]
         bar_list = []
+        leg = []
         for i, bar in enumerate(bars):
+            leg.append(platform_map(bar[0]))
             bar_list.append(plot_bar(i, name, *bar, ax))
 
         ax.axhline(y=1, color='white', linestyle=':')
 
-    # add legend when all bars in place
-    ax.legend(bar_list, '', bbox_to_anchor=(1.5,0.5), loc='center')
+    ax.legend(bar_list, leg, bbox_to_anchor=(1.5,0.5), loc='center')
     
     fig.tight_layout()
     sns.despine(fig)
