@@ -54,12 +54,10 @@ def get_data(infile):
     return pd.read_csv(infile)
 
 def baseline(df):
-    benches = ['pfold', 'ngt', 'PageRank', 'bfs', 'NPB', 'parboil-spmv',
-    'Netlib-C', 'Netlib-F']
+    benches = ['pfold', 'ngt', 'PageRank', 'bfs']
     platforms = df.platform.unique()
 
-    fig, axes = plt.subplots(2, len(benches)//2, sharey='row',
-            figsize=fig_size(2.1, 0.67*2))
+    fig, axes = plt.subplots(1, len(benches), sharey='row', figsize=fig_size(2.1, 0.67))
 
     for plot_num, (bench, ax) in enumerate(zip(benches, axes.flatten())):
         i = 0
@@ -78,11 +76,7 @@ def baseline(df):
         rows.sort(key=lambda r: platform_map(r[1].platform))
 
         ax.set_xlim(-0.6, 2.6)
-
-        if plot_num < 4:
-            ax.set_ylim(0.8, 3.0)
-        else:
-            ax.set_ylim(0.8, 12.5)
+        ax.set_ylim(0.8, 3.0)
 
         for row in rows:
             y_val = row[1].speedup
