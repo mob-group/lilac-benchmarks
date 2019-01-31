@@ -840,3 +840,13 @@ firuza,NPB,gpu-slow,A,1.72,1.72,1.72,1.71,1.71
 firuza,NPB,gpu-slow,B,61.87,62.02,61.80,61.73,62.10
 firuza,NPB,gpu-slow,C,163.51,164.23,163.55,163.40,163.92
 firuza,NPB,gpu-slow,D,4776.59
+firuza,PageRank,mkl,roadNet-CA,14.3892,14.3785,14.3721,14.3758,14.3642
+firuza,PageRank,mkl,kron,2.94092,2.91419,2.91456,2.91584,2.91595
+firuza,PageRank,mkl,in-2004,15.9775,15.9321,15.9313,15.9322,15.9322
+firuza,PageRank,mkl,USA-road-d.E,27.0599,27.0209,27.0052,27.041,27.0331
+firuza,PageRank,mkl,higgs-twitter,11.3862,11.349,11.3478,11.3497,11.3523
+firuza,PageRank,mkl,Si5H12,0.182328,0.158007,0.157858,0.15762,0.157731
+firuza,PageRank,mkl,com-Youtube,12.5618,12.5295,12.5294,12.5313,12.5256
+firuza,PageRank,mkl,erdos,4.11755,3.99649,3.99612,3.99717,3.99675
+firuza,PageRank,mkl,eu-2005,13.3917,13.3492,13.3537,13.352,13.3515
+firuza,PageRank,mkl,ljournal-2008,107.101,106.982,106.987,107.005,107.08
