@@ -57,7 +57,7 @@ def get_data(infile):
 def next_tick(val, ticks):
     return np.ceil((1/ticks) * val) / (1/ticks)
 
-def baseline_impl(df, benches, tick_size=0.5):
+def baseline_impl(df, benches, tick_size=0.5, ticks=None):
     platforms = df.platform.unique()
 
     fig, axes = plt.subplots(1, len(benches), sharey='row', figsize=fig_size(2.1, 0.67))
@@ -80,7 +80,11 @@ def baseline_impl(df, benches, tick_size=0.5):
 
         ax.set_xlim(-0.6, 2.6)
         ax.set_ylim(0.8, next_tick(max_y, tick_size))
-        ax.set_yticks(np.arange(1, next_tick(max_y, tick_size) + tick_size, tick_size))
+
+        if ticks is None:
+            ax.set_yticks(np.arange(1, next_tick(max_y, tick_size) + tick_size, tick_size))
+        else:
+            ax.set_yticks(ticks)
 
         for row in rows:
             y_val = row[1].speedup
@@ -119,7 +123,7 @@ def baseline(df):
 
 def baseline_bench(df):
     benches = ['NPB', 'parboil-spmv', 'Netlib-C', 'Netlib-F']
-    return baseline_impl(df, benches, tick_size=4.0)
+    return baseline_impl(df, benches, tick_size=1, ticks=[1.0, 5.0, 10.0])
 
 def marshall(df):
     def plot_bar(x, bench, platform, impl, ax):
