@@ -2,6 +2,7 @@
 
 import argparse
 import matplotlib.pyplot as plt
+import numpy as np
 import pandas as pd
 import seaborn as sns
 
@@ -53,13 +54,16 @@ def platform_map(platform):
 def get_data(infile):
     return pd.read_csv(infile)
 
-def baseline(df):
-    benches = ['pfold', 'ngt', 'PageRank', 'bfs']
+def next_tick(val, ticks):
+    return np.ceil((1/ticks) * val) / (1/ticks)
+
+def baseline_impl(df, benches, tick_size=0.5):
     platforms = df.platform.unique()
 
     fig, axes = plt.subplots(1, len(benches), sharey='row', figsize=fig_size(2.1, 0.67))
+    max_y = df[df['benchmark'].isin(benches)]['speedup'].max()
 
-    for plot_num, (bench, ax) in enumerate(zip(benches, axes.flatten())):
+    for plot_num, (bench, ax) in enumerate(zip(benches, axes)):
         i = 0
         
         if plot_num == 0:
@@ -67,7 +71,6 @@ def baseline(df):
         
         results = df.query("benchmark=='{}'".format(bench))
         
-        ticks = []
         labs = []
         bars = []
         legend = []
@@ -76,18 +79,20 @@ def baseline(df):
         rows.sort(key=lambda r: platform_map(r[1].platform))
 
         ax.set_xlim(-0.6, 2.6)
-        ax.set_ylim(0.8, 3.0)
+        ax.set_ylim(0.8, next_tick(max_y, tick_size))
+        ax.set_yticks(np.arange(1, next_tick(max_y, tick_size) + tick_size, tick_size))
 
         for row in rows:
             y_val = row[1].speedup
             bars.append(ax.bar(i, y_val, width=0.95))
-            ticks.append(i-0.2)
             legend.append(platform_map(row[1].platform))
             labs.append(impl_map(row[1].platform, row[1].implementation))
             
-            valign = 'top' if y_val > 2.5 else 'bottom'
-            offset = -0.1 if y_val > 2.5 else 0.1
-            color = 'white' if y_val > 2.5 else 'black'
+            threshold = 0.85 * next_tick(max_y, tick_size)
+            valign = 'top' if y_val > threshold else 'bottom'
+            offset = -max_y/30 if y_val > threshold else max_y/30
+            color = 'white' if y_val > threshold else 'black'
+
             ax.text(i, y_val + offset, impl_map(row[1].platform,
                 row[1].implementation), rotation=90, verticalalignment=valign,
                 horizontalalignment='center', color=color, fontsize=8)
@@ -95,7 +100,6 @@ def baseline(df):
                     
         ax.set_xticks([])
         ax.set_xticklabels([])
-        ax.xaxis.set_tick_params(rotation=-45)
         
         ax.axhline(y=1, color='white', linestyle=':')
         
@@ -108,6 +112,14 @@ def baseline(df):
 
     sns.despine(fig)
     return fig
+
+def baseline(df):
+    benches = ['pfold', 'ngt', 'PageRank', 'bfs']
+    return baseline_impl(df, benches)
+
+def baseline_bench(df):
+    benches = ['NPB', 'parboil-spmv', 'Netlib-C', 'Netlib-F']
+    return baseline_impl(df, benches, tick_size=4.0)
 
 def marshall(df):
     def plot_bar(x, bench, platform, impl, ax):
@@ -194,6 +206,7 @@ def expert(df):
 
 plot_choices = { p.__name__ : p for p in [
     baseline,
+    baseline_bench,
     expert,
     marshall
 ]}
