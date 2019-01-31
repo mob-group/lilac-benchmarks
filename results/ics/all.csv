@@ -814,3 +814,13 @@ firuza,bfs,mkl-slow,Si5H12,0.00881307,0.00850688,0.00877106,0.0087167,0.00899698
 firuza,bfs,mkl-slow,com-Youtube,0.247542,0.216259,0.256217,0.232591,0.264211
 firuza,bfs,mkl-slow,erdos,2.43059,1.79297,2.09552,2.32321,2.03685
 firuza,bfs,mkl-slow,eu-2005,0.684917,0.688332,0.677162,0.723084,0.676299
+michel,PageRank,gpu-slow,roadNet-CA,53.7488,52.4039,52.562,52.6296,52.3591
+michel,PageRank,gpu-slow,kron,11.0627,10.3289,9.7768,9.76396,9.74785
+michel,PageRank,gpu-slow,in-2004,87.2088,86.5168,86.5171,86.5271,86.5165
+michel,PageRank,gpu-slow,USA-road-d.E,95.3821,94.643,94.6577,94.3713,94.1247
+michel,PageRank,gpu-slow,higgs-twitter,59.863,59.2498,59.2431,59.2441,59.2306
+michel,PageRank,gpu-slow,Si5H12,4.25934,3.55534,3.54864,3.54885,3.55597
+michel,PageRank,gpu-slow,com-Youtube,39.5037,38.7724,38.7854,38.7902,38.7826
+michel,PageRank,gpu-slow,erdos,14.8175,14.0095,13.6477,13.5842,13.5867
+michel,PageRank,gpu-slow,eu-2005,84.105,83.4412,83.4718,83.482,83.5001
+michel,PageRank,gpu-slow,ljournal-2008,402.043,401.261,402.106,400.947,400.285
