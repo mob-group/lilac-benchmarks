@@ -834,3 +834,9 @@ michel,bfs,sparsex-slow,Si5H12,,,,,
 michel,bfs,sparsex-slow,com-Youtube,,,,,
 michel,bfs,sparsex-slow,erdos,,574.118,,562.292,516.499
 michel,bfs,sparsex-slow,eu-2005,,,,,
+firuza,NPB,gpu-slow,S,0.17,0.17,0.17,0.16,0.16
+firuza,NPB,gpu-slow,W,0.57,0.58,0.57,0.57,0.57
+firuza,NPB,gpu-slow,A,1.72,1.72,1.72,1.71,1.71
+firuza,NPB,gpu-slow,B,61.87,62.02,61.80,61.73,62.10
+firuza,NPB,gpu-slow,C,163.51,164.23,163.55,163.40,163.92
+firuza,NPB,gpu-slow,D,4776.59

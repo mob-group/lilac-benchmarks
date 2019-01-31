@@ -88,7 +88,8 @@ def vs_marshalled(speedups):
 modes = {
     'baseline' : best_per_benchmark,
     'expert' : best_vs_expert,
-    'marshall' : vs_marshalled
+    'marshall' : vs_marshalled,
+    'speeds': lambda x: x
 }
 
 def print_results(df, out=None):

@@ -2,6 +2,7 @@
 
 import argparse
 import matplotlib.pyplot as plt
+import matplotlib.patches as patches
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -208,11 +209,65 @@ def expert(df):
     sns.despine(fig)
     return fig
 
+def distribution(df):
+    def marker(name):
+        markers = ['.', '+', 'x', '1', '*', 's']
+        return dict(zip(impls, markers))[name]
+
+    def color(name):
+        pal = sns.cubehelix_palette(6, rot=60/360, dark=0.2, light=0.7)
+        return pal[list(impls).index(name)]
+
+    speeds = df.query('benchmark=="NPB" and implementation!="native"')
+    impls = speeds.implementation.unique()
+
+    df = speeds.groupby(['platform', 'name'])
+    data = [
+        [(row['implementation'], row['speedup'], row['platform']) 
+            for _, row in group.iterrows()] 
+            for _, group in df
+    ]
+    s_data = sorted(data, key=lambda row: max([s for _, s, _ in row]))
+
+    fig, ax = plt.subplots(figsize=fig_size(1, 0.75))
+
+    p_colors = {
+        'firuza': [0.8, 0.8, 0.8],
+        'michel': [0.2, 0.2, 0.2],
+        'monaco': 'white'
+    }
+
+    leg = {}
+    rects = {}
+
+    for i, row in enumerate(s_data):
+        p = row[0][2]
+        r = patches.Rectangle((i-0.5, 0), 1, 16, color=p_colors[p], alpha=0.2, linewidth=0)
+        ax.add_patch(r)
+        rects[p] = r
+        for name, speed, _ in row:
+            leg[name] = ax.scatter(i, speed, c=[color(name)], marker=marker(name))
+
+    ax.set_title('Speedup Distribution')
+    ax.set_ylabel('Speedup (×)')
+    ax.set_xticks([])
+    ax.set_ylim([0, 16])
+    ax.axhline(y=1, ls=':', c='black')
+
+    vs = [*rects.values(), *leg.values()]
+    ks = [*rects.keys(), *leg.keys()]
+    ax.legend(vs, ks, loc='upper center', bbox_to_anchor=(0.5, -0.1), ncol=3, fontsize=8)
+
+    fig.tight_layout()
+    sns.despine(fig)
+    return fig
+
 plot_choices = { p.__name__ : p for p in [
     baseline,
     baseline_bench,
     expert,
-    marshall
+    marshall,
+    distribution
 ]}
 
 if __name__ == "__main__":
@@ -223,4 +278,4 @@ if __name__ == "__main__":
 
     plot_f = plot_choices[args.plot]
     fig = plot_f(get_data(args.data))
-    fig.savefig('{}.pdf'.format(args.plot))
+    fig.savefig('{}.pdf'.format(args.plot), bbox_inches='tight')
