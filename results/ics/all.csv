@@ -824,3 +824,13 @@ michel,PageRank,gpu-slow,com-Youtube,39.5037,38.7724,38.7854,38.7902,38.7826
 michel,PageRank,gpu-slow,erdos,14.8175,14.0095,13.6477,13.5842,13.5867
 michel,PageRank,gpu-slow,eu-2005,84.105,83.4412,83.4718,83.482,83.5001
 michel,PageRank,gpu-slow,ljournal-2008,402.043,401.261,402.106,400.947,400.285
+michel,bfs,sparsex-slow,roadNet-CA,,,,,
+michel,bfs,sparsex-slow,kron,35.1917,45.4305,87.3475,58.716,70.8944
+michel,bfs,sparsex-slow,in-2004,,,,,
+michel,bfs,sparsex-slow,ljournal-2008,
+michel,bfs,sparsex-slow,USA-road-d.E,,,,,
+michel,bfs,sparsex-slow,higgs-twitter,,,,,
+michel,bfs,sparsex-slow,Si5H12,,,,,
+michel,bfs,sparsex-slow,com-Youtube,,,,,
+michel,bfs,sparsex-slow,erdos,,574.118,,562.292,516.499
+michel,bfs,sparsex-slow,eu-2005,,,,,
