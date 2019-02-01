@@ -160,8 +160,8 @@ def marshall(df):
                     va='bottom', fontsize=6)
         return ax.bar(x, row, width=0.95, color=plat_color(platform))
 
-    fig, ax = plt.subplots(1, 1, figsize=fig_size(1, 0.75), sharey=True)
-    ax.set_title('Speedup vs. Naïve', fontsize=10)
+    fig, ax = plt.subplots(1, 1, figsize=fig_size(1, 0.67), sharey=True)
+    ax.set_title('Speedup vs. Naïve Memory Transfers', fontsize=10, y=1.05)
     
     groups = [
         ('pfold', [
@@ -218,29 +218,30 @@ def marshall(df):
     return fig
 
 def expert(df):
-    sns.set_palette(sns.cubehelix_palette(2, rot=60/360, dark=0.2, light=0.7-(0.5/2)))
+    sns.set_palette(sns.cubehelix_palette(2, rot=60/360, dark=0.2, light=0.7))
 
     fig, ax = plt.subplots(1, 1, figsize=fig_size(0.9, 0.5))
-    
-    b1 = ax.bar(0, df.loc[1]['openmp-expert'], width=0.95)
-    b2 = ax.bar(1, df.loc[0]['openmp-expert'], width=0.95)
-    
-    ax.bar(2.5, df.loc[1]['opencl-expert'], width=0.95)
-    ax.bar(3.5, df.loc[0]['opencl-expert'], width=0.95)
 
-    ax.bar(5, df.loc[3]['opencl-expert'], width=0.95)
-    ax.bar(6, df.loc[2]['opencl-expert'], width=0.95)
+    # ax.bar(0, df.loc[0]['native'], width=0.95)
+    ax.bar(0, df.loc[0]['opencl00'], width=0.95)
+    ax.bar(1, df.loc[0]['opencl-expert'], width=0.95)
 
-    ax.set_xticks([0.5, 3, 5.5])
-    ax.set_xticklabels(['NPB-CG\nOpenMP', 'NPB-CG\nOpenCL', 'Parboil\nOpenCL'],
-            fontsize=8)
+    # ax.bar(3.5, df.loc[1]['native'], width=0.95)
+    ax.bar(2.5, df.loc[1]['opencl00'], width=0.95)
+    ax.bar(3.5, df.loc[1]['opencl-expert'], width=0.95)
+    
+    ax.set_xticks([0.5, 3])
+    ax.set_xticklabels(['NPB-CG', 'Parboil'], fontsize=8)
     
     ax.set_yticks(np.arange(0, 1.1, 0.2))
     ax.tick_params(axis='y', labelsize=6)
-    ax.set_ylabel('LiLAC Performance (×)', fontsize=8)
+    ax.set_ylabel('Performance (×)', fontsize=8)
     
-    ax.set_title('LiLAC vs. Expert', fontsize=8)
-    ax.legend(['Intel-0', 'Intel-1'], loc='upper right', fontsize=6)
+    ax.set_title('LiLAC vs. Expert Implementation', fontsize=8)
+    ax.legend(['LiLAC', 'Expert'], loc='center left', fontsize=6,
+            bbox_to_anchor=(1, 0.5))
+
+    ax.axhline(y=1, color='black', lw=0.8)
     
     fig.tight_layout()
     sns.despine(fig)
@@ -285,7 +286,7 @@ def distribution(df):
     ]
     s_data = sorted(data, key=row_cmp)
 
-    fig, ax = plt.subplots(figsize=fig_size(1, 0.75))
+    fig, ax = plt.subplots(figsize=fig_size(1, 0.55))
 
     p_colors = {
         'AMD': [0.8] * 3,

@@ -50,10 +50,14 @@ def speedup_for_impl(impl, group):
 def speedup_pairs(g, targets):
     return pd.Series(
         [speedup_for_impl(t[0], g) / speedup_for_impl(t[1], g) for t in targets],
-        index=[t[1] for t in targets]
+        index=[t[0] for t in targets]
     )
 
-def compare_speedups(speedups, targets, sparse=False):
+def compare_speedups(speedups, targets, sparse=False, parboil=False):
+    if parboil:
+        speedups = speedups[~ (speedups['name'] == 'small')]
+        speedups = speedups[~ (speedups['name'] == 'medium')]
+
     mean_speedups = (
         speedups.groupby(['benchmark', 'platform', 'implementation'])['speedup']
                 .apply(mstats.gmean)
@@ -67,12 +71,14 @@ def compare_speedups(speedups, targets, sparse=False):
     )
 
 def best_vs_expert(speedups):
-    targets = [
-        ('gpu', 'opencl-expert'),
-        ('mkl', 'openmp-expert')
+    f_targets = [
+        ('opencl00', 'opencl-expert'),
+        ('opencl-expert', 'opencl-expert'),
     ]
 
-    return compare_speedups(speedups, targets)
+    f_sp = speedups.query('platform=="firuza"')
+
+    return compare_speedups(f_sp, f_targets, parboil=True)
 
 def vs_marshalled(speedups):
     targets = [

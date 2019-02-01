@@ -30,7 +30,7 @@ monaco,parboil-spmv,openmp-expert,medium,0.056693,0.055168,0.045351,0.058687,0.0
 monaco,parboil-spmv,openmp-expert,large,0.397379,0.431791,0.43177,0.437104,0.415883
 firuza,parboil-spmv,opencl-expert,small,0.179929,0.154395,0.1629,0.152219,0.151307
 firuza,parboil-spmv,opencl-expert,medium,0.198604,0.170098,0.152288,0.166207,0.170182
-firuza,parboil-spmv,opencl-expert,large,0.224546,0.174129,0.181025,0.168309,0.179258
+firuza,parboil-spmv,opencl-expert,large,0.157006,0.161537,0.153288,0.153921,0.165350
 firuza,parboil-spmv,openmp-expert,small,0.006668,0.003157,0.002938,0.002936,0.002893
 firuza,parboil-spmv,openmp-expert,medium,0.011996,0.012535,0.016441,0.012387,0.012995
 firuza,parboil-spmv,openmp-expert,large,0.336671,0.33755,0.33434,0.333813,0.335112
