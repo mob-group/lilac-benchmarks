@@ -22,7 +22,7 @@ def impl_map(platform, impl):
     impl = impl.replace('-slow', '')
 
     if platform == 'michel' and impl == 'opencl10':
-        return 'clSPARSE (eGPU)'
+        return 'eGPU'
     elif platform == 'firuza' and impl == 'opencl00':
         return 'clSPARSE'
     
@@ -63,7 +63,8 @@ def next_tick(val, ticks):
 def baseline_impl(df, benches, tick_size=0.5, ticks=None):
     platforms = df.platform.unique()
 
-    fig, axes = plt.subplots(1, len(benches), sharey='row', figsize=fig_size(2.1, 0.67))
+    fig, axes = plt.subplots(1, len(benches), sharey='row',
+            figsize=fig_size(2.1, 0.5))
     max_y = df[df['benchmark'].isin(benches)]['speedup'].max()
 
     for plot_num, (bench, ax) in enumerate(zip(benches, axes)):
@@ -82,12 +83,13 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
         rows.sort(key=lambda r: platform_map(r[1].platform))
 
         ax.set_xlim(-0.6, 2.6)
-        ax.set_ylim(0.8, next_tick(max_y, tick_size))
+        ax.set_ylim(0.8, max(ticks) if ticks is not None else next_tick(max_y, tick_size))
 
         if ticks is None:
             ax.set_yticks(np.arange(1, next_tick(max_y, tick_size) + tick_size, tick_size))
         else:
             ax.set_yticks(ticks)
+            ax.tick_params(axis='y', labelsize=6)
 
         for row in rows:
             y_val = row[1].speedup
@@ -97,18 +99,18 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
             
             threshold = 0.85 * next_tick(max_y, tick_size)
             valign = 'top' if y_val > threshold else 'bottom'
-            offset = -max_y/30 if y_val > threshold else max_y/30
+            offset = -max_y/20 if y_val > threshold else max_y/20
             color = 'white' if y_val > threshold else 'black'
 
             ax.text(i, y_val + offset, impl_map(row[1].platform,
                 row[1].implementation), rotation=90, verticalalignment=valign,
-                horizontalalignment='center', color=color, fontsize=8)
+                horizontalalignment='center', color=color, fontsize=6)
             i += 1
                     
         ax.set_xticks([])
         ax.set_xticklabels([])
         
-        ax.axhline(y=1, color='white', linestyle=':')
+        ax.axhline(y=1, color='black', lw=0.8)
         
         ax.set_title(bench_map(bench))
         
@@ -122,11 +124,12 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
 
 def baseline(df):
     benches = ['pfold', 'ngt', 'parboil-spmv', 'bfs']
-    return baseline_impl(df, benches)
+    return baseline_impl(df, benches, tick_size=0.1, ticks=np.arange(1.0, 2.1,
+        0.1))
 
 def baseline_bench(df):
     benches = ['NPB', 'PageRank', 'Netlib-C', 'Netlib-F']
-    return baseline_impl(df, benches, tick_size=1, ticks=[1.0, 5.0, 10.0])
+    return baseline_impl(df, benches, tick_size=1, ticks=np.arange(1, 13, 1))
 
 def marshall(df):
     def plot_bar(x, bench, platform, impl, ax):
@@ -205,7 +208,7 @@ def marshall(df):
 def expert(df):
     sns.set_palette(sns.cubehelix_palette(2, rot=60/360, dark=0.2, light=0.7-(0.5/2)))
 
-    fig, ax = plt.subplots(1, 1, figsize=fig_size(0.9, 0.9))
+    fig, ax = plt.subplots(1, 1, figsize=fig_size(0.9, 0.5))
     
     b1 = ax.bar(0, df.loc[1]['openmp-expert'], width=0.95)
     b2 = ax.bar(1, df.loc[0]['openmp-expert'], width=0.95)
@@ -217,13 +220,15 @@ def expert(df):
     ax.bar(6, df.loc[2]['opencl-expert'], width=0.95)
 
     ax.set_xticks([0.5, 3, 5.5])
-    ax.set_xticklabels(['NPB\nOpenMP', 'NPB\nOpenCL', 'Parboil\nOpenCL'])
+    ax.set_xticklabels(['NPB\nOpenMP', 'NPB\nOpenCL', 'Parboil\nOpenCL'],
+            fontsize=8)
     
-    ax.set_yticks([0, 0.5, 1])
-    ax.set_ylabel('LiLAC Performance (×)')
+    ax.set_yticks(np.arange(0, 1.1, 0.2))
+    ax.tick_params(axis='y', labelsize=6)
+    ax.set_ylabel('LiLAC Performance (×)', fontsize=8)
     
-    ax.set_title('LiLAC vs. Expert')
-    ax.legend(['Intel-0', 'Intel-1'], loc='upper right')
+    ax.set_title('LiLAC vs. Expert', fontsize=8)
+    ax.legend(['Intel-0', 'Intel-1'], loc='upper right', fontsize=6)
     
     fig.tight_layout()
     sns.despine(fig)
