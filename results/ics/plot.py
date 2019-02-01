@@ -44,7 +44,7 @@ def bench_map(bench):
         'ngt': 'NGT',
         'PageRank': 'PageRank',
         'bfs': 'BFS',
-        'NPB': 'NPB',
+        'NPB': 'NPB-CG',
         'parboil-spmv': 'Parboil SPMV',
         'Netlib-C': 'Netlib C',
         'Netlib-F': 'Netlib Fortran'
@@ -161,7 +161,7 @@ def marshall(df):
         return ax.bar(x, row, width=0.95, color=plat_color(platform))
 
     fig, ax = plt.subplots(1, 1, figsize=fig_size(1, 0.75), sharey=True)
-        
+    ax.set_title('Speedup vs. Naïve', fontsize=10)
     
     groups = [
         ('pfold', [
@@ -232,7 +232,7 @@ def expert(df):
     ax.bar(6, df.loc[2]['opencl-expert'], width=0.95)
 
     ax.set_xticks([0.5, 3, 5.5])
-    ax.set_xticklabels(['NPB\nOpenMP', 'NPB\nOpenCL', 'Parboil\nOpenCL'],
+    ax.set_xticklabels(['NPB-CG\nOpenMP', 'NPB-CG\nOpenCL', 'Parboil\nOpenCL'],
             fontsize=8)
     
     ax.set_yticks(np.arange(0, 1.1, 0.2))
@@ -304,7 +304,7 @@ def distribution(df):
             leg[nn] = ax.scatter(i, speed, c=[color(nn)], marker=marker(nn))
 
     ax.set_title('Speedup Distribution', fontsize=10)
-    ax.set_ylabel('Speedup (×)', fontsize=8)
+    ax.set_ylabel('Speedup (×)', fontsize=10)
     ax.set_xticks([])
     ax.set_ylim([0, 16])
     ax.axhline(y=1, ls=':', c='black')
