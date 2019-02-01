@@ -121,11 +121,11 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
     return fig
 
 def baseline(df):
-    benches = ['pfold', 'ngt', 'PageRank', 'bfs']
+    benches = ['pfold', 'ngt', 'parboil-spmv', 'bfs']
     return baseline_impl(df, benches)
 
 def baseline_bench(df):
-    benches = ['NPB', 'parboil-spmv', 'Netlib-C', 'Netlib-F']
+    benches = ['NPB', 'PageRank', 'Netlib-C', 'Netlib-F']
     return baseline_impl(df, benches, tick_size=1, ticks=[1.0, 5.0, 10.0])
 
 def marshall(df):
