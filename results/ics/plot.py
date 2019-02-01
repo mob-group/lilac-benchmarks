@@ -116,7 +116,7 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
         
         ax.axhline(y=1, color='black', lw=0.8)
         
-        ax.set_title(bench_map(bench))
+        ax.set_title(bench_map(bench), fontsize=10)
         
     ax.legend(bars, legend, bbox_to_anchor=(1.5,0.5), loc='center')
       
@@ -209,7 +209,7 @@ def marshall(df):
     ax.set_xticks(ticks)
     ax.set_xticklabels(labels)
 
-    ax.axhline(y=1, color='black')
+    ax.axhline(y=1, color='black', lw=0.8)
 
     ax.legend(leg.values(), leg.keys(), bbox_to_anchor=(0.25,1), loc='upper center')
     
@@ -269,15 +269,17 @@ def distribution(df):
             'opencl10': 'CL iGPU'
         }[impl]
     
+    sizes = ['S', 'W', 'A', 'B', 'C', 'D']
+
     def row_cmp(row):
-        return max([s for _, s, _ in row])
+        return platform_map(row[0][2]), sizes.index(row[0][3])
 
     speeds = df.query('benchmark=="NPB" and implementation!="native"')
     impls = ['MKL', 'cuSPARSE', 'CL eGPU', 'SparseX', 'CL iGPU']
 
     df = speeds.groupby(['platform', 'name'])
     data = [
-        [(row['implementation'], row['speedup'], row['platform'])
+        [(row['implementation'], row['speedup'], row['platform'], row['name'])
             for _, row in group.iterrows()] 
             for _, group in df
     ]
@@ -286,28 +288,33 @@ def distribution(df):
     fig, ax = plt.subplots(figsize=fig_size(1, 0.75))
 
     p_colors = {
-        'AMD': 'white',
-        'Intel-0': [0.2] * 3,
-        'Intel-1': [0.8] * 3,
+        'AMD': [0.8] * 3,
+        'Intel-0': [0.5] * 3,
+        'Intel-1': [0.2] * 3,
     }
 
     leg = {}
     rects = {}
 
+    offset = 0
     for i, row in enumerate(s_data):
+        if i == 6 or i == 12:
+            offset += 0.5
+        base = i + offset
+
         p = platform_map(row[0][2])
-        r = patches.Rectangle((i-0.5, 0), 1, 16, color=p_colors[p], alpha=0.2, linewidth=0)
+        r = patches.Rectangle((base-0.5, 0), 1, 16, color=p_colors[p], alpha=0.2, linewidth=0)
         ax.add_patch(r)
         rects[p] = r
-        for name, speed, _ in row:
+        for name, speed, _, _ in row:
             nn = new_impl_map(row[0][2], name)
-            leg[nn] = ax.scatter(i, speed, c=[color(nn)], marker=marker(nn))
+            leg[nn] = ax.scatter(base, speed, c=[color(nn)], marker=marker(nn))
 
     ax.set_title('Speedup Distribution', fontsize=10)
     ax.set_ylabel('Speedup (×)', fontsize=10)
     ax.set_xticks([])
     ax.set_ylim([0, 16])
-    ax.axhline(y=1, ls=':', c='black')
+    ax.axhline(y=1, lw=0.8, c='black')
     ax.tick_params(axis='y', labelsize=6)
 
     vs = [*rects.values(), *leg.values()]
