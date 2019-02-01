@@ -132,6 +132,11 @@ def baseline_bench(df):
     return baseline_impl(df, benches, tick_size=1, ticks=np.arange(1, 13, 1))
 
 def marshall(df):
+    def plat_color(platform):
+        plats = ['michel', 'monaco', 'firuza']
+        pal = sns.cubehelix_palette(3, rot=60/360, dark=0.2, light=0.7)
+        return pal[plats.index(platform)]
+
     def plot_bar(x, bench, platform, impl, ax):
         row = df.query('benchmark==@bench and platform==@platform').head(1)[impl]
         orig = row.item()
@@ -149,57 +154,60 @@ def marshall(df):
         if orig > row:
             ax.text(i, row + 0.02, "{:.1f}×".format(orig), ha='center',
                     va='bottom', fontsize=6)
-        return ax.bar(x, row, width=0.95)
+        return ax.bar(x, row, width=0.95, color=plat_color(platform))
 
-    fig, (pfold, ngt, pr, bfs) = plt.subplots(1, 4, figsize=fig_size(2.1, 0.67), sharey=True)
+    fig, ax = plt.subplots(1, 1, figsize=fig_size(1, 0.75), sharey=True)
         
-    pfold.set_title('PFold')
-    ngt.set_title('NGT')
-    pr.set_title('PageRank')
-    bfs.set_title('BFS')
-
-    pfold.set_ylabel('Speedup (×)')
     
-    groups = {
-        pfold: ('pfold', [
+    groups = [
+        ('pfold', [
             ('michel', 'opencl10-slow'),
-            ('monaco', 'mkl-slow'),
-            ('firuza', 'mkl-slow')
+            # ('monaco', 'mkl-slow'),
+            # ('firuza', 'mkl-slow')
         ]),
-        ngt: ('ngt', [
+        ('ngt', [
             ('michel', 'opencl10-slow'),
-            ('monaco', 'mkl-slow'),
-            ('firuza', 'mkl-slow')
+            # ('monaco', 'mkl-slow'),
+            # ('firuza', 'mkl-slow')
         ]),
-        pr: ('PageRank', [
+        ('PageRank', [
             ('michel', 'gpu-slow'),
-            ('monaco', 'mkl-slow'),
+            # ('monaco', 'mkl-slow'),
             ('firuza', 'opencl00-slow')
         ]),
-        bfs: ('bfs', [
+        ('bfs', [
             ('michel', 'sparsex-slow'),
-            ('monaco', 'mkl-slow'),
-            ('firuza', 'mkl-slow')
+            # ('monaco', 'mkl-slow'),
+            # ('firuza', 'mkl-slow')
         ])
-    }
+    ]
     
-    for ax in groups:
-        ax.set_ylim(0.8, 4.0)
-        ax.set_xlim(-0.6, 2.6)
-        
-        ax.set_xticks([])
-        ax.set_xticklabels([])
-        
-        name, bars = groups[ax]
+    ax.set_ylim(0.8, 4.0)
+    ax.set_yticks(np.arange(1.0, 4.1, 0.5))
+    ax.set_ylabel('Speedup (×)')
+    
+    i = 0
+    ticks = []
+    labels = []
+    leg = {}
+    for name, bars in groups:
+        ticks.append(i + len(bars) / 2 - 0.5)
+        labels.append(bench_map(name))
+
         bar_list = []
-        leg = []
-        for i, bar in enumerate(bars):
-            leg.append(platform_map(bar[0]))
-            bar_list.append(plot_bar(i, name, *bar, ax))
+        for bar in bars:
+            leg[platform_map(bar[0])] = plot_bar(i, name, *bar, ax)
+            i += 1
+        i += 0.5
 
-        ax.axhline(y=1, color='white', linestyle=':')
+    ax.tick_params(labelsize=8)
 
-    ax.legend(bar_list, leg, bbox_to_anchor=(1.5,0.5), loc='center')
+    ax.set_xticks(ticks)
+    ax.set_xticklabels(labels)
+
+    ax.axhline(y=1, color='black')
+
+    ax.legend(leg.values(), leg.keys(), bbox_to_anchor=(0.25,1), loc='upper center')
     
     fig.tight_layout()
     sns.despine(fig)
