@@ -24,8 +24,12 @@ def impl_map(platform, impl):
     if platform == 'michel' and impl == 'opencl10':
         return 'eGPU'
     elif platform == 'firuza' and impl == 'opencl00':
-        return 'clSPARSE'
-    
+        return 'eGPU'
+    elif platform == 'michel' and impl == 'opencl00':
+        return 'iGPU'
+    elif platform == 'monaco' and impl == 'opencl00':
+        return 'eGPU'
+
     return {
         'mkl': 'MKL',
         'gpu': 'cuSPARSE',
@@ -251,41 +255,60 @@ def distribution(df):
         pal = sns.cubehelix_palette(6, rot=60/360, dark=0.2, light=0.7)
         return pal[list(impls).index(name)]
 
+    def new_impl_map(plat, impl):
+        if plat == 'michel' and impl == 'opencl00':
+            return 'CL iGPU'
+        elif plat == 'michel' and impl == 'opencl10':
+            return 'CL eGPU'
+
+        return {
+            'gpu': 'cuSPARSE',
+            'mkl': 'MKL',
+            'opencl00': 'CL eGPU',
+            'sparsex': 'SparseX',
+            'opencl10': 'CL iGPU'
+        }[impl]
+    
+    def row_cmp(row):
+        return max([s for _, s, _ in row])
+
     speeds = df.query('benchmark=="NPB" and implementation!="native"')
-    impls = speeds.implementation.unique()
+    impls = ['MKL', 'cuSPARSE', 'CL eGPU', 'SparseX', 'CL iGPU']
 
     df = speeds.groupby(['platform', 'name'])
     data = [
-        [(row['implementation'], row['speedup'], row['platform']) 
+        [(row['implementation'], row['speedup'], row['platform'])
             for _, row in group.iterrows()] 
             for _, group in df
     ]
-    s_data = sorted(data, key=lambda row: max([s for _, s, _ in row]))
+    s_data = sorted(data, key=row_cmp)
 
     fig, ax = plt.subplots(figsize=fig_size(1, 0.75))
 
     p_colors = {
-        'firuza': [0.8, 0.8, 0.8],
-        'michel': [0.2, 0.2, 0.2],
-        'monaco': 'white'
+        'AMD': 'white',
+        'Intel-0': [0.2] * 3,
+        'Intel-1': [0.8] * 3,
     }
 
     leg = {}
     rects = {}
 
     for i, row in enumerate(s_data):
-        p = row[0][2]
+        p = platform_map(row[0][2])
         r = patches.Rectangle((i-0.5, 0), 1, 16, color=p_colors[p], alpha=0.2, linewidth=0)
         ax.add_patch(r)
         rects[p] = r
         for name, speed, _ in row:
-            leg[name] = ax.scatter(i, speed, c=[color(name)], marker=marker(name))
+            nn = new_impl_map(row[0][2], name)
+            leg[nn] = ax.scatter(i, speed, c=[color(nn)], marker=marker(nn))
 
-    ax.set_title('Speedup Distribution')
-    ax.set_ylabel('Speedup (×)')
+    ax.set_title('Speedup Distribution', fontsize=10)
+    ax.set_ylabel('Speedup (×)', fontsize=8)
     ax.set_xticks([])
     ax.set_ylim([0, 16])
     ax.axhline(y=1, ls=':', c='black')
+    ax.tick_params(axis='y', labelsize=6)
 
     vs = [*rects.values(), *leg.values()]
     ks = [*rects.keys(), *leg.keys()]
