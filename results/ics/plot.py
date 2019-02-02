@@ -75,7 +75,7 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
         i = 0
         
         if plot_num == 0:
-            ax.set_ylabel('Speedup (×)')
+            ax.set_ylabel('Speedup (×)', fontsize=8)
         
         results = df.query("benchmark=='{}'".format(bench))
         
@@ -118,7 +118,7 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
         
         ax.set_title(bench_map(bench), fontsize=10)
         
-    ax.legend(bars, legend, bbox_to_anchor=(1.5,0.5), loc='center')
+    ax.legend(bars, legend, bbox_to_anchor=(1.25,0.5), loc='center', fontsize=6)
       
     fig.tight_layout()
     plt.subplots_adjust(wspace=0.2)
@@ -188,7 +188,7 @@ def marshall(df):
     
     ax.set_ylim(0.8, 4.0)
     ax.set_yticks(np.arange(1.0, 4.1, 0.5))
-    ax.set_ylabel('Speedup (×)')
+    ax.set_ylabel('Speedup (×)', fontsize=8)
     
     i = 0
     ticks = []
@@ -204,14 +204,15 @@ def marshall(df):
             i += 1
         i += 0.5
 
-    ax.tick_params(labelsize=8)
+    ax.tick_params(axis='x', labelsize=8)
+    ax.tick_params(axis='y', labelsize=6)
 
     ax.set_xticks(ticks)
     ax.set_xticklabels(labels)
 
     ax.axhline(y=1, color='black', lw=0.8)
 
-    ax.legend(leg.values(), leg.keys(), bbox_to_anchor=(0.25,1), loc='upper center')
+    ax.legend(leg.values(), leg.keys(), bbox_to_anchor=(0.02,1), loc='upper left', fontsize=6)
     
     fig.tight_layout()
     sns.despine(fig)
@@ -237,9 +238,9 @@ def expert(df):
     ax.tick_params(axis='y', labelsize=6)
     ax.set_ylabel('Performance (×)', fontsize=8)
     
-    ax.set_title('LiLAC vs. Expert Implementation', fontsize=8)
-    ax.legend(['LiLAC', 'Expert'], loc='center left', fontsize=6,
-            bbox_to_anchor=(1, 0.5))
+    ax.set_title('LiLAC vs. Expert Implementation', fontsize=10)
+    ax.legend(['LiLAC', 'Expert'], loc='upper left', fontsize=6,
+            bbox_to_anchor=(0, 0.95))
 
     ax.axhline(y=1, color='black', lw=0.8)
     
@@ -286,7 +287,7 @@ def distribution(df):
     ]
     s_data = sorted(data, key=row_cmp)
 
-    fig, ax = plt.subplots(figsize=fig_size(1, 0.55))
+    fig, ax = plt.subplots(figsize=fig_size(1, 0.67))
 
     p_colors = {
         'AMD': [0.8] * 3,
@@ -312,7 +313,7 @@ def distribution(df):
             leg[nn] = ax.scatter(base, speed, c=[color(nn)], marker=marker(nn))
 
     ax.set_title('Speedup Distribution', fontsize=10)
-    ax.set_ylabel('Speedup (×)', fontsize=10)
+    ax.set_ylabel('Speedup (×)', fontsize=8)
     ax.set_xticks([])
     ax.set_ylim([0, 16])
     ax.axhline(y=1, lw=0.8, c='black')
@@ -320,7 +321,7 @@ def distribution(df):
 
     vs = [*rects.values(), *leg.values()]
     ks = [*rects.keys(), *leg.keys()]
-    ax.legend(vs, ks, loc='upper center', bbox_to_anchor=(0.5, -0.1), ncol=3, fontsize=8)
+    ax.legend(vs, ks, loc='upper center', bbox_to_anchor=(0.5, -0.1), ncol=3, fontsize=6)
 
     fig.tight_layout()
     sns.despine(fig)
