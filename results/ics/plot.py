@@ -7,8 +7,11 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
+
 sns.set_style('ticks')
-sns.set_palette(sns.cubehelix_palette(3, rot=60/360, dark=0.2, light=0.7))
+
+PALETTE = sns.cubehelix_palette(3, rot=60/360, dark=0.2, light=0.7)
+sns.set_palette(PALETTE)
 
 # Compute the size of a figure based on the current columnwidth
 def fig_size(w, h):
@@ -58,6 +61,11 @@ def platform_map(platform):
         'michel': 'AMD'
     }[platform]
 
+def impl_color(impl):
+    pal = sns.cubehelix_palette(5, rot=1/6, dark=0.2, light=0.9)
+    idx = ['eGPU', 'MKL', 'Native', 'SparseX', 'cuSPARSE'].index(impl)
+    return pal[idx]
+
 def get_data(infile):
     return pd.read_csv(infile)
 
@@ -71,6 +79,7 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
             figsize=fig_size(2.1, 0.5))
     max_y = df[df['benchmark'].isin(benches)]['speedup'].max()
 
+    bars = {}
     for plot_num, (bench, ax) in enumerate(zip(benches, axes)):
         i = 0
         
@@ -80,7 +89,6 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
         results = df.query("benchmark=='{}'".format(bench))
         
         labs = []
-        bars = []
         legend = []
         
         rows = [r for r in results.iterrows()]
@@ -96,29 +104,30 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
             ax.tick_params(axis='y', labelsize=6)
 
         for row in rows:
+            impl_text = impl_map(row[1].platform, row[1].implementation)
+
             y_val = row[1].speedup
-            bars.append(ax.bar(i, y_val, width=0.95))
+            bars[impl_text] = ax.bar(i, y_val, width=0.95, color=impl_color(impl_text))
             legend.append(platform_map(row[1].platform))
-            labs.append(impl_map(row[1].platform, row[1].implementation))
+            labs.append(platform_map(row[1].platform))
             
             threshold = 0.85 * next_tick(max_y, tick_size)
             valign = 'top' if y_val > threshold else 'bottom'
             offset = -max_y/20 if y_val > threshold else max_y/20
             color = 'white' if y_val > threshold else 'black'
 
-            # ax.text(i, y_val + offset, impl_map(row[1].platform,
-            #     row[1].implementation), rotation=90, verticalalignment=valign,
+            # ax.text(i, y_val + offset, impl_map(impl_text), rotation=90, verticalalignment=valign,
             #     horizontalalignment='center', color=color, fontsize=6)
             i += 1
                     
-        ax.set_xticks([])
-        ax.set_xticklabels([])
+        ax.set_xticks([0, 1, 2])
+        ax.set_xticklabels(labs, fontsize=6)
         
         ax.axhline(y=1, color='black', lw=0.8)
         
         ax.set_title(bench_map(bench), fontsize=10)
         
-    ax.legend(bars, legend, bbox_to_anchor=(1.25,0.5), loc='center', fontsize=6)
+    ax.legend(bars.values(), bars.keys(), bbox_to_anchor=(1.25,0.5), loc='center', fontsize=6)
       
     fig.tight_layout()
     plt.subplots_adjust(wspace=0.2)
