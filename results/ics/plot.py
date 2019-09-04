@@ -106,9 +106,9 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
             offset = -max_y/20 if y_val > threshold else max_y/20
             color = 'white' if y_val > threshold else 'black'
 
-            ax.text(i, y_val + offset, impl_map(row[1].platform,
-                row[1].implementation), rotation=90, verticalalignment=valign,
-                horizontalalignment='center', color=color, fontsize=6)
+            # ax.text(i, y_val + offset, impl_map(row[1].platform,
+            #     row[1].implementation), rotation=90, verticalalignment=valign,
+            #     horizontalalignment='center', color=color, fontsize=6)
             i += 1
                     
         ax.set_xticks([])
