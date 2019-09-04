@@ -62,7 +62,8 @@ def platform_map(platform):
     }[platform]
 
 def impl_color(impl):
-    pal = sns.cubehelix_palette(5, rot=1/6, dark=0.2, light=0.9)
+    # pal = sns.cubehelix_palette(5, rot=1/6, dark=0.2, light=0.9)
+    pal = sns.color_palette("colorblind", 5)
     idx = ['eGPU', 'MKL', 'Native', 'SparseX', 'cuSPARSE'].index(impl)
     return pal[idx]
 
@@ -127,7 +128,8 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
         
         ax.set_title(bench_map(bench), fontsize=10)
         
-    ax.legend(bars.values(), bars.keys(), bbox_to_anchor=(1.25,0.5), loc='center', fontsize=6)
+    ax.legend(bars.values(), bars.keys(), bbox_to_anchor=(1.25,0.5,0.675,0),
+            loc='center', fontsize=6, mode='expand')
       
     fig.tight_layout()
     plt.subplots_adjust(wspace=0.2)
