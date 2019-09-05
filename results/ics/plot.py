@@ -173,6 +173,11 @@ def marshall(df):
 
     def plot_bar(x, bench, platform, impl, ax, hatch):
         row = df.query('benchmark==@bench and platform==@platform').head(1)[impl]
+
+        if row.item() < 0.25:
+            ax.text(x, row + 0.05, '{:.2f}×'.format(row.item()), rotation=0,
+                    ha='center', va='bottom', fontsize=6)
+
         return ax.bar(x, row, width=0.95, color=impl_color(impl), hatch=hatch)
 
     fig, ax = plt.subplots(1, 1, figsize=fig_size(1, 0.67), sharey=True)
