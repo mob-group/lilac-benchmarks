@@ -189,22 +189,22 @@ def marshall(df):
     
     groups = [
         ('pfold', [
-            ('michel', 'opencl10-slow'),
+            ('michel', 'opencl10'),
             # ('monaco', 'mkl-slow'),
             # ('firuza', 'mkl-slow')
         ]),
         ('ngt', [
-            ('michel', 'opencl10-slow'),
+            ('michel', 'opencl10'),
             # ('monaco', 'mkl-slow'),
             # ('firuza', 'mkl-slow')
         ]),
         ('PageRank', [
-            ('michel', 'gpu-slow'),
+            ('michel', 'gpu'),
             # ('monaco', 'mkl-slow'),
-            ('firuza', 'opencl00-slow')
+            # ('firuza', 'opencl00-slow')
         ]),
         ('bfs', [
-            ('michel', 'sparsex-slow'),
+            ('michel', 'sparsex'),
             # ('monaco', 'mkl-slow'),
             # ('firuza', 'mkl-slow')
         ])
