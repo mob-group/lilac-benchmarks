@@ -165,27 +165,18 @@ def marshall(df):
         pal = sns.cubehelix_palette(3, rot=60/360, dark=0.2, light=0.7)
         return pal[plats.index(platform)]
 
-    def plot_bar(x, bench, platform, impl, ax):
+    def impl_color(impl):
+        imp = impl.split('-')[0]
+        impls = ['opencl10', 'gpu', 'sparsex']
+        pal = sns.cubehelix_palette(3, rot=60/360, dark=0.2, light=0.7)
+        return pal[impls.index(imp)]
+
+    def plot_bar(x, bench, platform, impl, ax, hatch):
         row = df.query('benchmark==@bench and platform==@platform').head(1)[impl]
-        orig = row.item()
-        row = min(row.item(), 4.0)
-
-        threshold = 0.85 * 4.0
-        valign = 'top' if row > threshold else 'bottom'
-        offset = -4.0/30 if row > threshold else 4.0/30
-        color = 'white' if row > threshold else 'black'
-
-        text = impl_map(platform, impl)
-        ax.text(i, row + offset, text, rotation=90, verticalalignment=valign,
-            horizontalalignment='center', color=color, fontsize=8)
-
-        if orig > row:
-            ax.text(i, row + 0.02, "{:.1f}×".format(orig), ha='center',
-                    va='bottom', fontsize=6)
-        return ax.bar(x, row, width=0.95, color=plat_color(platform))
+        return ax.bar(x, row, width=0.95, color=impl_color(impl), hatch=hatch)
 
     fig, ax = plt.subplots(1, 1, figsize=fig_size(1, 0.67), sharey=True)
-    ax.set_title('Speedup vs. Naïve Memory Transfers', fontsize=10, y=1.05)
+    ax.set_title('Improvement from Optimized Memory Transfers', fontsize=10, y=1.05)
     
     groups = [
         ('pfold', [
@@ -196,32 +187,18 @@ def marshall(df):
             ('michel', 'opencl10-slow'),
             ('michel', 'opencl10')
         ]),
+        ('PageRank', [
+            ('michel', 'gpu-slow'),
+            ('michel', 'gpu'),
+        ]),
+        ('bfs', [
+            ('michel', 'sparsex-slow'),
+            ('michel', 'sparsex'),
+        ])
     ]
-    # groups = [
-    #     ('pfold', [
-    #         ('michel', 'opencl10-slow'),
-    #         # ('monaco', 'mkl-slow'),
-    #         # ('firuza', 'mkl-slow')
-    #     ]),
-    #     ('ngt', [
-    #         ('michel', 'opencl10-slow'),
-    #         # ('monaco', 'mkl-slow'),
-    #         # ('firuza', 'mkl-slow')
-    #     ]),
-    #     ('PageRank', [
-    #         ('michel', 'gpu-slow'),
-    #         # ('monaco', 'mkl-slow'),
-    #         # ('firuza', 'opencl00-slow')
-    #     ]),
-    #     ('bfs', [
-    #         ('michel', 'sparsex-slow'),
-    #         # ('monaco', 'mkl-slow'),
-    #         # ('firuza', 'mkl-slow')
-    #     ])
-    # ]
-    
-    ax.set_ylim(0, 4.0)
-    ax.set_yticks(np.arange(0, 4.1, 0.5))
+
+    ax.set_ylim(0, 3.0)
+    ax.set_yticks(np.arange(0, 3.1, 0.5))
     ax.set_ylabel('Speedup (×)', fontsize=8)
     
     i = 0
@@ -234,7 +211,9 @@ def marshall(df):
 
         bar_list = []
         for bar in bars:
-            leg[platform_map(bar[0])] = plot_bar(i, name, *bar, ax)
+            slow = bar[1].find('slow') != -1
+
+            leg[impl_map(*bar)] = plot_bar(i, name, *bar, ax, hatch = '//////' if slow else '')
             i += 1
         i += 0.5
 
