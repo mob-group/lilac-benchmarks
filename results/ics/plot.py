@@ -67,6 +67,17 @@ def impl_color(impl):
     idx = ['eGPU', 'MKL', 'Native', 'SparseX', 'cuSPARSE'].index(impl)
     return pal[idx]
 
+def impl_hatch(impl):
+    import matplotlib as mpl
+    mpl.rcParams['hatch.linewidth'] = 0.2  # previous pdf hatch linewidth
+    return {
+        'eGPU' : '/',
+        'MKL' : '\\',
+        'Native' : '',
+        'SparseX' : '+',
+        'cuSPARSE' : '.',
+    }[impl] * 5
+
 def get_data(infile):
     return pd.read_csv(infile)
 
@@ -108,7 +119,9 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
             impl_text = impl_map(row[1].platform, row[1].implementation)
 
             y_val = row[1].speedup
-            bars[impl_text] = ax.bar(i, y_val, width=0.95, color=impl_color(impl_text))
+            bars[impl_text] = ax.bar(i, y_val, width=0.95,
+                    color=impl_color(impl_text), hatch=impl_hatch(impl_text),
+                    linewidth=0.2, edgecolor='black')
             legend.append(platform_map(row[1].platform))
             labs.append(platform_map(row[1].platform))
             
@@ -122,14 +135,14 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
             i += 1
                     
         ax.set_xticks([0, 1, 2])
-        ax.set_xticklabels(labs, fontsize=6)
+        ax.set_xticklabels(labs, fontsize=8)
         
         ax.axhline(y=1, color='black', lw=0.8)
         
         ax.set_title(bench_map(bench), fontsize=10)
         
-    ax.legend(bars.values(), bars.keys(), bbox_to_anchor=(1.25,0.5,0.675,0),
-            loc='center', fontsize=6, mode='expand')
+    ax.legend(bars.values(), bars.keys(), bbox_to_anchor=(1.25,0.5,0.9,0),
+            loc='center', fontsize=8, mode='expand')
       
     fig.tight_layout()
     plt.subplots_adjust(wspace=0.2)
@@ -140,11 +153,11 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
 def baseline(df):
     benches = ['pfold', 'ngt', 'parboil-spmv', 'bfs']
     return baseline_impl(df, benches, tick_size=0.1, ticks=np.arange(1.0, 2.1,
-        0.1))
+        0.2))
 
 def baseline_bench(df):
     benches = ['NPB', 'PageRank', 'Netlib-C', 'Netlib-F']
-    return baseline_impl(df, benches, tick_size=1, ticks=np.arange(1, 13, 1))
+    return baseline_impl(df, benches, tick_size=1, ticks=np.arange(1, 14, 2))
 
 def marshall(df):
     def plat_color(platform):
