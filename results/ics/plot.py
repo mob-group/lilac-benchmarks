@@ -7,6 +7,9 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 
+from matplotlib.patches import Patch
+import matplotlib as mpl
+mpl.rcParams['hatch.linewidth'] = 0.4  # previous pdf hatch linewidth
 
 sns.set_style('ticks')
 
@@ -25,13 +28,13 @@ def impl_map(platform, impl):
     impl = impl.replace('-slow', '')
 
     if platform == 'michel' and impl == 'opencl10':
-        return 'eGPU'
+        return 'CL eGPU'
     elif platform == 'firuza' and impl == 'opencl00':
-        return 'eGPU'
+        return 'CL eGPU'
     elif platform == 'michel' and impl == 'opencl00':
         return 'iGPU'
     elif platform == 'monaco' and impl == 'opencl00':
-        return 'eGPU'
+        return 'CL eGPU'
 
     return {
         'mkl': 'MKL',
@@ -62,16 +65,14 @@ def platform_map(platform):
     }[platform]
 
 def impl_color(impl):
-    # pal = sns.cubehelix_palette(5, rot=1/6, dark=0.2, light=0.9)
-    pal = sns.color_palette("colorblind", 5)
-    idx = ['eGPU', 'MKL', 'Native', 'SparseX', 'cuSPARSE'].index(impl)
+    pal = sns.cubehelix_palette(5, rot=1/6, dark=0.3, light=0.6)
+    # pal = sns.color_palette("colorblind", 5)
+    idx = ['CL eGPU', 'MKL', 'Native', 'SparseX', 'cuSPARSE'].index(impl)
     return pal[idx]
 
 def impl_hatch(impl):
-    import matplotlib as mpl
-    mpl.rcParams['hatch.linewidth'] = 0.2  # previous pdf hatch linewidth
     return {
-        'eGPU' : '/////',
+        'CL eGPU' : '/////',
         'MKL' : '\\\\\\\\\\',
         'Native' : '',
         'SparseX' : '+++',
@@ -121,7 +122,7 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
             y_val = row[1].speedup
             bars[impl_text] = ax.bar(i, y_val, width=0.95,
                     color=impl_color(impl_text), hatch=impl_hatch(impl_text),
-                    linewidth=0.2, edgecolor='black')
+                    linewidth=0.2)
             legend.append(platform_map(row[1].platform))
             labs.append(platform_map(row[1].platform))
             
@@ -212,7 +213,7 @@ def marshall(df):
     leg = {}
     for name, bars in groups:
         ticks.append(i + len(bars) / 2 - 0.5)
-        labels.append(bench_map(name))
+        labels.append(bench_map(name)+'\n'+impl_map(*bars[0]))
 
         bar_list = []
         for bar in bars:
@@ -230,7 +231,11 @@ def marshall(df):
 
     ax.axhline(y=1, color='black', lw=0.8)
 
-    ax.legend(leg.values(), leg.keys(), bbox_to_anchor=(0.02,1), loc='upper left', fontsize=6)
+    elts=[
+        Patch(facecolor=PALETTE[-1], edgecolor='white', hatch='/////////', label='Baseline'), 
+        Patch(facecolor=PALETTE[-1], label='Optimized')
+    ]
+    ax.legend(handles=elts, bbox_to_anchor=(0.02,1), loc='upper left', fontsize=6)
     
     fig.tight_layout()
     sns.despine(fig)
