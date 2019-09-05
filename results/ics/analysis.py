@@ -82,12 +82,22 @@ def best_vs_expert(speedups):
 
 def vs_marshalled(speedups):
     targets = [
-        ('mkl', 'mkl-slow'),
-        ('opencl10', 'opencl10-slow'),
-        ('opencl00', 'opencl00-slow'),
-        ('gpu', 'gpu-slow'),
-        ('sparsex', 'sparsex-slow'),
+        ('opencl10', 'native'),
+        ('opencl10-slow', 'native'),
+        ('opencl00', 'native'),
+        ('opencl00-slow', 'native'),
+        ('gpu', 'native'),
+        ('gpu-slow', 'native'),
+        ('sparsex', 'native'),
+        ('sparsex-slow', 'native'),
     ]
+    # targets = [
+    #     ('mkl', 'mkl-slow'),
+    #     ('opencl10', 'opencl10-slow'),
+    #     ('opencl00', 'opencl00-slow'),
+    #     ('gpu', 'gpu-slow'),
+    #     ('sparsex', 'sparsex-slow'),
+    # ]
 
     return compare_speedups(speedups, targets, sparse=True)
 

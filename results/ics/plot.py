@@ -189,29 +189,39 @@ def marshall(df):
     
     groups = [
         ('pfold', [
-            ('michel', 'opencl10'),
-            # ('monaco', 'mkl-slow'),
-            # ('firuza', 'mkl-slow')
+            ('michel', 'opencl10-slow'),
+            ('michel', 'opencl10')
         ]),
         ('ngt', [
-            ('michel', 'opencl10'),
-            # ('monaco', 'mkl-slow'),
-            # ('firuza', 'mkl-slow')
+            ('michel', 'opencl10-slow'),
+            ('michel', 'opencl10')
         ]),
-        ('PageRank', [
-            ('michel', 'gpu'),
-            # ('monaco', 'mkl-slow'),
-            # ('firuza', 'opencl00-slow')
-        ]),
-        ('bfs', [
-            ('michel', 'sparsex'),
-            # ('monaco', 'mkl-slow'),
-            # ('firuza', 'mkl-slow')
-        ])
     ]
+    # groups = [
+    #     ('pfold', [
+    #         ('michel', 'opencl10-slow'),
+    #         # ('monaco', 'mkl-slow'),
+    #         # ('firuza', 'mkl-slow')
+    #     ]),
+    #     ('ngt', [
+    #         ('michel', 'opencl10-slow'),
+    #         # ('monaco', 'mkl-slow'),
+    #         # ('firuza', 'mkl-slow')
+    #     ]),
+    #     ('PageRank', [
+    #         ('michel', 'gpu-slow'),
+    #         # ('monaco', 'mkl-slow'),
+    #         # ('firuza', 'opencl00-slow')
+    #     ]),
+    #     ('bfs', [
+    #         ('michel', 'sparsex-slow'),
+    #         # ('monaco', 'mkl-slow'),
+    #         # ('firuza', 'mkl-slow')
+    #     ])
+    # ]
     
-    ax.set_ylim(0.8, 4.0)
-    ax.set_yticks(np.arange(1.0, 4.1, 0.5))
+    ax.set_ylim(0, 4.0)
+    ax.set_yticks(np.arange(0, 4.1, 0.5))
     ax.set_ylabel('Speedup (×)', fontsize=8)
     
     i = 0
