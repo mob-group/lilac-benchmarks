@@ -71,12 +71,12 @@ def impl_hatch(impl):
     import matplotlib as mpl
     mpl.rcParams['hatch.linewidth'] = 0.2  # previous pdf hatch linewidth
     return {
-        'eGPU' : '/',
-        'MKL' : '\\',
+        'eGPU' : '/////',
+        'MKL' : '\\\\\\\\\\',
         'Native' : '',
-        'SparseX' : '+',
-        'cuSPARSE' : '.',
-    }[impl] * 5
+        'SparseX' : '+++',
+        'cuSPARSE' : '.....',
+    }[impl]
 
 def get_data(infile):
     return pd.read_csv(infile)
