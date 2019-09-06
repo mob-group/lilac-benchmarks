@@ -232,8 +232,9 @@ def marshall(df):
     ax.axhline(y=1, color='black', lw=0.8)
 
     elts=[
-        Patch(facecolor=PALETTE[-1], edgecolor='white', hatch='/////////', label='Baseline'), 
-        Patch(facecolor=PALETTE[-1], label='Optimized')
+        Patch(facecolor=PALETTE[-1], edgecolor='white', hatch='/////////',
+            label='Naive'), 
+        Patch(facecolor=PALETTE[-1], label='LiLAC')
     ]
     ax.legend(handles=elts, bbox_to_anchor=(0.02,1), loc='upper left', fontsize=6)
     
