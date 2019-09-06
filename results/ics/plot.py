@@ -108,7 +108,7 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
         rows.sort(key=lambda r: platform_map(r[1].platform))
 
         ax.set_xlim(-0.6, 2.6)
-        ax.set_ylim(0.8, max(ticks) if ticks is not None else next_tick(max_y, tick_size))
+        ax.set_ylim(0, max(ticks) if ticks is not None else next_tick(max_y, tick_size))
 
         if ticks is None:
             ax.set_yticks(np.arange(1, next_tick(max_y, tick_size) + tick_size, tick_size))
@@ -181,7 +181,7 @@ def marshall(df):
 
         return ax.bar(x, row, width=0.95, color=impl_color(impl), hatch=hatch)
 
-    fig, ax = plt.subplots(1, 1, figsize=fig_size(1, 0.67), sharey=True)
+    fig, ax = plt.subplots(1, 1, figsize=fig_size(1, 0.67*0.8), sharey=True)
     ax.set_title('Improvement from Optimized Memory Transfers', fontsize=10, y=1.05)
     
     groups = [
@@ -311,7 +311,7 @@ def distribution(df):
     ]
     s_data = sorted(data, key=row_cmp)
 
-    fig, ax = plt.subplots(figsize=fig_size(1, 0.67))
+    fig, ax = plt.subplots(figsize=fig_size(1, 0.67*0.8))
 
     p_colors = {
         'AMD': [0.8] * 3,
