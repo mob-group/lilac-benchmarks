@@ -170,5 +170,5 @@ pip-selfcheck.json
 
 Scratch.ipynb
 
-*.tidy.csv
-*.plot.csv
+*.csv
+!all.csv

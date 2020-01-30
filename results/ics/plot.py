@@ -11,6 +11,10 @@ from matplotlib.patches import Patch
 import matplotlib as mpl
 mpl.rcParams['hatch.linewidth'] = 0.4  # previous pdf hatch linewidth
 
+# Avoid Type 3 fonts for ACM Submission
+mpl.rcParams['pdf.fonttype'] = 42
+mpl.rcParams['ps.fonttype'] = 42
+
 sns.set_style('ticks')
 
 PALETTE = sns.cubehelix_palette(3, rot=60/360, dark=0.2, light=0.7)
@@ -85,6 +89,9 @@ def get_data(infile):
 def next_tick(val, ticks):
     return np.ceil((1/ticks) * val) / (1/ticks)
 
+def prev_tick(val, ticks):
+    return max(0, (np.floor((1/ticks) * val) / (1/ticks)) - (2 * ticks))
+
 def baseline_impl(df, benches, tick_size=0.5, ticks=None):
     platforms = df.platform.unique()
 
@@ -108,7 +115,7 @@ def baseline_impl(df, benches, tick_size=0.5, ticks=None):
         rows.sort(key=lambda r: platform_map(r[1].platform))
 
         ax.set_xlim(-0.6, 2.6)
-        ax.set_ylim(0, max(ticks) if ticks is not None else next_tick(max_y, tick_size))
+        ax.set_ylim(prev_tick(min(ticks), tick_size) if ticks is not None else 0, max(ticks) if ticks is not None else next_tick(max_y, tick_size))
 
         if ticks is None:
             ax.set_yticks(np.arange(1, next_tick(max_y, tick_size) + tick_size, tick_size))
