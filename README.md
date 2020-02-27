@@ -78,3 +78,5 @@ The first step is to generate suitably large matrices:
 ```
 ./big_gen.py --filename crsmat170u --size 170 write
 ```
+
+[cc]: https://dl.acm.org/doi/10.1145/3377555.3377893
