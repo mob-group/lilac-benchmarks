@@ -1,11 +1,13 @@
-# Sparsity
+Benchmarks for evaluating the performance of sparse linear algebra
+implementations. The code in this repository is taken from open source benchmark
+suites, real world chemical simulation software, and simulated workloads from
+other problem domains.
 
-Sparsity is a collection of benchmarks that can be used to evaluate the
-performance of sparse linear algebra implementations. The code in this
-repository is taken from open source benchmark suites, real world chemical
-simulation software, and simulated workloads from other problem domains.
+Results from these benchmarks appear in the following paper:
 
-# Building Sparsity
+* [**Automatically Harnessing Sparse Acceleration**][cc] (CC 2020)
+
+# Building
 
 The benchmarks in this package must be built and run separately using their own
 build systems.
